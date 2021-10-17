@@ -1,6 +1,0 @@
-description = ""
-requires = "ANSITerminal yojson"
-archive(byte) = "prisondash.cma"
-archive(native) = "prisondash.cmxa"
-plugin(byte) = "prisondash.cma"
-plugin(native) = "prisondash.cmxs"
