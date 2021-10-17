@@ -1,2 +1,4 @@
-(executable
- (name author))
+(library
+ (name prisondash)
+ (public_name PrisonDash)
+ (libraries yojson ANSITerminal))
