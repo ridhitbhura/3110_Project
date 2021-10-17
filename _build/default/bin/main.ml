@@ -1,4 +1,7 @@
 open Graphics
+(*open Images*)
+
+(** stack overflow*)
 
 let draw_title_description _ = 
   moveto 450 350;
@@ -16,7 +19,17 @@ let rec press_button key =
   let status_key = (wait_next_event [Key_pressed]).key in
   if status_key = key then () else press_button key
 
-(** [start_game _] is *)
+let open_img _ = 
+  open_graph "";
+  (*set_color white;*)
+  let img = Png.load_as_rgb24 "images/barbells.png" [] in 
+  let g = Graphic_image.of_image img in
+  Graphics.draw_image g 0 0;
+  let _ = (wait_next_event [Key_pressed]).key in
+  ()
+
+
+(** [start_game _] is the function running all commands in a sequence*)
 let start_game _ = 
   (* open_graph is an empty window*)
   open_graph "";
@@ -28,4 +41,8 @@ let start_game _ =
   draw_home_screen ();
   wait_next_event [Key_pressed]
 
-let x = start_game ()
+
+
+(*let x = start_game ()*)
+
+let _ = open_img ()
