@@ -1,10 +1,10 @@
 # dune exec Final
 # OCAMLPARAM: unset
 # Workspace root: /Users/paulsuh/3110_Project
-$ /usr/bin/getconf _NPROCESSORS_ONLN > /var/folders/kb/1rjhgcjx66nby2g2h0tskpjc0000gn/T/dune683ef1.output 2> /dev/null
+$ /usr/bin/getconf _NPROCESSORS_ONLN > /var/folders/kb/1rjhgcjx66nby2g2h0tskpjc0000gn/T/dune4ed8fe.output 2> /dev/null
 # Auto-detected concurrency: 8
 # disable binary cache
-$ /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/kb/1rjhgcjx66nby2g2h0tskpjc0000gn/T/dunefbaaa0.output
+$ /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/kb/1rjhgcjx66nby2g2h0tskpjc0000gn/T/dune28e912.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -113,3 +113,6 @@ $ /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/kb/1r
 #      }
 #  }
 # Workspace root: /Users/paulsuh/3110_Project
+$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I bin/.main.eobjs/byte -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/paulsuh/.opam/cs3110-2021fa/lib/graphics -I lib/.Final.objs/byte -no-alias-deps -opaque -o bin/.main.eobjs/byte/dune__exe__Main.cmo -c -impl bin/main.ml)
+$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/paulsuh/.opam/cs3110-2021fa/lib/graphics -I lib/.Final.objs/byte -I lib/.Final.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe /Users/paulsuh/.opam/cs3110-2021fa/lib/graphics/graphics.cmxa -I /Users/paulsuh/.opam/cs3110-2021fa/lib/graphics lib/Final.cmxa /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/core/camlimages.cmxa /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/graphics/camlimages_graphics.cmxa /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/png/camlimages_png.cmxa -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/png bin/.main.eobjs/native/dune__exe__Main.cmx)
