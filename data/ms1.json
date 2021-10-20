@@ -1,0 +1,52 @@
+{
+    "properties": [
+        {
+            "property_name": "Sink",
+            "set_name": "blue",
+            "image_name": "sink_50.png",
+            "upgrade_cost": "0",
+            "purchase_cost": "0",
+            "tax": "0",
+            "board_order": "0"
+
+        },
+        {
+            "property_name": "Toilet",
+            "set": "blue"
+            
+        },
+        {
+            "property_name": "Shower",
+            "set": "blue"
+        },
+        {
+            "property_name": "Chef",
+            "set": "red"
+        },
+        {
+            "property_name": "Dining_table",
+            "set": "red"
+        },
+        {
+            "property_name": "Instant_ramen",
+            "set": "red"
+        },
+        {
+            "property_name": "Barbells",
+            "set": "grey"
+        },
+        {
+            "property_name": "Dumbbells",
+            "set": "grey"
+        },
+        {
+            "property_name": "Treadmill",
+            "set": "grey"
+        }
+    ]
+
+
+
+
+
+}
