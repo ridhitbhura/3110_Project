@@ -1,4 +1,30 @@
 {
+    "sets": [
+        {
+            "set_name": "blue",
+            "set_properties": [
+                "Sink",
+                "Toilet",
+                "Shower"
+            ]
+        },
+        {
+            "set_name": "red",
+            "set_properties": [
+                "Chef",
+                "Dining_Table",
+                "Instant_Ramen"
+            ]
+        },
+        {
+            "set_name": "grey",
+            "set_properties": [
+                "Barbells",
+                "Dumbbells",
+                "Treadmill"
+            ]
+        }
+    ],
     "properties": [
         {
             "property_name": "Sink",
@@ -7,46 +33,81 @@
             "upgrade_cost": "0",
             "purchase_cost": "0",
             "tax": "0",
-            "board_order": "0"
+            "board_order": "1"
 
         },
         {
             "property_name": "Toilet",
-            "set": "blue"
+            "set": "blue",
+            "image_name": "toilet_50.png",
+            "upgrade_cost": "0",
+            "purchase_cost": "0",
+            "tax": "0",
+            "board_order": "2"
             
         },
         {
             "property_name": "Shower",
-            "set": "blue"
+            "set": "blue",
+            "image_name": "shower_50.png",
+            "upgrade_cost": "0",
+            "purchase_cost": "0",
+            "tax": "0",
+            "board_order": "3"
         },
         {
             "property_name": "Chef",
-            "set": "red"
+            "set": "red",
+            "image_name": "chef_50.png",
+            "upgrade_cost": "0",
+            "purchase_cost": "0",
+            "tax": "0",
+            "board_order": "4"
         },
         {
-            "property_name": "Dining_table",
-            "set": "red"
+            "property_name": "Dining_Table",
+            "set": "red",
+            "image_name": "dining_table_50.png",
+            "upgrade_cost": "0",
+            "purchase_cost": "0",
+            "tax": "0",
+            "board_order": "5"
         },
         {
-            "property_name": "Instant_ramen",
-            "set": "red"
+            "property_name": "Instant_Ramen",
+            "set": "red",
+            "image_name": "instant_ramen_50.png",
+            "upgrade_cost": "0",
+            "purchase_cost": "0",
+            "tax": "0",
+            "board_order": "6"
         },
         {
             "property_name": "Barbells",
-            "set": "grey"
+            "set": "grey",
+            "image_name": "barbell_50.png",
+            "upgrade_cost": "0",
+            "purchase_cost": "0",
+            "tax": "0",
+            "board_order": "7"
         },
         {
             "property_name": "Dumbbells",
-            "set": "grey"
+            "set": "grey",
+            "image_name": "dumbell_50.png",
+            "upgrade_cost": "0",
+            "purchase_cost": "0",
+            "tax": "0",
+            "board_order": "8"
         },
         {
             "property_name": "Treadmill",
-            "set": "grey"
+            "set": "grey",
+            "image_name": "treadmill_50.png",
+            "upgrade_cost": "0",
+            "purchase_cost": "0",
+            "tax": "0",
+            "board_order": "9"
         }
     ]
-
-
-
-
-
 }

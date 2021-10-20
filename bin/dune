@@ -1,4 +1,4 @@
 (executable
  (public_name Final)
  (name main)
- (libraries Game graphics camlimages.graphics camlimages.png))
+ (libraries game graphics camlimages.graphics camlimages.png))

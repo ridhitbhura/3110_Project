@@ -1,4 +1,5 @@
 open Graphics
+(* open Game *)
 (*open Images*)
 
 (** [window_dimensions] is [(width, height)] where width is the width of
@@ -87,7 +88,6 @@ let rec draw_properties property_locations =
   |(name, x_coord, y_coord) :: t -> draw_img name x_coord y_coord (fst property_img_dimensions) (snd property_img_dimensions) false;
   draw_properties t
 
-(*TODO*)
 let draw_game_screen property_locations player_info_locations=
   draw_properties property_locations;
   draw_properties player_info_locations
@@ -98,7 +98,7 @@ let draw_game_screen property_locations player_info_locations=
     If key pressed is not [key], the function loops, waiting for user to press some key.*)
 let rec press_button key = 
   let status_key = (wait_next_event [Key_pressed]).key in
-  if status_key = key then () else press_button key
+  if status_key = key then () else press_button key 
 
 (** [start_game _] is the function running all commands in a sequence*)
 let start_game _ = 
