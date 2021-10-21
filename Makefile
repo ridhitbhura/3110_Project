@@ -6,3 +6,7 @@ build:
 
 clean: 
 	dune clean
+
+zip:
+	rm -f prisondash.zip
+	zip -r prisondash.zip . -x@exclude.lst

@@ -1,10 +1,10 @@
 # dune exec bin/main.exe
 # OCAMLPARAM: unset
-# Workspace root: /Users/kabirwalia/Desktop/CS3110/Project/3110_Project
-$ /usr/bin/getconf _NPROCESSORS_ONLN > /var/folders/gx/xcswpfgn6_36zbrnlt38zrkh0000gn/T/dune2d4780.output 2> /dev/null
-# Auto-detected concurrency: 4
+# Workspace root: /Users/ridhitbhura/Documents/GitHub/3110_Project
+$ /usr/bin/getconf _NPROCESSORS_ONLN > /var/folders/l9/6n1gmxmx515cfndb3gm2cyv40000gn/T/dune2bf2a3.output 2> /dev/null
+# Auto-detected concurrency: 8
 # disable binary cache
-$ /Users/kabirwalia/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/gx/xcswpfgn6_36zbrnlt38zrkh0000gn/T/dune7fd292.output
+$ /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/l9/6n1gmxmx515cfndb3gm2cyv40000gn/T/dune600b31.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -14,45 +14,44 @@ $ /Users/kabirwalia/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/gx
 #  ; fdo_target_exe = None
 #  ; build_dir = "default"
 #  ; toplevel_path =
-#      Some External "/Users/kabirwalia/.opam/cs3110-2021fa/lib/toplevel"
-#  ; ocaml_bin = External "/Users/kabirwalia/.opam/cs3110-2021fa/bin"
-#  ; ocaml = Ok External "/Users/kabirwalia/.opam/cs3110-2021fa/bin/ocaml"
-#  ; ocamlc = External "/Users/kabirwalia/.opam/cs3110-2021fa/bin/ocamlc.opt"
+#      Some External "/Users/ridhitbhura/.opam/cs3110-2021fa/lib/toplevel"
+#  ; ocaml_bin = External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin"
+#  ; ocaml = Ok External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocaml"
+#  ; ocamlc = External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt"
 #  ; ocamlopt =
-#      Ok External "/Users/kabirwalia/.opam/cs3110-2021fa/bin/ocamlopt.opt"
+#      Ok External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlopt.opt"
 #  ; ocamldep =
-#      Ok External "/Users/kabirwalia/.opam/cs3110-2021fa/bin/ocamldep.opt"
+#      Ok External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamldep.opt"
 #  ; ocamlmklib =
-#      Ok External "/Users/kabirwalia/.opam/cs3110-2021fa/bin/ocamlmklib.opt"
+#      Ok External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlmklib.opt"
 #  ; env =
 #      map
-#        { "DUNE_OCAML_HARDCODED" : "/Users/kabirwalia/.opam/cs3110-2021fa/lib"
+#        { "DUNE_OCAML_HARDCODED" :
+#            "/Users/ridhitbhura/.opam/cs3110-2021fa/lib"
 #        ; "DUNE_OCAML_STDLIB" :
-#            "/Users/kabirwalia/.opam/cs3110-2021fa/lib/ocaml"
+#            "/Users/ridhitbhura/.opam/cs3110-2021fa/lib/ocaml"
 #        ; "DUNE_SOURCEROOT" :
-#            "/Users/kabirwalia/Desktop/CS3110/Project/3110_Project"
+#            "/Users/ridhitbhura/Documents/GitHub/3110_Project"
 #        ; "INSIDE_DUNE" :
-#            "/Users/kabirwalia/Desktop/CS3110/Project/3110_Project/_build/default"
-#        ; "MANPATH" :
-#            "/Users/kabirwalia/Desktop/CS3110/Project/3110_Project/_build/install/default/bin"
+#            "/Users/ridhitbhura/Documents/GitHub/3110_Project/_build/default"
 #        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/Users/kabirwalia/Desktop/CS3110/Project/3110_Project/_build/install/default/lib"
+#            "/Users/ridhitbhura/Documents/GitHub/3110_Project/_build/install/default/lib"
 #        ; "OCAMLPATH" :
-#            "/Users/kabirwalia/Desktop/CS3110/Project/3110_Project/_build/install/default/lib"
+#            "/Users/ridhitbhura/Documents/GitHub/3110_Project/_build/install/default/lib"
 #        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/Users/kabirwalia/Desktop/CS3110/Project/3110_Project/_build/install/default/lib/toplevel"
+#            "/Users/ridhitbhura/Documents/GitHub/3110_Project/_build/install/default/lib/toplevel"
 #        ; "OCAML_COLOR" : "always"
 #        ; "OPAMCOLOR" : "always"
 #        }
-#  ; findlib_path = [ External "/Users/kabirwalia/.opam/cs3110-2021fa/lib" ]
+#  ; findlib_path = [ External "/Users/ridhitbhura/.opam/cs3110-2021fa/lib" ]
 #  ; arch_sixtyfour = true
 #  ; natdynlink_supported = true
 #  ; supports_shared_libraries = true
 #  ; ocaml_config =
 #      { version = "4.12.0"
 #      ; standard_library_default =
-#          "/Users/kabirwalia/.opam/cs3110-2021fa/lib/ocaml"
-#      ; standard_library = "/Users/kabirwalia/.opam/cs3110-2021fa/lib/ocaml"
+#          "/Users/ridhitbhura/.opam/cs3110-2021fa/lib/ocaml"
+#      ; standard_library = "/Users/ridhitbhura/.opam/cs3110-2021fa/lib/ocaml"
 #      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
 #      ; ccomp_type = "cc"
 #      ; c_compiler = "cc"
@@ -79,12 +78,12 @@ $ /Users/kabirwalia/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/gx
 #          ]
 #      ; native_c_libraries = [ "-lm" ]
 #      ; cc_profile = []
-#      ; architecture = "amd64"
+#      ; architecture = "arm64"
 #      ; model = "default"
 #      ; int_size = 63
 #      ; word_size = 64
 #      ; system = "macosx"
-#      ; asm = [ "clang"; "-arch"; "x86_64"; "-Wno-trigraphs"; "-c" ]
+#      ; asm = [ "clang"; "-c"; "-Wno-trigraphs" ]
 #      ; asm_cfi_supported = true
 #      ; with_frame_pointers = false
 #      ; ext_exe = ""
@@ -95,8 +94,8 @@ $ /Users/kabirwalia/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/gx
 #      ; os_type = "Unix"
 #      ; default_executable_name = "a.out"
 #      ; systhread_supported = true
-#      ; host = "x86_64-apple-darwin20.6.0"
-#      ; target = "x86_64-apple-darwin20.6.0"
+#      ; host = "aarch64-apple-darwin20.5.0"
+#      ; target = "aarch64-apple-darwin20.5.0"
 #      ; profiling = false
 #      ; flambda = false
 #      ; spacetime = false
@@ -116,5 +115,4 @@ $ /Users/kabirwalia/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/gx
 #      ; windows_unicode = false
 #      }
 #  }
-# Workspace root: /Users/kabirwalia/Desktop/CS3110/Project/3110_Project
-$ (cd _build/default && /Users/kabirwalia/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I bin/.main.eobjs/byte -I /Users/kabirwalia/.opam/cs3110-2021fa/lib/biniou -I /Users/kabirwalia/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/kabirwalia/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/kabirwalia/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/kabirwalia/.opam/cs3110-2021fa/lib/easy-format -I /Users/kabirwalia/.opam/cs3110-2021fa/lib/graphics -I /Users/kabirwalia/.opam/cs3110-2021fa/lib/yojson -I lib/.game.objs/byte -no-alias-deps -opaque -o bin/.main.eobjs/byte/dune__exe__Main.cmo -c -impl bin/main.ml)
+# Workspace root: /Users/ridhitbhura/Documents/GitHub/3110_Project
