@@ -1,4 +1,4 @@
-(* open Yojson.Basic.Util
+open Yojson.Basic.Util
 
 type property = {
   property_name: string;
@@ -8,6 +8,8 @@ type property = {
   purchase_cost: int;
   tax: int;
   board_order: int;
+  x_coord: int;
+  y_coord: int;
 }
 
 type t = {
@@ -26,6 +28,8 @@ let get_property_from_json (json:Yojson.Basic.t): property = {
   purchase_cost = json |> member "purchase_cost" |> to_int;
   tax = json |> member "tax" |> to_int;
   board_order = json |> member "board_order" |> to_int;
+  x_coord = json |> member "x_coord" |> to_int;
+  y_coord = json |> member "y_coord" |> to_int;
 }
 
 (** [get_properties_from_json json] parses all the properties from the json*)
@@ -44,7 +48,7 @@ let from_json (json:Yojson.Basic.t) = {
   sets = get_sets_from_json json;
 }
 
-let get_properties_in_set t (set: string) : string list = List.assoc set t.sets *)
+let get_properties_in_set t (set: string) : string list = List.assoc set t.sets
 
 
 
@@ -53,7 +57,7 @@ let get_properties_in_set t (set: string) : string list = List.assoc set t.sets 
 (*OLD VERSION - Uncomment and it works*)
 
 
-type property_name = string 
+(* type property_name = string 
 
 type weapon_name = string 
 
@@ -122,5 +126,5 @@ type t = {
   weapon_stack: weapon_stack;
   food_stack : food_stack; 
   corners: corner list; 
-}
+} *)
 

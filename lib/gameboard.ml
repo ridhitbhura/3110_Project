@@ -1,4 +1,4 @@
-(* open Yojson.Basic.Util
+open Yojson.Basic.Util
 
 type property = {
   property_name: string;
@@ -8,13 +8,24 @@ type property = {
   purchase_cost: int;
   tax: int;
   board_order: int;
+  x_coord: int;
+  y_coord: int;
+}
+
+type panel = {
+  item_name: string;
+  image_name: string;
+  x_coord: int;
+  y_coord: int;
 }
 
 type t = {
   (* all the properties in the gameboard*)
   properties: property list; 
   (* assoc list where key is set name (color) and value is string list containing names of properties*)
-  sets: (string * string list) list
+  sets: (string * string list) list;
+  (* names/image/position information for the player panel on the side*)
+  panel: panel list;
 }
 
 (** [get_property_from_json json] parses a single property json to give a property type*)
@@ -26,6 +37,8 @@ let get_property_from_json (json:Yojson.Basic.t): property = {
   purchase_cost = json |> member "purchase_cost" |> to_int;
   tax = json |> member "tax" |> to_int;
   board_order = json |> member "board_order" |> to_int;
+  x_coord = json |> member "x_coord" |> to_int;
+  y_coord = json |> member "y_coord" |> to_int;
 }
 
 (** [get_properties_from_json json] parses all the properties from the json*)
@@ -39,12 +52,25 @@ let get_set_list_from_json (json:Yojson.Basic.t): string * string list = (
 let get_sets_from_json (json:Yojson.Basic.t): (string * string list) list = 
   json |> member "sets" |> to_list |> List.map get_set_list_from_json
 
+(** [get_panel_item_from_json json] parses a single panel item json to give a panel type*)
+let get_panel_item_from_json (json:Yojson.Basic.t): panel = {
+  item_name = json |> member "item_name" |> to_string;
+  image_name = json |> member "image_name" |> to_string;
+  x_coord = json |> member "x_coord" |> to_int;
+  y_coord = json |> member "y_coord" |> to_int;
+}
+
+(** [get_properties_from_json json] parses all the properties from the json*)
+let get_panel_from_json (json:Yojson.Basic.t): panel list =
+  json |> member "player_panel" |> to_list |> List.map get_panel_item_from_json
+
 let from_json (json:Yojson.Basic.t) = {
   properties = get_properties_from_json json;
   sets = get_sets_from_json json;
+  panel = get_panel_from_json json;
 }
 
-let get_properties_in_set t (set: string) : string list = List.assoc set t.sets *)
+let get_properties_in_set t (set: string) : string list = List.assoc set t.sets
 
 
 
@@ -53,7 +79,7 @@ let get_properties_in_set t (set: string) : string list = List.assoc set t.sets 
 (*OLD VERSION - Uncomment and it works*)
 
 
-type property_name = string 
+(* type property_name = string 
 
 type weapon_name = string 
 
@@ -122,5 +148,5 @@ type t = {
   weapon_stack: weapon_stack;
   food_stack : food_stack; 
   corners: corner list; 
-}
+} *)
 

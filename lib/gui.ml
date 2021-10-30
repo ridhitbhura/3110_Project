@@ -9,7 +9,6 @@ let img_path img_name =
 (*draw_img draws each individual image *)
 let draw_img img_name x_coord y_coord img_w img_h centered = 
   let path = img_path img_name in
-  print_endline path;
   let img = Png.load_as_rgb24 path [] in
   let g = Graphic_image.of_image img in
   if centered then 
@@ -22,8 +21,12 @@ let draw_home_screen x_coord y_coord =
 
 let rec draw_properties property_locations = 
   match property_locations with
-  |[] -> ()
-  |(name, x_coord, y_coord) :: t -> draw_img name x_coord y_coord (fst property_img_dimensions) (snd property_img_dimensions) false;
+  | [] -> ()
+  | (name, x_coord, y_coord) :: t -> 
+    print_string name; print_newline (); 
+    print_int x_coord; print_newline (); 
+    print_int y_coord; print_newline ();
+    draw_img name x_coord y_coord (fst property_img_dimensions) (snd property_img_dimensions) false;
   draw_properties t
 
 let draw_game_screen property_locations player_info_locations=
