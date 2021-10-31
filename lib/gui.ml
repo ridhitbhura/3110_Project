@@ -3,8 +3,11 @@ open Graphics
 let titlescreen_dimensions = (1098, 392)
 let property_img_dimensions = (138, 182)
 
+(* let img_path img_name = 
+  "images/" ^ img_name ^ ".png" *)
+
 let img_path img_name = 
-  "images/" ^ img_name ^ ".png"
+  "images/" ^ img_name
 
 (*draw_img draws each individual image *)
 let draw_img img_name x_coord y_coord img_w img_h centered = 
@@ -17,19 +20,19 @@ let draw_img img_name x_coord y_coord img_w img_h centered =
     Graphics.draw_image g (x_coord) (y_coord)
 
 let draw_home_screen x_coord y_coord = 
-  draw_img "titlescreen" x_coord y_coord (fst titlescreen_dimensions) (snd titlescreen_dimensions) true
+  draw_img "titlescreen.png" x_coord y_coord (fst titlescreen_dimensions) (snd titlescreen_dimensions) true
 
 let rec draw_properties property_locations = 
   match property_locations with
   | [] -> ()
   | (name, x_coord, y_coord) :: t -> 
-    print_string name; print_newline (); 
+    (* print_string name; print_newline (); 
     print_int x_coord; print_newline (); 
-    print_int y_coord; print_newline ();
+    print_int y_coord; print_newline (); *)
     draw_img name x_coord y_coord (fst property_img_dimensions) (snd property_img_dimensions) false;
   draw_properties t
 
-let draw_game_screen property_locations player_info_locations=
+let draw_game_screen property_locations player_info_locations =
   draw_properties property_locations;
   draw_properties player_info_locations
 

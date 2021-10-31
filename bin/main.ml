@@ -5,14 +5,14 @@ open Game
 (** [window_dimensions] is [(width, height)] where width is the width of
 the window and height is the height of the window.*)
 let window_dimensions = (1300, 700)
-let title_pos = (450, 200)
+(* let title_pos = (450, 200)
 let titlescreen_dimensions = (1098, 392)
 let title_dimensions = (167, 63)
 let icon_dimensions = (35, 35)
 let subtitle_dimensions = (90, 44)
-let property_img_dimensions = (138, 182)
+let property_img_dimensions = (138, 182) *)
 
-let img_row1 = snd window_dimensions/8
+(* let img_row1 = snd window_dimensions/8
 let img_row2 = snd window_dimensions/8 + 200
 let img_row3 = snd window_dimensions/8 + 400
 
@@ -22,9 +22,9 @@ let img_col3 = fst window_dimensions/2 + 300
 
 let left_col_buffer = 10
 
-let third_window = 200
+let third_window = 200 *)
 
-let property_locations = [("barbell_50", img_col1, img_row1);
+(* let property_locations = [("barbell_50", img_col1, img_row1);
                           ("dumbell_50", img_col2, img_row1);
                           ("treadmill_50", img_col3, img_row1);
                           ("chef_50", img_col1, img_row2);
@@ -32,9 +32,9 @@ let property_locations = [("barbell_50", img_col1, img_row1);
                           ("instant_ramen_50", img_col3, img_row2);
                           ("sink_50", img_col1, img_row3);
                           ("toilet_50", img_col2, img_row3);
-                          ("shower_50", img_col3, img_row3)]
+                          ("shower_50", img_col3, img_row3)] *)
                           
-let player_info_locations = [("stripes_50",
+(* let player_info_locations = [("stripes_50",
                           left_col_buffer, 
                           4 * snd icon_dimensions + 4 * snd subtitle_dimensions + snd title_dimensions + 50 + third_window);
                           ("gold_50",
@@ -63,7 +63,16 @@ let player_info_locations = [("stripes_50",
                           snd icon_dimensions + 10 + third_window);
                           ("heart_50",
                           left_col_buffer, 
-                          5 + third_window);]
+                          5 + third_window);] *)
+
+
+let file = (Yojson.Basic.from_file "data/ms1.json")
+
+let gameboard = Gameboard.from_json file
+
+(* let rec print_gui_parts g = match g with 
+| [] -> print_string "empty list"
+| (a,_,_) :: tail -> print_string a; print_gui_parts tail *)
 
 (** [start_game _] is the function running all commands in a sequence*)
 let start_game _ = 
@@ -74,9 +83,11 @@ let start_game _ =
   Gui.draw_home_screen (fst window_dimensions/2) (snd window_dimensions/2);
   Gui.press_button 's' ; (*desired key is 's' to progress in gameplay*)
   clear_graph ();
-  Gui.draw_game_screen property_locations player_info_locations;
-  wait_next_event [Key_pressed]
 
+  (* let gameboard = Gameboard.from_json (Yojson.Basic.from_file "data/ms1.json") in  *)
+  let gui_parts = Gameboard.parse_json_for_gui gameboard in
+  Gui.draw_game_screen (fst gui_parts) (snd gui_parts);
+  wait_next_event [Key_pressed]
 let _ = start_game () 
 
 (** stack overflow*)

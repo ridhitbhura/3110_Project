@@ -12,17 +12,26 @@ type property = {
   y_coord: int;
 }
 
+type panel = {
+  item_name: string;
+  image_name_panel: string;
+  x_coord_panel: int;
+  y_coord_panel: int;
+}
+
 type t = {
   (* all the properties in the gameboard*)
   properties: property list; 
   (* assoc list where key is set name (color) and value is string list containing names of properties*)
-  sets: (string * string list) list
+  sets: (string * string list) list;
+  (* names/image/position information for the player panel on the side*)
+  panel: panel list;
 }
 
 (** [get_property_from_json json] parses a single property json to give a property type*)
 let get_property_from_json (json:Yojson.Basic.t): property = {
   property_name = json |> member "property_name" |> to_string;
-  set = json |> member "set_name" |> to_string;
+  set = json |> member "set" |> to_string;
   image_name = json |> member "image_name" |> to_string;
   upgrade_cost = json |> member "upgrade_cost" |> to_int;
   purchase_cost = json |> member "purchase_cost" |> to_int;
@@ -34,19 +43,45 @@ let get_property_from_json (json:Yojson.Basic.t): property = {
 
 (** [get_properties_from_json json] parses all the properties from the json*)
 let get_properties_from_json (json:Yojson.Basic.t): property list =
-  json |> member "properties" |> to_list |> List.map get_property_from_json
+  json |> member "properties" |> to_list |> List.map get_property_from_json 
 
 let get_set_list_from_json (json:Yojson.Basic.t): string * string list = (
   json |> member "set_name" |> to_string, 
   json |> member "set_properties" |> to_list |> List.map to_string
 )
-let get_sets_from_json (json:Yojson.Basic.t): (string * string list) list = 
+let get_sets_from_json (json:Yojson.Basic.t): (string * string list) list =
   json |> member "sets" |> to_list |> List.map get_set_list_from_json
+
+(** [get_panel_item_from_json json] parses a single panel item json to give a panel type*)
+let get_panel_item_from_json (json:Yojson.Basic.t): panel = { 
+  item_name = json |> member "item_name" |> to_string;
+  image_name_panel = json |> member "image_name" |> to_string;
+  x_coord_panel = json |> member "x_coord" |> to_int;
+  y_coord_panel = json |> member "y_coord" |> to_int;
+}
+
+(** [get_panel_from_json json] parses all the properties from the json*)
+let get_panel_from_json (json:Yojson.Basic.t): panel list =
+  json |> member "player_panel" |> to_list |> List.map get_panel_item_from_json 
 
 let from_json (json:Yojson.Basic.t) = {
   properties = get_properties_from_json json;
   sets = get_sets_from_json json;
+  panel = get_panel_from_json json;
 }
+
+let rec get_properties_gui_info lst = match lst with 
+| [] -> []
+| h :: t -> (h.image_name, h.x_coord, h.y_coord) :: get_properties_gui_info t
+
+let rec get_panel_gui_info lst = match lst with 
+| [] -> []
+| h :: t -> (h.image_name_panel, h.x_coord_panel, h.y_coord_panel) :: get_panel_gui_info t
+
+let parse_json_for_gui (g:t): (string*int*int) list * (string*int*int) list = (
+  get_properties_gui_info g.properties,
+  get_panel_gui_info g.panel
+)
 
 let get_properties_in_set t (set: string) : string list = List.assoc set t.sets
 

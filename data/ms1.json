@@ -28,166 +28,166 @@
     "properties": [
         {
             "property_name": "Sink",
-            "set_name": "blue",
+            "set": "blue",
             "image_name": "sink_50.png",
-            "upgrade_cost": "0",
-            "purchase_cost": "0",
-            "tax": "0",
-            "board_order": "1",
-            "x_coord": "650",
-            "y_coord": "487"
+            "upgrade_cost": 0,
+            "purchase_cost": 0,
+            "tax": 0,
+            "board_order": 1,
+            "x_coord": 650,
+            "y_coord": 487
 
         },
         {
             "property_name": "Toilet",
             "set": "blue",
             "image_name": "toilet_50.png",
-            "upgrade_cost": "0",
-            "purchase_cost": "0",
-            "tax": "0",
-            "board_order": "2",
-            "x_coord": "800",
-            "y_coord": "487"
+            "upgrade_cost": 0,
+            "purchase_cost": 0,
+            "tax": 0,
+            "board_order": 2,
+            "x_coord": 800,
+            "y_coord": 487
             
         },
         {
             "property_name": "Shower",
             "set": "blue",
             "image_name": "shower_50.png",
-            "upgrade_cost": "0",
-            "purchase_cost": "0",
-            "tax": "0",
-            "board_order": "3",
-            "x_coord": "950",
-            "y_coord": "487"
+            "upgrade_cost": 0,
+            "purchase_cost": 0,
+            "tax": 0,
+            "board_order": 3,
+            "x_coord": 950,
+            "y_coord": 487
         },
         {
             "property_name": "Chef",
             "set": "red",
             "image_name": "chef_50.png",
-            "upgrade_cost": "0",
-            "purchase_cost": "0",
-            "tax": "0",
-            "board_order": "4",
-            "x_coord": "650",
-            "y_coord": "287"
+            "upgrade_cost": 0,
+            "purchase_cost": 0,
+            "tax": 0,
+            "board_order": 4,
+            "x_coord": 650,
+            "y_coord": 287
         },
         {
             "property_name": "Dining_Table",
             "set": "red",
             "image_name": "dining_table_50.png",
-            "upgrade_cost": "0",
-            "purchase_cost": "0",
-            "tax": "0",
-            "board_order": "5",
-            "x_coord": "800",
-            "y_coord": "287"
+            "upgrade_cost": 0,
+            "purchase_cost": 0,
+            "tax": 0,
+            "board_order": 5,
+            "x_coord": 800,
+            "y_coord": 287
         },
         {
             "property_name": "Instant_Ramen",
             "set": "red",
             "image_name": "instant_ramen_50.png",
-            "upgrade_cost": "0",
-            "purchase_cost": "0",
-            "tax": "0",
-            "board_order": "6",
-            "x_coord": "950",
-            "y_coord": "287"
+            "upgrade_cost": 0,
+            "purchase_cost": 0,
+            "tax": 0,
+            "board_order": 6,
+            "x_coord": 950,
+            "y_coord": 287
         },
         {
             "property_name": "Barbells",
             "set": "grey",
             "image_name": "barbell_50.png",
-            "upgrade_cost": "0",
-            "purchase_cost": "0",
-            "tax": "0",
-            "board_order": "7",
-            "x_coord": "650",
-            "y_coord": "87"
+            "upgrade_cost": 0,
+            "purchase_cost": 0,
+            "tax": 0,
+            "board_order": 7,
+            "x_coord": 650,
+            "y_coord": 87
         },
         {
             "property_name": "Dumbbells",
             "set": "grey",
             "image_name": "dumbell_50.png",
-            "upgrade_cost": "0",
-            "purchase_cost": "0",
-            "tax": "0",
-            "board_order": "8",
-            "x_coord": "800",
-            "y_coord": "87"
+            "upgrade_cost": 0,
+            "purchase_cost": 0,
+            "tax": 0,
+            "board_order": 8,
+            "x_coord": 800,
+            "y_coord": 87
         },
         {
             "property_name": "Treadmill",
             "set": "grey",
             "image_name": "treadmill_50.png",
-            "upgrade_cost": "0",
-            "purchase_cost": "0",
-            "tax": "0",
-            "board_order": "9",
-            "x_coord": "950",
-            "y_coord": "87"
+            "upgrade_cost": 0,
+            "purchase_cost": 0,
+            "tax": 0,
+            "board_order": 9,
+            "x_coord": 950,
+            "y_coord": 87
         }
     ],
     "player_panel":[
         {
             "item_name": "Stripes",
             "image_name": "stripes_50.png",
-            "x_coord": "10",
-            "y_coord": "629"
+            "x_coord": 10,
+            "y_coord": 629
         },
         {
             "item_name": "Stripes Gold",
             "image_name": "gold_50.png",
-            "x_coord": "10",
-            "y_coord": "580"
+            "x_coord": 10,
+            "y_coord": 580
         },
         {
             "item_name": "Stripes Coin",
             "image_name": "coin_50.png",
-            "x_coord": "10",
-            "y_coord": "540"
+            "x_coord": 10,
+            "y_coord": 540
         },
         {
             "item_name": "Stripes Lives",
             "image_name": "lives_50.png",
-            "x_coord": "10",
-            "y_coord": "491"
+            "x_coord": 10,
+            "y_coord": 491
         },
         {
             "item_name": "Stripes Heart",
             "image_name": "heart_50.png",
-            "x_coord": "10",
-            "y_coord": "451"
+            "x_coord": 10,
+            "y_coord": 451
         },
         {
             "item_name": "Solids",
             "image_name": "solids_50.png",
-            "x_coord": "5",
-            "y_coord": "383"
+            "x_coord": 5,
+            "y_coord": 383
         },
         {
             "item_name": "Solids Gold",
             "image_name": "gold_50.png",
-            "x_coord": "10",
-            "y_coord": "334"
+            "x_coord": 10,
+            "y_coord": 334
         },
         {
             "item_name": "Solids Coin",
             "image_name": "coin_50.png",
-            "x_coord": "10",
-            "y_coord": "294"
+            "x_coord": 10,
+            "y_coord": 294
         },
         {
             "item_name": "Solids Lives",
             "image_name": "lives_50.png",
-            "x_coord": "10",
-            "y_coord": "245"
+            "x_coord": 10,
+            "y_coord": 245
         },
         {
             "item_name": "Solids Heart",
             "image_name": "heart_50.png",
-            "x_coord": "10",
-            "y_coord": "205"
+            "x_coord": 10,
+            "y_coord": 205
         }
     ]
 }

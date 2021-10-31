@@ -15,12 +15,20 @@ type property = {
   y_coord: int;
 }
 
+type panel = {
+  item_name: string;
+  image_name_panel: string;
+  x_coord_panel: int;
+  y_coord_panel: int;
+}
 
 (* [from_json j] is the gameboard that the json j represents*)
 val from_json: Yojson.Basic.t -> t
 
 (* [get_properties_in_set t s] is a list of property names that belong to the particular set s in gameboard t*)
 val get_properties_in_set: t -> string -> string list 
+
+val parse_json_for_gui: t -> (string*int*int) list * (string*int*int) list
 
 
 
