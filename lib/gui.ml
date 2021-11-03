@@ -1,5 +1,6 @@
 open Graphics
 open Gameboard
+open Functionality
 (* let titlescreen_dimensions = (1098, 392)
 
    let property_img_dimensions = (138, 182) *)
@@ -119,21 +120,29 @@ let draw_info_cards game =
   let img = food_info.image_name in
   draw_img img x y
 
-(* let dimension_check mouse img_dim x y = if fst mouse > x - (fst
-   img_dim / 2) && fst mouse < x + (fst img_dim / 2) && snd mouse > y -
-   (snd img_dim / 2) && snd mouse > y - (snd img_dim / 2) then true else
-   false
+let dimension_check mouse img_dim x y =
+  if
+    fst mouse > x - (fst img_dim / 2)
+    && fst mouse < x + (fst img_dim / 2)
+    && snd mouse > y - (snd img_dim / 2)
+    && snd mouse > y - (snd img_dim / 2)
+  then true
+  else false
 
-   let rec is_dice_clicked img_dim game = let x =
-   game.game_screen.dice.x_coord in let y =
-   game.game_screen.dice.x_coord in if button_down () then if
-   dimension_check (mouse_pos ()) img_dim x y then Functionality.handle2
-   0 else is_dice_clicked img_dim game else is_dice_clicked img_dim game
+let rec is_dice_clicked img_dim game =
+  let x = game.game_screen.dice.x_coord in
+  let y = game.game_screen.dice.y_coord in
+  if button_down () then
+    if dimension_check (mouse_pos ()) img_dim x y then handle2 0
+    else is_dice_clicked img_dim game
+  else is_dice_clicked img_dim game
 
-   let draw_dice_roll img_dim game = let x =
-   game.game_screen.dice.x_coord + 50 in let y =
-   game.game_screen.dice.y_coord + 50 in let z = is_dice_clicked img_dim
-   game in let img = string_of_int z ^ ".png" in draw_img img x y *)
+let draw_dice_roll img_dim game =
+  (* let x = game.game_screen.dice.x_coord + 50 in let y =
+     game.game_screen.dice.y_coord + 50 in *)
+  let z = is_dice_clicked img_dim game in
+  let img = string_of_int z in
+  draw_string img
 
 (* let draw_home_screen x_coord y_coord = draw_img "titlescreen.png"
    x_coord y_coord (fst titlescreen_dimensions) (snd
