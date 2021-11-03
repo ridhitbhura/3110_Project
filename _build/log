@@ -1,10 +1,18 @@
 # dune exec bin/main.exe
 # OCAMLPARAM: unset
+<<<<<<< HEAD
 # Workspace root: /home/kennyliang2302/cs3110/3110_Project
 $ /usr/bin/nproc > /tmp/dunefeee72.output 2> /dev/null
 # Auto-detected concurrency: 12
 # disable binary cache
 $ /home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dunea7c491.output
+=======
+# Workspace root: /Users/ridhitbhura/Documents/GitHub/3110_Project
+$ /usr/bin/getconf _NPROCESSORS_ONLN > /var/folders/l9/6n1gmxmx515cfndb3gm2cyv40000gn/T/dunef0a1d2.output 2> /dev/null
+# Auto-detected concurrency: 8
+# disable binary cache
+$ /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/l9/6n1gmxmx515cfndb3gm2cyv40000gn/T/dune1bc5f4.output
+>>>>>>> d9f1db72feccfa6c51b9ab96647afd398f86b774
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -14,6 +22,7 @@ $ /home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dunea7c
 #  ; fdo_target_exe = None
 #  ; build_dir = "default"
 #  ; toplevel_path =
+<<<<<<< HEAD
 #      Some External "/home/kennyliang2302/.opam/cs3110-2021fa/lib/toplevel"
 #  ; ocaml_bin = External "/home/kennyliang2302/.opam/cs3110-2021fa/bin"
 #  ; ocaml = Ok External "/home/kennyliang2302/.opam/cs3110-2021fa/bin/ocaml"
@@ -45,15 +54,52 @@ $ /home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dunea7c
 #        ; "OPAMCOLOR" : "always"
 #        }
 #  ; findlib_path = [ External "/home/kennyliang2302/.opam/cs3110-2021fa/lib" ]
+=======
+#      Some External "/Users/ridhitbhura/.opam/cs3110-2021fa/lib/toplevel"
+#  ; ocaml_bin = External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin"
+#  ; ocaml = Ok External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocaml"
+#  ; ocamlc = External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt"
+#  ; ocamlopt =
+#      Ok External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlopt.opt"
+#  ; ocamldep =
+#      Ok External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamldep.opt"
+#  ; ocamlmklib =
+#      Ok External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlmklib.opt"
+#  ; env =
+#      map
+#        { "DUNE_OCAML_HARDCODED" :
+#            "/Users/ridhitbhura/.opam/cs3110-2021fa/lib"
+#        ; "DUNE_OCAML_STDLIB" :
+#            "/Users/ridhitbhura/.opam/cs3110-2021fa/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" :
+#            "/Users/ridhitbhura/Documents/GitHub/3110_Project"
+#        ; "INSIDE_DUNE" :
+#            "/Users/ridhitbhura/Documents/GitHub/3110_Project/_build/default"
+#        ; "OCAMLFIND_IGNORE_DUPS_IN" :
+#            "/Users/ridhitbhura/Documents/GitHub/3110_Project/_build/install/default/lib"
+#        ; "OCAMLPATH" :
+#            "/Users/ridhitbhura/Documents/GitHub/3110_Project/_build/install/default/lib"
+#        ; "OCAMLTOP_INCLUDE_PATH" :
+#            "/Users/ridhitbhura/Documents/GitHub/3110_Project/_build/install/default/lib/toplevel"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
+#        }
+#  ; findlib_path = [ External "/Users/ridhitbhura/.opam/cs3110-2021fa/lib" ]
+>>>>>>> d9f1db72feccfa6c51b9ab96647afd398f86b774
 #  ; arch_sixtyfour = true
 #  ; natdynlink_supported = true
 #  ; supports_shared_libraries = true
 #  ; ocaml_config =
 #      { version = "4.12.0"
 #      ; standard_library_default =
+<<<<<<< HEAD
 #          "/home/kennyliang2302/.opam/cs3110-2021fa/lib/ocaml"
 #      ; standard_library =
 #          "/home/kennyliang2302/.opam/cs3110-2021fa/lib/ocaml"
+=======
+#          "/Users/ridhitbhura/.opam/cs3110-2021fa/lib/ocaml"
+#      ; standard_library = "/Users/ridhitbhura/.opam/cs3110-2021fa/lib/ocaml"
+>>>>>>> d9f1db72feccfa6c51b9ab96647afd398f86b774
 #      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
 #      ; ccomp_type = "cc"
 #      ; c_compiler = "gcc"
@@ -83,12 +129,17 @@ $ /home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dunea7c
 #          ]
 #      ; native_c_libraries = [ "-lm"; "-ldl" ]
 #      ; cc_profile = []
-#      ; architecture = "amd64"
+#      ; architecture = "arm64"
 #      ; model = "default"
 #      ; int_size = 63
 #      ; word_size = 64
+<<<<<<< HEAD
 #      ; system = "linux"
 #      ; asm = [ "as" ]
+=======
+#      ; system = "macosx"
+#      ; asm = [ "clang"; "-c"; "-Wno-trigraphs" ]
+>>>>>>> d9f1db72feccfa6c51b9ab96647afd398f86b774
 #      ; asm_cfi_supported = true
 #      ; with_frame_pointers = false
 #      ; ext_exe = ""
@@ -99,8 +150,13 @@ $ /home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dunea7c
 #      ; os_type = "Unix"
 #      ; default_executable_name = "a.out"
 #      ; systhread_supported = true
+<<<<<<< HEAD
 #      ; host = "x86_64-pc-linux-gnu"
 #      ; target = "x86_64-pc-linux-gnu"
+=======
+#      ; host = "aarch64-apple-darwin20.5.0"
+#      ; target = "aarch64-apple-darwin20.5.0"
+>>>>>>> d9f1db72feccfa6c51b9ab96647afd398f86b774
 #      ; profiling = false
 #      ; flambda = false
 #      ; spacetime = false
@@ -120,4 +176,8 @@ $ /home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dunea7c
 #      ; windows_unicode = false
 #      }
 #  }
+<<<<<<< HEAD
 # Workspace root: /home/kennyliang2302/cs3110/3110_Project
+=======
+# Workspace root: /Users/ridhitbhura/Documents/GitHub/3110_Project
+>>>>>>> d9f1db72feccfa6c51b9ab96647afd398f86b774

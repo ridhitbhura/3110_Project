@@ -5,6 +5,8 @@ open Game
 (** [window_dimensions] is [(width, height)] where width is the width of
     the window and height is the height of the window.*)
 let window_dimensions = (1330, 700)
+
+let dice_dim = (233, 275)
 (* let title_pos = (450, 200) let titlescreen_dimensions = (1098, 392)
    let title_dimensions = (167, 63) let icon_dimensions = (35, 35) let
    subtitle_dimensions = (90, 44) let property_img_dimensions = (138,
@@ -70,6 +72,10 @@ let start_game _ =
   Gui.draw_buttons game;
   Gui.draw_factions game;
   Gui.draw_info_cards game;
+<<<<<<< HEAD
+=======
+  Gui.draw_dice_roll dice_dim game;
+>>>>>>> d9f1db72feccfa6c51b9ab96647afd398f86b774
   wait_next_event [ Key_pressed ]
 
 (* let gameboard = Gameboard.from_json (Yojson.Basic.from_file
