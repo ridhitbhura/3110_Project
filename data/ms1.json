@@ -1,33 +1,29 @@
 {
-    "home_screen": [
-        {
-            "background": "Home_screen.png",
-            "start_button": {
-                "x_coord": 495,
-                "y_coord": 283,
-                "button_image": "Start.png"
-            },
-            "credits_button": {
-                "x_coord": 495,
-                "y_coord": 194,
-                "button_image": "Credits.png"
-            }
+    "home_screen": {
+        "x_coord": 0,
+        "y_coord": 0,
+        "image_name": "Home_Screen.png",
+        "start_button": {
+            "x_coord": 495,
+            "y_coord": 283,
+            "image_name": "Start.png"
+        },
+        "credits_button": {
+            "x_coord": 495,
+            "y_coord": 194,
+            "image_name": "Credits.png"
         }
-    ],
-    "gameboard": [
-        {
-            "x_coord": 365,
-            "y_coord": 50,
-            "image_name": "GameBoard.png"
-        }
-    ],
-    "gameboard_background": [
-        {
-            "x_coord": 0,
-            "y_coord": 0,
-            "background_image": "Background.png"
-        }
-    ],
+    },
+    "gameboard": {
+        "x_coord": 365,
+        "y_coord": 50,
+        "image_name": "GameBoard.png"
+    },
+    "game_screen_background": {
+        "x_coord": 0,
+        "y_coord": 0,
+        "image_name": "Background.png"
+    },
     "sets": [
         {
             "set_name": "Bathroom",
@@ -38,7 +34,7 @@
             ]
         },
         {
-            "set_name": "red",
+            "set_name": "Kitchen",
             "set_properties": [
                 "Dining_Table",
                 "Utensils",
@@ -97,11 +93,11 @@
         {
             "property_name": "Treadmill",
             "set": "Gym",
-            "info_card": "property_01.png",
+            "image_name": "property_01.png",
             "upgrade_cost": 25,
             "purchase_cost": 30,
             "fee": {
-                "noraml": 1,
+                "base": 1,
                 "set": 2,
                 "control_1": 5,
                 "control_2": 15,
@@ -119,11 +115,11 @@
         {
             "property_name": "Barbell",
             "set": "Gym",
-            "info_card": "property_03.png",
+            "image_name": "property_03.png",
             "upgrade_cost": 25,
             "purchase_cost": 30,
             "fee": {
-                "noraml": 2,
+                "base": 2,
                 "set": 4,
                 "control_1": 10,
                 "control_2": 30,
@@ -141,11 +137,11 @@
         {
             "property_name": "Dumbbell",
             "set": "Gym",
-            "info_card": "property_04.png",
+            "image_name": "property_04.png",
             "upgrade_cost": 25,
             "purchase_cost": 30,
             "fee": {
-                "noraml": 2,
+                "base": 2,
                 "set": 4,
                 "control_1": 10,
                 "control_2": 30,
@@ -163,11 +159,11 @@
         {
             "property_name": "PingPong_Tables",
             "set": "Sport_Activies",
-            "info_card": "property_06.png",
+            "image_name": "property_06.png",
             "upgrade_cost": 25,
             "purchase_cost": 50,
             "fee": {
-                "noraml": 3,
+                "base": 3,
                 "set": 6,
                 "control_1": 15,
                 "control_2": 45,
@@ -185,11 +181,11 @@
         {
             "property_name": "Pool",
             "set": "Sport_Activies",
-            "info_card": "property_08.png",
+            "image_name": "property_08.png",
             "upgrade_cost": 25,
             "purchase_cost": 50,
             "fee": {
-                "noraml": 3,
+                "base": 3,
                 "set": 6,
                 "control_1": 15,
                 "control_2": 45,
@@ -207,11 +203,11 @@
         {
             "property_name": "Basketball_Court",
             "set": "Sport_Activies",
-            "info_card": "property_09.png",
+            "image_name": "property_09.png",
             "upgrade_cost": 25,
             "purchase_cost": 60,
             "fee": {
-                "noraml": 4,
+                "base": 4,
                 "set": 8,
                 "control_1": 20,
                 "control_2": 50,
@@ -233,7 +229,7 @@
             "upgrade_cost": 50,
             "purchase_cost": 70,
             "fee": {
-                "noraml": 5,
+                "base": 5,
                 "set": 10,
                 "control_1": 25,
                 "control_2": 75,
@@ -255,7 +251,7 @@
             "upgrade_cost": 50,
             "purchase_cost": 70,
             "fee": {
-                "noraml": 5,
+                "base": 5,
                 "set": 10,
                 "control_1": 25,
                 "control_2": 75,
@@ -277,7 +273,7 @@
             "upgrade_cost": 50,
             "purchase_cost": 80,
             "fee": {
-                "noraml": 6,
+                "base": 6,
                 "set": 12,
                 "control_1": 30,
                 "control_2": 90,
@@ -299,7 +295,7 @@
             "upgrade_cost": 50,
             "purchase_cost": 90,
             "fee": {
-                "noraml": 7,
+                "base": 7,
                 "set": 14,
                 "control_1": 35,
                 "control_2": 100,
@@ -321,7 +317,7 @@
             "upgrade_cost": 50,
             "purchase_cost": 90,
             "fee": {
-                "noraml": 7,
+                "base": 7,
                 "set": 14,
                 "control_1": 35,
                 "control_2": 100,
@@ -343,7 +339,7 @@
             "upgrade_cost": 50,
             "purchase_cost": 100,
             "fee": {
-                "noraml": 8,
+                "base": 8,
                 "set": 16,
                 "control_1": 40,
                 "control_2": 100,
@@ -365,7 +361,7 @@
             "upgrade_cost": 75,
             "purchase_cost": 110,
             "fee": {
-                "noraml": 9,
+                "base": 9,
                 "set": 18,
                 "control_1": 45,
                 "control_2": 125,
@@ -387,7 +383,7 @@
             "upgrade_cost": 75,
             "purchase_cost": 110,
             "fee": {
-                "noraml": 9,
+                "base": 9,
                 "set": 18,
                 "control_1": 45,
                 "control_2": 125,
@@ -409,7 +405,7 @@
             "upgrade_cost": 75,
             "purchase_cost": 120,
             "fee": {
-                "noraml": 10,
+                "base": 10,
                 "set": 20,
                 "control_1": 50,
                 "control_2": 150,
@@ -431,7 +427,7 @@
             "upgrade_cost": 75,
             "purchase_cost": 130,
             "fee": {
-                "noraml": 11,
+                "base": 11,
                 "set": 22,
                 "control_1": 55,
                 "control_2": 165,
@@ -453,7 +449,7 @@
             "upgrade_cost": 75,
             "purchase_cost": 130,
             "fee": {
-                "noraml": 11,
+                "base": 11,
                 "set": 22,
                 "control_1": 55,
                 "control_2": 165,
@@ -475,7 +471,7 @@
             "upgrade_cost": 75,
             "purchase_cost": 140,
             "fee": {
-                "noraml": 12,
+                "base": 12,
                 "set": 24,
                 "control_1": 60,
                 "control_2": 180,
@@ -497,7 +493,7 @@
             "upgrade_cost": 100,
             "purchase_cost": 150,
             "fee": {
-                "noraml": 13,
+                "base": 13,
                 "set": 26,
                 "control_1": 65,
                 "control_2": 195,
@@ -519,7 +515,7 @@
             "upgrade_cost": 100,
             "purchase_cost": 150,
             "fee": {
-                "noraml": 13,
+                "base": 13,
                 "set": 26,
                 "control_1": 65,
                 "control_2": 195,
@@ -541,7 +537,7 @@
             "upgrade_cost": 100,
             "purchase_cost": 160,
             "fee": {
-                "noraml": 14,
+                "base": 14,
                 "set": 28,
                 "control_1": 75,
                 "control_2": 225,
@@ -563,7 +559,7 @@
             "upgrade_cost": 100,
             "purchase_cost": 175,
             "fee": {
-                "noraml": 18,
+                "base": 18,
                 "set": 35,
                 "control_1": 90,
                 "control_2": 250,
@@ -585,7 +581,7 @@
             "upgrade_cost": 100,
             "purchase_cost": 200,
             "fee": {
-                "noraml": 25,
+                "base": 25,
                 "set": 50,
                 "control_1": 100,
                 "control_2": 300,
@@ -603,89 +599,91 @@
     ],
     "factions": {
         "stripes": {
-            "background": "StripesBackground.png",
+            "image_name": "StripesBackground.png",
             "x_coord": 1000,
             "y_coord": 505,
-            "players": {
-                "player1": {
-                    "player_stats": "player1.png",
+            "players": [
+                {
+                    "image_name": "player1.png",
                     "x_coord": 1011,
                     "y_coord": 517
                 },
-                "player2": {
-                    "player_stats": "player2.png",
+                {
+                    "image_name": "player2.png",
                     "x_coord": 1110,
                     "y_coord": 517
                 },
-                "player3": {
-                    "player_stats": "player3.png",
+                {
+                    "image_name": "player3.png",
                     "x_coord": 1209,
                     "y_coord": 517
                 }
-            }
+            ]
         },
         "solids": {
-            "background": "SolidsBackground.png",
+            "image_name": "SolidsBackground.png",
             "x_coord": 1000,
             "y_coord": 355,
-            "players": {
-                "player4": {
-                    "player_stats": "player4.png",
+            "players": [
+                {
+                    "image_name": "player4.png",
                     "x_coord": 1011,
                     "y_coord": 367
                 },
-                "player5": {
-                    "player_stats": "player5.png",
+                {
+                    "image_name": "player5.png",
                     "x_coord": 1110,
                     "y_coord": 367
                 },
-                "player6": {
-                    "player_stats": "player6.png",
+                {
+                    "image_name": "player6.png",
                     "x_coord": 1209,
                     "y_coord": 367
                 }
-            }
+            ]
         }
     },
-    "property_info": {
-        "property_image": "property_01.png",
-        "x_coord": 1000,
-        "y_coord": 50
-    },
-    "weapon_info": {
-        "weapon_image": "NoWeapon.png",
-        "x_coord": 1180,
-        "y_coord": 197.5
-    },
-    "food_info": {
-        "food_image": "NoFood.png",
-        "x_coord": 1180,
-        "y_coord": 50
+    "info_cards": {
+        "property_info": {
+            "image_name": "property_01.png",
+            "x_coord": 1000,
+            "y_coord": 50
+        },
+        "weapon_info": {
+            "image_name": "NoWeapon.png",
+            "x_coord": 1180,
+            "y_coord": 198
+        },
+        "food_info": {
+            "image_name": "NoFood.png",
+            "x_coord": 1180,
+            "y_coord": 50
+        }
     },
     "buttons": {
         "trade_button": {
-            "button_image": "trade.png",
+            "image_name": "trade.png",
             "x_coord": 39,
             "y_coord": 585
         },
         "sell_button": {
-            "button_image": "sell.png",
+            "image_name": "sell.png",
             "x_coord": 39,
             "y_coord": 510
         },
         "mortgage_button": {
-            "button_image": "mortgage.png",
+            "image_name": "mortgage.png",
             "x_coord": 39,
             "y_coord": 435
         },
         "build_button": {
-            "button_image": "build.png",
+            "image_name": "build.png",
             "x_coord": 39,
             "y_coord": 360
         }
     },
     "dice": {
-        "image": "dice.png",
+        "image_name": "dice.png",
         "x_coord": 70,
         "y_coord": 50
     }
