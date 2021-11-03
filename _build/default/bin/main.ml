@@ -72,7 +72,7 @@ let start_game _ =
   Gui.draw_buttons game;
   Gui.draw_factions game;
   Gui.draw_info_cards game;
-  Gui.draw_dice_roll game;
+  (* Gui.draw_dice_roll dice_dim game; *)
   wait_next_event [ Key_pressed ]
 
 (* let gameboard = Gameboard.from_json (Yojson.Basic.from_file

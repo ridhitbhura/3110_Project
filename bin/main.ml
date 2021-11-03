@@ -1,6 +1,5 @@
 open Graphics
 open Game
-open Functionality
 (*open Images*)
 
 (** [window_dimensions] is [(width, height)] where width is the width of
