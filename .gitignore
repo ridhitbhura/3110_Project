@@ -1,0 +1,18 @@
+# ocaml
+*.cmo
+*.cma
+*.cmi
+*.out
+*.cmx
+*.native
+*.byte
+_build/.db
+_build/.digest-db
+_build/log
+_build/
+
+# temporary files
+*.swp
+*~
+\#*\#
+.DS_Store

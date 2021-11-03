@@ -1,2 +1,4 @@
 (library
- (name Final))
+ (name game)
+ (public_name Game)
+ (libraries yojson graphics camlimages.graphics camlimages.png))

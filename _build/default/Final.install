@@ -1,8 +1,0 @@
-lib: [
-  "_build/install/default/lib/Final/META"
-  "_build/install/default/lib/Final/dune-package"
-  "_build/install/default/lib/Final/opam"
-]
-bin: [
-  "_build/install/default/bin/Final"
-]
