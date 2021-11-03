@@ -1,7 +1,15 @@
 {
+    "titlescreen": {},
+    "gameboard": [
+        {
+            "x_coord": 365,
+            "y_coord": 50,
+            "image_name": "GameBoard.png"
+        }
+    ],
     "sets": [
         {
-            "set_name": "blue",
+            "set_name": "Bathroom",
             "set_properties": [
                 "Sink",
                 "Toilet",
@@ -11,183 +19,653 @@
         {
             "set_name": "red",
             "set_properties": [
-                "Chef",
                 "Dining_Table",
-                "Instant_Ramen"
+                "Utensils",
+                "Chef"
             ]
         },
         {
-            "set_name": "grey",
+            "set_name": "Gym",
             "set_properties": [
                 "Barbells",
                 "Dumbbells",
                 "Treadmill"
             ]
+        },
+        {
+            "set_name": "Sport_Activies",
+            "set_properties": [
+                "PingPong_Tables",
+                "Pool",
+                "Basketball_Court"
+            ]
+        },
+        {
+            "set_name": "Library",
+            "set_properties": [
+                "Books",
+                "TV",
+                "PC"
+            ]
+        },
+        {
+            "set_name": "Alcohol_Cell",
+            "set_properties": [
+                "Beer",
+                "Vodka",
+                "Whiskey"
+            ]
+        },
+        {
+            "set_name": "Drug_Cell",
+            "set_properties": [
+                "Weed",
+                "Heroine",
+                "Cocaine"
+            ]
+        },
+        {
+            "set_name": "Mail",
+            "set_properties": [
+                "Letters",
+                "Packages"
+            ]
         }
     ],
     "properties": [
         {
-            "property_name": "Sink",
-            "set": "blue",
-            "image_name": "sink_50.png",
-            "upgrade_cost": 0,
-            "purchase_cost": 0,
-            "tax": 0,
+            "property_name": "Treadmill",
+            "set": "Gym",
+            "info_card": "property_01.png",
+            "upgrade_cost": 25,
+            "purchase_cost": 30,
+            "fee": {
+                "noraml": 1,
+                "set": 2,
+                "control_1": 5,
+                "control_2": 15,
+                "control_3": 45,
+                "control_4": 80,
+                "take_over": 125
+            },
+            "mortgage": 15,
             "board_order": 1,
-            "x_coord": 650,
-            "y_coord": 487
-
+            "x_coord": 840,
+            "y_coord": 50,
+            "width": 50,
+            "height": 75
         },
         {
-            "property_name": "Toilet",
-            "set": "blue",
-            "image_name": "toilet_50.png",
-            "upgrade_cost": 0,
-            "purchase_cost": 0,
-            "tax": 0,
-            "board_order": 2,
-            "x_coord": 800,
-            "y_coord": 487
-            
-        },
-        {
-            "property_name": "Shower",
-            "set": "blue",
-            "image_name": "shower_50.png",
-            "upgrade_cost": 0,
-            "purchase_cost": 0,
-            "tax": 0,
+            "property_name": "Barbell",
+            "set": "Gym",
+            "info_card": "property_03.png",
+            "upgrade_cost": 25,
+            "purchase_cost": 30,
+            "fee": {
+                "noraml": 2,
+                "set": 4,
+                "control_1": 10,
+                "control_2": 30,
+                "control_3": 90,
+                "control_4": 160,
+                "take_over": 225
+            },
+            "mortgage": 15,
             "board_order": 3,
-            "x_coord": 950,
-            "y_coord": 487
+            "x_coord": 740,
+            "y_coord": 50,
+            "width": 50,
+            "height": 75
         },
         {
-            "property_name": "Chef",
-            "set": "red",
-            "image_name": "chef_50.png",
-            "upgrade_cost": 0,
-            "purchase_cost": 0,
-            "tax": 0,
+            "property_name": "Dumbbell",
+            "set": "Gym",
+            "info_card": "property_04.png",
+            "upgrade_cost": 25,
+            "purchase_cost": 30,
+            "fee": {
+                "noraml": 2,
+                "set": 4,
+                "control_1": 10,
+                "control_2": 30,
+                "control_3": 90,
+                "control_4": 160,
+                "take_over": 225
+            },
+            "mortgage": 20,
             "board_order": 4,
-            "x_coord": 650,
-            "y_coord": 287
+            "x_coord": 690,
+            "y_coord": 50,
+            "width": 50,
+            "height": 75
+        },
+        {
+            "property_name": "PingPong_Tables",
+            "set": "Sport_Activies",
+            "info_card": "property_06.png",
+            "upgrade_cost": 25,
+            "purchase_cost": 50,
+            "fee": {
+                "noraml": 3,
+                "set": 6,
+                "control_1": 15,
+                "control_2": 45,
+                "control_3": 135,
+                "control_4": 200,
+                "take_over": 275
+            },
+            "mortgage": 25,
+            "board_order": 6,
+            "x_coord": 590,
+            "y_coord": 50,
+            "width": 50,
+            "height": 75
+        },
+        {
+            "property_name": "Pool",
+            "set": "Sport_Activies",
+            "info_card": "property_08.png",
+            "upgrade_cost": 25,
+            "purchase_cost": 50,
+            "fee": {
+                "noraml": 3,
+                "set": 6,
+                "control_1": 15,
+                "control_2": 45,
+                "control_3": 135,
+                "control_4": 200,
+                "take_over": 275
+            },
+            "mortgage": 25,
+            "board_order": 8,
+            "x_coord": 490,
+            "y_coord": 50,
+            "width": 50,
+            "height": 75
+        },
+        {
+            "property_name": "Basketball_Court",
+            "set": "Sport_Activies",
+            "info_card": "property_09.png",
+            "upgrade_cost": 25,
+            "purchase_cost": 60,
+            "fee": {
+                "noraml": 4,
+                "set": 8,
+                "control_1": 20,
+                "control_2": 50,
+                "control_3": 150,
+                "control_4": 225,
+                "take_over": 300
+            },
+            "mortgage": 30,
+            "board_order": 9,
+            "x_coord": 440,
+            "y_coord": 50,
+            "width": 50,
+            "height": 75
+        },
+        {
+            "property_name": "Books",
+            "set": "Library",
+            "image_name": "property_11.png",
+            "upgrade_cost": 50,
+            "purchase_cost": 70,
+            "fee": {
+                "noraml": 5,
+                "set": 10,
+                "control_1": 25,
+                "control_2": 75,
+                "control_3": 225,
+                "control_4": 315,
+                "take_over": 375
+            },
+            "mortgage": 35,
+            "board_order": 11,
+            "x_coord": 365,
+            "y_coord": 125,
+            "width": 75,
+            "height": 50
+        },
+        {
+            "property_name": "TV",
+            "set": "Library",
+            "image_name": "property_13.png",
+            "upgrade_cost": 50,
+            "purchase_cost": 70,
+            "fee": {
+                "noraml": 5,
+                "set": 10,
+                "control_1": 25,
+                "control_2": 75,
+                "control_3": 225,
+                "control_4": 315,
+                "take_over": 375
+            },
+            "mortgage": 35,
+            "board_order": 13,
+            "x_coord": 365,
+            "y_coord": 225,
+            "width": 75,
+            "height": 50
+        },
+        {
+            "property_name": "PC",
+            "set": "Library",
+            "image_name": "property_14.png",
+            "upgrade_cost": 50,
+            "purchase_cost": 80,
+            "fee": {
+                "noraml": 6,
+                "set": 12,
+                "control_1": 30,
+                "control_2": 90,
+                "control_3": 250,
+                "control_4": 350,
+                "take_over": 450
+            },
+            "mortgage": 40,
+            "board_order": 14,
+            "x_coord": 365,
+            "y_coord": 275,
+            "width": 75,
+            "height": 50
         },
         {
             "property_name": "Dining_Table",
-            "set": "red",
-            "image_name": "dining_table_50.png",
-            "upgrade_cost": 0,
-            "purchase_cost": 0,
-            "tax": 0,
-            "board_order": 5,
-            "x_coord": 800,
-            "y_coord": 287
+            "set": "Kitchen",
+            "image_name": "property_16.png",
+            "upgrade_cost": 50,
+            "purchase_cost": 90,
+            "fee": {
+                "noraml": 7,
+                "set": 14,
+                "control_1": 35,
+                "control_2": 100,
+                "control_3": 275,
+                "control_4": 375,
+                "take_over": 475
+            },
+            "mortgage": 45,
+            "board_order": 16,
+            "x_coord": 365,
+            "y_coord": 375,
+            "width": 75,
+            "height": 50
         },
         {
-            "property_name": "Instant_Ramen",
-            "set": "red",
-            "image_name": "instant_ramen_50.png",
-            "upgrade_cost": 0,
-            "purchase_cost": 0,
-            "tax": 0,
-            "board_order": 6,
-            "x_coord": 950,
-            "y_coord": 287
+            "property_name": "Utenstils",
+            "set": "Kitchen",
+            "image_name": "property_18.png",
+            "upgrade_cost": 50,
+            "purchase_cost": 90,
+            "fee": {
+                "noraml": 7,
+                "set": 14,
+                "control_1": 35,
+                "control_2": 100,
+                "control_3": 275,
+                "control_4": 375,
+                "take_over": 475
+            },
+            "mortgage": 45,
+            "board_order": 18,
+            "x_coord": 365,
+            "y_coord": 475,
+            "width": 75,
+            "height": 50
         },
         {
-            "property_name": "Barbells",
-            "set": "grey",
-            "image_name": "barbell_50.png",
-            "upgrade_cost": 0,
-            "purchase_cost": 0,
-            "tax": 0,
-            "board_order": 7,
-            "x_coord": 650,
-            "y_coord": 87
+            "property_name": "Chef",
+            "set": "Kitchen",
+            "image_name": "property_19.png",
+            "upgrade_cost": 50,
+            "purchase_cost": 100,
+            "fee": {
+                "noraml": 8,
+                "set": 16,
+                "control_1": 40,
+                "control_2": 100,
+                "control_3": 300,
+                "control_4": 400,
+                "take_over": 500
+            },
+            "mortgage": 50,
+            "board_order": 19,
+            "x_coord": 365,
+            "y_coord": 525,
+            "width": 75,
+            "height": 50
         },
         {
-            "property_name": "Dumbbells",
-            "set": "grey",
-            "image_name": "dumbell_50.png",
-            "upgrade_cost": 0,
-            "purchase_cost": 0,
-            "tax": 0,
-            "board_order": 8,
-            "x_coord": 800,
-            "y_coord": 87
+            "property_name": "Sink",
+            "set": "Bathroom",
+            "image_name": "property_21.png",
+            "upgrade_cost": 75,
+            "purchase_cost": 110,
+            "fee": {
+                "noraml": 9,
+                "set": 18,
+                "control_1": 45,
+                "control_2": 125,
+                "control_3": 350,
+                "control_4": 440,
+                "take_over": 525
+            },
+            "mortgage": 55,
+            "board_order": 21,
+            "x_coord": 440,
+            "y_coord": 575,
+            "width": 50,
+            "height": 75
         },
         {
-            "property_name": "Treadmill",
-            "set": "grey",
-            "image_name": "treadmill_50.png",
-            "upgrade_cost": 0,
-            "purchase_cost": 0,
-            "tax": 0,
-            "board_order": 9,
-            "x_coord": 950,
-            "y_coord": 87
+            "property_name": "Shower",
+            "set": "Bathroom",
+            "image_name": "property_23.png",
+            "upgrade_cost": 75,
+            "purchase_cost": 110,
+            "fee": {
+                "noraml": 9,
+                "set": 18,
+                "control_1": 45,
+                "control_2": 125,
+                "control_3": 350,
+                "control_4": 440,
+                "take_over": 525
+            },
+            "mortgage": 55,
+            "board_order": 23,
+            "x_coord": 540,
+            "y_coord": 575,
+            "width": 50,
+            "height": 75
+        },
+        {
+            "property_name": "Toilet",
+            "set": "Bathroom",
+            "image_name": "property_24.png",
+            "upgrade_cost": 75,
+            "purchase_cost": 120,
+            "fee": {
+                "noraml": 10,
+                "set": 20,
+                "control_1": 50,
+                "control_2": 150,
+                "control_3": 375,
+                "control_4": 465,
+                "take_over": 550
+            },
+            "mortgage": 60,
+            "board_order": 24,
+            "x_coord": 590,
+            "y_coord": 575,
+            "width": 50,
+            "height": 75
+        },
+        {
+            "property_name": "Beer",
+            "set": "Alochol_Cell",
+            "image_name": "property_26.png",
+            "upgrade_cost": 75,
+            "purchase_cost": 130,
+            "fee": {
+                "noraml": 11,
+                "set": 22,
+                "control_1": 55,
+                "control_2": 165,
+                "control_3": 400,
+                "control_4": 490,
+                "take_over": 575
+            },
+            "mortgage": 65,
+            "board_order": 26,
+            "x_coord": 690,
+            "y_coord": 575,
+            "width": 50,
+            "height": 75
+        },
+        {
+            "property_name": "Vodka",
+            "set": "Alochol_Cell",
+            "image_name": "property_28.png",
+            "upgrade_cost": 75,
+            "purchase_cost": 130,
+            "fee": {
+                "noraml": 11,
+                "set": 22,
+                "control_1": 55,
+                "control_2": 165,
+                "control_3": 400,
+                "control_4": 490,
+                "take_over": 575
+            },
+            "mortgage": 65,
+            "board_order": 28,
+            "x_coord": 790,
+            "y_coord": 575,
+            "width": 50,
+            "height": 75
+        },
+        {
+            "property_name": "Whiskey",
+            "set": "Alochol_Cell",
+            "image_name": "property_29.png",
+            "upgrade_cost": 75,
+            "purchase_cost": 140,
+            "fee": {
+                "noraml": 12,
+                "set": 24,
+                "control_1": 60,
+                "control_2": 180,
+                "control_3": 425,
+                "control_4": 515,
+                "take_over": 600
+            },
+            "mortgage": 70,
+            "board_order": 29,
+            "x_coord": 840,
+            "y_coord": 575,
+            "width": 50,
+            "height": 75
+        },
+        {
+            "property_name": "Weed",
+            "set": "Drug_Cell",
+            "image_name": "property_31.png",
+            "upgrade_cost": 100,
+            "purchase_cost": 150,
+            "fee": {
+                "noraml": 13,
+                "set": 26,
+                "control_1": 65,
+                "control_2": 195,
+                "control_3": 450,
+                "control_4": 550,
+                "take_over": 640
+            },
+            "mortgage": 75,
+            "board_order": 31,
+            "x_coord": 890,
+            "y_coord": 525,
+            "width": 75,
+            "height": 50
+        },
+        {
+            "property_name": "Heroin",
+            "set": "Drug_Cell",
+            "image_name": "property_33.png",
+            "upgrade_cost": 100,
+            "purchase_cost": 150,
+            "fee": {
+                "noraml": 13,
+                "set": 26,
+                "control_1": 65,
+                "control_2": 195,
+                "control_3": 450,
+                "control_4": 550,
+                "take_over": 640
+            },
+            "mortgage": 75,
+            "board_order": 33,
+            "x_coord": 890,
+            "y_coord": 425,
+            "width": 75,
+            "height": 50
+        },
+        {
+            "property_name": "Cocaine",
+            "set": "Drug_Cell",
+            "image_name": "property_34.png",
+            "upgrade_cost": 100,
+            "purchase_cost": 160,
+            "fee": {
+                "noraml": 14,
+                "set": 28,
+                "control_1": 75,
+                "control_2": 225,
+                "control_3": 500,
+                "control_4": 600,
+                "take_over": 700
+            },
+            "mortgage": 80,
+            "board_order": 34,
+            "x_coord": 890,
+            "y_coord": 375,
+            "width": 75,
+            "height": 50
+        },
+        {
+            "property_name": "Letters",
+            "set": "Mail",
+            "image_name": "property_36.png",
+            "upgrade_cost": 100,
+            "purchase_cost": 175,
+            "fee": {
+                "noraml": 18,
+                "set": 35,
+                "control_1": 90,
+                "control_2": 250,
+                "control_3": 550,
+                "control_4": 650,
+                "take_over": 750
+            },
+            "mortgage": 90,
+            "board_order": 36,
+            "x_coord": 890,
+            "y_coord": 275,
+            "width": 75,
+            "height": 50
+        },
+        {
+            "property_name": "Packages",
+            "set": "Mail",
+            "image_name": "property_39.png",
+            "upgrade_cost": 100,
+            "purchase_cost": 200,
+            "fee": {
+                "noraml": 25,
+                "set": 50,
+                "control_1": 100,
+                "control_2": 300,
+                "control_3": 700,
+                "control_4": 850,
+                "take_over": 1000
+            },
+            "mortgage": 100,
+            "board_order": 39,
+            "x_coord": 890,
+            "y_coord": 125,
+            "width": 75,
+            "height": 50
         }
     ],
-    "player_panel":[
-        {
-            "item_name": "Stripes",
-            "image_name": "stripes_50.png",
-            "x_coord": 10,
-            "y_coord": 629
+    "factions": {
+        "stripes": {
+            "background": "StripesBackground.png",
+            "x_coord": 1000,
+            "y_coord": 505,
+            "players": {
+                "player1": {
+                    "player_stats": "player1.png",
+                    "x_coord": 1011,
+                    "y_coord": 517
+                },
+                "player2": {
+                    "player_stats": "player2.png",
+                    "x_coord": 1110,
+                    "y_coord": 517
+                },
+                "player3": {
+                    "player_stats": "player3.png",
+                    "x_coord": 1209,
+                    "y_coord": 517
+                }
+            }
         },
-        {
-            "item_name": "Stripes Gold",
-            "image_name": "gold_50.png",
-            "x_coord": 10,
-            "y_coord": 580
-        },
-        {
-            "item_name": "Stripes Coin",
-            "image_name": "coin_50.png",
-            "x_coord": 10,
-            "y_coord": 540
-        },
-        {
-            "item_name": "Stripes Lives",
-            "image_name": "lives_50.png",
-            "x_coord": 10,
-            "y_coord": 491
-        },
-        {
-            "item_name": "Stripes Heart",
-            "image_name": "heart_50.png",
-            "x_coord": 10,
-            "y_coord": 451
-        },
-        {
-            "item_name": "Solids",
-            "image_name": "solids_50.png",
-            "x_coord": 5,
-            "y_coord": 383
-        },
-        {
-            "item_name": "Solids Gold",
-            "image_name": "gold_50.png",
-            "x_coord": 10,
-            "y_coord": 334
-        },
-        {
-            "item_name": "Solids Coin",
-            "image_name": "coin_50.png",
-            "x_coord": 10,
-            "y_coord": 294
-        },
-        {
-            "item_name": "Solids Lives",
-            "image_name": "lives_50.png",
-            "x_coord": 10,
-            "y_coord": 245
-        },
-        {
-            "item_name": "Solids Heart",
-            "image_name": "heart_50.png",
-            "x_coord": 10,
-            "y_coord": 205
+        "solids": {
+            "background": "SolidsBackground.png",
+            "x_coord": 1000,
+            "y_coord": 355,
+            "players": {
+                "player4": {
+                    "player_stats": "player4.png",
+                    "x_coord": 1011,
+                    "y_coord": 367
+                },
+                "player5": {
+                    "player_stats": "player5.png",
+                    "x_coord": 1110,
+                    "y_coord": 367
+                },
+                "player6": {
+                    "player_stats": "player6.png",
+                    "x_coord": 1209,
+                    "y_coord": 367
+                }
+            }
         }
-    ]
+    },
+    "property_info": {
+        "property_image": "property_01.png",
+        "x_coord": 1000,
+        "y_coord": 50
+    },
+    "weapon_info": {
+        "weapon_image": "NoWeapon.png",
+        "x_coord": 1180,
+        "y_coord": 197.5
+    },
+    "food_info": {
+        "food_image": "NoFood.png",
+        "x_coord": 1180,
+        "y_coord": 50
+    },
+    "buttons": {
+        "trade_button": {
+            "button_image": "trade.png",
+            "x_coord": 39,
+            "y_coord": 585
+        },
+        "sell_button": {
+            "button_image": "sell.png",
+            "x_coord": 39,
+            "y_coord": 510
+        },
+        "mortgage_button": {
+            "button_image": "mortgage.png",
+            "x_coord": 39,
+            "y_coord": 435
+        },
+        "build_button": {
+            "button_image": "build.png",
+            "x_coord": 39,
+            "y_coord": 360
+        }
+    },
+    "dice": {
+        "image": "dice.png",
+        "x_coord": 70,
+        "y_coord": 50
+    }
 }
