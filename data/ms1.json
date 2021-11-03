@@ -599,44 +599,44 @@
     ],
     "factions": {
         "stripes": {
-            "image_name": "StripesBackground.png",
+            "image_name": "factions/StripesBackground.png",
             "x_coord": 1000,
             "y_coord": 505,
             "players": [
                 {
-                    "image_name": "player1.png",
+                    "image_name": "factions/player1.png",
                     "x_coord": 1011,
                     "y_coord": 517
                 },
                 {
-                    "image_name": "player2.png",
+                    "image_name": "factions/player2.png",
                     "x_coord": 1110,
                     "y_coord": 517
                 },
                 {
-                    "image_name": "player3.png",
+                    "image_name": "factions/player3.png",
                     "x_coord": 1209,
                     "y_coord": 517
                 }
             ]
         },
         "solids": {
-            "image_name": "SolidsBackground.png",
+            "image_name": "factions/SolidsBackground.png",
             "x_coord": 1000,
             "y_coord": 355,
             "players": [
                 {
-                    "image_name": "player4.png",
+                    "image_name": "factions/player4.png",
                     "x_coord": 1011,
                     "y_coord": 367
                 },
                 {
-                    "image_name": "player5.png",
+                    "image_name": "factions/player5.png",
                     "x_coord": 1110,
                     "y_coord": 367
                 },
                 {
-                    "image_name": "player6.png",
+                    "image_name": "factions/player6.png",
                     "x_coord": 1209,
                     "y_coord": 367
                 }
@@ -645,39 +645,39 @@
     },
     "info_cards": {
         "property_info": {
-            "image_name": "property_01.png",
+            "image_name": "properties/property_01.png",
             "x_coord": 1000,
             "y_coord": 50
         },
         "weapon_info": {
-            "image_name": "NoWeapon.png",
+            "image_name": "weapon_cards/NoWeapon.png",
             "x_coord": 1180,
             "y_coord": 198
         },
         "food_info": {
-            "image_name": "NoFood.png",
+            "image_name": "food_cards/Pizza.png",
             "x_coord": 1180,
             "y_coord": 50
         }
     },
     "buttons": {
         "trade_button": {
-            "image_name": "trade.png",
+            "image_name": "buttons/trade.png",
             "x_coord": 39,
             "y_coord": 585
         },
         "sell_button": {
-            "image_name": "sell.png",
+            "image_name": "buttons/sell.png",
             "x_coord": 39,
             "y_coord": 510
         },
         "mortgage_button": {
-            "image_name": "mortgage.png",
+            "image_name": "buttons/mortgage.png",
             "x_coord": 39,
             "y_coord": 435
         },
         "build_button": {
-            "image_name": "build.png",
+            "image_name": "buttons/build.png",
             "x_coord": 39,
             "y_coord": 360
         }
