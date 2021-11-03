@@ -1,10 +1,31 @@
 {
-    "titlescreen": {},
+    "home_screen": [
+        {
+            "background": "Home_screen.png",
+            "start_button": {
+                "x_coord": 495,
+                "y_coord": 283,
+                "button_image": "Start.png"
+            },
+            "credits_button": {
+                "x_coord": 495,
+                "y_coord": 194,
+                "button_image": "Credits.png"
+            }
+        }
+    ],
     "gameboard": [
         {
             "x_coord": 365,
             "y_coord": 50,
             "image_name": "GameBoard.png"
+        }
+    ],
+    "gameboard_background": [
+        {
+            "x_coord": 0,
+            "y_coord": 0,
+            "background_image": "Background.png"
         }
     ],
     "sets": [
