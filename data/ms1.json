@@ -655,29 +655,29 @@
             "y_coord": 198
         },
         "food_info": {
-            "image_name": "food_cards/Pizza.png",
+            "image_name": "food_cards/NoFood.png",
             "x_coord": 1180,
             "y_coord": 50
         }
     },
     "buttons": {
         "trade_button": {
-            "image_name": "buttons/trade.png",
+            "image_name": "buttons/Trade.png",
             "x_coord": 39,
             "y_coord": 585
         },
         "sell_button": {
-            "image_name": "buttons/sell.png",
+            "image_name": "buttons/Sell.png",
             "x_coord": 39,
             "y_coord": 510
         },
         "mortgage_button": {
-            "image_name": "buttons/mortgage.png",
+            "image_name": "buttons/Mortgage.png",
             "x_coord": 39,
             "y_coord": 435
         },
         "build_button": {
-            "image_name": "buttons/build.png",
+            "image_name": "buttons/Build.png",
             "x_coord": 39,
             "y_coord": 360
         }
