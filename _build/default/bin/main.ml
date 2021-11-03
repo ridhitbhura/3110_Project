@@ -12,43 +12,6 @@ let dice_dim = (233, 275)
    subtitle_dimensions = (90, 44) let property_img_dimensions = (138,
    182) *)
 
-(* let img_row1 = snd window_dimensions/8 let img_row2 = snd
-   window_dimensions/8 + 200 let img_row3 = snd window_dimensions/8 +
-   400
-
-   let img_col1 = fst window_dimensions/2 let img_col2 = fst
-   window_dimensions/2 + 150 let img_col3 = fst window_dimensions/2 +
-   300
-
-   let left_col_buffer = 10
-
-   let third_window = 200 *)
-
-(* let property_locations = [("barbell_50", img_col1, img_row1);
-   ("dumbell_50", img_col2, img_row1); ("treadmill_50", img_col3,
-   img_row1); ("chef_50", img_col1, img_row2); ("dining_table_50",
-   img_col2, img_row2); ("instant_ramen_50", img_col3, img_row2);
-   ("sink_50", img_col1, img_row3); ("toilet_50", img_col2, img_row3);
-   ("shower_50", img_col3, img_row3)] *)
-
-(* let player_info_locations = [("stripes_50", left_col_buffer, 4 * snd
-   icon_dimensions + 4 * snd subtitle_dimensions + snd title_dimensions
-   + 50 + third_window); ("gold_50", left_col_buffer, 4 * snd
-   icon_dimensions + 3 * snd subtitle_dimensions + snd title_dimensions
-   + 45 + third_window); ("coin_50", left_col_buffer, 3 * snd
-   icon_dimensions + 3 * snd subtitle_dimensions + snd title_dimensions
-   + 40 + third_window); ("lives_50", left_col_buffer, 3 * snd
-   icon_dimensions + 2 * snd subtitle_dimensions + snd title_dimensions
-   + 35 + third_window); ("heart_50", left_col_buffer, 2 * snd
-   icon_dimensions + 2 * snd subtitle_dimensions + snd title_dimensions
-   + 30 + third_window); ("solids_50", left_col_buffer-5, 2 * snd
-   icon_dimensions + 2 * snd subtitle_dimensions + 25 + third_window);
-   ("gold_50", left_col_buffer, 2 * snd icon_dimensions + snd
-   subtitle_dimensions + 20 + third_window); ("coin_50",
-   left_col_buffer, snd icon_dimensions + snd subtitle_dimensions + 15 +
-   third_window); ("lives_50", left_col_buffer, snd icon_dimensions + 10
-   + third_window); ("heart_50", left_col_buffer, 5 + third_window);] *)
-
 let file = Yojson.Basic.from_file "data/ms1.json"
 
 let game = Gameboard.from_json file
@@ -72,10 +35,7 @@ let start_game _ =
   Gui.draw_buttons game;
   Gui.draw_factions game;
   Gui.draw_info_cards game;
-<<<<<<< HEAD
-=======
   Gui.draw_dice_roll dice_dim game;
->>>>>>> d9f1db72feccfa6c51b9ab96647afd398f86b774
   wait_next_event [ Key_pressed ]
 
 (* let gameboard = Gameboard.from_json (Yojson.Basic.from_file
