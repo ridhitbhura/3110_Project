@@ -6,6 +6,9 @@
 *.cmx
 *.native
 *.byte
+_build/.db
+_build/.digest-db
+_build/log
 _build/
 
 # temporary files
