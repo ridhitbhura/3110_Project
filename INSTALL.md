@@ -42,4 +42,6 @@
 
 ### Press the 's' key to go to game screen
 
+### Double click the dice image to get the dice roll output (bottom left corner in black - prototype)
+
     
