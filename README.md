@@ -3,8 +3,8 @@
 Final project for Cornell University CS 3110
 
 Contributors:
-Ridhit Bhura
-Paul Suh
-Kenny Liang
-Kabir Walia
+- Ridhit Bhura
+- Paul Suh
+- Kenny Liang
+- Kabir Walia
 
