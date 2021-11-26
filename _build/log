@@ -1,10 +1,10 @@
-# dune build
+# dune exec bin/main.exe
 # OCAMLPARAM: unset
-# Workspace root: /Users/paulsuh/3110_Project
-$ /usr/bin/getconf _NPROCESSORS_ONLN > /var/folders/kb/1rjhgcjx66nby2g2h0tskpjc0000gn/T/dune34a2c5.output 2> /dev/null
-# Auto-detected concurrency: 8
+# Workspace root: /home/kennyliang2302/cs3110/3110_Project
+$ /usr/bin/nproc > /tmp/dune3b0a76.output 2> /dev/null
+# Auto-detected concurrency: 12
 # disable binary cache
-$ /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/kb/1rjhgcjx66nby2g2h0tskpjc0000gn/T/dune0b2fa4.output
+$ /home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dune5f4895.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -14,71 +14,81 @@ $ /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/kb/1r
 #  ; fdo_target_exe = None
 #  ; build_dir = "default"
 #  ; toplevel_path =
-#      Some External "/Users/paulsuh/.opam/cs3110-2021fa/lib/toplevel"
-#  ; ocaml_bin = External "/Users/paulsuh/.opam/cs3110-2021fa/bin"
-#  ; ocaml = Ok External "/Users/paulsuh/.opam/cs3110-2021fa/bin/ocaml"
-#  ; ocamlc = External "/Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt"
+#      Some External "/home/kennyliang2302/.opam/cs3110-2021fa/lib/toplevel"
+#  ; ocaml_bin = External "/home/kennyliang2302/.opam/cs3110-2021fa/bin"
+#  ; ocaml = Ok External "/home/kennyliang2302/.opam/cs3110-2021fa/bin/ocaml"
+#  ; ocamlc =
+#      External "/home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlc.opt"
 #  ; ocamlopt =
-#      Ok External "/Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlopt.opt"
+#      Ok External "/home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlopt.opt"
 #  ; ocamldep =
-#      Ok External "/Users/paulsuh/.opam/cs3110-2021fa/bin/ocamldep.opt"
+#      Ok External "/home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamldep.opt"
 #  ; ocamlmklib =
-#      Ok External "/Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlmklib.opt"
+#      Ok
+#        External "/home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlmklib.opt"
 #  ; env =
 #      map
-#        { "DUNE_OCAML_HARDCODED" : "/Users/paulsuh/.opam/cs3110-2021fa/lib"
-#        ; "DUNE_OCAML_STDLIB" : "/Users/paulsuh/.opam/cs3110-2021fa/lib/ocaml"
-#        ; "DUNE_SOURCEROOT" : "/Users/paulsuh/3110_Project"
-#        ; "INSIDE_DUNE" : "/Users/paulsuh/3110_Project/_build/default"
-#        ; "MANPATH" : "/Users/paulsuh/3110_Project/_build/install/default/bin"
+#        { "DUNE_OCAML_HARDCODED" :
+#            "/home/kennyliang2302/.opam/cs3110-2021fa/lib"
+#        ; "DUNE_OCAML_STDLIB" :
+#            "/home/kennyliang2302/.opam/cs3110-2021fa/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" : "/home/kennyliang2302/cs3110/3110_Project"
+#        ; "INSIDE_DUNE" :
+#            "/home/kennyliang2302/cs3110/3110_Project/_build/default"
 #        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/Users/paulsuh/3110_Project/_build/install/default/lib"
+#            "/home/kennyliang2302/cs3110/3110_Project/_build/install/default/lib"
 #        ; "OCAMLPATH" :
-#            "/Users/paulsuh/3110_Project/_build/install/default/lib"
+#            "/home/kennyliang2302/cs3110/3110_Project/_build/install/default/lib"
 #        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/Users/paulsuh/3110_Project/_build/install/default/lib/toplevel"
+#            "/home/kennyliang2302/cs3110/3110_Project/_build/install/default/lib/toplevel"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
 #        }
-#  ; findlib_path = [ External "/Users/paulsuh/.opam/cs3110-2021fa/lib" ]
+#  ; findlib_path = [ External "/home/kennyliang2302/.opam/cs3110-2021fa/lib" ]
 #  ; arch_sixtyfour = true
 #  ; natdynlink_supported = true
 #  ; supports_shared_libraries = true
 #  ; ocaml_config =
 #      { version = "4.12.0"
 #      ; standard_library_default =
-#          "/Users/paulsuh/.opam/cs3110-2021fa/lib/ocaml"
-#      ; standard_library = "/Users/paulsuh/.opam/cs3110-2021fa/lib/ocaml"
+#          "/home/kennyliang2302/.opam/cs3110-2021fa/lib/ocaml"
+#      ; standard_library =
+#          "/home/kennyliang2302/.opam/cs3110-2021fa/lib/ocaml"
 #      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
 #      ; ccomp_type = "cc"
-#      ; c_compiler = "cc"
-#      ; ocamlc_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv" ]
+#      ; c_compiler = "gcc"
+#      ; ocamlc_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
 #      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
-#      ; ocamlopt_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv" ]
+#      ; ocamlopt_cflags =
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
 #      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
 #      ; bytecomp_c_compiler =
-#          [ "cc"
+#          [ "gcc"
 #          ; "-O2"
 #          ; "-fno-strict-aliasing"
 #          ; "-fwrapv"
+#          ; "-fPIC"
 #          ; "-D_FILE_OFFSET_BITS=64"
 #          ; "-D_REENTRANT"
 #          ]
-#      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
+#      ; bytecomp_c_libraries = [ "-lm"; "-ldl"; "-lpthread" ]
 #      ; native_c_compiler =
-#          [ "cc"
+#          [ "gcc"
 #          ; "-O2"
 #          ; "-fno-strict-aliasing"
 #          ; "-fwrapv"
+#          ; "-fPIC"
 #          ; "-D_FILE_OFFSET_BITS=64"
 #          ; "-D_REENTRANT"
 #          ]
-#      ; native_c_libraries = [ "-lm" ]
+#      ; native_c_libraries = [ "-lm"; "-ldl" ]
 #      ; cc_profile = []
 #      ; architecture = "amd64"
 #      ; model = "default"
 #      ; int_size = 63
 #      ; word_size = 64
-#      ; system = "macosx"
-#      ; asm = [ "clang"; "-arch"; "x86_64"; "-Wno-trigraphs"; "-c" ]
+#      ; system = "linux"
+#      ; asm = [ "as" ]
 #      ; asm_cfi_supported = true
 #      ; with_frame_pointers = false
 #      ; ext_exe = ""
@@ -89,8 +99,8 @@ $ /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/kb/1r
 #      ; os_type = "Unix"
 #      ; default_executable_name = "a.out"
 #      ; systhread_supported = true
-#      ; host = "x86_64-apple-darwin20.5.0"
-#      ; target = "x86_64-apple-darwin20.5.0"
+#      ; host = "x86_64-pc-linux-gnu"
+#      ; target = "x86_64-pc-linux-gnu"
 #      ; profiling = false
 #      ; flambda = false
 #      ; spacetime = false
@@ -110,193 +120,4 @@ $ /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/kb/1r
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl lib/weapon.ml) > _build/default/lib/.game.objs/weapon.ml.d
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -intf lib/weapon.mli) > _build/default/lib/.game.objs/weapon.mli.d
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -intf lib/property.mli) > _build/default/lib/.game.objs/property.mli.d
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl lib/food.ml) > _build/default/lib/.game.objs/food.ml.d
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -intf lib/food.mli) > _build/default/lib/.game.objs/food.mli.d
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -intf lib/player.mli) > _build/default/lib/.game.objs/player.mli.d
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl lib/player.ml) > _build/default/lib/.game.objs/player.ml.d
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl lib/property.ml) > _build/default/lib/.game.objs/property.ml.d
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/paulsuh/.opam/cs3110-2021fa/lib/biniou -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/paulsuh/.opam/cs3110-2021fa/lib/easy-format -I /Users/paulsuh/.opam/cs3110-2021fa/lib/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/yojson -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Weapon.cmi -c -intf lib/weapon.mli)
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/paulsuh/.opam/cs3110-2021fa/lib/biniou -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/paulsuh/.opam/cs3110-2021fa/lib/easy-format -I /Users/paulsuh/.opam/cs3110-2021fa/lib/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/yojson -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Property.cmi -c -intf lib/property.mli)
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/paulsuh/.opam/cs3110-2021fa/lib/biniou -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/paulsuh/.opam/cs3110-2021fa/lib/easy-format -I /Users/paulsuh/.opam/cs3110-2021fa/lib/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/yojson -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Food.cmi -c -intf lib/food.mli)
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/paulsuh/.opam/cs3110-2021fa/lib/biniou -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/paulsuh/.opam/cs3110-2021fa/lib/easy-format -I /Users/paulsuh/.opam/cs3110-2021fa/lib/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Weapon.cmo -c -impl lib/weapon.ml)
-> File "lib/weapon.ml", line 3, characters 11-14:
-> 3 | let damage wpn = failwith "Unimplemented"
->                ^^^
-> Error (warning 27 [unused-var-strict]): unused variable wpn.
-[2]
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/paulsuh/.opam/cs3110-2021fa/lib/biniou -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/paulsuh/.opam/cs3110-2021fa/lib/easy-format -I /Users/paulsuh/.opam/cs3110-2021fa/lib/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Property.cmo -c -impl lib/property.ml)
-> File "lib/property.ml", line 1:
-> Error: The implementation lib/property.ml
->        does not match the interface lib/.game.objs/byte/game__Property.cmi:
->        The value `withdraw_refund' is required but not provided
->        File "lib/property.mli", line 50, characters 0-30:
->          Expected declaration
->        The value `withdraw' is required but not provided
->        File "lib/property.mli", line 46, characters 0-21:
->          Expected declaration
-[2]
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/paulsuh/.opam/cs3110-2021fa/lib/biniou -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/paulsuh/.opam/cs3110-2021fa/lib/easy-format -I /Users/paulsuh/.opam/cs3110-2021fa/lib/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/yojson -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Player.cmi -c -intf lib/player.mli)
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/paulsuh/.opam/cs3110-2021fa/lib/biniou -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/paulsuh/.opam/cs3110-2021fa/lib/easy-format -I /Users/paulsuh/.opam/cs3110-2021fa/lib/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Food.cmo -c -impl lib/food.ml)
-> File "lib/food.ml", line 3, characters 11-15:
-> 3 | let health food = failwith "Unimplemented"
->                ^^^^
-> Error (warning 27 [unused-var-strict]): unused variable food.
-[2]
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/paulsuh/.opam/cs3110-2021fa/lib/biniou -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/paulsuh/.opam/cs3110-2021fa/lib/easy-format -I /Users/paulsuh/.opam/cs3110-2021fa/lib/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Player.cmo -c -impl lib/player.ml)
-> File "lib/player.ml", line 5, characters 11-17:
-> 5 | let health player = failwith "Unimplemented"
->                ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 7, characters 18-24:
-> 7 | let update_health player = failwith "Unimplemented"
->                       ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 9, characters 10-16:
-> 9 | let money player = failwith "Unimplemented"
->               ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 11, characters 17-23:
-> 11 | let update_money player amt = failwith "Unimplemented"
->                       ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 11, characters 24-27:
-> 11 | let update_money player amt = failwith "Unimplemented"
->                              ^^^
-> Error (warning 27 [unused-var-strict]): unused variable amt.
-> File "lib/player.ml", line 13, characters 13-19:
-> 13 | let location player = failwith "Unimplemented"
->                   ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 15, characters 9-15:
-> 15 | let move player loc = failwith "Unimplemented"
->               ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 15, characters 16-19:
-> 15 | let move player loc = failwith "Unimplemented"
->                      ^^^
-> Error (warning 27 [unused-var-strict]): unused variable loc.
-> File "lib/player.ml", line 17, characters 15-21:
-> 17 | let properties player = failwith "Unimplemented"
->                     ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 19, characters 20-26:
-> 19 | let obtain_property player property = failwith "Unimplemented"
->                          ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 19, characters 27-35:
-> 19 | let obtain_property player property = failwith "Unimplemented"
->                                 ^^^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable property.
-> File "lib/player.ml", line 21, characters 15-21:
-> 21 | let has_weapon player = failwith "Unimplemented"
->                     ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 23, characters 18-24:
-> 23 | let weapon_damage player = failwith "Unimplemented"
->                        ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 25, characters 18-24:
-> 25 | let obtain_weapon player wpn = failwith "Unimplemented"
->                        ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 25, characters 25-28:
-> 25 | let obtain_weapon player wpn = failwith "Unimplemented"
->                               ^^^
-> Error (warning 27 [unused-var-strict]): unused variable wpn.
-> File "lib/player.ml", line 27, characters 18-24:
-> 27 | let is_in_wardens player = failwith "Unimplemented"
->                        ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-[2]
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.game.objs/byte -I lib/.game.objs/native -I /Users/paulsuh/.opam/cs3110-2021fa/lib/biniou -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/paulsuh/.opam/cs3110-2021fa/lib/easy-format -I /Users/paulsuh/.opam/cs3110-2021fa/lib/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/native/game__Property.cmx -c -impl lib/property.ml)
-> File "lib/property.ml", line 1:
-> Error: The implementation lib/property.ml
->        does not match the interface lib/.game.objs/byte/game__Property.cmi:
->        The value `withdraw_refund' is required but not provided
->        File "lib/property.mli", line 50, characters 0-30:
->          Expected declaration
->        The value `withdraw' is required but not provided
->        File "lib/property.mli", line 46, characters 0-21:
->          Expected declaration
-[2]
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.game.objs/byte -I lib/.game.objs/native -I /Users/paulsuh/.opam/cs3110-2021fa/lib/biniou -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/paulsuh/.opam/cs3110-2021fa/lib/easy-format -I /Users/paulsuh/.opam/cs3110-2021fa/lib/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/native/game__Player.cmx -c -impl lib/player.ml)
-> File "lib/player.ml", line 5, characters 11-17:
-> 5 | let health player = failwith "Unimplemented"
->                ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 7, characters 18-24:
-> 7 | let update_health player = failwith "Unimplemented"
->                       ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 9, characters 10-16:
-> 9 | let money player = failwith "Unimplemented"
->               ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 11, characters 17-23:
-> 11 | let update_money player amt = failwith "Unimplemented"
->                       ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 11, characters 24-27:
-> 11 | let update_money player amt = failwith "Unimplemented"
->                              ^^^
-> Error (warning 27 [unused-var-strict]): unused variable amt.
-> File "lib/player.ml", line 13, characters 13-19:
-> 13 | let location player = failwith "Unimplemented"
->                   ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 15, characters 9-15:
-> 15 | let move player loc = failwith "Unimplemented"
->               ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 15, characters 16-19:
-> 15 | let move player loc = failwith "Unimplemented"
->                      ^^^
-> Error (warning 27 [unused-var-strict]): unused variable loc.
-> File "lib/player.ml", line 17, characters 15-21:
-> 17 | let properties player = failwith "Unimplemented"
->                     ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 19, characters 20-26:
-> 19 | let obtain_property player property = failwith "Unimplemented"
->                          ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 19, characters 27-35:
-> 19 | let obtain_property player property = failwith "Unimplemented"
->                                 ^^^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable property.
-> File "lib/player.ml", line 21, characters 15-21:
-> 21 | let has_weapon player = failwith "Unimplemented"
->                     ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 23, characters 18-24:
-> 23 | let weapon_damage player = failwith "Unimplemented"
->                        ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 25, characters 18-24:
-> 25 | let obtain_weapon player wpn = failwith "Unimplemented"
->                        ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-> File "lib/player.ml", line 25, characters 25-28:
-> 25 | let obtain_weapon player wpn = failwith "Unimplemented"
->                               ^^^
-> Error (warning 27 [unused-var-strict]): unused variable wpn.
-> File "lib/player.ml", line 27, characters 18-24:
-> 27 | let is_in_wardens player = failwith "Unimplemented"
->                        ^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable player.
-[2]
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.game.objs/byte -I lib/.game.objs/native -I /Users/paulsuh/.opam/cs3110-2021fa/lib/biniou -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/paulsuh/.opam/cs3110-2021fa/lib/easy-format -I /Users/paulsuh/.opam/cs3110-2021fa/lib/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/native/game__Food.cmx -c -impl lib/food.ml)
-> File "lib/food.ml", line 3, characters 11-15:
-> 3 | let health food = failwith "Unimplemented"
->                ^^^^
-> Error (warning 27 [unused-var-strict]): unused variable food.
-[2]
-$ (cd _build/default && /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.game.objs/byte -I lib/.game.objs/native -I /Users/paulsuh/.opam/cs3110-2021fa/lib/biniou -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/paulsuh/.opam/cs3110-2021fa/lib/easy-format -I /Users/paulsuh/.opam/cs3110-2021fa/lib/graphics -I /Users/paulsuh/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/native/game__Weapon.cmx -c -impl lib/weapon.ml)
-> File "lib/weapon.ml", line 3, characters 11-14:
-> 3 | let damage wpn = failwith "Unimplemented"
->                ^^^
-> Error (warning 27 [unused-var-strict]): unused variable wpn.
-[2]
+# Workspace root: /home/kennyliang2302/cs3110/3110_Project
