@@ -40,4 +40,6 @@
 `make build`
 `make play`
 
+### Press the 's' key to go to game screen
+
     
