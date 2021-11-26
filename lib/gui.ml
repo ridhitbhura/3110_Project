@@ -42,9 +42,16 @@ let draw_gameboard game =
   draw_img img x y
 
 let draw_dice game =
-  let x = game.game_screen.dice.x_coord in
-  let y = game.game_screen.dice.y_coord in
-  let img = game.game_screen.dice.image_name in
+  let dice1 = game.game_screen.dice.dice1 in
+  let x = dice1.x_coord in
+  let y = dice1.y_coord in
+  let img = dice1.image_name in
+  draw_img img x y;
+
+  let dice2 = game.game_screen.dice.dice2 in
+  let x = dice2.x_coord in
+  let y = dice2.y_coord in
+  let img = dice2.image_name in
   draw_img img x y
 
 let draw_buttons game =
@@ -54,22 +61,16 @@ let draw_buttons game =
   let img = trade_button.image_name in
   draw_img img x y;
 
-  let sell_button = game.game_screen.buttons.sell_button in
-  let x = sell_button.x_coord in
-  let y = sell_button.y_coord in
-  let img = sell_button.image_name in
+  let end_turn_button = game.game_screen.buttons.end_turn_button in
+  let x = end_turn_button.x_coord in
+  let y = end_turn_button.y_coord in
+  let img = end_turn_button.image_name in
   draw_img img x y;
 
-  let mortgage_button = game.game_screen.buttons.mortgage_button in
-  let x = mortgage_button.x_coord in
-  let y = mortgage_button.y_coord in
-  let img = mortgage_button.image_name in
-  draw_img img x y;
-
-  let build_button = game.game_screen.buttons.build_button in
-  let x = build_button.x_coord in
-  let y = build_button.y_coord in
-  let img = build_button.image_name in
+  let exit_game_button = game.game_screen.buttons.exit_game_button in
+  let x = exit_game_button.x_coord in
+  let y = exit_game_button.y_coord in
+  let img = exit_game_button.image_name in
   draw_img img x y
 
 let rec draw_players (players : player list) =
@@ -130,10 +131,15 @@ let dimension_check mouse img_dim x y =
   else false
 
 let rec is_dice_clicked img_dim game =
-  let x = game.game_screen.dice.x_coord in
-  let y = game.game_screen.dice.y_coord in
+  let dice1_x = game.game_screen.dice.dice1.x_coord in
+  let dice1_y = game.game_screen.dice.dice1.y_coord in
+  let dice2_x = game.game_screen.dice.dice2.x_coord in
+  let dice2_y = game.game_screen.dice.dice2.y_coord in
   if button_down () then
-    if dimension_check (mouse_pos ()) img_dim x y then handle2 0
+    if
+      dimension_check (mouse_pos ()) img_dim dice1_x dice1_y
+      || dimension_check (mouse_pos ()) img_dim dice2_x dice2_y
+    then handle2 0
     else is_dice_clicked img_dim game
   else is_dice_clicked img_dim game
 

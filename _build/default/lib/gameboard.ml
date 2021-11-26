@@ -69,15 +69,19 @@ type button = {
 
 type buttons = {
   trade_button : button;
-  sell_button : button;
-  mortgage_button : button;
-  build_button : button;
+  end_turn_button : button;
+  exit_game_button : button;
 }
 
 type dice = {
   x_coord : int;
   y_coord : int;
   image_name : string;
+}
+
+type dices = {
+  dice1 : dice;
+  dice2 : dice;
 }
 
 type game_screen_background = {
@@ -107,7 +111,7 @@ type game_screen = {
   factions : factions;
   info_cards : info_cards;
   buttons : buttons;
-  dice : dice;
+  dice : dices;
 }
 
 type game = {
@@ -243,24 +247,29 @@ let get_buttons_from_json (json : Yojson.Basic.t) : buttons =
     trade_button =
       json |> member "buttons" |> member "trade_button"
       |> get_button_from_json;
-    sell_button =
-      json |> member "buttons" |> member "sell_button"
-      |> get_button_from_json;
-    mortgage_button =
+    end_turn_button =
       json |> member "buttons"
-      |> member "mortgage_button"
+      |> member "end_turn_button"
       |> get_button_from_json;
-    build_button =
-      json |> member "buttons" |> member "build_button"
+    exit_game_button =
+      json |> member "buttons"
+      |> member "exit_game_button"
       |> get_button_from_json;
   }
 
 let get_dice_from_json (json : Yojson.Basic.t) : dice =
   {
-    image_name =
-      json |> member "dice" |> member "image_name" |> to_string;
-    x_coord = json |> member "dice" |> member "x_coord" |> to_int;
-    y_coord = json |> member "dice" |> member "y_coord" |> to_int;
+    image_name = json |> member "image_name" |> to_string;
+    x_coord = json |> member "x_coord" |> to_int;
+    y_coord = json |> member "y_coord" |> to_int;
+  }
+
+let get_dices_from_json (json : Yojson.Basic.t) : dices =
+  {
+    dice1 =
+      json |> member "dice" |> member "dice_1" |> get_dice_from_json;
+    dice2 =
+      json |> member "dice" |> member "dice_2" |> get_dice_from_json;
   }
 
 let get_game_screen_from_json (json : Yojson.Basic.t) : game_screen =
@@ -272,7 +281,7 @@ let get_game_screen_from_json (json : Yojson.Basic.t) : game_screen =
     factions = get_factions_from_json json;
     info_cards = get_info_cards_from_json json;
     buttons = get_buttons_from_json json;
-    dice = get_dice_from_json json;
+    dice = get_dices_from_json json;
   }
 
 let get_home_screen_from_json (json : Yojson.Basic.t) : home_screen =

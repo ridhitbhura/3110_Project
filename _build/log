@@ -1,10 +1,10 @@
-# dune build
+# dune exec bin/main.exe
 # OCAMLPARAM: unset
-# Workspace root: /Users/ridhitbhura/Documents/GitHub/3110_Project
-$ /usr/bin/getconf _NPROCESSORS_ONLN > /var/folders/l9/6n1gmxmx515cfndb3gm2cyv40000gn/T/dune6a5c74.output 2> /dev/null
-# Auto-detected concurrency: 8
+# Workspace root: /home/kennyliang2302/cs3110/3110_Project
+$ /usr/bin/nproc > /tmp/dunead58bf.output 2> /dev/null
+# Auto-detected concurrency: 12
 # disable binary cache
-$ /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/l9/6n1gmxmx515cfndb3gm2cyv40000gn/T/duneaa583c.output
+$ /home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dune9dd799.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -14,76 +14,81 @@ $ /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/l
 #  ; fdo_target_exe = None
 #  ; build_dir = "default"
 #  ; toplevel_path =
-#      Some External "/Users/ridhitbhura/.opam/cs3110-2021fa/lib/toplevel"
-#  ; ocaml_bin = External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin"
-#  ; ocaml = Ok External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocaml"
-#  ; ocamlc = External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt"
+#      Some External "/home/kennyliang2302/.opam/cs3110-2021fa/lib/toplevel"
+#  ; ocaml_bin = External "/home/kennyliang2302/.opam/cs3110-2021fa/bin"
+#  ; ocaml = Ok External "/home/kennyliang2302/.opam/cs3110-2021fa/bin/ocaml"
+#  ; ocamlc =
+#      External "/home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlc.opt"
 #  ; ocamlopt =
-#      Ok External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlopt.opt"
+#      Ok External "/home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlopt.opt"
 #  ; ocamldep =
-#      Ok External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamldep.opt"
+#      Ok External "/home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamldep.opt"
 #  ; ocamlmklib =
-#      Ok External "/Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlmklib.opt"
+#      Ok
+#        External "/home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlmklib.opt"
 #  ; env =
 #      map
 #        { "DUNE_OCAML_HARDCODED" :
-#            "/Users/ridhitbhura/.opam/cs3110-2021fa/lib"
+#            "/home/kennyliang2302/.opam/cs3110-2021fa/lib"
 #        ; "DUNE_OCAML_STDLIB" :
-#            "/Users/ridhitbhura/.opam/cs3110-2021fa/lib/ocaml"
-#        ; "DUNE_SOURCEROOT" :
-#            "/Users/ridhitbhura/Documents/GitHub/3110_Project"
+#            "/home/kennyliang2302/.opam/cs3110-2021fa/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" : "/home/kennyliang2302/cs3110/3110_Project"
 #        ; "INSIDE_DUNE" :
-#            "/Users/ridhitbhura/Documents/GitHub/3110_Project/_build/default"
+#            "/home/kennyliang2302/cs3110/3110_Project/_build/default"
 #        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/Users/ridhitbhura/Documents/GitHub/3110_Project/_build/install/default/lib"
+#            "/home/kennyliang2302/cs3110/3110_Project/_build/install/default/lib"
 #        ; "OCAMLPATH" :
-#            "/Users/ridhitbhura/Documents/GitHub/3110_Project/_build/install/default/lib"
+#            "/home/kennyliang2302/cs3110/3110_Project/_build/install/default/lib"
 #        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/Users/ridhitbhura/Documents/GitHub/3110_Project/_build/install/default/lib/toplevel"
+#            "/home/kennyliang2302/cs3110/3110_Project/_build/install/default/lib/toplevel"
 #        ; "OCAML_COLOR" : "always"
 #        ; "OPAMCOLOR" : "always"
 #        }
-#  ; findlib_path = [ External "/Users/ridhitbhura/.opam/cs3110-2021fa/lib" ]
+#  ; findlib_path = [ External "/home/kennyliang2302/.opam/cs3110-2021fa/lib" ]
 #  ; arch_sixtyfour = true
 #  ; natdynlink_supported = true
 #  ; supports_shared_libraries = true
 #  ; ocaml_config =
 #      { version = "4.12.0"
 #      ; standard_library_default =
-#          "/Users/ridhitbhura/.opam/cs3110-2021fa/lib/ocaml"
-#      ; standard_library = "/Users/ridhitbhura/.opam/cs3110-2021fa/lib/ocaml"
+#          "/home/kennyliang2302/.opam/cs3110-2021fa/lib/ocaml"
+#      ; standard_library =
+#          "/home/kennyliang2302/.opam/cs3110-2021fa/lib/ocaml"
 #      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
 #      ; ccomp_type = "cc"
-#      ; c_compiler = "cc"
-#      ; ocamlc_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv" ]
+#      ; c_compiler = "gcc"
+#      ; ocamlc_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
 #      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
-#      ; ocamlopt_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv" ]
+#      ; ocamlopt_cflags =
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
 #      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64"; "-D_REENTRANT" ]
 #      ; bytecomp_c_compiler =
-#          [ "cc"
+#          [ "gcc"
 #          ; "-O2"
 #          ; "-fno-strict-aliasing"
 #          ; "-fwrapv"
+#          ; "-fPIC"
 #          ; "-D_FILE_OFFSET_BITS=64"
 #          ; "-D_REENTRANT"
 #          ]
-#      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
+#      ; bytecomp_c_libraries = [ "-lm"; "-ldl"; "-lpthread" ]
 #      ; native_c_compiler =
-#          [ "cc"
+#          [ "gcc"
 #          ; "-O2"
 #          ; "-fno-strict-aliasing"
 #          ; "-fwrapv"
+#          ; "-fPIC"
 #          ; "-D_FILE_OFFSET_BITS=64"
 #          ; "-D_REENTRANT"
 #          ]
-#      ; native_c_libraries = [ "-lm" ]
+#      ; native_c_libraries = [ "-lm"; "-ldl" ]
 #      ; cc_profile = []
-#      ; architecture = "arm64"
+#      ; architecture = "amd64"
 #      ; model = "default"
 #      ; int_size = 63
 #      ; word_size = 64
-#      ; system = "macosx"
-#      ; asm = [ "clang"; "-c"; "-Wno-trigraphs" ]
+#      ; system = "linux"
+#      ; asm = [ "as" ]
 #      ; asm_cfi_supported = true
 #      ; with_frame_pointers = false
 #      ; ext_exe = ""
@@ -94,8 +99,8 @@ $ /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/l
 #      ; os_type = "Unix"
 #      ; default_executable_name = "a.out"
 #      ; systhread_supported = true
-#      ; host = "aarch64-apple-darwin20.5.0"
-#      ; target = "aarch64-apple-darwin20.5.0"
+#      ; host = "x86_64-pc-linux-gnu"
+#      ; target = "x86_64-pc-linux-gnu"
 #      ; profiling = false
 #      ; flambda = false
 #      ; spacetime = false
@@ -115,43 +120,8 @@ $ /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/l
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I lib/.game.objs/byte -no-alias-deps -opaque -o lib/.game.objs/byte/game.cmo -c -impl lib/game.ml-gen)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -intf lib/author.mli) > _build/default/lib/.game.objs/author.mli.d
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl lib/author.ml) > _build/default/lib/.game.objs/author.ml.d
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -intf lib/functionality.mli) > _build/default/lib/.game.objs/functionality.mli.d
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl lib/functionality.ml) > _build/default/lib/.game.objs/functionality.ml.d
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -intf lib/gameboard.mli) > _build/default/lib/.game.objs/gameboard.mli.d
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl lib/gameboard.ml) > _build/default/lib/.game.objs/gameboard.ml.d
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -intf lib/gui.mli) > _build/default/lib/.game.objs/gui.mli.d
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl lib/gui.ml) > _build/default/lib/.game.objs/gui.ml.d
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -intf lib/player.mli) > _build/default/lib/.game.objs/player.mli.d
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl lib/player.ml) > _build/default/lib/.game.objs/player.ml.d
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I test/.Final.eobjs/byte -no-alias-deps -opaque -o test/.Final.eobjs/byte/dune__exe__Final.cmo -c -impl test/Final.ml)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/biniou -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/easy-format -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/yojson -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Functionality.cmi -c -intf lib/functionality.mli)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/biniou -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/easy-format -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/yojson -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Author.cmi -c -intf lib/author.mli)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/biniou -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/easy-format -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/yojson -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Gameboard.cmi -c -intf lib/gameboard.mli)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/biniou -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/easy-format -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/yojson -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Player.cmi -c -intf lib/player.mli)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o test/Final.bc test/.Final.eobjs/byte/dune__exe__Final.cmo)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/biniou -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/easy-format -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Functionality.cmo -c -impl lib/functionality.ml)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/biniou -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/easy-format -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Author.cmo -c -impl lib/author.ml)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/biniou -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/easy-format -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/yojson -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Gui.cmi -c -intf lib/gui.mli)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/biniou -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/easy-format -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Gameboard.cmo -c -impl lib/gameboard.ml)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/biniou -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/easy-format -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Player.cmo -c -impl lib/player.ml)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.game.objs/byte -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/biniou -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/easy-format -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/byte/game__Gui.cmo -c -impl lib/gui.ml)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o lib/game.cma lib/.game.objs/byte/game.cmo lib/.game.objs/byte/game__Player.cmo lib/.game.objs/byte/game__Functionality.cmo lib/.game.objs/byte/game__Gameboard.cmo lib/.game.objs/byte/game__Gui.cmo lib/.game.objs/byte/game__Author.cmo)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I lib/.game.objs/byte -I lib/.game.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o lib/.game.objs/native/game.cmx -c -impl lib/game.ml-gen)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.game.objs/byte -I lib/.game.objs/native -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/biniou -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/easy-format -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/native/game__Functionality.cmx -c -impl lib/functionality.ml)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I test/.Final.eobjs/byte -I test/.Final.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -o test/.Final.eobjs/native/dune__exe__Final.cmx -c -impl test/Final.ml)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.game.objs/byte -I lib/.game.objs/native -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/biniou -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/easy-format -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/native/game__Gui.cmx -c -impl lib/gui.ml)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.game.objs/byte -I lib/.game.objs/native -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/biniou -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/easy-format -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/native/game__Player.cmx -c -impl lib/player.ml)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.game.objs/byte -I lib/.game.objs/native -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/biniou -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/easy-format -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/native/game__Author.cmx -c -impl lib/author.ml)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.game.objs/byte -I lib/.game.objs/native -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/biniou -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/easy-format -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/native/game__Gameboard.cmx -c -impl lib/gameboard.ml)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o lib/game.cmxa lib/.game.objs/native/game.cmx lib/.game.objs/native/game__Player.cmx lib/.game.objs/native/game__Functionality.cmx lib/.game.objs/native/game__Gameboard.cmx lib/.game.objs/native/game__Gui.cmx lib/.game.objs/native/game__Author.cmx)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I bin/.main.eobjs/byte -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/biniou -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/core -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/camlimages/png -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/easy-format -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/graphics -I /Users/ridhitbhura/.opam/cs3110-2021fa/lib/yojson -I lib/.game.objs/byte -no-alias-deps -opaque -o bin/.main.eobjs/byte/dune__exe__Main.cmo -c -impl bin/main.ml)
-> File "bin/main.ml", line 75, characters 0-7:
-> 75 | <<<<<<< HEAD
->      ^^^^^^^
-> Error: Syntax error
-[2]
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o test/Final.exe test/.Final.eobjs/native/dune__exe__Final.cmx)
-$ (cd _build/default && /Users/ridhitbhura/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -shared -linkall -I lib -o lib/game.cmxs lib/game.cmxa)
+# Workspace root: /home/kennyliang2302/cs3110/3110_Project
+$ (cd _build/default && /home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamldep.opt -modules -impl lib/gui.ml) > _build/default/lib/.game.objs/gui.ml.d
+$ (cd _build/default && /home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.game.objs/byte -I lib/.game.objs/native -I /home/kennyliang2302/.opam/cs3110-2021fa/lib/biniou -I /home/kennyliang2302/.opam/cs3110-2021fa/lib/camlimages/core -I /home/kennyliang2302/.opam/cs3110-2021fa/lib/camlimages/graphics -I /home/kennyliang2302/.opam/cs3110-2021fa/lib/camlimages/png -I /home/kennyliang2302/.opam/cs3110-2021fa/lib/easy-format -I /home/kennyliang2302/.opam/cs3110-2021fa/lib/graphics -I /home/kennyliang2302/.opam/cs3110-2021fa/lib/yojson -intf-suffix .ml -no-alias-deps -opaque -open Game -o lib/.game.objs/native/game__Gui.cmx -c -impl lib/gui.ml)
+$ (cd _build/default && /home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o lib/game.cmxa lib/.game.objs/native/game.cmx lib/.game.objs/native/game__Player.cmx lib/.game.objs/native/game__Functionality.cmx lib/.game.objs/native/game__Gameboard.cmx lib/.game.objs/native/game__Gui.cmx lib/.game.objs/native/game__Author.cmx)
+$ (cd _build/default && /home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe /home/kennyliang2302/.opam/cs3110-2021fa/lib/easy-format/easy_format.cmxa /home/kennyliang2302/.opam/cs3110-2021fa/lib/biniou/biniou.cmxa /home/kennyliang2302/.opam/cs3110-2021fa/lib/yojson/yojson.cmxa /home/kennyliang2302/.opam/cs3110-2021fa/lib/graphics/graphics.cmxa -I /home/kennyliang2302/.opam/cs3110-2021fa/lib/graphics /home/kennyliang2302/.opam/cs3110-2021fa/lib/camlimages/core/camlimages.cmxa /home/kennyliang2302/.opam/cs3110-2021fa/lib/camlimages/graphics/camlimages_graphics.cmxa /home/kennyliang2302/.opam/cs3110-2021fa/lib/camlimages/png/camlimages_png.cmxa -I /home/kennyliang2302/.opam/cs3110-2021fa/lib/camlimages/png lib/game.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)

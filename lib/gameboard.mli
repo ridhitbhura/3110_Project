@@ -68,15 +68,19 @@ type button = {
 
 type buttons = {
   trade_button : button;
-  sell_button : button;
-  mortgage_button : button;
-  build_button : button;
+  end_turn_button : button;
+  exit_game_button : button;
 }
 
 type dice = {
   x_coord : int;
   y_coord : int;
   image_name : string;
+}
+
+type dices = {
+  dice1 : dice;
+  dice2 : dice;
 }
 
 type game_screen_background = {
@@ -106,7 +110,7 @@ type game_screen = {
   factions : factions;
   info_cards : info_cards;
   buttons : buttons;
-  dice : dice;
+  dice : dices;
 }
 
 type game = {

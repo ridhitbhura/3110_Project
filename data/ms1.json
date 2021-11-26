@@ -663,28 +663,30 @@
     "buttons": {
         "trade_button": {
             "image_name": "buttons/Trade.png",
-            "x_coord": 39,
+            "x_coord": 30,
             "y_coord": 585
         },
-        "sell_button": {
-            "image_name": "buttons/Sell.png",
-            "x_coord": 39,
+        "end_turn_button": {
+            "image_name": "buttons/EndTurn.png",
+            "x_coord": 30,
             "y_coord": 510
         },
-        "mortgage_button": {
-            "image_name": "buttons/Mortgage.png",
-            "x_coord": 39,
+        "exit_game_button": {
+            "image_name": "buttons/ExitGame.png",
+            "x_coord": 30,
             "y_coord": 435
-        },
-        "build_button": {
-            "image_name": "buttons/Build.png",
-            "x_coord": 39,
-            "y_coord": 360
         }
     },
     "dice": {
-        "image_name": "dice.png",
-        "x_coord": 70,
-        "y_coord": 50
+        "dice_1": {
+            "image_name": "dice/dice2.png",
+            "x_coord": 30,
+            "y_coord": 100
+        },
+        "dice_2": {
+            "image_name": "dice/dice3.png",
+            "x_coord": 180,
+            "y_coord": 100
+        }
     }
 }
