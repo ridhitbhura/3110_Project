@@ -10,6 +10,9 @@ type control =
 type t
 (**The abstract data type representing a property.*)
 
+val image_name : t -> string
+(**[image_name property] is the image name of the property [property].*)
+
 val get_control : t -> control
 (**[get_control property] is the control level of the [property].*)
 
@@ -84,7 +87,8 @@ type init = {
   build_control_cost : int;
   remove_control_cost : int;
   withdraw_cost : int;
+  image_name : string;
 }
 
-val initialize : init -> t
+val make : init -> t
 (**[init b] initializes an unowned property with control level [Base].*)

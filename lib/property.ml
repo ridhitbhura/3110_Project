@@ -33,7 +33,10 @@ type t = {
   control : control;
   cost : cost;
   status : status;
+  image_name : string;
 }
+
+let image_name p = p.image_name
 
 let get_control p = p.control
 
@@ -134,9 +137,10 @@ type init = {
   build_control_cost : int;
   remove_control_cost : int;
   withdraw_cost : int;
+  image_name : string;
 }
 
-let initialize i =
+let make i =
   let rnt =
     {
       base = i.base_rent;
@@ -158,4 +162,10 @@ let initialize i =
   in
   let s = Unowned in
   let ctrl = Base in
-  { rent = rnt; cost = cst; status = s; control = ctrl }
+  {
+    rent = rnt;
+    cost = cst;
+    status = s;
+    control = ctrl;
+    image_name = i.image_name;
+  }
