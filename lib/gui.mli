@@ -14,12 +14,12 @@ val draw_gameboard : Gameboard.game -> unit
 
 val draw_dice : Gameboard.game -> unit
 
-val draw_buttons : Gameboard.game -> unit
-
 val draw_factions : Gameboard.game -> unit
 
 val draw_info_cards : Gameboard.game -> unit
 
 val press_button : char -> unit
+
+val draw_buttons : Gameboard.button list -> unit
 
 val draw_dice_roll : int * int -> Gameboard.game -> unit

@@ -37,6 +37,10 @@ val dimmed_image : t -> string option
 (**[dimmed_image button] is the [Some name] if a dimmed button image
    exists, otherwise it is [None]*)
 
+val get_button_from_json : Yojson.Basic.t -> t
+
+val get_buttons_from_json : Yojson.Basic.t -> string -> t list
+
 type init = {
   x_coord : int;
   y_coord : int;

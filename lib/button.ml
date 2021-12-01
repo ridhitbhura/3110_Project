@@ -1,3 +1,5 @@
+open Yojson.Basic.Util
+
 type dimen = {
   x_range : int * int;
   y_range : int * int;
@@ -56,3 +58,19 @@ let make i =
     dimmed_image = i.dimmed_image;
     clicked = false;
   }
+
+let get_button_from_json json =
+  let x_coord = json |> member "x_coord" |> to_int in
+  let y_coord = json |> member "y_coord" |> to_int in
+  let width = json |> member "width" |> to_int in
+  let height = json |> member "height" |> to_int in
+  let image = json |> member "image_name" |> to_string in
+  let dim_img = None in
+  let init =
+    { x_coord; y_coord; width; height; image; dimmed_image = dim_img }
+  in
+  make init
+
+let get_buttons_from_json json screen =
+  json |> member screen |> member "buttons" |> to_list
+  |> List.map get_button_from_json

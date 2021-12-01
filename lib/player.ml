@@ -1,6 +1,9 @@
+open Yojson.Basic.Util
+
 type fac =
   | Stripes
   | Solids
+  | UnAssigned
 
 type t = {
   x_coord : int;
@@ -74,3 +77,22 @@ let make i =
     properties = [];
     faction = i.faction;
   }
+
+let get_player_from_json json =
+  let x_coord = json |> member "x_coord" |> to_int in
+  let y_coord = json |> member "y_coord" |> to_int in
+  let img = json |> member "image" |> to_string in
+  let init =
+    {
+      image_name = img;
+      x_coord;
+      y_coord;
+      money = 750;
+      health = 100;
+      faction = UnAssigned;
+    }
+  in
+  make init
+
+let get_players_from_json json =
+  json |> member "players" |> to_list |> List.map get_player_from_json

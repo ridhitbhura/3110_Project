@@ -66,12 +66,6 @@ type button = {
   y_coord : int;
 }
 
-type buttons = {
-  trade_button : button;
-  end_turn_button : button;
-  exit_game_button : button;
-}
-
 type dice = {
   x_coord : int;
   y_coord : int;
@@ -91,8 +85,7 @@ type game_screen_background = {
 
 type home_screen = {
   image_name : string;
-  start_button : button;
-  credits_button : button;
+  buttons : button list;
   x_coord : int;
   y_coord : int;
 }
@@ -109,7 +102,7 @@ type game_screen = {
   (* names/image/position information for the player panel on the side*)
   factions : factions;
   info_cards : info_cards;
-  buttons : buttons;
+  buttons : button list;
   dice : dices;
 }
 

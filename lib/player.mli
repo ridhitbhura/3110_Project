@@ -1,6 +1,7 @@
 type fac =
   | Stripes
   | Solids
+  | UnAssigned
 
 type t
 (** The abstract type of values representing players. *)
@@ -52,7 +53,7 @@ val weapon_damage : t -> int
 (**[weapon_damage player] is the amount of damage that the player's
    weapon inflicts.*)
 
-val obtain_weapon : t -> Weapon.t -> t
+val obtain_weapon : t -> Weapon.t option -> t
 (**[obtain_weapon player wpn] gives [player] a weapon [wpn].*)
 
 val faction : t -> fac
@@ -69,3 +70,7 @@ type init = {
 
 val make : init -> t
 (**[init board] initializes a player.*)
+
+val get_player_from_json : Yojson.Basic.t -> t
+
+val get_players_from_json : Yojson.Basic.t -> t list

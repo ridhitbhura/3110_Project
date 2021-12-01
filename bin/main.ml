@@ -32,7 +32,7 @@ let start_game _ =
   Gui.draw_game_screen_background game;
   Gui.draw_gameboard game;
   Gui.draw_dice game;
-  Gui.draw_buttons game;
+  Gui.draw_buttons game.game_screen.buttons;
   Gui.draw_factions game;
   Gui.draw_info_cards game;
   Gui.draw_dice_roll dice_dim game;

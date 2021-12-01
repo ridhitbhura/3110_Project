@@ -54,24 +54,15 @@ let draw_dice game =
   let img = dice2.image_name in
   draw_img img x y
 
-let draw_buttons game =
-  let trade_button = game.game_screen.buttons.trade_button in
-  let x = trade_button.x_coord in
-  let y = trade_button.y_coord in
-  let img = trade_button.image_name in
-  draw_img img x y;
-
-  let end_turn_button = game.game_screen.buttons.end_turn_button in
-  let x = end_turn_button.x_coord in
-  let y = end_turn_button.y_coord in
-  let img = end_turn_button.image_name in
-  draw_img img x y;
-
-  let exit_game_button = game.game_screen.buttons.exit_game_button in
-  let x = exit_game_button.x_coord in
-  let y = exit_game_button.y_coord in
-  let img = exit_game_button.image_name in
-  draw_img img x y
+let rec draw_buttons (buttons : button list) =
+  match buttons with
+  | [] -> ()
+  | h :: t ->
+      let x = h.x_coord in
+      let y = h.y_coord in
+      let img = h.image_name in
+      draw_img img x y;
+      draw_buttons t
 
 let rec draw_players (players : player list) =
   match players with

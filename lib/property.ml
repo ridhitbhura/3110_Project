@@ -1,3 +1,5 @@
+open Yojson.Basic.Util
+
 type control =
   | Base
   | Set
@@ -135,7 +137,7 @@ type init = {
   take_over_rent : int;
   initial_purchase_cost : int;
   build_control_cost : int;
-  remove_control_cost : int;
+  remove_control_refund : int;
   withdraw_cost : int;
   image_name : string;
 }
@@ -156,7 +158,7 @@ let make i =
     {
       initial_purchase = i.initial_purchase_cost;
       build_control = i.build_control_cost;
-      remove_control = i.remove_control_cost;
+      remove_control = i.remove_control_refund;
       withdraw = i.withdraw_cost;
     }
   in
@@ -169,3 +171,51 @@ let make i =
     control = ctrl;
     image_name = i.image_name;
   }
+
+let get_property_from_json json =
+  let base = json |> member "fee" |> member "base" |> to_int in
+  let set = json |> member "fee" |> member "set" |> to_int in
+  let control_one =
+    json |> member "fee" |> member "control_1" |> to_int
+  in
+  let control_two =
+    json |> member "fee" |> member "control_2" |> to_int
+  in
+  let control_three =
+    json |> member "fee" |> member "control_3" |> to_int
+  in
+  let control_four =
+    json |> member "fee" |> member "control_4" |> to_int
+  in
+  let take_over =
+    json |> member "fee" |> member "take_over" |> to_int
+  in
+  let inital = json |> member "purchase_cost" |> to_int in
+  let upgrade = json |> member "upgrade_cost" |> to_int in
+  let degrade = json |> member "degrade_refund" |> to_int in
+  let withdraw = json |> member "mortgage" |> to_int in
+  let img = json |> member "image_name" |> to_string in
+  let init =
+    {
+      base_rent = base;
+      set_rent = set;
+      control_one_rent = control_one;
+      control_two_rent = control_two;
+      control_three_rent = control_three;
+      control_four_rent = control_four;
+      take_over_rent = take_over;
+      initial_purchase_cost = inital;
+      build_control_cost = upgrade;
+      remove_control_refund = degrade;
+      withdraw_cost = withdraw;
+      image_name = img;
+    }
+  in
+
+  make init
+
+(** [get_properties_from_json json] parses all the properties from the
+    json*)
+let get_properties_from_json json =
+  json |> member "properties" |> to_list
+  |> List.map get_property_from_json

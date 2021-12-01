@@ -67,12 +67,6 @@ type button = {
   y_coord : int;
 }
 
-type buttons = {
-  trade_button : button;
-  end_turn_button : button;
-  exit_game_button : button;
-}
-
 type dice = {
   x_coord : int;
   y_coord : int;
@@ -92,8 +86,7 @@ type game_screen_background = {
 
 type home_screen = {
   image_name : string;
-  start_button : button;
-  credits_button : button;
+  buttons : button list;
   x_coord : int;
   y_coord : int;
 }
@@ -110,7 +103,7 @@ type game_screen = {
   (* names/image/position information for the player panel on the side*)
   factions : factions;
   info_cards : info_cards;
-  buttons : buttons;
+  buttons : button list;
   dice : dices;
 }
 
@@ -167,25 +160,30 @@ let get_game_screen_background_from_json (json : Yojson.Basic.t) :
     game_screen_background =
   {
     x_coord =
-      json
+      json |> member "game_screen"
       |> member "game_screen_background"
       |> member "x_coord" |> to_int;
     y_coord =
-      json
+      json |> member "game_screen"
       |> member "game_screen_background"
       |> member "y_coord" |> to_int;
     image_name =
-      json
+      json |> member "game_screen"
       |> member "game_screen_background"
       |> member "image_name" |> to_string;
   }
 
 let get_gameboard_from_json (json : Yojson.Basic.t) : gameboard =
   {
-    x_coord = json |> member "gameboard" |> member "x_coord" |> to_int;
-    y_coord = json |> member "gameboard" |> member "y_coord" |> to_int;
+    x_coord =
+      json |> member "game_screen" |> member "gameboard"
+      |> member "x_coord" |> to_int;
+    y_coord =
+      json |> member "game_screen" |> member "gameboard"
+      |> member "y_coord" |> to_int;
     image_name =
-      json |> member "gameboard" |> member "image_name" |> to_string;
+      json |> member "game_screen" |> member "gameboard"
+      |> member "image_name" |> to_string;
   }
 
 let get_player_from_json (json : Yojson.Basic.t) : player =
@@ -242,20 +240,9 @@ let get_button_from_json (json : Yojson.Basic.t) : button =
     y_coord = json |> member "y_coord" |> to_int;
   }
 
-let get_buttons_from_json (json : Yojson.Basic.t) : buttons =
-  {
-    trade_button =
-      json |> member "buttons" |> member "trade_button"
-      |> get_button_from_json;
-    end_turn_button =
-      json |> member "buttons"
-      |> member "end_turn_button"
-      |> get_button_from_json;
-    exit_game_button =
-      json |> member "buttons"
-      |> member "exit_game_button"
-      |> get_button_from_json;
-  }
+let get_buttons_from_json json screen =
+  json |> member screen |> member "buttons" |> to_list
+  |> List.map get_button_from_json
 
 let get_dice_from_json (json : Yojson.Basic.t) : dice =
   {
@@ -280,7 +267,7 @@ let get_game_screen_from_json (json : Yojson.Basic.t) : game_screen =
     sets = get_sets_from_json json;
     factions = get_factions_from_json json;
     info_cards = get_info_cards_from_json json;
-    buttons = get_buttons_from_json json;
+    buttons = get_buttons_from_json json "game_screen";
     dice = get_dices_from_json json;
   }
 
@@ -290,12 +277,7 @@ let get_home_screen_from_json (json : Yojson.Basic.t) : home_screen =
       json |> member "home_screen" |> member "image_name" |> to_string;
     x_coord = json |> member "home_screen" |> member "x_coord" |> to_int;
     y_coord = json |> member "home_screen" |> member "y_coord" |> to_int;
-    start_button =
-      json |> member "home_screen" |> member "start_button"
-      |> get_button_from_json;
-    credits_button =
-      json |> member "home_screen" |> member "credits_button"
-      |> get_button_from_json;
+    buttons = get_buttons_from_json json "home_screen";
   }
 
 let from_json (json : Yojson.Basic.t) : game =

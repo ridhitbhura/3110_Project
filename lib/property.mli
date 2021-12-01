@@ -85,10 +85,14 @@ type init = {
   take_over_rent : int;
   initial_purchase_cost : int;
   build_control_cost : int;
-  remove_control_cost : int;
+  remove_control_refund : int;
   withdraw_cost : int;
   image_name : string;
 }
 
 val make : init -> t
 (**[init b] initializes an unowned property with control level [Base].*)
+
+val get_property_from_json : Yojson.Basic.t -> t
+
+val get_properties_from_json : Yojson.Basic.t -> t list
