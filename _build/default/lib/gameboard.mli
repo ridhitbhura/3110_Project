@@ -9,6 +9,24 @@ type fee = {
   take_over : int;
 }
 
+type corner = {
+  corner_name: string;
+  board_order: int;
+  x_coord: int;
+  y_coord: int;
+  width: int;
+  height: int
+}
+
+type utility = {
+  utility_name: string;
+  board_order: int;
+  x_coord: int;
+  y_coord: int;
+  width: int;
+  height: int
+}
+
 type property = {
   property_name : string;
   set : string;
@@ -89,6 +107,7 @@ type home_screen = {
   x_coord : int;
   y_coord : int;
 }
+type order = int*(int*int)
 
 type game_screen = {
   game_screen_background : game_screen_background;
@@ -96,6 +115,8 @@ type game_screen = {
   gameboard : gameboard;
   (* all the properties in the gameboard*)
   properties : property list;
+  utilities: utility list;
+  corners: corner list;
   (* assoc list where key is set name (color) and value is string list
      containing names of properties*)
   sets : (string * string list) list;
@@ -104,6 +125,7 @@ type game_screen = {
   info_cards : info_cards;
   buttons : button list;
   dice : dices;
+  order_list: order list;
 }
 
 type game = {
