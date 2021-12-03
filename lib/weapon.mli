@@ -7,5 +7,9 @@ val damage : t -> int
 val image : t -> string
 (**[image wpn] is the name of the [wpn] image.*)
 
-val make : int -> string -> t
-(**[make dmg img] is a weapon with the given damage and image name.*)
+val get_weapon_from_json : Yojson.Basic.t -> t
+(**[get_weapon_from_json json] is a weapon item constructed from [json].*)
+
+val get_weapons_from_json : Yojson.Basic.t -> t list
+(**[get_weapons_from_json json] is a list of weapon items constructed
+   from [json].*)

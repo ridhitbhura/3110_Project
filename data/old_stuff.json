@@ -1,0 +1,179 @@
+{
+  "name": "trade",
+  "image_name": "game_screen/pop_ups/trade.png",
+  "x_coord": 165,
+  "y_coord": 75,
+  "images": [
+    {
+      "name": "solids_first_property",
+      "x_coord": 235,
+      "y_coord": 410
+    },
+    {
+      "image_name": "swap_property",
+      "x_coord": 356,
+      "y_coord": 230
+    },
+    {
+      "image_name": "stripes_first_property",
+      "x_coord": 795,
+      "y_coord": 410
+    },
+    {
+      "image_name": "first_number",
+      "x_coord": 904,
+      "y_coord": 254
+    }
+  ],
+  "buttons": [
+    {
+      "button_name": "offer_button",
+      "x_coord": 600,
+      "y_coord": 450,
+      "width": 130,
+      "height": 40
+    },
+    {
+      "button_name": "accept_button",
+      "x_coord": 600,
+      "y_coord": 395,
+      "width": 130,
+      "height": 40
+    },
+    {
+      "button_name": "reject_button",
+      "x_coord": 600,
+      "y_coord": 340,
+      "width": 130,
+      "height": 40
+    },
+    {
+      "button_name": "previous_button",
+      "x_coord": 245,
+      "y_coord": 255,
+      "width": 90,
+      "height": 30
+    },
+    {
+      "button_name": "next_button",
+      "x_coord": 435,
+      "y_coord": 255,
+      "width": 90,
+      "height": 30
+    },
+    {
+      "button_name": "add_property_button",
+      "x_coord": 310,
+      "y_coord": 165,
+      "width": 150,
+      "height": 40
+    },
+    {
+      "button_name": "remove_button",
+      "x_coord": 310,
+      "y_coord": 105,
+      "width": 150,
+      "height": 40
+    },
+    {
+      "button_name": "switch_button",
+      "x_coord": 585,
+      "y_coord": 205,
+      "width": 160,
+      "height": 68
+    },
+    {
+      "button_name": "minus_button",
+      "x_coord": 810,
+      "y_coord": 245,
+      "width": 70,
+      "height": 40
+    },
+    {
+      "button_name": "plus_button",
+      "x_coord": 1010,
+      "y_coord": 245,
+      "width": 70,
+      "height": 40
+    },
+    {
+      "button_name": "add_money_button",
+      "x_coord": 870,
+      "y_coord": 165,
+      "width": 150,
+      "height": 40
+    },
+    {
+      "button_name": "reset_button",
+      "x_coord": 870,
+      "y_coord": 105,
+      "width": 150,
+      "height": 40
+    }
+  ],
+  "sets": [
+    {
+      "set_name": "Bathroom",
+      "set_properties": [
+        "Sink",
+        "Toilet",
+        "Shower"
+      ]
+    },
+    {
+      "set_name": "Kitchen",
+      "set_properties": [
+        "Dining_Table",
+        "Utensils",
+        "Chef"
+      ]
+    },
+    {
+      "set_name": "Gym",
+      "set_properties": [
+        "Barbells",
+        "Dumbbells",
+        "Treadmill"
+      ]
+    },
+    {
+      "set_name": "Sport_Activies",
+      "set_properties": [
+        "PingPong_Tables",
+        "Pool",
+        "Basketball_Court"
+      ]
+    },
+    {
+      "set_name": "Library",
+      "set_properties": [
+        "Books",
+        "TV",
+        "PC"
+      ]
+    },
+    {
+      "set_name": "Alcohol_Cell",
+      "set_properties": [
+        "Beer",
+        "Vodka",
+        "Whiskey"
+      ]
+    },
+    {
+      "set_name": "Drug_Cell",
+      "set_properties": [
+        "Weed",
+        "Heroine",
+        "Cocaine"
+      ]
+    },
+    {
+      "set_name": "Mail",
+      "set_properties": [
+        "Letters",
+        "Packages"
+      ]
+    }
+  ]
+}

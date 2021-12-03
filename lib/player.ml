@@ -3,12 +3,14 @@ open Yojson.Basic.Util
 type fac =
   | Stripes
   | Solids
-  | UnAssigned
+  | Unassigned
 
 type t = {
   x_coord : int;
   y_coord : int;
-  image_name : string;
+  small_image : string;
+  medium_image : string;
+  large_image : string;
   weapon : Weapon.t option;
   money : int;
   health : int;
@@ -21,7 +23,11 @@ let x_coord player = player.x_coord
 
 let y_coord player = player.y_coord
 
-let image player = player.image_name
+let small_image player = player.small_image
+
+let large_image player = player.large_image
+
+let medium_image player = player.medium_image
 
 let health player = player.health
 
@@ -56,43 +62,20 @@ let obtain_weapon player wpn = { player with weapon = wpn }
 
 let faction player = player.faction
 
-type init = {
-  image_name : string;
-  x_coord : int;
-  y_coord : int;
-  money : int;
-  health : int;
-  faction : fac;
-}
-
-let make i =
+let get_player_from_json json =
   {
-    x_coord = i.x_coord;
-    y_coord = i.y_coord;
-    image_name = i.image_name;
+    x_coord = json |> member "x_coord" |> to_int;
+    y_coord = json |> member "y_coord" |> to_int;
+    small_image = json |> member "small_image" |> to_string;
+    medium_image = json |> member "medium_image" |> to_string;
+    large_image = json |> member "large_image" |> to_string;
+    money = json |> member "money" |> to_int;
+    health = json |> member "health" |> to_int;
     weapon = None;
-    money = i.money;
-    health = i.health;
     board_location = 0;
     properties = [];
-    faction = i.faction;
+    faction = Unassigned;
   }
 
-let get_player_from_json json =
-  let x_coord = json |> member "x_coord" |> to_int in
-  let y_coord = json |> member "y_coord" |> to_int in
-  let img = json |> member "image" |> to_string in
-  let init =
-    {
-      image_name = img;
-      x_coord;
-      y_coord;
-      money = 750;
-      health = 100;
-      faction = UnAssigned;
-    }
-  in
-  make init
-
 let get_players_from_json json =
-  json |> member "players" |> to_list |> List.map get_player_from_json
+  json |> to_list |> List.map get_player_from_json

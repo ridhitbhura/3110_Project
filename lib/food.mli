@@ -7,6 +7,9 @@ val health : t -> int
 val image : t -> string
 (**[image food] is the name of the food image.*)
 
-val make : int -> string -> t
-(**[make health img] is a food item with the given health and image
-   name.*)
+val get_food_from_json : Yojson.Basic.t -> t
+(**[get_food_from_json json] is a food item constructed from [json].*)
+
+val get_foods_from_json : Yojson.Basic.t -> t list
+(**[get_foods_from_json json] is a list of food item constructed from
+   [json].*)

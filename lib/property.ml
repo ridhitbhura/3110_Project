@@ -9,6 +9,9 @@ type control =
   | ControlFour
   | TakeOver
 
+(* type set = | Gym | SportActivities | Library | Kitchen | Bathroom |
+   AlcoholCell | DrugCell | Mail *)
+
 type rent = {
   base : int;
   set : int;
@@ -31,6 +34,10 @@ type status =
   | Unowned
 
 type t = {
+  name : string;
+  button : Button.t;
+  board_order : int;
+  set : string;
   rent : rent;
   control : control;
   cost : cost;
@@ -49,7 +56,7 @@ let is_acquirable p =
   | Owned -> false
   | Unowned -> true
 
-let complete_set p =
+let upgrade_to_set p =
   {
     p with
     control =
@@ -58,7 +65,7 @@ let complete_set p =
       | _ -> failwith "Only a Base property can be made into a Set.");
   }
 
-let remove_set p =
+let degrade_from_set p =
   {
     p with
     control =
@@ -127,95 +134,41 @@ let withdraw p = { p with status = Unowned }
 
 let withdraw_refund p = p.cost.withdraw
 
-type init = {
-  base_rent : int;
-  set_rent : int;
-  control_one_rent : int;
-  control_two_rent : int;
-  control_three_rent : int;
-  control_four_rent : int;
-  take_over_rent : int;
-  initial_purchase_cost : int;
-  build_control_cost : int;
-  remove_control_refund : int;
-  withdraw_cost : int;
-  image_name : string;
-}
+let board_order p = p.board_order
 
-let make i =
-  let rnt =
-    {
-      base = i.base_rent;
-      set = i.set_rent;
-      control_one = i.control_one_rent;
-      control_two = i.control_two_rent;
-      control_three = i.control_three_rent;
-      control_four = i.control_four_rent;
-      take_over = i.take_over_rent;
-    }
-  in
-  let cst =
-    {
-      initial_purchase = i.initial_purchase_cost;
-      build_control = i.build_control_cost;
-      remove_control = i.remove_control_refund;
-      withdraw = i.withdraw_cost;
-    }
-  in
-  let s = Unowned in
-  let ctrl = Base in
+let button p = p.button
+
+let get_cost_from_json json =
   {
-    rent = rnt;
-    cost = cst;
-    status = s;
-    control = ctrl;
-    image_name = i.image_name;
+    initial_purchase = json |> member "purchase_cost" |> to_int;
+    build_control = json |> member "upgrade_cost" |> to_int;
+    remove_control = json |> member "degrade_refund" |> to_int;
+    withdraw = json |> member "mortgage" |> to_int;
+  }
+
+let get_rent_from_json json =
+  {
+    base = json |> member "base" |> to_int;
+    set = json |> member "set" |> to_int;
+    control_one = json |> member "control_1" |> to_int;
+    control_two = json |> member "control_2" |> to_int;
+    control_three = json |> member "control_3" |> to_int;
+    control_four = json |> member "control_4" |> to_int;
+    take_over = json |> member "take_over" |> to_int;
   }
 
 let get_property_from_json json =
-  let base = json |> member "fee" |> member "base" |> to_int in
-  let set = json |> member "fee" |> member "set" |> to_int in
-  let control_one =
-    json |> member "fee" |> member "control_1" |> to_int
-  in
-  let control_two =
-    json |> member "fee" |> member "control_2" |> to_int
-  in
-  let control_three =
-    json |> member "fee" |> member "control_3" |> to_int
-  in
-  let control_four =
-    json |> member "fee" |> member "control_4" |> to_int
-  in
-  let take_over =
-    json |> member "fee" |> member "take_over" |> to_int
-  in
-  let inital = json |> member "purchase_cost" |> to_int in
-  let upgrade = json |> member "upgrade_cost" |> to_int in
-  let degrade = json |> member "degrade_refund" |> to_int in
-  let withdraw = json |> member "mortgage" |> to_int in
-  let img = json |> member "image_name" |> to_string in
-  let init =
-    {
-      base_rent = base;
-      set_rent = set;
-      control_one_rent = control_one;
-      control_two_rent = control_two;
-      control_three_rent = control_three;
-      control_four_rent = control_four;
-      take_over_rent = take_over;
-      initial_purchase_cost = inital;
-      build_control_cost = upgrade;
-      remove_control_refund = degrade;
-      withdraw_cost = withdraw;
-      image_name = img;
-    }
-  in
+  {
+    name = json |> member "property_name" |> to_string;
+    button = json |> member "button" |> Button.get_button_from_json;
+    board_order = json |> member "board_order" |> to_int;
+    set = json |> member "set" |> to_string;
+    rent = json |> member "fee" |> get_rent_from_json;
+    control = Base;
+    cost = json |> member "cost" |> get_cost_from_json;
+    status = Unowned;
+    image_name = json |> member "image_name" |> to_string;
+  }
 
-  make init
-
-(** [get_properties_from_json json] parses all the properties from the
-    json*)
 let get_properties_from_json json =
-  json |> member "properties" |> to_list
-  |> List.map get_property_from_json
+  json |> to_list |> List.map get_property_from_json

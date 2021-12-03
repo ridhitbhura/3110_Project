@@ -1,7 +1,7 @@
 type fac =
   | Stripes
   | Solids
-  | UnAssigned
+  | Unassigned
 
 type t
 (** The abstract type of values representing players. *)
@@ -12,8 +12,14 @@ val x_coord : t -> int
 val y_coord : t -> int
 (**[y_coord player] gives the y-coord of the player on the screen.*)
 
-val image : t -> string
-(**[image player] gives the name of the image of the player [player].*)
+val small_image : t -> string
+(**[small_image player] gives the name of the small image of [player].*)
+
+val medium_image : t -> string
+(**[medium_image player] gives the name of the medium image of [player].*)
+
+val large_image : t -> string
+(**[large_image player] gives the name of the large image of [player].*)
 
 val health : t -> int
 (**[health player] is the current amount of health the player has.*)
@@ -58,18 +64,6 @@ val obtain_weapon : t -> Weapon.t option -> t
 
 val faction : t -> fac
 (**[faction player] is the faction the player is in.*)
-
-type init = {
-  image_name : string;
-  x_coord : int;
-  y_coord : int;
-  money : int;
-  health : int;
-  faction : fac;
-}
-
-val make : init -> t
-(**[init board] initializes a player.*)
 
 val get_player_from_json : Yojson.Basic.t -> t
 

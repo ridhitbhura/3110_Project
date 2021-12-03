@@ -162,6 +162,38 @@ let draw_dice_roll img_dim game =
 (** [press_s_button key] is [()] when the user presses the key [key]. If
     key pressed is not [key], the function loops, waiting for user to
     press some key.*)
+
+let draw_new_button b =
+  match Button.image b with
+  | None -> ()
+  | Some img ->
+      let x = Button.x_coord b in
+      let y = Button.y_coord b in
+      draw_img img x y
+
+let rec draw_new_buttons lst =
+  match lst with
+  | [] -> ()
+  | h :: t ->
+      draw_new_button h;
+      draw_new_buttons t
+
+let draw_popup p =
+  let img = Popup.image p in
+  let x = Popup.x_coord p in
+  let y = Popup.y_coord p in
+  draw_img img x y;
+  let buttons = Popup.buttons p in
+  draw_new_buttons buttons
+
+let draw_new_home_screen hs =
+  let img = Home_screen.image hs in
+  let x = Home_screen.x_coord hs in
+  let y = Home_screen.y_coord hs in
+  draw_img img x y;
+  let buttons = Home_screen.buttons hs in
+  draw_new_buttons buttons
+
 let rec press_button key =
   let status_key = (wait_next_event [ Key_pressed ]).key in
   if status_key = key then () else press_button key

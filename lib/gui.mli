@@ -23,3 +23,13 @@ val press_button : char -> unit
 val draw_buttons : Gameboard.button list -> unit
 
 val draw_dice_roll : int * int -> Gameboard.game -> unit
+
+(*EVERYTHING BELOW IS NEW GUI STUFF*)
+
+val draw_new_button : Button.t -> unit
+
+val draw_popup : Popup.t -> unit
+
+val draw_new_buttons : Button.t list -> unit
+
+val draw_new_home_screen : Home_screen.t -> unit

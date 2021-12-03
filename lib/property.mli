@@ -7,6 +7,10 @@ type control =
   | ControlFour
   | TakeOver  (**The varying control levels that a property can have.*)
 
+(* type set = | Gym | SportActivities | Library | Kitchen | Bathroom |
+   AlcoholCell | DrugCell | Mail The varying sets that a property can be
+   a part of. *)
+
 type t
 (**The abstract data type representing a property.*)
 
@@ -23,18 +27,20 @@ val is_acquirable : t -> bool
 (**[is_acquirable property] is [true] if the [property] has an owner and
    [false] otherwise.*)
 
-val complete_set : t -> t
-(**[complete_set property] upgrades the control level of the [property]
-   from [Base] to [Set]. Requires: [property] was acquired by an owner,
-   [not (is_acquirable property)]. [property] has control level [Base].*)
+val upgrade_to_set : t -> t
+(**[upgrade_to_set property] upgrades the control level of the
+   [property] from [Base] to [Set]. Requires: [property] was acquired by
+   an owner, [not (is_acquirable property)]. [property] has control
+   level [Base].*)
 
-val remove_set : t -> t
-(**[remove_set property] degrades the [property] so it is no longer part
-   of a complete set. Requires: [property] was acquired by an owner,
-   [not (is_acquirable property)]. [property] has control level [Set].*)
+val degrade_from_set : t -> t
+(**[degrade_from_set property] degrades the [property] so it is no
+   longer part of a complete set. Requires: [property] was acquired by
+   an owner, [not (is_acquirable property)]. [property] has control
+   level [Set].*)
 
 val upgrade : t -> t
-(**[build property] upgrades the [property] to the next control level.
+(**[upgrade property] upgrades the [property] to the next control level.
    Requires: [is_upgradable property]. *)
 
 val upgrade_cost : t -> int
@@ -75,23 +81,13 @@ val withdraw_refund : t -> int
    acquired by an owner. [property] is at control level of [Set] or
    [Base]. *)
 
-type init = {
-  base_rent : int;
-  set_rent : int;
-  control_one_rent : int;
-  control_two_rent : int;
-  control_three_rent : int;
-  control_four_rent : int;
-  take_over_rent : int;
-  initial_purchase_cost : int;
-  build_control_cost : int;
-  remove_control_refund : int;
-  withdraw_cost : int;
-  image_name : string;
-}
+val board_order : t -> int
+(**[board_order property] is the location that this property has on the
+   board.*)
 
-val make : init -> t
-(**[init b] initializes an unowned property with control level [Base].*)
+val button : t -> Button.t
+(**[button property] is the button associated with this property on the
+   board.*)
 
 val get_property_from_json : Yojson.Basic.t -> t
 

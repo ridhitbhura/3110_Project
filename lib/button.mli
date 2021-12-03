@@ -1,3 +1,6 @@
+(**constants.ml/constants.mli file, stores all button names, allows you
+   to search button list for certain things*)
+
 type t
 (**The abstract type representing a button.*)
 
@@ -30,26 +33,18 @@ val dimension : t -> dimen
 (**[dimension button] gives the dimensions of the button with respect to
    the game screen.*)
 
-val image : t -> string
-(**[image button] is the name of the button image.*)
+val compute_dimension : int -> int -> int -> int -> dimen
+(**[compute_dimension x_coord y_coord width height] computes the
+   dimensions based on the given parameters.*)
 
-val dimmed_image : t -> string option
-(**[dimmed_image button] is the [Some name] if a dimmed button image
-   exists, otherwise it is [None]*)
+val image : t -> string option
+(**[image button] is current button image to display if it exists,
+   [None] otherwise.*)
+
+val x_coord : t -> int
+
+val y_coord : t -> int
 
 val get_button_from_json : Yojson.Basic.t -> t
 
-val get_buttons_from_json : Yojson.Basic.t -> string -> t list
-
-type init = {
-  x_coord : int;
-  y_coord : int;
-  width : int;
-  height : int;
-  image : string;
-  dimmed_image : string option;
-}
-
-val make : init -> t
-(**[make i] creates an active unclicked button based on the given
-   initializer.*)
+val get_buttons_from_json : Yojson.Basic.t -> t list
