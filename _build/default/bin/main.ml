@@ -6,7 +6,7 @@ open Game
     the window and height is the height of the window.*)
 let window_dimensions = (1330, 700)
 
-let dice_dim = (150, 150)
+let dice_dim = (233, 275)
 (* let title_pos = (450, 200) let titlescreen_dimensions = (1098, 392)
    let title_dimensions = (167, 63) let icon_dimensions = (35, 35) let
    subtitle_dimensions = (90, 44) let property_img_dimensions = (138,

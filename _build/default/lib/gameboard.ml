@@ -10,24 +10,6 @@ type fee = {
   take_over : int;
 }
 
-type utility = {
-  utility_name: string;
-  board_order: int;
-  x_coord: int;
-  y_coord: int;
-  width: int;
-  height: int
-}
-
-type corner = {
-  corner_name: string;
-  board_order: int;
-  x_coord: int;
-  y_coord: int;
-  width: int;
-  height: int
-}
-
 type property = {
   property_name : string;
   set : string;
@@ -108,7 +90,6 @@ type home_screen = {
   x_coord : int;
   y_coord : int;
 }
-type order = int*(int*int)
 
 type game_screen = {
   game_screen_background : game_screen_background;
@@ -116,8 +97,6 @@ type game_screen = {
   gameboard : gameboard;
   (* all the properties in the gameboard*)
   properties : property list;
-  utilities: utility list;
-  corners: corner list;
   (* assoc list where key is set name (color) and value is string list
      containing names of properties*)
   sets : (string * string list) list;
@@ -126,7 +105,6 @@ type game_screen = {
   info_cards : info_cards;
   buttons : button list;
   dice : dices;
-  order_list: order list;
 }
 
 type game = {
@@ -168,34 +146,6 @@ let get_property_from_json (json : Yojson.Basic.t) : property =
 let get_properties_from_json (json : Yojson.Basic.t) : property list =
   json |> member "properties" |> to_list
   |> List.map get_property_from_json
-
-let get_utility_from_json (json : Yojson.Basic.t) : utility =
-  {
-    utility_name = json |> member "utility_name" |> to_string;
-    board_order = json |> member "board_order" |> to_int;
-    x_coord = json |> member "x_coord" |> to_int;
-    y_coord = json |> member "y_coord" |> to_int;
-    width = json |> member "width" |> to_int;
-    height = json |> member "height" |> to_int;
-  }
-
-let get_utilities_from_json (json : Yojson.Basic.t) : utility list =
-  json |> member "utilities" |> to_list
-  |> List.map get_utility_from_json
-
-let get_corner_from_json (json : Yojson.Basic.t) : corner =
-  {
-    corner_name = json |> member "corner_name" |> to_string;
-    board_order = json |> member "board_order" |> to_int;
-    x_coord = json |> member "x_coord" |> to_int;
-    y_coord = json |> member "y_coord" |> to_int;
-    width = json |> member "width" |> to_int;
-    height = json |> member "height" |> to_int;
-  }
-
-let get_corners_from_json (json : Yojson.Basic.t) : corner list =
-  json |> member "corners" |> to_list
-  |> List.map get_corner_from_json
 
 let get_set_list_from_json (json : Yojson.Basic.t) :
     string * string list =
@@ -309,45 +259,16 @@ let get_dices_from_json (json : Yojson.Basic.t) : dices =
       json |> member "dice" |> member "dice_2" |> get_dice_from_json;
   }
 
-let rec extract_order_coords_prop (order_list: property list): order list = match order_list with 
-  | [] -> []
-  | h :: t -> (h.board_order, (h.x_coord, h.y_coord)) :: extract_order_coords_prop t
-
-let rec extract_order_coords_util (order_list: utility list): order list = match order_list with 
-  | [] -> []
-  | h :: t -> (h.board_order, (h.x_coord, h.y_coord)) :: extract_order_coords_util t
-
-let rec extract_order_coords_corn (order_list:corner list): order list = match order_list with 
-| [] -> []
-| h :: t -> (h.board_order, (h.x_coord, h.y_coord)) :: extract_order_coords_corn t
-
-
-let order_compare a b = 
-  let fa = fst a in let fb = fst b in 
-  if fa < fb then -1
-  else if fa > fb then 1
-  else 0
-
-let get_order_list_from_json json : order list = 
-  let prop = json |> get_properties_from_json |> extract_order_coords_prop in 
-  let util = json |> get_utilities_from_json |> extract_order_coords_util in 
-  let corn = json |> get_corners_from_json |> extract_order_coords_corn in
-  let order_list = prop @ util @ corn in 
-  order_list |>  List.sort order_compare
-
 let get_game_screen_from_json (json : Yojson.Basic.t) : game_screen =
   {
     game_screen_background = get_game_screen_background_from_json json;
     gameboard = get_gameboard_from_json json;
     properties = get_properties_from_json json;
-    utilities = get_utilities_from_json json;
-    corners = get_corners_from_json json;
     sets = get_sets_from_json json;
     factions = get_factions_from_json json;
     info_cards = get_info_cards_from_json json;
     buttons = get_buttons_from_json json "game_screen";
     dice = get_dices_from_json json;
-    order_list = get_order_list_from_json json;
   }
 
 let get_home_screen_from_json (json : Yojson.Basic.t) : home_screen =
