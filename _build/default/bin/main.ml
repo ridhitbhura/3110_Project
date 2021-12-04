@@ -37,8 +37,8 @@ let start_game _ =
   open_graph "";
   resize_window (fst window_dimensions) (snd window_dimensions);
   set_window_title "Prison Dash!";
-  Gui.draw_new_home_screen hs;
-  Gui.press_button 's'
+  Gui.draw_home_screen hs;
+  Command.press_button 's'
 
 (* let gameboard = Gameboard.from_json (Yojson.Basic.from_file
    "data/ms1.json") in *)

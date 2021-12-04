@@ -1,10 +1,10 @@
 # dune exec bin/main.exe
 # OCAMLPARAM: unset
-# Workspace root: /Users/paulsuh/Desktop/Temp/3110_Project
-$ /usr/bin/getconf _NPROCESSORS_ONLN > /var/folders/kb/1rjhgcjx66nby2g2h0tskpjc0000gn/T/dune01699a.output 2> /dev/null
+# Workspace root: /Users/paulsuh/3110_Project
+$ /usr/bin/getconf _NPROCESSORS_ONLN > /var/folders/kb/1rjhgcjx66nby2g2h0tskpjc0000gn/T/dune25e5fd.output 2> /dev/null
 # Auto-detected concurrency: 8
 # disable binary cache
-$ /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/kb/1rjhgcjx66nby2g2h0tskpjc0000gn/T/dunef35afa.output
+$ /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/kb/1rjhgcjx66nby2g2h0tskpjc0000gn/T/dunea1e557.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -28,17 +28,15 @@ $ /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/kb/1r
 #      map
 #        { "DUNE_OCAML_HARDCODED" : "/Users/paulsuh/.opam/cs3110-2021fa/lib"
 #        ; "DUNE_OCAML_STDLIB" : "/Users/paulsuh/.opam/cs3110-2021fa/lib/ocaml"
-#        ; "DUNE_SOURCEROOT" : "/Users/paulsuh/Desktop/Temp/3110_Project"
-#        ; "INSIDE_DUNE" :
-#            "/Users/paulsuh/Desktop/Temp/3110_Project/_build/default"
-#        ; "MANPATH" :
-#            "/Users/paulsuh/Desktop/Temp/3110_Project/_build/install/default/bin"
+#        ; "DUNE_SOURCEROOT" : "/Users/paulsuh/3110_Project"
+#        ; "INSIDE_DUNE" : "/Users/paulsuh/3110_Project/_build/default"
+#        ; "MANPATH" : "/Users/paulsuh/3110_Project/_build/install/default/bin"
 #        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/Users/paulsuh/Desktop/Temp/3110_Project/_build/install/default/lib"
+#            "/Users/paulsuh/3110_Project/_build/install/default/lib"
 #        ; "OCAMLPATH" :
-#            "/Users/paulsuh/Desktop/Temp/3110_Project/_build/install/default/lib"
+#            "/Users/paulsuh/3110_Project/_build/install/default/lib"
 #        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/Users/paulsuh/Desktop/Temp/3110_Project/_build/install/default/lib/toplevel"
+#            "/Users/paulsuh/3110_Project/_build/install/default/lib/toplevel"
 #        ; "OCAML_COLOR" : "always"
 #        ; "OPAMCOLOR" : "always"
 #        }
@@ -114,4 +112,4 @@ $ /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/kb/1r
 #      ; windows_unicode = false
 #      }
 #  }
-# Workspace root: /Users/paulsuh/Desktop/Temp/3110_Project
+# Workspace root: /Users/paulsuh/3110_Project

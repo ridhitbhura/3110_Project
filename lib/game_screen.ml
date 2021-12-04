@@ -4,17 +4,19 @@ type t = {
   buttons : Button.t list;
   players : Player.t list;
   properties : Property.t list;
-  (*food_stacks : Food_stack.t list; weapon_stacks : Weapon_stack.t
-    list;*)
+  food_stacks : Food_stack.t list;
+  weapon_stacks : Weapon_stack.t list;
+  action_spaces : Action_space.t list;
   pop_ups : Popup.t list;
   team_info : Popup.t list;
+  info_cards : Popup.t;
   background_image : string;
   background_xcoord : int;
   background_ycoord : int;
   gameboard_image : string;
   gameboard_xcoord : int;
   gameboard_ycoord : int;
-  info_cards : Popup.t; (*dice*)
+  dice : Die.t list;
 }
 
 let get_game_screen_from_json (json : Yojson.Basic.t) : t =
@@ -61,6 +63,27 @@ let get_game_screen_from_json (json : Yojson.Basic.t) : t =
   let pops =
     gs_json |> member "pop_ups" |> Popup.get_pop_ups_from_json
   in
+  let foods =
+    gs_json |> member "foods" |> member "food_types"
+    |> Food.get_foods_from_json
+  in
+  let f_stacks =
+    gs_json |> member "foods" |> member "food_stacks"
+    |> Food_stack.get_food_stacks_from_json foods
+  in
+  let weapons =
+    gs_json |> member "weapons" |> member "weapon_types"
+    |> Weapon.get_weapons_from_json
+  in
+  let w_stacks =
+    gs_json |> member "weapons" |> member "weapon_stacks"
+    |> Weapon_stack.get_weapon_stacks_from_json weapons
+  in
+  let dice = gs_json |> member "dice" |> Die.get_dice_from_json in
+  let actions =
+    gs_json |> member "action_spaces"
+    |> Action_space.get_action_spaces_from_json
+  in
 
   {
     buttons = btns;
@@ -75,4 +98,8 @@ let get_game_screen_from_json (json : Yojson.Basic.t) : t =
     gameboard_xcoord = gi_x_coord;
     gameboard_ycoord = gi_y_coord;
     info_cards = ic;
+    food_stacks = f_stacks;
+    weapon_stacks = w_stacks;
+    dice;
+    action_spaces = actions;
   }

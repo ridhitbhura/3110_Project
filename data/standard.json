@@ -1319,7 +1319,7 @@
                     "height": 75
                 },
                 {
-                    "board_orders": 37,
+                    "board_order": 37,
                     "x_coord": 790,
                     "y_coord": 50,
                     "width": 50,
@@ -1661,34 +1661,34 @@
             ],
             "buttons": []
         },
-        "dice": {
-            "dice_1": {
-                "image_name": "dice/dice_2.png",
-                "image_path": "dice/",
+        "dice": [
+            {
+                "name": "die_1",
+                "image_path": "game_screen/dice/",
                 "button": {
                     "x_coord": 30,
                     "y_coord": 100,
                     "width": 150,
                     "height": 150,
-                    "button_name": "Dice1",
+                    "name": "die_1",
                     "image_name": "",
                     "dimmed_image_name": ""
                 }
             },
-            "dice_2": {
-                "image_name": "dice/dice_3.png",
-                "image_path": "dice/",
+            {
+                "name": "die_2",
+                "image_path": "game_screen/dice/",
                 "button": {
                     "x_coord": 180,
                     "y_coord": 100,
                     "width": 150,
                     "height": 150,
-                    "button_name": "Dice1",
+                    "name": "die_2",
                     "image_name": "",
                     "dimmed_image_name": ""
                 }
             }
-        },
+        ],
         "players": [
             {
                 "name": "player_1",

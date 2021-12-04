@@ -53,6 +53,8 @@ let x_coord b = b.x_coord
 
 let y_coord b = b.y_coord
 
+let name b = b.name
+
 let get_button_from_json json =
   let x_coord = json |> member "x_coord" |> to_int in
   let y_coord = json |> member "y_coord" |> to_int in
