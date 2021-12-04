@@ -42,3 +42,14 @@ let get_home_screen_from_json (json : Yojson.Basic.t) : t =
       hs_json |> member "subscreens"
       |> Subscreen.get_subscreens_from_json;
   }
+
+let rec check_button_clicked_aux buttons (x, y) =
+  match buttons with
+  | [] -> None
+  | h :: t ->
+      if Button.is_clicked h (x, y) then Some (Button.name h)
+      else check_button_clicked_aux t (x, y)
+
+let check_button_clicked hs (x, y) =
+  let buttons = hs.buttons in
+  check_button_clicked_aux buttons (x, y)

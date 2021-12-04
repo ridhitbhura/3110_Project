@@ -10,14 +10,8 @@ type dimen = {
 }
 (** The [x_range] and [y_range] dictate the boundaries of the button.*)
 
-val is_clicked : t -> bool
-(**[is_clicked button] is whether the button was clicked.*)
-
-val click : t -> t
-(**[click button] changes the status of the button to clicked.*)
-
-val unclick : t -> t
-(**[unclick button] changes the status of the button to unclicked.*)
+val is_clicked : t -> int * int -> bool
+(**[is_clicked button] is whether this button was clicked.*)
 
 val is_dimmed : t -> bool
 (**[is_dimmed button] is whether the button is currently active.*)
