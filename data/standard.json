@@ -2,6 +2,9 @@
     "home_screen": {
         "x_coord": 0,
         "y_coord": 0,
+        "width": 1330,
+        "height": 700,
+        "window_title": "Prison Dash!",
         "image_name": "home_screen/background.png",
         "buttons": [
             {
@@ -23,13 +26,13 @@
                 "height": 48
             }
         ],
-        "pop_ups": [
+        "subscreens": [
             {
                 "name": "number_players",
-                "image_name": "home_screen/pop_ups/number_players.png",
+                "image_name": "home_screen/subscreens/number_players.png",
                 "x_coord": 410,
                 "y_coord": 225,
-                "images": [],
+                "dynamic_images": [],
                 "buttons": [
                     {
                         "name": "one_player_button",
@@ -98,12 +101,15 @@
             },
             {
                 "name": "select_character",
-                "image_name": "home_screen/pop_ups/select_character.png",
+                "image_name": "home_screen/subscreens/select_character.png",
                 "x_coord": 410,
                 "y_coord": 225,
-                "images": [
+                "dynamic_images": [
                     {
                         "name": "number",
+                        "images": [
+                            "numbers/big/1.png"
+                        ],
                         "image_path": "numbers/big/",
                         "x_coord": 525,
                         "y_coord": 425,
@@ -179,12 +185,13 @@
             },
             {
                 "name": "team_selection",
-                "image_name": "home_screen/pop_ups/team_selection.png",
+                "image_name": "home_screen/subscreens/team_selection.png",
                 "x_coord": 390,
                 "y_coord": 225,
-                "images": [
+                "dynamic_images": [
                     {
                         "name": "player",
+                        "images": [],
                         "image_path": "players/medium/",
                         "x_coord": 410,
                         "y_coord": 290,
@@ -193,6 +200,7 @@
                     },
                     {
                         "name": "player",
+                        "images": [],
                         "image_path": "players/medium/",
                         "width": 60,
                         "height": 60,
@@ -201,6 +209,7 @@
                     },
                     {
                         "name": "player",
+                        "images": [],
                         "image_path": "players/medium/",
                         "width": 60,
                         "height": 60,
@@ -209,6 +218,7 @@
                     },
                     {
                         "name": "player",
+                        "images": [],
                         "image_path": "players/medium/",
                         "width": 60,
                         "height": 60,
@@ -217,6 +227,7 @@
                     },
                     {
                         "name": "player",
+                        "images": [],
                         "image_path": "players/medium/",
                         "width": 60,
                         "height": 60,
@@ -225,6 +236,7 @@
                     },
                     {
                         "name": "player",
+                        "images": [],
                         "image_path": "players/medium/",
                         "width": 60,
                         "height": 60,
@@ -276,15 +288,16 @@
                 "height": 65
             }
         ],
-        "pop_ups": [
+        "subscreens": [
             {
                 "name": "attack",
-                "image_name": "game_screen/pop_ups/attack.png",
+                "image_name": "game_screen/subscreens/attack.png",
                 "x_coord": 490,
                 "y_coord": 560,
-                "images": [
+                "dynamic_images": [
                     {
                         "name": "attacker",
+                        "images": [],
                         "image_path": "players/medium/",
                         "x_coord": 540,
                         "y_coord": 590,
@@ -293,6 +306,7 @@
                     },
                     {
                         "name": "victim",
+                        "images": [],
                         "image_path": "players/medium/",
                         "x_coord": 730,
                         "y_coord": 590,
@@ -304,12 +318,13 @@
             },
             {
                 "name": "property_action",
-                "image_name": "game_screen/pop_ups/property_action.png",
+                "image_name": "game_screen/subscreens/property_action.png",
                 "x_coord": 475,
                 "y_coord": 175,
-                "images": [
+                "dynamic_images": [
                     {
                         "name": "property",
+                        "images": [],
                         "image_path": "properties/",
                         "x_coord": 495,
                         "y_coord": 210,
@@ -349,12 +364,13 @@
             },
             {
                 "name": "buy_property",
-                "image_name": "game_screen/pop_ups/buy_property.png",
+                "image_name": "game_screen/subscreens/buy_property.png",
                 "x_coord": 475,
                 "y_coord": 175,
-                "images": [
+                "dynamic_images": [
                     {
                         "name": "property",
+                        "images": [],
                         "image_path": "properties/",
                         "x_coord": 495,
                         "y_coord": 210,
@@ -385,10 +401,10 @@
             },
             {
                 "name": "roll_or_pay",
-                "image_name": "game_screen/pop_ups/roll_or_pay.png",
+                "image_name": "game_screen/subscreens/roll_or_pay.png",
                 "x_coord": 440,
                 "y_coord": 225,
-                "images": [],
+                "dynamic_images": [],
                 "buttons": [
                     {
                         "name": "roll_double_button",
@@ -412,44 +428,45 @@
             },
             {
                 "name": "bribe_money",
-                "image_name": "game_screen/pop_ups/bribe_money.png",
+                "image_name": "game_screen/subscreens/bribe_money.png",
                 "x_coord": 390,
                 "y_coord": 225,
-                "images": [],
+                "dynamic_images": [],
                 "buttons": []
             },
             {
                 "name": "wardens_favor",
-                "image_name": "game_screen/pop_ups/wardens_favor.png",
+                "image_name": "game_screen/subscreens/wardens_favor.png",
                 "x_coord": 390,
                 "y_coord": 225,
-                "images": [],
+                "dynamic_images": [],
                 "buttons": []
             },
             {
                 "name": "prison_fight",
-                "image_name": "game_screen/pop_ups/prison_fight.png",
+                "image_name": "game_screen/subscreens/prison_fight.png",
                 "x_coord": 390,
                 "y_coord": 225,
-                "images": [],
+                "dynamic_images": [],
                 "buttons": []
             },
             {
                 "name": "go_to_wardens",
-                "image_name": "game_screen/pop_ups/go_to_wardens.png",
+                "image_name": "game_screen/subscreens/go_to_wardens.png",
                 "x_coord": 390,
                 "y_coord": 225,
-                "images": [],
+                "dynamic_images": [],
                 "buttons": []
             },
             {
                 "name": "bankrupt",
-                "image_name": "game_screen/pop_ups/bankrupt.png",
+                "image_name": "game_screen/subscreens/bankrupt.png",
                 "x_coord": 390,
                 "y_coord": 225,
-                "images": [
+                "dynamic_images": [
                     {
                         "name": "player",
+                        "images": [],
                         "image_path": "players/large/",
                         "x_coord": 445,
                         "y_coord": 290,
@@ -461,12 +478,13 @@
             },
             {
                 "name": "death",
-                "image_name": "game_screen/pop_ups/death.png",
+                "image_name": "game_screen/subscreens/death.png",
                 "x_coord": 390,
                 "y_coord": 225,
-                "images": [
+                "dynamic_images": [
                     {
                         "name": "player",
+                        "images": [],
                         "image_path": "players/large/",
                         "x_coord": 445,
                         "y_coord": 290,
@@ -478,12 +496,13 @@
             },
             {
                 "name": "new_turn",
-                "image_name": "game_screen/pop_ups/new_turn.png",
+                "image_name": "game_screen/subscreens/new_turn.png",
                 "x_coord": 390,
                 "y_coord": 225,
-                "images": [
+                "dynamic_images": [
                     {
                         "name": "player",
+                        "images": [],
                         "image_path": "players/large/",
                         "x_coord": 445,
                         "y_coord": 290,
@@ -495,12 +514,13 @@
             },
             {
                 "name": "weapon_pick_up",
-                "image_name": "game_screen/pop_ups/pick_up.png",
+                "image_name": "game_screen/subscreens/pick_up.png",
                 "x_coord": 565,
                 "y_coord": 220,
-                "images": [
+                "dynamic_images": [
                     {
                         "name": "weapon",
+                        "images": [],
                         "image_path": "weapon_cards/",
                         "x_coord": 605,
                         "y_coord": 258,
@@ -512,12 +532,13 @@
             },
             {
                 "name": "food_pick_up",
-                "image_name": "game_screen/pop_ups/pick_up.png",
+                "image_name": "game_screen/subscreens/pick_up.png",
                 "x_coord": 565,
                 "y_coord": 220,
-                "images": [
+                "dynamic_images": [
                     {
                         "name": "food",
+                        "images": [],
                         "image_path": "food_cards/",
                         "x_coord": 605,
                         "y_coord": 258,
@@ -529,18 +550,18 @@
             },
             {
                 "name": "stripes_win",
-                "image_name": "game_screen/pop_ups/stripes_win.png",
+                "image_name": "game_screen/subscreens/stripes_win.png",
                 "x_coord": 390,
                 "y_coord": 225,
-                "images": [],
+                "dynamic_images": [],
                 "buttons": []
             },
             {
                 "name": "solids_win",
-                "image_name": "game_screen/pop_ups/solids_win.png",
+                "image_name": "game_screen/subscreens/solids_win.png",
                 "x_coord": 390,
                 "y_coord": 225,
-                "images": [],
+                "dynamic_images": [],
                 "buttons": []
             }
         ],
@@ -1470,9 +1491,10 @@
                 "image_name": "game_screen/faction_info/stripes.png",
                 "x_coord": 1000,
                 "y_coord": 505,
-                "images": [
+                "dynamic_images": [
                     {
                         "name": "stripes_1",
+                        "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1011,
                         "y_coord": 517,
@@ -1481,6 +1503,7 @@
                     },
                     {
                         "name": "stripes_2",
+                        "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1110,
                         "y_coord": 517,
@@ -1489,6 +1512,7 @@
                     },
                     {
                         "name": "stripes_3",
+                        "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1209,
                         "y_coord": 517,
@@ -1497,6 +1521,7 @@
                     },
                     {
                         "name": "stripes_1_health",
+                        "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1038,
                         "y_coord": 571,
@@ -1505,6 +1530,7 @@
                     },
                     {
                         "name": "stripes_1_money",
+                        "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1024,
                         "y_coord": 545,
@@ -1513,6 +1539,7 @@
                     },
                     {
                         "name": "stripes_2_health",
+                        "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1137,
                         "y_coord": 571,
@@ -1521,6 +1548,7 @@
                     },
                     {
                         "name": "stripes_2_money",
+                        "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1123,
                         "y_coord": 545,
@@ -1529,6 +1557,7 @@
                     },
                     {
                         "name": "stripes_3_health",
+                        "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1236,
                         "y_coord": 571,
@@ -1537,6 +1566,7 @@
                     },
                     {
                         "name": "stripes_3_money",
+                        "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1222,
                         "y_coord": 545,
@@ -1551,9 +1581,10 @@
                 "image_name": "game_screen/faction_info/solids.png",
                 "x_coord": 1000,
                 "y_coord": 355,
-                "images": [
+                "dynamic_images": [
                     {
                         "name": "solids_1",
+                        "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1011,
                         "y_coord": 367,
@@ -1562,6 +1593,7 @@
                     },
                     {
                         "name": "solids_2",
+                        "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1110,
                         "y_coord": 367,
@@ -1570,6 +1602,7 @@
                     },
                     {
                         "name": "solids_3",
+                        "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1209,
                         "y_coord": 367,
@@ -1578,6 +1611,7 @@
                     },
                     {
                         "name": "solids_1_health",
+                        "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1037,
                         "y_coord": 421,
@@ -1586,6 +1620,7 @@
                     },
                     {
                         "name": "solids_1_money",
+                        "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1023,
                         "y_coord": 395,
@@ -1594,6 +1629,7 @@
                     },
                     {
                         "name": "solids_2_health",
+                        "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1136,
                         "y_coord": 421,
@@ -1602,6 +1638,7 @@
                     },
                     {
                         "name": "solids_2_money",
+                        "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1122,
                         "y_coord": 395,
@@ -1610,6 +1647,7 @@
                     },
                     {
                         "name": "solids_3_health",
+                        "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1235,
                         "y_coord": 421,
@@ -1618,6 +1656,7 @@
                     },
                     {
                         "name": "solids_3_money",
+                        "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1221,
                         "y_coord": 395,
@@ -1633,9 +1672,12 @@
             "image_name": "game_screen/info_cards_background.png",
             "x_coord": 1000,
             "y_coord": 50,
-            "images": [
+            "dynamic_images": [
                 {
                     "name": "property",
+                    "images": [
+                        "properties/1.png"
+                    ],
                     "image_path": "properties/",
                     "x_coord": 1000,
                     "y_coord": 50,
@@ -1644,6 +1686,9 @@
                 },
                 {
                     "name": "weapon",
+                    "images": [
+                        "weapon_cards/no_weapon.png"
+                    ],
                     "image_path": "weapon_cards/",
                     "x_coord": 1180,
                     "y_coord": 198,
@@ -1652,6 +1697,9 @@
                 },
                 {
                     "name": "food",
+                    "images": [
+                        "food_cards/no_food.png"
+                    ],
                     "image_path": "food_cards/",
                     "x_coord": 1180,
                     "y_coord": 50,
@@ -1664,10 +1712,13 @@
         "dice": [
             {
                 "name": "die_1",
+                "image": "game_screen/dice/2.png",
                 "image_path": "game_screen/dice/",
+                "x_coord": 35,
+                "y_coord": 115,
                 "button": {
-                    "x_coord": 30,
-                    "y_coord": 100,
+                    "x_coord": 35,
+                    "y_coord": 115,
                     "width": 150,
                     "height": 150,
                     "name": "die_1",
@@ -1677,10 +1728,13 @@
             },
             {
                 "name": "die_2",
+                "image": "game_screen/dice/3.png",
                 "image_path": "game_screen/dice/",
+                "x_coord": 185,
+                "y_coord": 115,
                 "button": {
-                    "x_coord": 180,
-                    "y_coord": 100,
+                    "x_coord": 185,
+                    "y_coord": 115,
                     "width": 150,
                     "height": 150,
                     "name": "die_2",

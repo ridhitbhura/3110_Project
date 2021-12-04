@@ -8,8 +8,16 @@ val x_coord : t -> int
 
 val y_coord : t -> int
 
-val popups : t -> Popup.t list
+val width : t -> int
+
+val height : t -> int
+
+val window_title : t -> string
+
+val popups : t -> Subscreen.t list
 
 val buttons : t -> Button.t list
+
+(* val check_start_clicked : t -> bool *)
 
 val get_home_screen_from_json : Yojson.Basic.t -> t

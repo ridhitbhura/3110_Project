@@ -14,15 +14,10 @@ let dice_dim = (233, 275)
 
 let file = Yojson.Basic.from_file "data/standard.json"
 
-(* let game = Gameboard.from_json file *)
 let hs = Home_screen.get_home_screen_from_json file
 
 let gs = Game_screen.get_game_screen_from_json file
 
-(* let rec print_gui_parts g = match g with | [] -> print_string "empty
-   list" | (a,_,_) :: tail -> print_string a; print_gui_parts tail *)
-
-(** [start_game _] is the function running all commands in a sequence*)
 let start_game _ =
   (* open_graph is an empty window*)
   (* open_graph ""; resize_window (fst window_dimensions) (snd
@@ -38,6 +33,8 @@ let start_game _ =
   resize_window (fst window_dimensions) (snd window_dimensions);
   set_window_title "Prison Dash!";
   Gui.draw_home_screen hs;
+  Command.press_button 's';
+  Gui.draw_game_screen gs;
   Command.press_button 's'
 
 (* let gameboard = Gameboard.from_json (Yojson.Basic.from_file
@@ -46,15 +43,3 @@ let start_game _ =
    Gui.draw_game_screen (fst gui_parts) (snd gui_parts); wait_next_event
    [Key_pressed] *)
 let _ = start_game ()
-
-(** stack overflow*)
-(* let open_img _ = open_graph ""; *)
-(*set_color white;*)
-(* let images_t = Png.load_as_rgb24"images/barbell.png" [] in let
-   images_of = Graphic_image.of_image images_t in let images_rgb =
-   Graphic_image.image_of images_of in let smaller_img_rgb =
-   Rgb24.resize None images_rgb 50 50 in let smaller_img_rgb =
-   Rgb24.resize None images_t 50 50 in *)
-(* let img = Png.load_as_rgb24 "images/barbell_50.png" [] in let g =
-   Graphic_image.of_image img in Graphics.draw_image g 200 200; let _ =
-   (wait_next_event [Key_pressed]).key in () *)

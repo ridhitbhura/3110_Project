@@ -42,25 +42,50 @@ let rec draw_buttons lst =
       draw_button h;
       draw_buttons t
 
-let draw_popup p =
-  let img = Popup.image p in
-  let x = Popup.x_coord p in
-  let y = Popup.y_coord p in
-  draw_img img x y;
-  let buttons = Popup.buttons p in
-  draw_buttons buttons
+let rec draw_dynamic_image_aux x_coord y_coord width = function
+  | [] -> ()
+  | h :: t ->
+      draw_img h x_coord y_coord;
+      draw_dynamic_image_aux (x_coord + width) y_coord width t
 
-let rec draw_popups lst =
+let draw_dynamic_image d =
+  let width = Dynamic_image.width d in
+  let x_coord = Dynamic_image.x_coord d in
+  let y_coord = Dynamic_image.y_coord d in
+  let images = Dynamic_image.images d in
+  draw_dynamic_image_aux x_coord y_coord width images
+
+let rec draw_dynamic_images lst =
   match lst with
   | [] -> ()
   | h :: t ->
-      draw_popup h;
-      draw_popups t
+      draw_dynamic_image h;
+      draw_dynamic_images t
 
-let initialize_window name width height =
+let draw_subscreen p =
+  let img = Subscreen.image p in
+  let x = Subscreen.x_coord p in
+  let y = Subscreen.y_coord p in
+  let active = Subscreen.active p in
+  if active then (
+    let buttons = Subscreen.buttons p in
+    let dynamic_images = Subscreen.images p in
+    draw_img img x y;
+    draw_buttons buttons;
+    draw_dynamic_images dynamic_images)
+  else ()
+
+let rec draw_subscreens lst =
+  match lst with
+  | [] -> ()
+  | h :: t ->
+      draw_subscreen h;
+      draw_subscreens t
+
+let initialize_window hs =
   open_graph "";
-  resize_window width height;
-  set_window_title name
+  resize_window (Home_screen.width hs) (Home_screen.height hs);
+  set_window_title (Home_screen.window_title hs)
 
 let draw_home_screen hs =
   let img = Home_screen.image hs in
@@ -68,4 +93,35 @@ let draw_home_screen hs =
   let y = Home_screen.y_coord hs in
   draw_img img x y;
   let buttons = Home_screen.buttons hs in
+  draw_buttons buttons
+
+let draw_die die =
+  let img = Die.image die in
+  let x = Die.x_coord die in
+  let y = Die.y_coord die in
+  draw_img img x y
+
+let rec draw_dice dice =
+  match dice with
+  | [] -> ()
+  | h :: t ->
+      draw_die h;
+      draw_dice t
+
+let draw_game_screen gs =
+  let background_img = Game_screen.background_image gs in
+  let bi_x = Game_screen.background_xcoord gs in
+  let bi_y = Game_screen.background_ycoord gs in
+  draw_img background_img bi_x bi_y;
+  let gameboard_img = Game_screen.gameboard_image gs in
+  let gb_x = Game_screen.gameboard_xcoord gs in
+  let gb_y = Game_screen.gameboard_ycoord gs in
+  draw_img gameboard_img gb_x gb_y;
+  let dice = Game_screen.dice gs in
+  draw_dice dice;
+  let info_cards = Game_screen.info_cards gs in
+  draw_subscreen info_cards;
+  let team_info = Game_screen.team_info gs in
+  draw_subscreens team_info;
+  let buttons = Game_screen.buttons gs in
   draw_buttons buttons

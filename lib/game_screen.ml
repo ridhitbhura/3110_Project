@@ -7,9 +7,9 @@ type t = {
   food_stacks : Food_stack.t list;
   weapon_stacks : Weapon_stack.t list;
   action_spaces : Action_space.t list;
-  pop_ups : Popup.t list;
-  team_info : Popup.t list;
-  info_cards : Popup.t;
+  pop_ups : Subscreen.t list;
+  team_info : Subscreen.t list;
+  info_cards : Subscreen.t;
   background_image : string;
   background_xcoord : int;
   background_ycoord : int;
@@ -31,7 +31,8 @@ let get_game_screen_from_json (json : Yojson.Basic.t) : t =
     gs_json |> member "properties" |> Property.get_properties_from_json
   in
   let ti =
-    gs_json |> member "team_info" |> Popup.get_pop_ups_from_json
+    gs_json |> member "team_info" |> Subscreen.get_subscreens_from_json
+    |> Subscreen.activates
   in
   let bi =
     gs_json
@@ -58,10 +59,11 @@ let get_game_screen_from_json (json : Yojson.Basic.t) : t =
     gs_json |> member "gameboard" |> member "y_coord" |> to_int
   in
   let ic =
-    gs_json |> member "info_cards" |> Popup.get_pop_up_from_json
+    gs_json |> member "info_cards" |> Subscreen.get_subscreen_from_json
+    |> Subscreen.activate
   in
   let pops =
-    gs_json |> member "pop_ups" |> Popup.get_pop_ups_from_json
+    gs_json |> member "subscreens" |> Subscreen.get_subscreens_from_json
   in
   let foods =
     gs_json |> member "foods" |> member "food_types"
@@ -103,3 +105,35 @@ let get_game_screen_from_json (json : Yojson.Basic.t) : t =
     dice;
     action_spaces = actions;
   }
+
+let buttons gs = gs.buttons
+
+let players gs = gs.players
+
+let properties gs = gs.properties
+
+let food_stacks gs = gs.food_stacks
+
+let weapon_stacks gs = gs.weapon_stacks
+
+let action_spaces gs = gs.action_spaces
+
+let pop_ups gs = gs.pop_ups
+
+let team_info gs = gs.team_info
+
+let info_cards gs = gs.info_cards
+
+let background_image gs = gs.background_image
+
+let background_xcoord gs = gs.background_xcoord
+
+let background_ycoord gs = gs.background_ycoord
+
+let gameboard_image gs = gs.gameboard_image
+
+let gameboard_xcoord gs = gs.gameboard_xcoord
+
+let gameboard_ycoord gs = gs.gameboard_ycoord
+
+let dice gs = gs.dice
