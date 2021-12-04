@@ -91,9 +91,11 @@ let draw_home_screen hs =
   let img = Home_screen.image hs in
   let x = Home_screen.x_coord hs in
   let y = Home_screen.y_coord hs in
+  Graphics.auto_synchronize false;
   draw_img img x y;
   let buttons = Home_screen.buttons hs in
-  draw_buttons buttons
+  draw_buttons buttons;
+  Graphics.auto_synchronize true
 
 let draw_die die =
   let img = Die.image die in
@@ -109,6 +111,7 @@ let rec draw_dice dice =
       draw_dice t
 
 let draw_game_screen gs =
+  Graphics.auto_synchronize false;
   let background_img = Game_screen.background_image gs in
   let bi_x = Game_screen.background_xcoord gs in
   let bi_y = Game_screen.background_ycoord gs in
@@ -124,4 +127,5 @@ let draw_game_screen gs =
   let team_info = Game_screen.team_info gs in
   draw_subscreens team_info;
   let buttons = Game_screen.buttons gs in
-  draw_buttons buttons
+  draw_buttons buttons;
+  Graphics.auto_synchronize true
