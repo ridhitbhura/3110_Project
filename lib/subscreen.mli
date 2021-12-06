@@ -17,6 +17,9 @@ val deactivate : t -> t
 val deactivates : t list -> t list
 (**[deactivates subscreens] is all [s] deactivated.*)
 
+val name : t -> string
+(**[name s] is the name of the subscreen*)
+
 val x_coord : t -> int
 (**[x_coord s] is the x coordinate location of the [s].*)
 

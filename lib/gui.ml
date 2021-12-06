@@ -95,6 +95,7 @@ let draw_home_screen hs =
   draw_img img x y;
   let buttons = Home_screen.buttons hs in
   draw_buttons buttons;
+  draw_subscreens (Home_screen.popups hs);
   Graphics.auto_synchronize true
 
 let draw_die die =

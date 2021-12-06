@@ -26,6 +26,8 @@ let rec deactivates popups =
   | [] -> []
   | h :: t -> deactivate h :: deactivates t
 
+let name p = p.name
+
 let x_coord p = p.x_coord
 
 let y_coord p = p.y_coord

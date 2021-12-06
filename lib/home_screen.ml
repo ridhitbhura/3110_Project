@@ -25,6 +25,8 @@ let window_title hs = hs.window_title
 
 let popups hs = hs.pop_ups
 
+let change_popups p popup_list = { p with pop_ups = popup_list }
+
 let buttons hs = hs.buttons
 
 let get_home_screen_from_json (json : Yojson.Basic.t) : t =

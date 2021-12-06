@@ -21,3 +21,5 @@ val buttons : t -> Button.t list
 val check_button_clicked : t -> int * int -> string option
 
 val get_home_screen_from_json : Yojson.Basic.t -> t
+
+val change_popups : t -> Subscreen.t list -> t

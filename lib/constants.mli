@@ -7,3 +7,5 @@ val start_button : string
 val credits_button : string
 
 val number_players_popup : string
+
+val hs_buttons_to_popups : (string * string) list
