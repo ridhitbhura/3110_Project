@@ -5,5 +5,5 @@ let rec press_button key =
   if status_key = key then () else press_button key
 
 let mouse_click () =
-  let status_mouse = wait_next_event [ Button_up ] in
+  let status_mouse = wait_next_event [ Button_down ] in
   (status_mouse.mouse_x, status_mouse.mouse_y)
