@@ -1,0 +1,1809 @@
+{
+    "home_screen": {
+        "x_coord": 0,
+        "y_coord": 0,
+        "width": 1330,
+        "height": 700,
+        "window_title": "Prison Dash!",
+        "image_name": "home_screen/background.png",
+        "buttons": [
+            {
+                "name": "start_button",
+                "x_coord": 510,
+                "y_coord": 275,
+                "image_name": "home_screen/buttons/start.png",
+                "dimmed_image_name": "",
+                "width": 310,
+                "height": 48
+            },
+            {
+                "name": "credits_button",
+                "x_coord": 510,
+                "y_coord": 165,
+                "image_name": "home_screen/buttons/credits.png",
+                "dimmed_image_name": "",
+                "width": 310,
+                "height": 48
+            }
+        ],
+        "subscreens": [
+            {
+                "name": "number_players",
+                "image_name": "home_screen/subscreens/number_players.png",
+                "x_coord": 410,
+                "y_coord": 225,
+                "dynamic_images": [],
+                "buttons": [
+                    {
+                        "name": "one_player_button",
+                        "image_name": "home_screen/buttons/1.png",
+                        "dimmed_image_name": "home_screen/buttons/dim_1.png",
+                        "width": 50,
+                        "height": 50,
+                        "x_coord": 440,
+                        "y_coord": 330
+                    },
+                    {
+                        "name": "two_players_button",
+                        "image_name": "home_screen/buttons/2.png",
+                        "dimmed_image_name": "home_screen/buttons/dim_2.png",
+                        "width": 50,
+                        "height": 50,
+                        "x_coord": 520,
+                        "y_coord": 330
+                    },
+                    {
+                        "name": "three_players_button",
+                        "image_name": "home_screen/buttons/3.png",
+                        "dimmed_image_name": "home_screen/buttons/dim_3.png",
+                        "width": 50,
+                        "height": 50,
+                        "x_coord": 600,
+                        "y_coord": 330
+                    },
+                    {
+                        "name": "four_players_button",
+                        "image_name": "home_screen/buttons/4.png",
+                        "dimmed_image_name": "home_screen/buttons/dim_4.png",
+                        "width": 50,
+                        "height": 50,
+                        "x_coord": 680,
+                        "y_coord": 330
+                    },
+                    {
+                        "name": "five_players_button",
+                        "image_name": "home_screen/buttons/5.png",
+                        "dimmed_image_name": "home_screen/buttons/dim_5.png",
+                        "width": 50,
+                        "height": 50,
+                        "x_coord": 760,
+                        "y_coord": 330
+                    },
+                    {
+                        "name": "six_players_button",
+                        "image_name": "home_screen/buttons/6.png",
+                        "dimmed_image_name": "home_screen/buttons/dim_6.png",
+                        "width": 50,
+                        "height": 50,
+                        "x_coord": 840,
+                        "y_coord": 330
+                    },
+                    {
+                        "name": "number_players_okay_button",
+                        "image_name": "",
+                        "dimmed_image_name": "",
+                        "x_coord": 585,
+                        "y_coord": 260,
+                        "width": 140,
+                        "height": 40
+                    }
+                ]
+            },
+            {
+                "name": "select_character",
+                "image_name": "home_screen/subscreens/select_character.png",
+                "x_coord": 410,
+                "y_coord": 225,
+                "dynamic_images": [
+                    {
+                        "name": "number",
+                        "images": [
+                            "numbers/big/1.png"
+                        ],
+                        "image_path": "numbers/big/",
+                        "x_coord": 525,
+                        "y_coord": 425,
+                        "width": 50,
+                        "height": 50
+                    }
+                ],
+                "buttons": [
+                    {
+                        "name": "character_1_button",
+                        "image_name": "players/medium/1.png",
+                        "dimmed_image_name": "players/medium/dim_1.png",
+                        "width": 60,
+                        "height": 60,
+                        "x_coord": 430,
+                        "y_coord": 320
+                    },
+                    {
+                        "name": "character_2_button",
+                        "image_name": "players/medium/2.png",
+                        "dimmed_image_name": "players/medium/dim_2.png",
+                        "width": 60,
+                        "height": 60,
+                        "x_coord": 512,
+                        "y_coord": 320
+                    },
+                    {
+                        "name": "character_3_button",
+                        "image_name": "players/medium/3.png",
+                        "dimmed_image_name": "players/medium/dim_3.png",
+                        "width": 60,
+                        "height": 60,
+                        "x_coord": 594,
+                        "y_coord": 320
+                    },
+                    {
+                        "name": "character_4_button",
+                        "image_name": "players/medium/4.png",
+                        "dimmed_image_name": "players/medium/dim_4.png",
+                        "width": 60,
+                        "height": 60,
+                        "x_coord": 676,
+                        "y_coord": 320
+                    },
+                    {
+                        "name": "character_5_button",
+                        "image_name": "players/medium/5.png",
+                        "dimmed_image_name": "players/medium/dim_5.png",
+                        "width": 60,
+                        "height": 60,
+                        "x_coord": 758,
+                        "y_coord": 320
+                    },
+                    {
+                        "name": "character_6_button",
+                        "image_name": "players/medium/6.png",
+                        "dimmed_image_name": "players/medium/dim_6.png",
+                        "width": 60,
+                        "height": 60,
+                        "x_coord": 840,
+                        "y_coord": 320
+                    },
+                    {
+                        "name": "select_character_okay_button",
+                        "image_name": "",
+                        "dimmed_image_name": "",
+                        "x_coord": 595,
+                        "y_coord": 260,
+                        "width": 140,
+                        "height": 40
+                    }
+                ]
+            },
+            {
+                "name": "team_selection",
+                "image_name": "home_screen/subscreens/team_selection.png",
+                "x_coord": 390,
+                "y_coord": 225,
+                "dynamic_images": [
+                    {
+                        "name": "player",
+                        "images": [],
+                        "image_path": "players/medium/",
+                        "x_coord": 410,
+                        "y_coord": 290,
+                        "width": 60,
+                        "height": 60
+                    },
+                    {
+                        "name": "player",
+                        "images": [],
+                        "image_path": "players/medium/",
+                        "width": 60,
+                        "height": 60,
+                        "x_coord": 490,
+                        "y_coord": 290
+                    },
+                    {
+                        "name": "player",
+                        "images": [],
+                        "image_path": "players/medium/",
+                        "width": 60,
+                        "height": 60,
+                        "x_coord": 570,
+                        "y_coord": 290
+                    },
+                    {
+                        "name": "player",
+                        "images": [],
+                        "image_path": "players/medium/",
+                        "width": 60,
+                        "height": 60,
+                        "x_coord": 700,
+                        "y_coord": 290
+                    },
+                    {
+                        "name": "player",
+                        "images": [],
+                        "image_path": "players/medium/",
+                        "width": 60,
+                        "height": 60,
+                        "x_coord": 780,
+                        "y_coord": 290
+                    },
+                    {
+                        "name": "player",
+                        "images": [],
+                        "image_path": "players/medium/",
+                        "width": 60,
+                        "height": 60,
+                        "x_coord": 860,
+                        "y_coord": 290
+                    }
+                ],
+                "buttons": []
+            }
+        ]
+    },
+    "game_screen": {
+        "gameboard": {
+            "x_coord": 365,
+            "y_coord": 50,
+            "image_name": "game_screen/game_board.png"
+        },
+        "game_screen_background": {
+            "x_coord": 0,
+            "y_coord": 0,
+            "image_name": "game_screen/background.png"
+        },
+        "buttons": [
+            {
+                "name": "trade_button",
+                "image_name": "game_screen/buttons/trade.png",
+                "dimmed_image_name": "",
+                "x_coord": 30,
+                "y_coord": 585,
+                "width": 300,
+                "height": 65
+            },
+            {
+                "name": "end_turn_button",
+                "image_name": "game_screen/buttons/end_turn.png",
+                "dimmed_image_name": "",
+                "x_coord": 30,
+                "y_coord": 510,
+                "width": 300,
+                "height": 65
+            },
+            {
+                "name": "exit_game_button",
+                "image_name": "game_screen/buttons/exit_game.png",
+                "dimmed_image_name": "",
+                "x_coord": 30,
+                "y_coord": 435,
+                "width": 300,
+                "height": 65
+            }
+        ],
+        "subscreens": [
+            {
+                "name": "attack",
+                "image_name": "game_screen/subscreens/attack.png",
+                "x_coord": 490,
+                "y_coord": 560,
+                "dynamic_images": [
+                    {
+                        "name": "attacker",
+                        "images": [],
+                        "image_path": "players/medium/",
+                        "x_coord": 540,
+                        "y_coord": 590,
+                        "width": 60,
+                        "height": 60
+                    },
+                    {
+                        "name": "victim",
+                        "images": [],
+                        "image_path": "players/medium/",
+                        "x_coord": 730,
+                        "y_coord": 590,
+                        "width": 60,
+                        "height": 60
+                    }
+                ],
+                "buttons": []
+            },
+            {
+                "name": "property_action",
+                "image_name": "game_screen/subscreens/property_action.png",
+                "x_coord": 475,
+                "y_coord": 175,
+                "dynamic_images": [
+                    {
+                        "name": "property",
+                        "images": [],
+                        "image_path": "properties/",
+                        "x_coord": 495,
+                        "y_coord": 210,
+                        "width": 170,
+                        "height": 295
+                    }
+                ],
+                "buttons": [
+                    {
+                        "name": "upgrade_button",
+                        "image_name": "",
+                        "dimmed_image_name": "",
+                        "x_coord": 695,
+                        "y_coord": 390,
+                        "width": 110,
+                        "height": 40
+                    },
+                    {
+                        "name": "degrade_button",
+                        "image_name": "",
+                        "dimmed_image_name": "",
+                        "x_coord": 695,
+                        "y_coord": 330,
+                        "width": 110,
+                        "height": 40
+                    },
+                    {
+                        "name": "cancel_button",
+                        "image_name": "",
+                        "dimmed_image_name": "",
+                        "x_coord": 695,
+                        "y_coord": 270,
+                        "width": 110,
+                        "height": 40
+                    }
+                ]
+            },
+            {
+                "name": "buy_property",
+                "image_name": "game_screen/subscreens/buy_property.png",
+                "x_coord": 475,
+                "y_coord": 175,
+                "dynamic_images": [
+                    {
+                        "name": "property",
+                        "images": [],
+                        "image_path": "properties/",
+                        "x_coord": 495,
+                        "y_coord": 210,
+                        "width": 170,
+                        "height": 295
+                    }
+                ],
+                "buttons": [
+                    {
+                        "name": "buy_button",
+                        "image_name": "",
+                        "dimmed_image_name": "",
+                        "x_coord": 717,
+                        "y_coord": 354,
+                        "width": 90,
+                        "height": 40
+                    },
+                    {
+                        "name": "forfeit_button",
+                        "image_name": "",
+                        "dimmed_image_name": "",
+                        "x_coord": 717,
+                        "y_coord": 304,
+                        "width": 90,
+                        "height": 40
+                    }
+                ]
+            },
+            {
+                "name": "roll_or_pay",
+                "image_name": "game_screen/subscreens/roll_or_pay.png",
+                "x_coord": 440,
+                "y_coord": 225,
+                "dynamic_images": [],
+                "buttons": [
+                    {
+                        "name": "roll_double_button",
+                        "image_name": "",
+                        "dimmed_image_name": "",
+                        "x_coord": 630,
+                        "y_coord": 350,
+                        "width": 230,
+                        "height": 50
+                    },
+                    {
+                        "name": "pay_button",
+                        "image_name": "",
+                        "dimmed_image_name": "",
+                        "x_coord": 630,
+                        "y_coord": 260,
+                        "width": 230,
+                        "height": 50
+                    }
+                ]
+            },
+            {
+                "name": "bribe_money",
+                "image_name": "game_screen/subscreens/bribe_money.png",
+                "x_coord": 390,
+                "y_coord": 225,
+                "dynamic_images": [],
+                "buttons": []
+            },
+            {
+                "name": "wardens_favor",
+                "image_name": "game_screen/subscreens/wardens_favor.png",
+                "x_coord": 390,
+                "y_coord": 225,
+                "dynamic_images": [],
+                "buttons": []
+            },
+            {
+                "name": "prison_fight",
+                "image_name": "game_screen/subscreens/prison_fight.png",
+                "x_coord": 390,
+                "y_coord": 225,
+                "dynamic_images": [],
+                "buttons": []
+            },
+            {
+                "name": "go_to_wardens",
+                "image_name": "game_screen/subscreens/go_to_wardens.png",
+                "x_coord": 390,
+                "y_coord": 225,
+                "dynamic_images": [],
+                "buttons": []
+            },
+            {
+                "name": "bankrupt",
+                "image_name": "game_screen/subscreens/bankrupt.png",
+                "x_coord": 390,
+                "y_coord": 225,
+                "dynamic_images": [
+                    {
+                        "name": "player",
+                        "images": [],
+                        "image_path": "players/large/",
+                        "x_coord": 445,
+                        "y_coord": 290,
+                        "width": 120,
+                        "height": 120
+                    }
+                ],
+                "buttons": []
+            },
+            {
+                "name": "death",
+                "image_name": "game_screen/subscreens/death.png",
+                "x_coord": 390,
+                "y_coord": 225,
+                "dynamic_images": [
+                    {
+                        "name": "player",
+                        "images": [],
+                        "image_path": "players/large/",
+                        "x_coord": 445,
+                        "y_coord": 290,
+                        "width": 120,
+                        "height": 120
+                    }
+                ],
+                "buttons": []
+            },
+            {
+                "name": "new_turn",
+                "image_name": "game_screen/subscreens/new_turn.png",
+                "x_coord": 390,
+                "y_coord": 225,
+                "dynamic_images": [
+                    {
+                        "name": "player",
+                        "images": [],
+                        "image_path": "players/large/",
+                        "x_coord": 445,
+                        "y_coord": 290,
+                        "width": 120,
+                        "height": 120
+                    }
+                ],
+                "buttons": []
+            },
+            {
+                "name": "weapon_pick_up",
+                "image_name": "game_screen/subscreens/pick_up.png",
+                "x_coord": 565,
+                "y_coord": 220,
+                "dynamic_images": [
+                    {
+                        "name": "weapon",
+                        "images": [],
+                        "image_path": "weapon_cards/",
+                        "x_coord": 605,
+                        "y_coord": 258,
+                        "width": 120,
+                        "height": 148
+                    }
+                ],
+                "buttons": []
+            },
+            {
+                "name": "food_pick_up",
+                "image_name": "game_screen/subscreens/pick_up.png",
+                "x_coord": 565,
+                "y_coord": 220,
+                "dynamic_images": [
+                    {
+                        "name": "food",
+                        "images": [],
+                        "image_path": "food_cards/",
+                        "x_coord": 605,
+                        "y_coord": 258,
+                        "width": 120,
+                        "height": 148
+                    }
+                ],
+                "buttons": []
+            },
+            {
+                "name": "stripes_win",
+                "image_name": "game_screen/subscreens/stripes_win.png",
+                "x_coord": 390,
+                "y_coord": 225,
+                "dynamic_images": [],
+                "buttons": []
+            },
+            {
+                "name": "solids_win",
+                "image_name": "game_screen/subscreens/solids_win.png",
+                "x_coord": 390,
+                "y_coord": 225,
+                "dynamic_images": [],
+                "buttons": []
+            }
+        ],
+        "properties": [
+            {
+                "property_name": "Treadmill",
+                "set": "Gym",
+                "image_name": "properties/property_1.png",
+                "cost": {
+                    "upgrade_cost": 25,
+                    "degrade_refund": 13,
+                    "purchase_cost": 30,
+                    "mortgage": 15
+                },
+                "fee": {
+                    "base": 1,
+                    "set": 2,
+                    "control_1": 5,
+                    "control_2": 15,
+                    "control_3": 45,
+                    "control_4": 80,
+                    "take_over": 125
+                },
+                "button": {
+                    "x_coord": 840,
+                    "y_coord": 50,
+                    "width": 50,
+                    "height": 75,
+                    "name": "Treadmill",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 1
+            },
+            {
+                "property_name": "Barbell",
+                "set": "Gym",
+                "image_name": "properties/property_3.png",
+                "cost": {
+                    "upgrade_cost": 25,
+                    "degrade_refund": 13,
+                    "purchase_cost": 30,
+                    "mortgage": 15
+                },
+                "fee": {
+                    "base": 2,
+                    "set": 4,
+                    "control_1": 10,
+                    "control_2": 30,
+                    "control_3": 90,
+                    "control_4": 160,
+                    "take_over": 225
+                },
+                "button": {
+                    "x_coord": 740,
+                    "y_coord": 50,
+                    "width": 50,
+                    "height": 75,
+                    "name": "Barbell",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 3
+            },
+            {
+                "property_name": "Dumbbell",
+                "set": "Gym",
+                "image_name": "properties/property_4.png",
+                "cost": {
+                    "upgrade_cost": 25,
+                    "degrade_refund": 13,
+                    "purchase_cost": 30,
+                    "mortgage": 20
+                },
+                "fee": {
+                    "base": 2,
+                    "set": 4,
+                    "control_1": 10,
+                    "control_2": 30,
+                    "control_3": 90,
+                    "control_4": 160,
+                    "take_over": 225
+                },
+                "button": {
+                    "x_coord": 690,
+                    "y_coord": 50,
+                    "width": 50,
+                    "height": 75,
+                    "name": "Dumbbell",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 4
+            },
+            {
+                "property_name": "PingPongTables",
+                "set": "SportActivies",
+                "image_name": "properties/property_6.png",
+                "cost": {
+                    "upgrade_cost": 25,
+                    "degrade_refund": 13,
+                    "purchase_cost": 50,
+                    "mortgage": 25
+                },
+                "fee": {
+                    "base": 3,
+                    "set": 6,
+                    "control_1": 15,
+                    "control_2": 45,
+                    "control_3": 135,
+                    "control_4": 200,
+                    "take_over": 275
+                },
+                "button": {
+                    "x_coord": 590,
+                    "y_coord": 50,
+                    "width": 50,
+                    "height": 75,
+                    "name": "PingPongTables",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 6
+            },
+            {
+                "property_name": "Pool",
+                "set": "SportActivies",
+                "image_name": "properties/property_8.png",
+                "cost": {
+                    "upgrade_cost": 25,
+                    "degrade_refund": 13,
+                    "purchase_cost": 50,
+                    "mortgage": 25
+                },
+                "fee": {
+                    "base": 3,
+                    "set": 6,
+                    "control_1": 15,
+                    "control_2": 45,
+                    "control_3": 135,
+                    "control_4": 200,
+                    "take_over": 275
+                },
+                "button": {
+                    "x_coord": 490,
+                    "y_coord": 50,
+                    "width": 50,
+                    "height": 75,
+                    "name": "Pool",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 8
+            },
+            {
+                "property_name": "BasketballCourt",
+                "set": "SportActivies",
+                "image_name": "properties/property_9.png",
+                "cost": {
+                    "upgrade_cost": 25,
+                    "degrade_refund": 13,
+                    "purchase_cost": 60,
+                    "mortgage": 30
+                },
+                "fee": {
+                    "base": 4,
+                    "set": 8,
+                    "control_1": 20,
+                    "control_2": 50,
+                    "control_3": 150,
+                    "control_4": 225,
+                    "take_over": 300
+                },
+                "button": {
+                    "x_coord": 440,
+                    "y_coord": 50,
+                    "width": 50,
+                    "height": 75,
+                    "name": "BasketballCourt",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 9
+            },
+            {
+                "property_name": "Books",
+                "set": "Library",
+                "image_name": "properties/property_11.png",
+                "cost": {
+                    "upgrade_cost": 50,
+                    "degrade_refund": 25,
+                    "purchase_cost": 70,
+                    "mortgage": 35
+                },
+                "fee": {
+                    "base": 5,
+                    "set": 10,
+                    "control_1": 25,
+                    "control_2": 75,
+                    "control_3": 225,
+                    "control_4": 315,
+                    "take_over": 375
+                },
+                "button": {
+                    "x_coord": 365,
+                    "y_coord": 125,
+                    "width": 75,
+                    "height": 50,
+                    "name": "Books",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 11
+            },
+            {
+                "property_name": "TV",
+                "set": "Library",
+                "image_name": "properties/property_13.png",
+                "cost": {
+                    "upgrade_cost": 50,
+                    "degrade_refund": 25,
+                    "purchase_cost": 70,
+                    "mortgage": 35
+                },
+                "fee": {
+                    "base": 5,
+                    "set": 10,
+                    "control_1": 25,
+                    "control_2": 75,
+                    "control_3": 225,
+                    "control_4": 315,
+                    "take_over": 375
+                },
+                "button": {
+                    "x_coord": 365,
+                    "y_coord": 225,
+                    "width": 75,
+                    "height": 50,
+                    "name": "TV",
+                    "dimmed_image_name": "",
+                    "image_name": ""
+                },
+                "board_order": 13
+            },
+            {
+                "property_name": "PC",
+                "set": "Library",
+                "image_name": "properties/property_14.png",
+                "cost": {
+                    "upgrade_cost": 50,
+                    "degrade_refund": 25,
+                    "purchase_cost": 80,
+                    "mortgage": 40
+                },
+                "fee": {
+                    "base": 6,
+                    "set": 12,
+                    "control_1": 30,
+                    "control_2": 90,
+                    "control_3": 250,
+                    "control_4": 350,
+                    "take_over": 450
+                },
+                "button": {
+                    "x_coord": 365,
+                    "y_coord": 275,
+                    "width": 75,
+                    "height": 50,
+                    "name": "PC",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 14
+            },
+            {
+                "property_name": "Dining_Table",
+                "set": "Kitchen",
+                "image_name": "properties/property_16.png",
+                "cost": {
+                    "upgrade_cost": 50,
+                    "degrade_refund": 25,
+                    "purchase_cost": 90,
+                    "mortgage": 45
+                },
+                "fee": {
+                    "base": 7,
+                    "set": 14,
+                    "control_1": 35,
+                    "control_2": 100,
+                    "control_3": 275,
+                    "control_4": 375,
+                    "take_over": 475
+                },
+                "button": {
+                    "x_coord": 365,
+                    "y_coord": 375,
+                    "width": 75,
+                    "height": 50,
+                    "name": "DiningTable",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 16
+            },
+            {
+                "property_name": "Utenstils",
+                "set": "Kitchen",
+                "image_name": "properties/property_18.png",
+                "cost": {
+                    "upgrade_cost": 50,
+                    "degrade_refund": 25,
+                    "purchase_cost": 90,
+                    "mortgage": 45
+                },
+                "fee": {
+                    "base": 7,
+                    "set": 14,
+                    "control_1": 35,
+                    "control_2": 100,
+                    "control_3": 275,
+                    "control_4": 375,
+                    "take_over": 475
+                },
+                "button": {
+                    "x_coord": 365,
+                    "y_coord": 475,
+                    "width": 75,
+                    "height": 50,
+                    "name": "Utensils",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 18
+            },
+            {
+                "property_name": "Chef",
+                "set": "Kitchen",
+                "image_name": "properties/property_19.png",
+                "cost": {
+                    "upgrade_cost": 50,
+                    "degrade_refund": 25,
+                    "purchase_cost": 100,
+                    "mortgage": 50
+                },
+                "fee": {
+                    "base": 8,
+                    "set": 16,
+                    "control_1": 40,
+                    "control_2": 100,
+                    "control_3": 300,
+                    "control_4": 400,
+                    "take_over": 500
+                },
+                "button": {
+                    "x_coord": 365,
+                    "y_coord": 525,
+                    "width": 75,
+                    "height": 50,
+                    "name": "Chef",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 19
+            },
+            {
+                "property_name": "Sink",
+                "set": "Bathroom",
+                "image_name": "properties/property_21.png",
+                "cost": {
+                    "upgrade_cost": 75,
+                    "degrade_refund": 38,
+                    "purchase_cost": 110,
+                    "mortgage": 55
+                },
+                "fee": {
+                    "base": 9,
+                    "set": 18,
+                    "control_1": 45,
+                    "control_2": 125,
+                    "control_3": 350,
+                    "control_4": 440,
+                    "take_over": 525
+                },
+                "button": {
+                    "x_coord": 440,
+                    "y_coord": 575,
+                    "width": 50,
+                    "height": 75,
+                    "name": "Sink",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 21
+            },
+            {
+                "property_name": "Shower",
+                "set": "Bathroom",
+                "image_name": "properties/property_23.png",
+                "cost": {
+                    "upgrade_cost": 75,
+                    "degrade_refund": 38,
+                    "purchase_cost": 110,
+                    "mortgage": 55
+                },
+                "fee": {
+                    "base": 9,
+                    "set": 18,
+                    "control_1": 45,
+                    "control_2": 125,
+                    "control_3": 350,
+                    "control_4": 440,
+                    "take_over": 525
+                },
+                "button": {
+                    "x_coord": 540,
+                    "y_coord": 575,
+                    "width": 50,
+                    "height": 75,
+                    "name": "Shower",
+                    "dimmed_image_name": "",
+                    "image_name": ""
+                },
+                "board_order": 23
+            },
+            {
+                "property_name": "Toilet",
+                "set": "Bathroom",
+                "image_name": "properties/property_24.png",
+                "cost": {
+                    "upgrade_cost": 75,
+                    "degrade_refund": 38,
+                    "purchase_cost": 120,
+                    "mortgage": 60
+                },
+                "fee": {
+                    "base": 10,
+                    "set": 20,
+                    "control_1": 50,
+                    "control_2": 150,
+                    "control_3": 375,
+                    "control_4": 465,
+                    "take_over": 550
+                },
+                "board_order": 24,
+                "button": {
+                    "x_coord": 590,
+                    "y_coord": 575,
+                    "width": 50,
+                    "height": 75,
+                    "name": "Toilet",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                }
+            },
+            {
+                "property_name": "Beer",
+                "set": "AlocholCell",
+                "image_name": "properties/property_26.png",
+                "cost": {
+                    "upgrade_cost": 75,
+                    "degrade_refund": 38,
+                    "purchase_cost": 130,
+                    "mortgage": 65
+                },
+                "fee": {
+                    "base": 11,
+                    "set": 22,
+                    "control_1": 55,
+                    "control_2": 165,
+                    "control_3": 400,
+                    "control_4": 490,
+                    "take_over": 575
+                },
+                "button": {
+                    "x_coord": 690,
+                    "y_coord": 575,
+                    "width": 50,
+                    "height": 75,
+                    "name": "Beer",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 26
+            },
+            {
+                "property_name": "Vodka",
+                "set": "AlocholCell",
+                "image_name": "properties/property_28.png",
+                "cost": {
+                    "upgrade_cost": 75,
+                    "degrade_refund": 38,
+                    "purchase_cost": 130,
+                    "mortgage": 65
+                },
+                "fee": {
+                    "base": 11,
+                    "set": 22,
+                    "control_1": 55,
+                    "control_2": 165,
+                    "control_3": 400,
+                    "control_4": 490,
+                    "take_over": 575
+                },
+                "button": {
+                    "x_coord": 790,
+                    "y_coord": 575,
+                    "width": 50,
+                    "height": 75,
+                    "name": "Vodka",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 28
+            },
+            {
+                "property_name": "Whiskey",
+                "set": "AlocholCell",
+                "image_name": "properties/property_29.png",
+                "cost": {
+                    "upgrade_cost": 75,
+                    "degrade_refund": 38,
+                    "purchase_cost": 140,
+                    "mortgage": 70
+                },
+                "fee": {
+                    "base": 12,
+                    "set": 24,
+                    "control_1": 60,
+                    "control_2": 180,
+                    "control_3": 425,
+                    "control_4": 515,
+                    "take_over": 600
+                },
+                "button": {
+                    "x_coord": 840,
+                    "y_coord": 575,
+                    "width": 50,
+                    "height": 75,
+                    "name": "Whiskey",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 29
+            },
+            {
+                "property_name": "Weed",
+                "set": "DrugCell",
+                "image_name": "properties/property_31.png",
+                "cost": {
+                    "upgrade_cost": 100,
+                    "degrade_refund": 50,
+                    "purchase_cost": 150,
+                    "mortgage": 75
+                },
+                "fee": {
+                    "base": 13,
+                    "set": 26,
+                    "control_1": 65,
+                    "control_2": 195,
+                    "control_3": 450,
+                    "control_4": 550,
+                    "take_over": 640
+                },
+                "button": {
+                    "x_coord": 890,
+                    "y_coord": 525,
+                    "width": 75,
+                    "height": 50,
+                    "name": "Weed",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 31
+            },
+            {
+                "property_name": "Heroin",
+                "set": "DrugCell",
+                "image_name": "properties/property_33.png",
+                "cost": {
+                    "upgrade_cost": 100,
+                    "degrade_refund": 50,
+                    "purchase_cost": 150,
+                    "mortgage": 75
+                },
+                "fee": {
+                    "base": 13,
+                    "set": 26,
+                    "control_1": 65,
+                    "control_2": 195,
+                    "control_3": 450,
+                    "control_4": 550,
+                    "take_over": 640
+                },
+                "button": {
+                    "x_coord": 890,
+                    "y_coord": 425,
+                    "width": 75,
+                    "height": 50,
+                    "name": "Heroin",
+                    "dimmed_image_name": "",
+                    "image_name": ""
+                },
+                "board_order": 33
+            },
+            {
+                "property_name": "Cocaine",
+                "set": "DrugCell",
+                "image_name": "properties/property_34.png",
+                "cost": {
+                    "upgrade_cost": 100,
+                    "degrade_refund": 50,
+                    "purchase_cost": 160,
+                    "mortgage": 80
+                },
+                "fee": {
+                    "base": 14,
+                    "set": 28,
+                    "control_1": 75,
+                    "control_2": 225,
+                    "control_3": 500,
+                    "control_4": 600,
+                    "take_over": 700
+                },
+                "button": {
+                    "x_coord": 890,
+                    "y_coord": 375,
+                    "width": 75,
+                    "height": 50,
+                    "name": "Cocaine",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 34
+            },
+            {
+                "property_name": "Letters",
+                "set": "Mail",
+                "image_name": "properties/property_36.png",
+                "cost": {
+                    "upgrade_cost": 100,
+                    "degrade_refund": 50,
+                    "purchase_cost": 175,
+                    "mortgage": 90
+                },
+                "fee": {
+                    "base": 18,
+                    "set": 35,
+                    "control_1": 90,
+                    "control_2": 250,
+                    "control_3": 550,
+                    "control_4": 650,
+                    "take_over": 750
+                },
+                "button": {
+                    "x_coord": 890,
+                    "y_coord": 275,
+                    "width": 75,
+                    "height": 50,
+                    "name": "Letters",
+                    "dimmed_image_name": "",
+                    "image_name": ""
+                },
+                "board_order": 36
+            },
+            {
+                "property_name": "Packages",
+                "set": "Mail",
+                "image_name": "properties/property_39.png",
+                "cost": {
+                    "upgrade_cost": 100,
+                    "degrade_refund": 50,
+                    "purchase_cost": 200,
+                    "mortgage": 100
+                },
+                "fee": {
+                    "base": 25,
+                    "set": 50,
+                    "control_1": 100,
+                    "control_2": 300,
+                    "control_3": 700,
+                    "control_4": 850,
+                    "take_over": 1000
+                },
+                "button": {
+                    "x_coord": 890,
+                    "y_coord": 125,
+                    "width": 75,
+                    "height": 50,
+                    "name": "Packages",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                },
+                "board_order": 39
+            }
+        ],
+        "weapons": {
+            "weapon_types": [
+                {
+                    "name": "fork",
+                    "damage": 5,
+                    "image_name": "weapon_cards/fork.png"
+                },
+                {
+                    "name": "shaving_razor",
+                    "damage": 10,
+                    "image_name": "weapon_cards/shaving_razor.png"
+                },
+                {
+                    "name": "baseball_bat",
+                    "damage": 15,
+                    "image_name": "weapon_cards/baseball_bat.png"
+                },
+                {
+                    "name": "pistol",
+                    "damage": 40,
+                    "image_name": "weapon_cards/pistol.png"
+                },
+                {
+                    "name": "none",
+                    "damage": 0,
+                    "image_name": "weapon_cards/no_weapon.png"
+                }
+            ],
+            "weapon_stacks": [
+                {
+                    "board_order": 7,
+                    "x_coord": 540,
+                    "y_coord": 50,
+                    "width": 50,
+                    "height": 75
+                },
+                {
+                    "board_order": 17,
+                    "x_coord": 365,
+                    "y_coord": 425,
+                    "width": 75,
+                    "height": 50
+                },
+                {
+                    "board_order": 22,
+                    "x_coord": 490,
+                    "y_coord": 575,
+                    "width": 50,
+                    "height": 75
+                },
+                {
+                    "board_order": 32,
+                    "x_coord": 890,
+                    "y_coord": 475,
+                    "width": 75,
+                    "height": 50
+                },
+                {
+                    "board_order": 38,
+                    "x_coord": 890,
+                    "y_coord": 175,
+                    "width": 75,
+                    "height": 50
+                }
+            ]
+        },
+        "foods": {
+            "food_stacks": [
+                {
+                    "board_order": 2,
+                    "x_coord": 790,
+                    "y_coord": 50,
+                    "width": 50,
+                    "height": 75
+                },
+                {
+                    "board_order": 25,
+                    "x_coord": 790,
+                    "y_coord": 50,
+                    "width": 50,
+                    "height": 75
+                },
+                {
+                    "board_order": 37,
+                    "x_coord": 790,
+                    "y_coord": 50,
+                    "width": 50,
+                    "height": 75
+                }
+            ],
+            "food_types": [
+                {
+                    "name": "instant_ramen",
+                    "hp": 5,
+                    "image_name": "food_cards/instant_ramen.png"
+                },
+                {
+                    "name": "pizza",
+                    "hp": 10,
+                    "image_name": "food_cards/pizza.png"
+                },
+                {
+                    "name": "burger",
+                    "hp": 15,
+                    "image_name": "food_cards/burger.png"
+                },
+                {
+                    "name": "steak",
+                    "hp": 20,
+                    "image_name": "food_cards/steak.png"
+                },
+                {
+                    "name": "none",
+                    "hp": 0,
+                    "image_name": "food_cards/no_food.png"
+                }
+            ]
+        },
+        "action_spaces": [
+            {
+                "name": "bribe_money",
+                "board_order": 5,
+                "x_coord": 640,
+                "y_coord": 50,
+                "width": 50,
+                "height": 75,
+                "take_money": 50,
+                "give_money": 0,
+                "take_hp": 0,
+                "new_board_order": 5
+            },
+            {
+                "name": "warden's_favor",
+                "board_order": 12,
+                "x_coord": 365,
+                "y_coord": 175,
+                "width": 75,
+                "height": 50,
+                "take_money": 0,
+                "give_money": 75,
+                "take_hp": 0,
+                "new_board_order": 12
+            },
+            {
+                "name": "bribe_money",
+                "board_order": 15,
+                "x_coord": 365,
+                "y_coord": 325,
+                "width": 75,
+                "height": 50,
+                "take_money": 50,
+                "give_money": 0,
+                "take_hp": 0,
+                "new_board_order": 15
+            },
+            {
+                "name": "prison_fight",
+                "board_order": 27,
+                "x_coord": 740,
+                "y_coord": 575,
+                "width": 50,
+                "height": 75,
+                "take_money": 0,
+                "give_money": 0,
+                "take_hp": 10,
+                "new_board_order": 27
+            },
+            {
+                "name": "warden's_favor",
+                "board_order": 35,
+                "x_coord": 890,
+                "y_coord": 325,
+                "width": 75,
+                "height": 50,
+                "take_money": 0,
+                "give_money": 75,
+                "take_hp": 0,
+                "new_board_order": 35
+            },
+            {
+                "name": "start",
+                "board_order": 0,
+                "x_coord": 890,
+                "y_coord": 50,
+                "width": 75,
+                "height": 75,
+                "take_money": 0,
+                "give_money": 100,
+                "take_hp": 0,
+                "new_board_order": 0
+            },
+            {
+                "name": "warden's_office",
+                "board_order": 10,
+                "x_coord": 365,
+                "y_coord": 50,
+                "width": 75,
+                "height": 75,
+                "take_money": 0,
+                "give_money": 0,
+                "take_hp": 0,
+                "new_board_order": 10
+            },
+            {
+                "name": "court_yard",
+                "board_order": 20,
+                "x_coord": 365,
+                "y_coord": 575,
+                "width": 75,
+                "height": 75,
+                "take_money": 0,
+                "give_money": 0,
+                "take_hp": 0,
+                "new_board_order": 20
+            },
+            {
+                "name": "go_to_warden",
+                "board_order": 30,
+                "x_coord": 890,
+                "y_coord": 575,
+                "width": 75,
+                "height": 75,
+                "take_money": 0,
+                "give_money": 0,
+                "take_hp": 0,
+                "new_board_order": 10
+            }
+        ],
+        "team_info": [
+            {
+                "name": "stripes_info",
+                "image_name": "game_screen/faction_info/stripes.png",
+                "x_coord": 1000,
+                "y_coord": 505,
+                "dynamic_images": [
+                    {
+                        "name": "stripes_1",
+                        "images": [],
+                        "image_path": "game_screen/faction_info/",
+                        "x_coord": 1011,
+                        "y_coord": 517,
+                        "width": 80,
+                        "height": 100
+                    },
+                    {
+                        "name": "stripes_2",
+                        "images": [],
+                        "image_path": "game_screen/faction_info/",
+                        "x_coord": 1110,
+                        "y_coord": 517,
+                        "width": 80,
+                        "height": 100
+                    },
+                    {
+                        "name": "stripes_3",
+                        "images": [],
+                        "image_path": "game_screen/faction_info/",
+                        "x_coord": 1209,
+                        "y_coord": 517,
+                        "width": 80,
+                        "height": 100
+                    },
+                    {
+                        "name": "stripes_1_health",
+                        "images": [],
+                        "image_path": "numbers/small/",
+                        "x_coord": 1038,
+                        "y_coord": 571,
+                        "width": 10,
+                        "height": 10
+                    },
+                    {
+                        "name": "stripes_1_money",
+                        "images": [],
+                        "image_path": "numbers/small/",
+                        "x_coord": 1024,
+                        "y_coord": 545,
+                        "width": 10,
+                        "height": 10
+                    },
+                    {
+                        "name": "stripes_2_health",
+                        "images": [],
+                        "image_path": "numbers/small/",
+                        "x_coord": 1137,
+                        "y_coord": 571,
+                        "width": 10,
+                        "height": 10
+                    },
+                    {
+                        "name": "stripes_2_money",
+                        "images": [],
+                        "image_path": "numbers/small/",
+                        "x_coord": 1123,
+                        "y_coord": 545,
+                        "width": 10,
+                        "height": 10
+                    },
+                    {
+                        "name": "stripes_3_health",
+                        "images": [],
+                        "image_path": "numbers/small/",
+                        "x_coord": 1236,
+                        "y_coord": 571,
+                        "width": 10,
+                        "height": 10
+                    },
+                    {
+                        "name": "stripes_3_money",
+                        "images": [],
+                        "image_path": "numbers/small/",
+                        "x_coord": 1222,
+                        "y_coord": 545,
+                        "width": 10,
+                        "height": 10
+                    }
+                ],
+                "buttons": []
+            },
+            {
+                "name": "solids_info",
+                "image_name": "game_screen/faction_info/solids.png",
+                "x_coord": 1000,
+                "y_coord": 355,
+                "dynamic_images": [
+                    {
+                        "name": "solids_1",
+                        "images": [],
+                        "image_path": "game_screen/faction_info/",
+                        "x_coord": 1011,
+                        "y_coord": 367,
+                        "width": 80,
+                        "height": 100
+                    },
+                    {
+                        "name": "solids_2",
+                        "images": [],
+                        "image_path": "game_screen/faction_info/",
+                        "x_coord": 1110,
+                        "y_coord": 367,
+                        "width": 80,
+                        "height": 100
+                    },
+                    {
+                        "name": "solids_3",
+                        "images": [],
+                        "image_path": "game_screen/faction_info/",
+                        "x_coord": 1209,
+                        "y_coord": 367,
+                        "width": 80,
+                        "height": 100
+                    },
+                    {
+                        "name": "solids_1_health",
+                        "images": [],
+                        "image_path": "numbers/small/",
+                        "x_coord": 1037,
+                        "y_coord": 421,
+                        "width": 10,
+                        "height": 10
+                    },
+                    {
+                        "name": "solids_1_money",
+                        "images": [],
+                        "image_path": "numbers/small/",
+                        "x_coord": 1023,
+                        "y_coord": 395,
+                        "width": 10,
+                        "height": 10
+                    },
+                    {
+                        "name": "solids_2_health",
+                        "images": [],
+                        "image_path": "numbers/small/",
+                        "x_coord": 1136,
+                        "y_coord": 421,
+                        "width": 10,
+                        "height": 10
+                    },
+                    {
+                        "name": "solids_2_money",
+                        "images": [],
+                        "image_path": "numbers/small/",
+                        "x_coord": 1122,
+                        "y_coord": 395,
+                        "width": 10,
+                        "height": 10
+                    },
+                    {
+                        "name": "solids_3_health",
+                        "images": [],
+                        "image_path": "numbers/small/",
+                        "x_coord": 1235,
+                        "y_coord": 421,
+                        "width": 10,
+                        "height": 10
+                    },
+                    {
+                        "name": "solids_3_money",
+                        "images": [],
+                        "image_path": "numbers/small/",
+                        "x_coord": 1221,
+                        "y_coord": 395,
+                        "width": 10,
+                        "height": 10
+                    }
+                ],
+                "buttons": []
+            }
+        ],
+        "info_cards": {
+            "name": "info_cards",
+            "image_name": "game_screen/info_cards_background.png",
+            "x_coord": 1000,
+            "y_coord": 50,
+            "dynamic_images": [
+                {
+                    "name": "property",
+                    "images": [
+                        "properties/1.png"
+                    ],
+                    "image_path": "properties/",
+                    "x_coord": 1000,
+                    "y_coord": 50,
+                    "width": 170,
+                    "height": 295
+                },
+                {
+                    "name": "weapon",
+                    "images": [
+                        "weapon_cards/no_weapon.png"
+                    ],
+                    "image_path": "weapon_cards/",
+                    "x_coord": 1180,
+                    "y_coord": 198,
+                    "width": 120,
+                    "height": 148
+                },
+                {
+                    "name": "food",
+                    "images": [
+                        "food_cards/no_food.png"
+                    ],
+                    "image_path": "food_cards/",
+                    "x_coord": 1180,
+                    "y_coord": 50,
+                    "width": 120,
+                    "height": 148
+                }
+            ],
+            "buttons": []
+        },
+        "dice": [
+            {
+                "name": "die_1",
+                "image": "game_screen/dice/2.png",
+                "image_path": "game_screen/dice/",
+                "x_coord": 35,
+                "y_coord": 115,
+                "button": {
+                    "x_coord": 35,
+                    "y_coord": 115,
+                    "width": 150,
+                    "height": 150,
+                    "name": "die_1",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                }
+            },
+            {
+                "name": "die_2",
+                "image": "game_screen/dice/3.png",
+                "image_path": "game_screen/dice/",
+                "x_coord": 185,
+                "y_coord": 115,
+                "button": {
+                    "x_coord": 185,
+                    "y_coord": 115,
+                    "width": 150,
+                    "height": 150,
+                    "name": "die_2",
+                    "image_name": "",
+                    "dimmed_image_name": ""
+                }
+            }
+        ],
+        "players": [
+            {
+                "name": "player_1",
+                "x_coord": 913,
+                "y_coord": 72,
+                "small_image": "players/small/1.png",
+                "medium_image": "players/medium/1.png",
+                "large_image": "players/large/1.png",
+                "money": 750,
+                "health": 100
+            },
+            {
+                "name": "player_2",
+                "x_coord": 913,
+                "y_coord": 72,
+                "small_image": "players/small/2.png",
+                "medium_image": "players/medium/2.png",
+                "large_image": "players/large/2.png",
+                "money": 750,
+                "health": 100
+            },
+            {
+                "name": "player_3",
+                "x_coord": 913,
+                "y_coord": 72,
+                "small_image": "players/small/3.png",
+                "medium_image": "players/medium/3.png",
+                "large_image": "players/large/3.png",
+                "money": 750,
+                "health": 100
+            },
+            {
+                "name": "player_4",
+                "x_coord": 913,
+                "y_coord": 72,
+                "small_image": "players/small/4.png",
+                "medium_image": "players/medium/4.png",
+                "large_image": "players/large/4.png",
+                "money": 750,
+                "health": 100
+            },
+            {
+                "name": "player_5",
+                "x_coord": 913,
+                "y_coord": 72,
+                "small_image": "players/small/5.png",
+                "medium_image": "players/medium/5.png",
+                "large_image": "players/large/5.png",
+                "money": 750,
+                "health": 100
+            },
+            {
+                "name": "player_6",
+                "x_coord": 913,
+                "y_coord": 72,
+                "small_image": "players/small/6.png",
+                "medium_image": "players/medium/6.png",
+                "large_image": "players/large/6.png",
+                "money": 750,
+                "health": 100
+            }
+        ]
+    }
+}
