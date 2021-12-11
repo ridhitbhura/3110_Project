@@ -8,25 +8,6 @@ let draw_img img_name x_coord y_coord =
   let g = Graphic_image.of_image img in
   Graphics.draw_image g x_coord y_coord
 
-(* let dimension_check mouse img_dim x y = if fst mouse > x - (fst
-   img_dim / 2) && fst mouse < x + (fst img_dim / 2) && snd mouse > y -
-   (snd img_dim / 2) && snd mouse > y - (snd img_dim / 2) then true else
-   false
-
-   let rec is_dice_clicked img_dim game = let dice1_x =
-   game.game_screen.dice.dice1.x_coord in let dice1_y =
-   game.game_screen.dice.dice1.y_coord in let dice2_x =
-   game.game_screen.dice.dice2.x_coord in let dice2_y =
-   game.game_screen.dice.dice2.y_coord in if button_down () then if
-   dimension_check (mouse_pos ()) img_dim dice1_x dice1_y ||
-   dimension_check (mouse_pos ()) img_dim dice2_x dice2_y then handle2 0
-   else is_dice_clicked img_dim game else is_dice_clicked img_dim game
-
-   let draw_dice_roll img_dim game = (* let x =
-   game.game_screen.dice.x_coord + 50 in let y =
-   game.game_screen.dice.y_coord + 50 in *) let z = is_dice_clicked
-   img_dim game in let img = string_of_int z in draw_string img *)
-
 let draw_button b =
   match Button.image b with
   | None -> ()
@@ -35,12 +16,14 @@ let draw_button b =
       let y = Button.y_coord b in
       draw_img img x y
 
-let rec draw_buttons lst =
+let rec map_draw draw lst =
   match lst with
   | [] -> ()
   | h :: t ->
-      draw_button h;
-      draw_buttons t
+      draw h;
+      map_draw draw t
+
+let draw_buttons lst = map_draw draw_button lst
 
 let rec draw_dynamic_image_aux x_coord y_coord width = function
   | [] -> ()
@@ -55,12 +38,7 @@ let draw_dynamic_image d =
   let images = Dynamic_image.images d in
   draw_dynamic_image_aux x_coord y_coord width images
 
-let rec draw_dynamic_images lst =
-  match lst with
-  | [] -> ()
-  | h :: t ->
-      draw_dynamic_image h;
-      draw_dynamic_images t
+let draw_dynamic_images lst = map_draw draw_dynamic_image lst
 
 let draw_subscreen p =
   let img = Subscreen.image p in
@@ -75,12 +53,7 @@ let draw_subscreen p =
     draw_dynamic_images dynamic_images)
   else ()
 
-let rec draw_subscreens lst =
-  match lst with
-  | [] -> ()
-  | h :: t ->
-      draw_subscreen h;
-      draw_subscreens t
+let draw_subscreens lst = map_draw draw_subscreen lst
 
 let initialize_window hs =
   open_graph "";
@@ -104,12 +77,7 @@ let draw_die die =
   let y = Die.y_coord die in
   draw_img img x y
 
-let rec draw_dice dice =
-  match dice with
-  | [] -> ()
-  | h :: t ->
-      draw_die h;
-      draw_dice t
+let draw_dice dice = map_draw draw_die dice
 
 let draw_game_screen gs =
   Graphics.auto_synchronize false;

@@ -35,6 +35,12 @@ val images : t -> Dynamic_image.t list
 val buttons : t -> Button.t list
 (**[buttons s] is the list of buttons on the [s].*)
 
+val replace_buttons : t -> Button.t list -> t
+(**[replace_buttons s btns] is [s] with all of it's buttons replaced by
+   [btns].*)
+
+val replace_dynamic_images : t -> Dynamic_image.t list -> t
+
 val get_subscreen_from_json : Yojson.Basic.t -> t
 
 val get_subscreens_from_json : Yojson.Basic.t -> t list

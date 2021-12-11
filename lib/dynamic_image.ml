@@ -10,6 +10,8 @@ type t = {
   height : int;
 }
 
+let name d = d.name
+
 let x_coord d = d.x_coord
 
 let y_coord d = d.y_coord
@@ -19,6 +21,8 @@ let width d = d.width
 let height d = d.height
 
 let images d = d.images
+
+let clear_images d = { d with images = [] }
 
 let add_image d x =
   {

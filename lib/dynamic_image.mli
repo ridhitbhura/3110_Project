@@ -4,6 +4,8 @@ type t
    images. Each image inside the collection has the same width and
    height.*)
 
+val name : t -> string
+
 val x_coord : t -> int
 (**[x_coord i] gives the x_coord of the dynamic image.*)
 
@@ -18,6 +20,8 @@ val height : t -> int
 
 val images : t -> string list
 (**[images i] gives the list of images stored in the dynamic image.*)
+
+val clear_images : t -> t
 
 val add_image : t -> int -> t
 (**[add_image dynamic_image x] adds the image associated with integer

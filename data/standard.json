@@ -35,30 +35,12 @@
                 "dynamic_images": [],
                 "buttons": [
                     {
-                        "name": "one_player_button",
-                        "image_name": "home_screen/buttons/1.png",
-                        "dimmed_image_name": "home_screen/buttons/dim_1.png",
-                        "width": 50,
-                        "height": 50,
-                        "x_coord": 440,
-                        "y_coord": 330
-                    },
-                    {
                         "name": "two_players_button",
                         "image_name": "home_screen/buttons/2.png",
                         "dimmed_image_name": "home_screen/buttons/dim_2.png",
                         "width": 50,
                         "height": 50,
-                        "x_coord": 520,
-                        "y_coord": 330
-                    },
-                    {
-                        "name": "three_players_button",
-                        "image_name": "home_screen/buttons/3.png",
-                        "dimmed_image_name": "home_screen/buttons/dim_3.png",
-                        "width": 50,
-                        "height": 50,
-                        "x_coord": 600,
+                        "x_coord": 500,
                         "y_coord": 330
                     },
                     {
@@ -67,16 +49,7 @@
                         "dimmed_image_name": "home_screen/buttons/dim_4.png",
                         "width": 50,
                         "height": 50,
-                        "x_coord": 680,
-                        "y_coord": 330
-                    },
-                    {
-                        "name": "five_players_button",
-                        "image_name": "home_screen/buttons/5.png",
-                        "dimmed_image_name": "home_screen/buttons/dim_5.png",
-                        "width": 50,
-                        "height": 50,
-                        "x_coord": 760,
+                        "x_coord": 640,
                         "y_coord": 330
                     },
                     {
@@ -85,7 +58,7 @@
                         "dimmed_image_name": "home_screen/buttons/dim_6.png",
                         "width": 50,
                         "height": 50,
-                        "x_coord": 840,
+                        "x_coord": 780,
                         "y_coord": 330
                     },
                     {
@@ -106,7 +79,7 @@
                 "y_coord": 225,
                 "dynamic_images": [
                     {
-                        "name": "number",
+                        "name": "select_character_number",
                         "images": [
                             "numbers/big/1.png"
                         ],
@@ -190,7 +163,7 @@
                 "y_coord": 225,
                 "dynamic_images": [
                     {
-                        "name": "player",
+                        "name": "first_player_slot",
                         "images": [],
                         "image_path": "players/medium/",
                         "x_coord": 410,
@@ -199,7 +172,7 @@
                         "height": 60
                     },
                     {
-                        "name": "player",
+                        "name": "second_player_slot",
                         "images": [],
                         "image_path": "players/medium/",
                         "width": 60,
@@ -208,7 +181,7 @@
                         "y_coord": 290
                     },
                     {
-                        "name": "player",
+                        "name": "third_player_slot",
                         "images": [],
                         "image_path": "players/medium/",
                         "width": 60,
@@ -217,7 +190,7 @@
                         "y_coord": 290
                     },
                     {
-                        "name": "player",
+                        "name": "fourth_player_slot",
                         "images": [],
                         "image_path": "players/medium/",
                         "width": 60,
@@ -226,7 +199,7 @@
                         "y_coord": 290
                     },
                     {
-                        "name": "player",
+                        "name": "fifth_player_slot",
                         "images": [],
                         "image_path": "players/medium/",
                         "width": 60,
@@ -235,7 +208,7 @@
                         "y_coord": 290
                     },
                     {
-                        "name": "player",
+                        "name": "sixth_player_slot",
                         "images": [],
                         "image_path": "players/medium/",
                         "width": 60,

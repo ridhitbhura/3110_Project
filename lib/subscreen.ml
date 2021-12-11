@@ -38,6 +38,10 @@ let images p = p.images
 
 let buttons p = p.buttons
 
+let replace_buttons p btns = { p with buttons = btns }
+
+let replace_dynamic_images p images = { p with images }
+
 let get_subscreen_from_json json =
   {
     name = json |> member "name" |> to_string;
