@@ -2,9 +2,9 @@ let start_button = "start_button"
 
 let credits_button = "credits_button"
 
-let number_players_popup = "number_players"
+let number_players_screen = "number_players"
 
-let select_character_popup = "select_character"
+let select_character_screen = "select_character"
 
 let two_players_button = "two_players_button"
 

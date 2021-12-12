@@ -62,57 +62,84 @@ let get_home_screen_from_json json =
     subscreens = SM.of_lst subscreen_assoc_lst SM.empty;
   }
 
-let dim_button_response hs btn_key subscreen_key =
-  let subscreen = SM.find subscreen_key hs.subscreens in
+(**[response_to_num_players_button hs btn_key subscreen_key number] is
+   the home screen updated to a user selecting the number of players.
+   [number] is the number of players selected. [btn_key] is the name of
+   the button that was selected. The function first finds the number
+   players subscreen. It then gets all buttons from that subcreen, and
+   then finds the button that was clicked. It dims that buttons,
+   reactivates all other buttons, and adds these buttons back to the
+   subscreen.*)
+let response_to_num_players_button hs btn_key number =
+  let subscreen =
+    SM.find Constants.number_players_screen hs.subscreens
+  in
   let btn_map = Subscreen.buttons subscreen in
   let button = SM.find btn_key btn_map in
   let dimmed_btn = Button.dim button in
   let reactivated_buttons = SM.map (fun v -> Button.undim v) btn_map in
   let new_btns = SM.add btn_key dimmed_btn reactivated_buttons in
   let new_sub = Subscreen.replace_buttons subscreen new_btns in
-  let new_subscreens = SM.add subscreen_key new_sub hs.subscreens in
-  { hs with subscreens = new_subscreens }
+  let new_subscreens =
+    SM.add Constants.number_players_screen new_sub hs.subscreens
+  in
+  NewHS
+    ( { hs with subscreens = new_subscreens; number_players = number },
+      false )
 
-let new_response_to_num_players_button hs btn_key subscreen_key number =
-  let dimmed_btn_hs = dim_button_response hs btn_key subscreen_key in
-  { dimmed_btn_hs with number_players = number }
-
-let new_response_to_start_button hs =
-  let s = SM.find Constants.number_players_popup hs.subscreens in
+(**[response_to_start_button hs] is the home screen updated in response
+   to a user clicking the start button. Namely, the subscreen which asks
+   the users how many players there are is activated.*)
+let response_to_start_button hs =
+  let s = SM.find Constants.number_players_screen hs.subscreens in
   let activated_s = Subscreen.activate s in
   let new_screens =
-    SM.add Constants.number_players_popup activated_s hs.subscreens
+    SM.add Constants.number_players_screen activated_s hs.subscreens
   in
-  { hs with subscreens = new_screens }
+  NewHS ({ hs with subscreens = new_screens }, false)
 
-let new_response_to_okay_button hs =
+(**[response_to_num_players_okay_button hs] is the home screen updated
+   in response to a user clicked the "okay" button on the number players
+   subscreen. If a user has not yet selected the number of players, the
+   home screen remains the same. If a user previously selected some
+   number of players, the home screen deactivates the number of players
+   screen and activates the select character screen. *)
+let response_to_num_players_okay_button hs =
   match hs.number_players = 0 with
   | false ->
       let num_players_screen =
-        SM.find Constants.number_players_popup hs.subscreens
+        SM.find Constants.number_players_screen hs.subscreens
       in
       let deactivated_num_player =
         Subscreen.deactivate num_players_screen
       in
       let select_character_screen =
-        SM.find Constants.select_character_popup hs.subscreens
+        SM.find Constants.select_character_screen hs.subscreens
       in
       let activated_select_character =
         Subscreen.activate select_character_screen
       in
       let subscreens' =
-        SM.add Constants.select_character_popup
+        SM.add Constants.select_character_screen
           activated_select_character hs.subscreens
       in
       let subscreens'' =
-        SM.add Constants.number_players_popup deactivated_num_player
+        SM.add Constants.number_players_screen deactivated_num_player
           subscreens'
       in
-      { hs with subscreens = subscreens'' }
-  | true -> hs
+      NewHS ({ hs with subscreens = subscreens'' }, true)
+  | true -> NewHS (hs, false)
 
-let new_response_to_character_button hs btn_key subscreen_key =
-  let subscreen = SM.find subscreen_key hs.subscreens in
+(**[response_to_character_button hs] is the home screen updated in
+   response to a user choosing a certain character to play as. The
+   function first finds the character button pressed within the
+   character selection subscreen. That button is then dimmed. The rest
+   of the character buttons are reactivated only if they have not been
+   previously selected by other players.*)
+let response_to_character_button hs btn_key =
+  let subscreen =
+    SM.find Constants.select_character_screen hs.subscreens
+  in
   let btn_map = Subscreen.buttons subscreen in
   let button = SM.find btn_key btn_map in
   let dimmed_btn = Button.dim button in
@@ -128,14 +155,27 @@ let new_response_to_character_button hs btn_key subscreen_key =
     SM.add btn_key dimmed_btn reactivated_unselected_chars
   in
   let new_sub = Subscreen.replace_buttons subscreen new_btns in
-  let new_subscreens = SM.add subscreen_key new_sub hs.subscreens in
-  {
-    hs with
-    subscreens = new_subscreens;
-    current_character_selected = btn_key;
-  }
+  let new_subscreens =
+    SM.add Constants.select_character_screen new_sub hs.subscreens
+  in
+  NewHS
+    ( {
+        hs with
+        subscreens = new_subscreens;
+        current_character_selected = btn_key;
+      },
+      false )
 
-let new_response_to_char_okay_button hs =
+(**[response_to_char_okay_button hs] is the home screen updated in
+   response to a player selecting okay on the character selection
+   subscreen. The function first adds the character the player selected
+   to the list of selected characters. If the number of selected
+   character is equal to the number of players, all players have
+   selected a character and we must proceed to game screen. Else, we
+   must get the select character subscreen. We must update the dynamic
+   image which displays the Player number (eg. Player 1 vs Player 2).
+   And we re-add the character selection subscreen. *)
+let response_to_char_okay_button hs =
   let selected_chars =
     hs.current_character_selected :: hs.selected_characters
   in
@@ -143,7 +183,7 @@ let new_response_to_char_okay_button hs =
   | true -> ProceedToGS
   | false ->
       let subscreen =
-        SM.find Constants.select_character_popup hs.subscreens
+        SM.find Constants.select_character_screen hs.subscreens
       in
       let d_image_map = Subscreen.images subscreen in
       let number_chars_images =
@@ -161,7 +201,7 @@ let new_response_to_char_okay_button hs =
         Subscreen.replace_images subscreen new_d_images
       in
       let new_subscreens =
-        SM.add Constants.select_character_popup new_subscreen
+        SM.add Constants.select_character_screen new_subscreen
           hs.subscreens
       in
       NewHS
@@ -172,13 +212,20 @@ let new_response_to_char_okay_button hs =
           },
           true )
 
-let new_check_button_clicked_aux bmap (x, y) =
+(**[check_button_clicked button_map coords] searched the button map to
+   determine if a button was clicked. If no button was clicked, it is
+   [None]. Else, it is [Some b], where b is the button that was clicked.*)
+let check_button_clicked bmap (x, y) =
   SM.fold
     (fun n b init ->
       if Button.is_clicked b (x, y) then Some n else init)
     bmap None
 
-let new_get_buttons hs =
+(**[get_buttons hs] are the currently active buttons. If there are no
+   active subcreens, then the active buttons are simply the main buttons
+   on the home screen (Start, Credits). If there is an active subscreen,
+   the active buttons are all the buttons on that subscreen.*)
+let get_buttons hs =
   let main_buttons = hs.buttons in
   let subscreens = hs.subscreens in
   let active_subscreen =
@@ -191,62 +238,33 @@ let new_get_buttons hs =
   | Some s -> Subscreen.buttons s
 
 let respond_to_click hs (x, y) =
-  let buttons = new_get_buttons hs in
-  let clicked_button = new_check_button_clicked_aux buttons (x, y) in
+  let buttons = get_buttons hs in
+  let clicked_button = check_button_clicked buttons (x, y) in
   match clicked_button with
   | None -> NoButtonClicked
   | Some btn_name -> (
       match btn_name with
-      | s when s = Constants.start_button ->
-          NewHS (new_response_to_start_button hs, false)
+      | s when s = Constants.start_button -> response_to_start_button hs
       | s when s = Constants.two_players_button ->
-          print_int 2;
-          NewHS
-            ( new_response_to_num_players_button hs btn_name
-                Constants.number_players_popup 2,
-              false )
+          response_to_num_players_button hs btn_name 2
       | s when s = Constants.four_players_button ->
-          NewHS
-            ( new_response_to_num_players_button hs btn_name
-                Constants.number_players_popup 4,
-              false )
+          response_to_num_players_button hs btn_name 4
       | s when s = Constants.six_players_button ->
-          NewHS
-            ( new_response_to_num_players_button hs btn_name
-                Constants.number_players_popup 6,
-              false )
+          response_to_num_players_button hs btn_name 6
       | s when s = Constants.num_players_okay_button ->
-          NewHS (new_response_to_okay_button hs, true)
+          response_to_num_players_okay_button hs
       | s when s = Constants.character_one_button ->
-          NewHS
-            ( new_response_to_character_button hs btn_name
-                Constants.select_character_popup,
-              false )
+          response_to_character_button hs btn_name
       | s when s = Constants.character_two_button ->
-          NewHS
-            ( new_response_to_character_button hs btn_name
-                Constants.select_character_popup,
-              false )
+          response_to_character_button hs btn_name
       | s when s = Constants.character_three_button ->
-          NewHS
-            ( new_response_to_character_button hs btn_name
-                Constants.select_character_popup,
-              false )
+          response_to_character_button hs btn_name
       | s when s = Constants.character_four_button ->
-          NewHS
-            ( new_response_to_character_button hs btn_name
-                Constants.select_character_popup,
-              false )
+          response_to_character_button hs btn_name
       | s when s = Constants.character_five_button ->
-          NewHS
-            ( new_response_to_character_button hs btn_name
-                Constants.select_character_popup,
-              false )
+          response_to_character_button hs btn_name
       | s when s = Constants.character_six_button ->
-          NewHS
-            ( new_response_to_character_button hs btn_name
-                Constants.select_character_popup,
-              false )
+          response_to_character_button hs btn_name
       | s when s = Constants.select_char_okay_button ->
-          new_response_to_char_okay_button hs
+          response_to_char_okay_button hs
       | _ -> failwith "TODO")

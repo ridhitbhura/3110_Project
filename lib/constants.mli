@@ -6,9 +6,9 @@ val start_button : string
 
 val credits_button : string
 
-val number_players_popup : string
+val number_players_screen : string
 
-val select_character_popup : string
+val select_character_screen : string
 
 val two_players_button : string
 
