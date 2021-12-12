@@ -158,6 +158,9 @@ let rec find_player_number plyrs_to_chars plyr =
       if Player.character plyr = c then Some p
       else find_player_number t plyr
 
+(*there's some complicated stuff going on here. to put it simply, all
+  players module are either given a player number or they were not
+  selected, meaning they are deactivated.*)
 let initialize gs plyrs_to_chars =
   let initialized_players =
     IM.mapi
@@ -171,6 +174,27 @@ let initialize gs plyrs_to_chars =
 
 type response =
   | EndGame
-  | NewGs of t
+  | NewGS of t
 
-(* let respond_to_click gs (x,y) = *)
+(*currently only gets dice buttons*)
+let get_dice_buttons gs = List.map (fun d -> Die.button d) gs.dice
+
+let check_dice_button_clicked buttons (x, y) =
+  List.find_opt (fun b -> Button.is_clicked b (x, y)) buttons
+
+let respond_to_dice_click gs =
+  match gs.dice with
+  | [ h; t ] ->
+      let first_roll = Die.roll_die h in
+      let new_first_die = Die.new_image h first_roll in
+      let second_roll = Die.roll_die t in
+      let new_second_die = Die.new_image t second_roll in
+      NewGS { gs with dice = [ new_first_die; new_second_die ] }
+  | _ -> failwith "precondition violation"
+
+let respond_to_click gs (x, y) =
+  let buttons = get_dice_buttons gs in
+  let clicked_button = check_dice_button_clicked buttons (x, y) in
+  match clicked_button with
+  | None -> NewGS gs
+  | Some _ -> respond_to_dice_click gs

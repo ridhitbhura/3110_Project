@@ -29,8 +29,16 @@ let rec update_home_screen hs =
       update_home_screen new_hs
   | ProceedToGS plyrs_to_chars ->
       let new_gs = Game_screen.initialize gs plyrs_to_chars in
-      Gui.draw_game_screen new_gs
-(* and update_game_screen gs = let coords = Gui.mouse_click () in *)
+      Gui.draw_game_screen new_gs;
+      update_game_screen gs
+
+and update_game_screen gs =
+  let coords = Gui.mouse_click () in
+  match Game_screen.respond_to_click gs coords with
+  | EndGame -> ()
+  | NewGS new_gs ->
+      Gui.draw_game_screen new_gs;
+      update_game_screen new_gs
 
 (**[run_game _] initializes a new empty Gui window, draws the home
    screen, and continually updates the home screen.*)

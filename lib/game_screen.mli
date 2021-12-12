@@ -55,6 +55,6 @@ val initialize : t -> (int * string) list -> t
 
 type response =
   | EndGame
-  | NewGs of t
+  | NewGS of t
 
-(* val respond_to_click : t -> int * int -> response *)
+val respond_to_click : t -> int * int -> response
