@@ -1,7 +1,9 @@
 type t
 (**The abstract type representing an action space, a space on the game
    board that may give a player money, take money, take health, or
-   transport the player to a new board location. *)
+   transport the player to a new board location. On the Monopoly board,
+   this corresponds to the luxury tax location, go to jail location, and
+   more.*)
 
 val take_money : t -> int
 (**[take_money a] is the amount of money this action space takes from a
@@ -22,10 +24,10 @@ val new_board_location : t -> int
 val board_order : t -> int
 (**[board_order a] gives the location of this [a] on the game board.*)
 
-val get_action_space_from_json : Yojson.Basic.t -> t
+val get_action_space_from_json : Yojson.Basic.t -> int * t
 (**[get_action_space_from_json js] is the action space that [js]
-   represents.*)
+   represents along with its identifier, its board location.*)
 
-val get_action_spaces_from_json : Yojson.Basic.t -> t list
+val get_action_spaces_from_json : Yojson.Basic.t -> (int * t) list
 (**[get_action_space_from_json js] is a list of action space that [js]
-   represents.*)
+   represents along with their identifiers, their board locations.*)

@@ -296,7 +296,7 @@
                 "y_coord": 175,
                 "dynamic_images": [
                     {
-                        "name": "property",
+                        "name": "property_action_display",
                         "images": [],
                         "image_path": "properties/",
                         "x_coord": 495,
@@ -342,7 +342,7 @@
                 "y_coord": 175,
                 "dynamic_images": [
                     {
-                        "name": "property",
+                        "name": "buy_property_display",
                         "images": [],
                         "image_path": "properties/",
                         "x_coord": 495,
@@ -438,7 +438,7 @@
                 "y_coord": 225,
                 "dynamic_images": [
                     {
-                        "name": "player",
+                        "name": "bankrupt_player",
                         "images": [],
                         "image_path": "players/large/",
                         "x_coord": 445,
@@ -456,7 +456,7 @@
                 "y_coord": 225,
                 "dynamic_images": [
                     {
-                        "name": "player",
+                        "name": "death_player",
                         "images": [],
                         "image_path": "players/large/",
                         "x_coord": 445,
@@ -474,7 +474,7 @@
                 "y_coord": 225,
                 "dynamic_images": [
                     {
-                        "name": "player",
+                        "name": "new_turn_player",
                         "images": [],
                         "image_path": "players/large/",
                         "x_coord": 445,
@@ -492,7 +492,7 @@
                 "y_coord": 220,
                 "dynamic_images": [
                     {
-                        "name": "weapon",
+                        "name": "picked_up_weapon",
                         "images": [],
                         "image_path": "weapon_cards/",
                         "x_coord": 605,
@@ -510,7 +510,7 @@
                 "y_coord": 220,
                 "dynamic_images": [
                     {
-                        "name": "food",
+                        "name": "picked_up_food",
                         "images": [],
                         "image_path": "food_cards/",
                         "x_coord": 605,
@@ -1647,7 +1647,7 @@
             "y_coord": 50,
             "dynamic_images": [
                 {
-                    "name": "property",
+                    "name": "info_card_property",
                     "images": [
                         "properties/1.png"
                     ],
@@ -1658,7 +1658,7 @@
                     "height": 295
                 },
                 {
-                    "name": "weapon",
+                    "name": "info_card_weapon",
                     "images": [
                         "weapon_cards/no_weapon.png"
                     ],
@@ -1669,7 +1669,7 @@
                     "height": 148
                 },
                 {
-                    "name": "food",
+                    "name": "info_card_food",
                     "images": [
                         "food_cards/no_food.png"
                     ],
@@ -1718,6 +1718,7 @@
         ],
         "players": [
             {
+                "player_number": 1,
                 "name": "player_1",
                 "x_coord": 913,
                 "y_coord": 72,
@@ -1728,6 +1729,7 @@
                 "health": 100
             },
             {
+                "player_number": 2,
                 "name": "player_2",
                 "x_coord": 913,
                 "y_coord": 72,
@@ -1738,6 +1740,7 @@
                 "health": 100
             },
             {
+                "player_number": 3,
                 "name": "player_3",
                 "x_coord": 913,
                 "y_coord": 72,
@@ -1748,6 +1751,7 @@
                 "health": 100
             },
             {
+                "player_number": 4,
                 "name": "player_4",
                 "x_coord": 913,
                 "y_coord": 72,
@@ -1758,6 +1762,7 @@
                 "health": 100
             },
             {
+                "player_number": 5,
                 "name": "player_5",
                 "x_coord": 913,
                 "y_coord": 72,
@@ -1768,6 +1773,7 @@
                 "health": 100
             },
             {
+                "player_number": 6,
                 "name": "player_6",
                 "x_coord": 913,
                 "y_coord": 72,

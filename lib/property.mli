@@ -7,10 +7,6 @@ type control =
   | ControlFour
   | TakeOver  (**The varying control levels that a property can have.*)
 
-(* type set = | Gym | SportActivities | Library | Kitchen | Bathroom |
-   AlcoholCell | DrugCell | Mail The varying sets that a property can be
-   a part of. *)
-
 type t
 (**The abstract data type representing a property.*)
 
@@ -89,6 +85,10 @@ val button : t -> Button.t
 (**[button property] is the button associated with this property on the
    board.*)
 
-val get_property_from_json : Yojson.Basic.t -> t
+val get_property_from_json : Yojson.Basic.t -> int * t
+(**[get_property_from_json js] is the property that [js] represents
+   along with its identifier, the board location.*)
 
-val get_properties_from_json : Yojson.Basic.t -> t list
+val get_properties_from_json : Yojson.Basic.t -> (int * t) list
+(**[get_properties_from_json js] are the properties that [js] represents
+   along with their identifiers, the board location.*)

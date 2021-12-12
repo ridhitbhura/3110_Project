@@ -24,18 +24,20 @@ let new_board_location a = a.new_board_location
 let board_order a = a.board_order
 
 let get_action_space_from_json json =
-  {
-    name = json |> member "name" |> to_string;
-    board_order = json |> member "board_order" |> to_int;
-    x_coord = json |> member "x_coord" |> to_int;
-    y_coord = json |> member "y_coord" |> to_int;
-    width = json |> member "width" |> to_int;
-    height = json |> member "height" |> to_int;
-    take_money = json |> member "take_money" |> to_int;
-    give_money = json |> member "give_money" |> to_int;
-    take_hp = json |> member "take_hp" |> to_int;
-    new_board_location = json |> member "new_board_order" |> to_int;
-  }
+  let board_order = json |> member "board_order" |> to_int in
+  ( board_order,
+    {
+      name = json |> member "name" |> to_string;
+      board_order;
+      x_coord = json |> member "x_coord" |> to_int;
+      y_coord = json |> member "y_coord" |> to_int;
+      width = json |> member "width" |> to_int;
+      height = json |> member "height" |> to_int;
+      take_money = json |> member "take_money" |> to_int;
+      give_money = json |> member "give_money" |> to_int;
+      take_hp = json |> member "take_hp" |> to_int;
+      new_board_location = json |> member "new_board_order" |> to_int;
+    } )
 
 let get_action_spaces_from_json json =
   json |> to_list |> List.map get_action_space_from_json

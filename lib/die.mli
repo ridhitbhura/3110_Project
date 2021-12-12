@@ -1,4 +1,5 @@
 type t
+(**The abstract type representing a die.*)
 
 val roll_die : t -> int
 (** [roll_die d] is the result of rolling a six-sided die. *)
@@ -23,4 +24,4 @@ val get_die_from_json : Yojson.Basic.t -> t
 (**[die_from_json j] is the die that [j] represents.*)
 
 val get_dice_from_json : Yojson.Basic.t -> t list
-(**[dice_from_json j] is the dice that [j] represents.*)
+(**[dice_from_json j] are the dice that [j] represents.*)

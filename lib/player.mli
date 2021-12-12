@@ -2,6 +2,7 @@ type fac =
   | Stripes
   | Solids
   | Unassigned
+      (**[fac] are the different factions that a player can belong to.*)
 
 type t
 (** The abstract type of values representing players. *)
@@ -65,6 +66,10 @@ val obtain_weapon : t -> Weapon.t option -> t
 val faction : t -> fac
 (**[faction player] is the faction the player is in.*)
 
-val get_player_from_json : Yojson.Basic.t -> t
+val get_player_from_json : Yojson.Basic.t -> int * t
+(**[get_player_from_json js] is the player that [js] represents along
+   with its identifier, the player number.*)
 
-val get_players_from_json : Yojson.Basic.t -> t list
+val get_players_from_json : Yojson.Basic.t -> (int * t) list
+(**[get_players_from_json js] is the player that [js] represents along
+   with their identifier, the player number.*)

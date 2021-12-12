@@ -1,14 +1,29 @@
 open Yojson.Basic.Util
+open Maps
+
+type button_map = Button.t SM.t
+
+type subscreen_map = Subscreen.t SM.t
+
+type player_map = Player.t IM.t
+
+type property_map = Property.t IM.t
+
+type food_stack_map = Food_stack.t IM.t
+
+type weapon_stack_map = Weapon_stack.t IM.t
+
+type action_space_map = Action_space.t IM.t
 
 type t = {
-  buttons : Button.t list;
-  players : Player.t list;
-  properties : Property.t list;
-  food_stacks : Food_stack.t list;
-  weapon_stacks : Weapon_stack.t list;
-  action_spaces : Action_space.t list;
-  pop_ups : Subscreen.t list;
-  team_info : Subscreen.t list;
+  buttons : button_map;
+  players : player_map;
+  properties : property_map;
+  food_stacks : food_stack_map;
+  weapon_stacks : weapon_stack_map;
+  action_spaces : action_space_map;
+  pop_ups : subscreen_map;
+  team_info : subscreen_map;
   info_cards : Subscreen.t;
   background_image : string;
   background_xcoord : int;
@@ -32,7 +47,6 @@ let get_game_screen_from_json (json : Yojson.Basic.t) : t =
   in
   let ti =
     gs_json |> member "team_info" |> Subscreen.get_subscreens_from_json
-    |> Subscreen.activates
   in
   let bi =
     gs_json
@@ -58,9 +72,8 @@ let get_game_screen_from_json (json : Yojson.Basic.t) : t =
   let gi_y_coord =
     gs_json |> member "gameboard" |> member "y_coord" |> to_int
   in
-  let ic =
+  let _, ic =
     gs_json |> member "info_cards" |> Subscreen.get_subscreen_from_json
-    |> Subscreen.activate
   in
   let pops =
     gs_json |> member "subscreens" |> Subscreen.get_subscreens_from_json
@@ -88,22 +101,22 @@ let get_game_screen_from_json (json : Yojson.Basic.t) : t =
   in
 
   {
-    buttons = btns;
-    players = plyrs;
-    properties = props;
-    pop_ups = pops;
-    team_info = ti;
+    buttons = SM.of_lst btns SM.empty;
+    players = IM.of_lst plyrs IM.empty;
+    properties = IM.of_lst props IM.empty;
+    pop_ups = SM.of_lst pops SM.empty;
+    team_info = Subscreen.activates (SM.of_lst ti SM.empty);
     background_image = bi;
     background_xcoord = bi_x_coord;
     background_ycoord = bi_y_coord;
     gameboard_image = gi;
     gameboard_xcoord = gi_x_coord;
     gameboard_ycoord = gi_y_coord;
-    info_cards = ic;
-    food_stacks = f_stacks;
-    weapon_stacks = w_stacks;
+    info_cards = Subscreen.activate ic;
+    food_stacks = IM.of_lst f_stacks IM.empty;
+    weapon_stacks = IM.of_lst w_stacks IM.empty;
     dice;
-    action_spaces = actions;
+    action_spaces = IM.of_lst actions IM.empty;
   }
 
 let buttons gs = gs.buttons

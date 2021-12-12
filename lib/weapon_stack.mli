@@ -20,7 +20,12 @@ val height : t -> int
 val board_order : t -> int
 (**[board_order ws] is the location of weapon stack on the game board.*)
 
-val get_weapon_stack_from_json : Weapon.t list -> Yojson.Basic.t -> t
+val get_weapon_stack_from_json :
+  Weapon.t list -> Yojson.Basic.t -> int * t
+(**[get_weapon_stack_from_json ws] is the weapon stack that [js]
+   represents along with its identifier, the board order.*)
 
 val get_weapon_stacks_from_json :
-  Weapon.t list -> Yojson.Basic.t -> t list
+  Weapon.t list -> Yojson.Basic.t -> (int * t) list
+(**[get_weapon_stacks_from_json ws] are the weapon stack that [js]
+   represents along with their identifiers, the board order.*)

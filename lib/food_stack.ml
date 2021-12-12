@@ -27,14 +27,16 @@ let height fs = fs.height
 let board_order fs = fs.board_order
 
 let get_food_stack_from_json fds json =
-  {
-    board_order = json |> member "board_order" |> to_int;
-    x_coord = json |> member "x_coord" |> to_int;
-    y_coord = json |> member "y_coord" |> to_int;
-    width = json |> member "width" |> to_int;
-    height = json |> member "height" |> to_int;
-    foods = fds;
-  }
+  let board_order = json |> member "board_order" |> to_int in
+  ( board_order,
+    {
+      board_order;
+      x_coord = json |> member "x_coord" |> to_int;
+      y_coord = json |> member "y_coord" |> to_int;
+      width = json |> member "width" |> to_int;
+      height = json |> member "height" |> to_int;
+      foods = fds;
+    } )
 
 let get_food_stacks_from_json fds json =
   json |> to_list |> List.map (get_food_stack_from_json fds)

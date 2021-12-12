@@ -10,7 +10,6 @@ type status =
   | Inactive
 
 type t = {
-  name : string;
   dimension : dimen;
   status : status;
   image : string option;
@@ -55,8 +54,6 @@ let x_coord b = b.x_coord
 
 let y_coord b = b.y_coord
 
-let name b = b.name
-
 let get_button_from_json json =
   let x_coord = json |> member "x_coord" |> to_int in
   let y_coord = json |> member "y_coord" |> to_int in
@@ -67,15 +64,16 @@ let get_button_from_json json =
   let dimen = compute_dimension x_coord y_coord width height in
   let img = unwrap_image i in
   let dimmed_img = unwrap_image dimmed_i in
-  {
-    name = json |> member "name" |> to_string;
-    dimension = dimen;
-    status = Active;
-    image = img;
-    dimmed_image = dimmed_img;
-    x_coord;
-    y_coord;
-  }
+  let name = json |> member "name" |> to_string in
+  ( name,
+    {
+      dimension = dimen;
+      status = Active;
+      image = img;
+      dimmed_image = dimmed_img;
+      x_coord;
+      y_coord;
+    } )
 
 let get_buttons_from_json json =
   json |> to_list |> List.map get_button_from_json

@@ -11,6 +11,7 @@ type t = {
   small_image : string;
   medium_image : string;
   large_image : string;
+  player_number : int;
   weapon : Weapon.t option;
   money : int;
   health : int;
@@ -63,19 +64,22 @@ let obtain_weapon player wpn = { player with weapon = wpn }
 let faction player = player.faction
 
 let get_player_from_json json =
-  {
-    x_coord = json |> member "x_coord" |> to_int;
-    y_coord = json |> member "y_coord" |> to_int;
-    small_image = json |> member "small_image" |> to_string;
-    medium_image = json |> member "medium_image" |> to_string;
-    large_image = json |> member "large_image" |> to_string;
-    money = json |> member "money" |> to_int;
-    health = json |> member "health" |> to_int;
-    weapon = None;
-    board_location = 0;
-    properties = [];
-    faction = Unassigned;
-  }
+  let player_number = json |> member "player_number" |> to_int in
+  ( player_number,
+    {
+      x_coord = json |> member "x_coord" |> to_int;
+      y_coord = json |> member "y_coord" |> to_int;
+      small_image = json |> member "small_image" |> to_string;
+      medium_image = json |> member "medium_image" |> to_string;
+      large_image = json |> member "large_image" |> to_string;
+      money = json |> member "money" |> to_int;
+      health = json |> member "health" |> to_int;
+      weapon = None;
+      board_location = 0;
+      properties = [];
+      faction = Unassigned;
+      player_number;
+    } )
 
 let get_players_from_json json =
   json |> to_list |> List.map get_player_from_json

@@ -1,6 +1,6 @@
 (*The following file contains all constants used in our game, primarily
-  the names of buttons or subscreens, which are used to identify and
-  distinguish them.*)
+  the ids/names of buttons and subscreens, which are used to identify
+  and distinguish them.*)
 
 val start_button : string
 

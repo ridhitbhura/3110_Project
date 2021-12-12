@@ -1,21 +1,37 @@
+open Maps
+
+type button_map = Button.t SM.t
+
+type subscreen_map = Subscreen.t SM.t
+
+type player_map = Player.t IM.t
+
+type property_map = Property.t IM.t
+
+type food_stack_map = Food_stack.t IM.t
+
+type weapon_stack_map = Weapon_stack.t IM.t
+
+type action_space_map = Action_space.t IM.t
+
 type t
 (**The abstract data type representing a game screen.*)
 
-val buttons : t -> Button.t list
+val buttons : t -> button_map
 
-val players : t -> Player.t list
+val players : t -> player_map
 
-val properties : t -> Property.t list
+val properties : t -> property_map
 
-val food_stacks : t -> Food_stack.t list
+val food_stacks : t -> food_stack_map
 
-val weapon_stacks : t -> Weapon_stack.t list
+val weapon_stacks : t -> weapon_stack_map
 
-val action_spaces : t -> Action_space.t list
+val action_spaces : t -> action_space_map
 
-val pop_ups : t -> Subscreen.t list
+val pop_ups : t -> subscreen_map
 
-val team_info : t -> Subscreen.t list
+val team_info : t -> subscreen_map
 
 val info_cards : t -> Subscreen.t
 

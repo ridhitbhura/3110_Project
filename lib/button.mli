@@ -1,6 +1,3 @@
-(**constants.ml/constants.mli file, stores all button names, allows you
-   to search button list for certain things*)
-
 type t
 (**The abstract type representing a button.*)
 
@@ -42,11 +39,10 @@ val y_coord : t -> int
 (**[y_coord button] is the y coordinate location of the button relative
    to the display.*)
 
-val name : t -> string
-(**[name button] is the unique name of the button.*)
+val get_button_from_json : Yojson.Basic.t -> string * t
+(**[get_button_from_json j] is the button that j represents along with
+   its identifier, its name.*)
 
-val get_button_from_json : Yojson.Basic.t -> t
-(**[get_button_from_json j] is the button that j represents.*)
-
-val get_buttons_from_json : Yojson.Basic.t -> t list
-(**[get_button_from_json j] is the list of buttons that j represents.*)
+val get_buttons_from_json : Yojson.Basic.t -> (string * t) list
+(**[get_new_buttons_from_json j] are the list of buttons that j
+   represents along with their identifiers, their names.*)

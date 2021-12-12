@@ -1,4 +1,9 @@
 open Yojson.Basic.Util
+open Maps
+
+type button_map = Button.t SM.t
+
+type image_map = Dynamic_image.t SM.t
 
 type t = {
   name : string;
@@ -6,54 +11,55 @@ type t = {
   x_coord : int;
   y_coord : int;
   image_name : string;
-  images : Dynamic_image.t list;
-  buttons : Button.t list;
+  buttons : button_map;
+  images : image_map;
 }
 
-let active p = p.active
+let active s = s.active
 
-let activate p = { p with active = true }
+let activate s = { s with active = true }
 
-let rec activates popups =
-  match popups with
-  | [] -> []
-  | h :: t -> activate h :: activates t
+let activates smap = SM.mapi (fun _ v -> activate v) smap
 
-let deactivate p = { p with active = false }
+let deactivate s = { s with active = false }
 
-let rec deactivates popups =
-  match popups with
-  | [] -> []
-  | h :: t -> deactivate h :: deactivates t
+let deactivates smap = SM.mapi (fun _ v -> deactivate v) smap
 
-let name p = p.name
+let name s = s.name
 
-let x_coord p = p.x_coord
+let x_coord s = s.x_coord
 
-let y_coord p = p.y_coord
+let y_coord s = s.y_coord
 
-let image p = p.image_name
+let image s = s.image_name
 
-let images p = p.images
+let buttons s = s.buttons
 
-let buttons p = p.buttons
+let images s = s.images
 
-let replace_buttons p btns = { p with buttons = btns }
+let replace_buttons s btn_map = { s with buttons = btn_map }
 
-let replace_dynamic_images p images = { p with images }
+let replace_images s img_map = { s with images = img_map }
 
 let get_subscreen_from_json json =
-  {
-    name = json |> member "name" |> to_string;
-    active = false;
-    x_coord = json |> member "x_coord" |> to_int;
-    y_coord = json |> member "y_coord" |> to_int;
-    image_name = json |> member "image_name" |> to_string;
-    images =
-      json |> member "dynamic_images"
-      |> Dynamic_image.get_images_from_json;
-    buttons = json |> member "buttons" |> Button.get_buttons_from_json;
-  }
+  let name = json |> member "name" |> to_string in
+  let button_assoc_lst =
+    json |> member "buttons" |> Button.get_buttons_from_json
+  in
+  let images_assoc_lst =
+    json |> member "dynamic_images"
+    |> Dynamic_image.get_images_from_json
+  in
+  ( name,
+    {
+      name;
+      active = false;
+      x_coord = json |> member "x_coord" |> to_int;
+      y_coord = json |> member "y_coord" |> to_int;
+      image_name = json |> member "image_name" |> to_string;
+      images = SM.of_lst images_assoc_lst SM.empty;
+      buttons = SM.of_lst button_assoc_lst SM.empty;
+    } )
 
 let get_subscreens_from_json json =
   json |> to_list |> List.map get_subscreen_from_json
