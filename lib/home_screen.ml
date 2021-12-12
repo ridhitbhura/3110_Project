@@ -15,7 +15,7 @@ type t = {
   buttons : button_map;
   subscreens : subscreen_map;
   number_players : int;
-  current_character_selected : string;
+  current_character_selected : string option;
   selected_characters : string list;
 }
 
@@ -56,7 +56,7 @@ let get_home_screen_from_json json =
     window_title = hs_json |> member "window_title" |> to_string;
     background_image = hs_json |> member "image_name" |> to_string;
     number_players = 0;
-    current_character_selected = "";
+    current_character_selected = None;
     selected_characters = [];
     buttons = SM.of_lst button_assoc_lst SM.empty;
     subscreens = SM.of_lst subscreen_assoc_lst SM.empty;
@@ -162,55 +162,67 @@ let response_to_character_button hs btn_key =
     ( {
         hs with
         subscreens = new_subscreens;
-        current_character_selected = btn_key;
+        current_character_selected = Some btn_key;
       },
       false )
 
 (**[response_to_char_okay_button hs] is the home screen updated in
    response to a player selecting okay on the character selection
-   subscreen. The function first adds the character the player selected
-   to the list of selected characters. If the number of selected
+   subscreen. If the player did not yet select a character, the home
+   screen is not updated (forcing the player to select a character). If
+   the player selected a character that was already selected, the home
+   screen is not updated. Then, the currently selected character is
+   added to the list of selected character. If the number of selected
    character is equal to the number of players, all players have
    selected a character and we must proceed to game screen. Else, we
    must get the select character subscreen. We must update the dynamic
-   image which displays the Player number (eg. Player 1 vs Player 2).
-   And we re-add the character selection subscreen. *)
+   image which displays the Player number (eg. Player 1 vs Player 2). *)
 let response_to_char_okay_button hs =
-  let selected_chars =
-    hs.current_character_selected :: hs.selected_characters
-  in
-  match List.length selected_chars = hs.number_players with
-  | true -> ProceedToGS
-  | false ->
-      let subscreen =
-        SM.find Constants.select_character_screen hs.subscreens
-      in
-      let d_image_map = Subscreen.images subscreen in
-      let number_chars_images =
-        SM.find Constants.select_char_dynamic_image d_image_map
-      in
-      let wiped = Dynamic_image.clear_images number_chars_images in
-      let new_number_image =
-        Dynamic_image.add_image wiped (List.length selected_chars + 1)
-      in
-      let new_d_images =
-        SM.add Constants.select_char_dynamic_image new_number_image
-          d_image_map
-      in
-      let new_subscreen =
-        Subscreen.replace_images subscreen new_d_images
-      in
-      let new_subscreens =
-        SM.add Constants.select_character_screen new_subscreen
-          hs.subscreens
-      in
-      NewHS
-        ( {
-            hs with
-            selected_characters = selected_chars;
-            subscreens = new_subscreens;
-          },
-          true )
+  match hs.current_character_selected with
+  | None -> NewHS (hs, false)
+  | Some selected_char -> (
+      match List.mem selected_char hs.selected_characters with
+      | true -> NewHS (hs, false)
+      | false -> (
+          let selected_chars =
+            selected_char :: hs.selected_characters
+          in
+          match List.length selected_chars = hs.number_players with
+          | true -> ProceedToGS
+          | false ->
+              let subscreen =
+                SM.find Constants.select_character_screen hs.subscreens
+              in
+              let d_image_map = Subscreen.images subscreen in
+              let number_chars_images =
+                SM.find Constants.select_char_dynamic_image d_image_map
+              in
+              let wiped =
+                Dynamic_image.clear_images number_chars_images
+              in
+              let new_number_image =
+                Dynamic_image.add_image wiped
+                  (List.length selected_chars + 1)
+              in
+              let new_d_images =
+                SM.add Constants.select_char_dynamic_image
+                  new_number_image d_image_map
+              in
+              let new_subscreen =
+                Subscreen.replace_images subscreen new_d_images
+              in
+              let new_subscreens =
+                SM.add Constants.select_character_screen new_subscreen
+                  hs.subscreens
+              in
+              NewHS
+                ( {
+                    hs with
+                    selected_characters = selected_chars;
+                    subscreens = new_subscreens;
+                    current_character_selected = None;
+                  },
+                  true )))
 
 (**[check_button_clicked button_map coords] searched the button map to
    determine if a button was clicked. If no button was clicked, it is
