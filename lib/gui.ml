@@ -67,8 +67,8 @@ let draw_home_screen hs =
   let y = Home_screen.y_coord hs in
   Graphics.auto_synchronize false;
   draw_img img x y;
-  let bmap = Home_screen.button_map hs in
-  let smap = Home_screen.subscreen_map hs in
+  let bmap = Home_screen.buttons hs in
+  let smap = Home_screen.subscreens hs in
   draw_buttons bmap;
   draw_subscreens smap;
   Graphics.auto_synchronize true

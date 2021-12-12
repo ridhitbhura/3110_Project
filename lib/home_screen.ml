@@ -190,7 +190,7 @@ let new_get_buttons hs =
   | None -> main_buttons
   | Some s -> Subscreen.buttons s
 
-let check_button_click_and_respond hs (x, y) =
+let respond_to_click hs (x, y) =
   let buttons = new_get_buttons hs in
   let clicked_button = new_check_button_clicked_aux buttons (x, y) in
   match clicked_button with

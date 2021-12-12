@@ -21,9 +21,9 @@ let redraw_hs_and_sleep () =
    change on the home screen, the home screen is redrawn.*)
 let rec update_home_screen _ =
   let coords = Gui.mouse_click () in
-  match Home_screen.check_button_click_and_respond !hs coords with
+  match Home_screen.respond_to_click !hs coords with
   | NoButtonClicked -> update_home_screen ()
-  | Response (new_hs, sleep) ->
+  | NewHS (new_hs, sleep) ->
       let _ = if sleep then redraw_hs_and_sleep () else () in
       Gui.draw_home_screen new_hs;
       hs := new_hs;
