@@ -42,11 +42,11 @@ val location : t -> int
 (**[location player] gives the board location the player is at
    currently.*)
 
-val move_board : t -> int -> t
-(**[move player loc] moves the player to a new board location [loc].
+val move_board : int -> t -> t
+(**[move loc player] moves the player to a new board location [loc].
    Requires: [0 <= loc < 40]*)
 
-val move_coord : t -> int -> int -> t
+val move_coord : int -> int -> t -> t
 (**[move_coord x y] moves the player on the screen to x coordinate [x]
    and y coordinate [y].*)
 

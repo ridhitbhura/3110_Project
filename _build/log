@@ -1,10 +1,10 @@
-# dune exec bin/main.exe
+# dune build
 # OCAMLPARAM: unset
-# Workspace root: /Users/paulsuh/3110_Project
-$ /usr/bin/getconf _NPROCESSORS_ONLN > /var/folders/kb/1rjhgcjx66nby2g2h0tskpjc0000gn/T/dune027e60.output 2> /dev/null
-# Auto-detected concurrency: 8
+# Workspace root: /Users/kabirwalia/Desktop/Senior/CS3110/Project/3110_Project
+$ /usr/bin/getconf _NPROCESSORS_ONLN > /var/folders/gx/xcswpfgn6_36zbrnlt38zrkh0000gn/T/dune436c56.output 2> /dev/null
+# Auto-detected concurrency: 4
 # disable binary cache
-$ /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/kb/1rjhgcjx66nby2g2h0tskpjc0000gn/T/dunec4f764.output
+$ /Users/kabirwalia/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/gx/xcswpfgn6_36zbrnlt38zrkh0000gn/T/dune7d90b3.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -14,41 +14,45 @@ $ /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/kb/1r
 #  ; fdo_target_exe = None
 #  ; build_dir = "default"
 #  ; toplevel_path =
-#      Some External "/Users/paulsuh/.opam/cs3110-2021fa/lib/toplevel"
-#  ; ocaml_bin = External "/Users/paulsuh/.opam/cs3110-2021fa/bin"
-#  ; ocaml = Ok External "/Users/paulsuh/.opam/cs3110-2021fa/bin/ocaml"
-#  ; ocamlc = External "/Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt"
+#      Some External "/Users/kabirwalia/.opam/cs3110-2021fa/lib/toplevel"
+#  ; ocaml_bin = External "/Users/kabirwalia/.opam/cs3110-2021fa/bin"
+#  ; ocaml = Ok External "/Users/kabirwalia/.opam/cs3110-2021fa/bin/ocaml"
+#  ; ocamlc = External "/Users/kabirwalia/.opam/cs3110-2021fa/bin/ocamlc.opt"
 #  ; ocamlopt =
-#      Ok External "/Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlopt.opt"
+#      Ok External "/Users/kabirwalia/.opam/cs3110-2021fa/bin/ocamlopt.opt"
 #  ; ocamldep =
-#      Ok External "/Users/paulsuh/.opam/cs3110-2021fa/bin/ocamldep.opt"
+#      Ok External "/Users/kabirwalia/.opam/cs3110-2021fa/bin/ocamldep.opt"
 #  ; ocamlmklib =
-#      Ok External "/Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlmklib.opt"
+#      Ok External "/Users/kabirwalia/.opam/cs3110-2021fa/bin/ocamlmklib.opt"
 #  ; env =
 #      map
-#        { "DUNE_OCAML_HARDCODED" : "/Users/paulsuh/.opam/cs3110-2021fa/lib"
-#        ; "DUNE_OCAML_STDLIB" : "/Users/paulsuh/.opam/cs3110-2021fa/lib/ocaml"
-#        ; "DUNE_SOURCEROOT" : "/Users/paulsuh/3110_Project"
-#        ; "INSIDE_DUNE" : "/Users/paulsuh/3110_Project/_build/default"
-#        ; "MANPATH" : "/Users/paulsuh/3110_Project/_build/install/default/bin"
+#        { "DUNE_OCAML_HARDCODED" : "/Users/kabirwalia/.opam/cs3110-2021fa/lib"
+#        ; "DUNE_OCAML_STDLIB" :
+#            "/Users/kabirwalia/.opam/cs3110-2021fa/lib/ocaml"
+#        ; "DUNE_SOURCEROOT" :
+#            "/Users/kabirwalia/Desktop/Senior/CS3110/Project/3110_Project"
+#        ; "INSIDE_DUNE" :
+#            "/Users/kabirwalia/Desktop/Senior/CS3110/Project/3110_Project/_build/default"
+#        ; "MANPATH" :
+#            "/Users/kabirwalia/Desktop/Senior/CS3110/Project/3110_Project/_build/install/default/bin"
 #        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/Users/paulsuh/3110_Project/_build/install/default/lib"
+#            "/Users/kabirwalia/Desktop/Senior/CS3110/Project/3110_Project/_build/install/default/lib"
 #        ; "OCAMLPATH" :
-#            "/Users/paulsuh/3110_Project/_build/install/default/lib"
+#            "/Users/kabirwalia/Desktop/Senior/CS3110/Project/3110_Project/_build/install/default/lib"
 #        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/Users/paulsuh/3110_Project/_build/install/default/lib/toplevel"
+#            "/Users/kabirwalia/Desktop/Senior/CS3110/Project/3110_Project/_build/install/default/lib/toplevel"
 #        ; "OCAML_COLOR" : "always"
 #        ; "OPAMCOLOR" : "always"
 #        }
-#  ; findlib_path = [ External "/Users/paulsuh/.opam/cs3110-2021fa/lib" ]
+#  ; findlib_path = [ External "/Users/kabirwalia/.opam/cs3110-2021fa/lib" ]
 #  ; arch_sixtyfour = true
 #  ; natdynlink_supported = true
 #  ; supports_shared_libraries = true
 #  ; ocaml_config =
 #      { version = "4.12.0"
 #      ; standard_library_default =
-#          "/Users/paulsuh/.opam/cs3110-2021fa/lib/ocaml"
-#      ; standard_library = "/Users/paulsuh/.opam/cs3110-2021fa/lib/ocaml"
+#          "/Users/kabirwalia/.opam/cs3110-2021fa/lib/ocaml"
+#      ; standard_library = "/Users/kabirwalia/.opam/cs3110-2021fa/lib/ocaml"
 #      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
 #      ; ccomp_type = "cc"
 #      ; c_compiler = "cc"
@@ -91,8 +95,8 @@ $ /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/kb/1r
 #      ; os_type = "Unix"
 #      ; default_executable_name = "a.out"
 #      ; systhread_supported = true
-#      ; host = "x86_64-apple-darwin20.5.0"
-#      ; target = "x86_64-apple-darwin20.5.0"
+#      ; host = "x86_64-apple-darwin20.6.0"
+#      ; target = "x86_64-apple-darwin20.6.0"
 #      ; profiling = false
 #      ; flambda = false
 #      ; spacetime = false
@@ -112,4 +116,3 @@ $ /Users/paulsuh/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /var/folders/kb/1r
 #      ; windows_unicode = false
 #      }
 #  }
-# Workspace root: /Users/paulsuh/3110_Project

@@ -47,9 +47,9 @@ let update_money player amt = { player with money = amt }
 
 let location player = player.board_location
 
-let move_board player loc = { player with board_location = loc }
+let move_board loc player = { player with board_location = loc }
 
-let move_coord player x y = { player with x_coord = x; y_coord = y }
+let move_coord x y player = { player with x_coord = x; y_coord = y }
 
 let properties player = player.properties
 

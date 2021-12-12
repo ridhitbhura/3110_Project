@@ -29,3 +29,5 @@ let select_char_okay_button = "select_character_okay_button"
 let select_char_dynamic_image = "select_character_number"
 
 let num_players_okay_button = "number_players_okay_button"
+
+let player_offset = 10
