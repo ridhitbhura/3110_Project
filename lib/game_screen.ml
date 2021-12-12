@@ -150,3 +150,27 @@ let gameboard_xcoord gs = gs.gameboard_xcoord
 let gameboard_ycoord gs = gs.gameboard_ycoord
 
 let dice gs = gs.dice
+
+let rec find_player_number plyrs_to_chars plyr =
+  match plyrs_to_chars with
+  | [] -> None
+  | (p, c) :: t ->
+      if Player.character plyr = c then Some p
+      else find_player_number t plyr
+
+let initialize gs plyrs_to_chars =
+  let initialized_players =
+    IM.mapi
+      (fun _ p ->
+        match find_player_number plyrs_to_chars p with
+        | None -> Player.deactivate p
+        | Some num -> Player.update_player_number p num)
+      gs.players
+  in
+  { gs with players = initialized_players }
+
+type response =
+  | EndGame
+  | NewGs of t
+
+(* let respond_to_click gs (x,y) = *)

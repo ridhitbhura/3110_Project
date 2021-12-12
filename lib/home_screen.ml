@@ -19,10 +19,14 @@ type t = {
   selected_characters : string list;
 }
 
+type hs_response = t * bool
+
+type gs_response = (int * string) list
+
 type response =
   | NoButtonClicked
-  | NewHS of t * bool
-  | ProceedToGS
+  | NewHS of hs_response
+  | ProceedToGS of gs_response
 
 let image hs = hs.background_image
 
@@ -166,6 +170,13 @@ let response_to_character_button hs btn_key =
       },
       false )
 
+(**[match_players_to_characters] takes [character_list] and creates an
+   association list, matching each character icon with a player number. *)
+let rec match_players_to_characters character_list accum =
+  match character_list with
+  | [] -> []
+  | h :: t -> (accum, h) :: match_players_to_characters t (accum - 1)
+
 (**[response_to_char_okay_button hs] is the home screen updated in
    response to a player selecting okay on the character selection
    subscreen. If the player did not yet select a character, the home
@@ -188,7 +199,10 @@ let response_to_char_okay_button hs =
             selected_char :: hs.selected_characters
           in
           match List.length selected_chars = hs.number_players with
-          | true -> ProceedToGS
+          | true ->
+              ProceedToGS
+                (match_players_to_characters selected_chars
+                   hs.number_players)
           | false ->
               let subscreen =
                 SM.find Constants.select_character_screen hs.subscreens
@@ -279,4 +293,4 @@ let respond_to_click hs (x, y) =
           response_to_character_button hs btn_name
       | s when s = Constants.select_char_okay_button ->
           response_to_char_okay_button hs
-      | _ -> failwith "TODO")
+      | _ -> failwith btn_name)

@@ -35,10 +35,19 @@ val buttons : t -> button_map
 val subscreens : t -> subscreen_map
 (**[subscreens hs] are the subscreens in the home screen.*)
 
+type gs_response = (int * string) list
+(**[gs_response] is a type that represents an association list that maps
+   player numbers to character icons.*)
+
+type hs_response = t * bool
+(**[hs_response] is a type that represents a homescreen along with a
+   boolean that indicates whether to redraw the base home screen and
+   sleep.*)
+
 type response =
   | NoButtonClicked
-  | NewHS of t * bool
-  | ProceedToGS
+  | NewHS of hs_response
+  | ProceedToGS of gs_response
       (**[response] are the types of response that can be made by
          [respond_to_click hs coords]. No button in the home screen can
          be clicked. Or a button may have been clicked that proceeds

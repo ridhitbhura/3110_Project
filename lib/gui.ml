@@ -79,6 +79,15 @@ let draw_die die =
   let y = Die.y_coord die in
   draw_img img x y
 
+let draw_player_on_board plyr =
+  let small_img = Player.small_image plyr in
+  let x_coord = Player.x_coord plyr in
+  let y_coord = Player.y_coord plyr in
+  if Player.active plyr then draw_img small_img x_coord y_coord else ()
+
+let draw_players_on_board plyrs =
+  IM.iter (fun _ p -> draw_player_on_board p) plyrs
+
 let draw_dice dice = map_draw draw_die dice
 
 let draw_game_screen gs =
@@ -99,6 +108,8 @@ let draw_game_screen gs =
   draw_subscreens team_info;
   let buttons = Game_screen.buttons gs in
   draw_buttons buttons;
+  let players = Game_screen.players gs in
+  draw_players_on_board players;
   Graphics.auto_synchronize true
 
 let rec press_button key =

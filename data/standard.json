@@ -92,7 +92,7 @@
                 ],
                 "buttons": [
                     {
-                        "name": "character_1_button",
+                        "name": "character_1",
                         "image_name": "players/medium/1.png",
                         "dimmed_image_name": "players/medium/dim_1.png",
                         "width": 60,
@@ -101,7 +101,7 @@
                         "y_coord": 320
                     },
                     {
-                        "name": "character_2_button",
+                        "name": "character_2",
                         "image_name": "players/medium/2.png",
                         "dimmed_image_name": "players/medium/dim_2.png",
                         "width": 60,
@@ -110,7 +110,7 @@
                         "y_coord": 320
                     },
                     {
-                        "name": "character_3_button",
+                        "name": "character_3",
                         "image_name": "players/medium/3.png",
                         "dimmed_image_name": "players/medium/dim_3.png",
                         "width": 60,
@@ -119,7 +119,7 @@
                         "y_coord": 320
                     },
                     {
-                        "name": "character_4_button",
+                        "name": "character_4",
                         "image_name": "players/medium/4.png",
                         "dimmed_image_name": "players/medium/dim_4.png",
                         "width": 60,
@@ -128,7 +128,7 @@
                         "y_coord": 320
                     },
                     {
-                        "name": "character_5_button",
+                        "name": "character_5",
                         "image_name": "players/medium/5.png",
                         "dimmed_image_name": "players/medium/dim_5.png",
                         "width": 60,
@@ -137,7 +137,7 @@
                         "y_coord": 320
                     },
                     {
-                        "name": "character_6_button",
+                        "name": "character_6",
                         "image_name": "players/medium/6.png",
                         "dimmed_image_name": "players/medium/dim_6.png",
                         "width": 60,
@@ -1718,8 +1718,8 @@
         ],
         "players": [
             {
-                "player_number": 1,
-                "name": "player_1",
+                "character_number": 1,
+                "name": "character_1",
                 "x_coord": 913,
                 "y_coord": 72,
                 "small_image": "players/small/1.png",
@@ -1729,8 +1729,8 @@
                 "health": 100
             },
             {
-                "player_number": 2,
-                "name": "player_2",
+                "character_number": 2,
+                "name": "character_2",
                 "x_coord": 913,
                 "y_coord": 72,
                 "small_image": "players/small/2.png",
@@ -1740,8 +1740,8 @@
                 "health": 100
             },
             {
-                "player_number": 3,
-                "name": "player_3",
+                "character_number": 3,
+                "name": "character_3",
                 "x_coord": 913,
                 "y_coord": 72,
                 "small_image": "players/small/3.png",
@@ -1751,8 +1751,8 @@
                 "health": 100
             },
             {
-                "player_number": 4,
-                "name": "player_4",
+                "character_number": 4,
+                "name": "character_4",
                 "x_coord": 913,
                 "y_coord": 72,
                 "small_image": "players/small/4.png",
@@ -1762,8 +1762,8 @@
                 "health": 100
             },
             {
-                "player_number": 5,
-                "name": "player_5",
+                "character_number": 5,
+                "name": "character_5",
                 "x_coord": 913,
                 "y_coord": 72,
                 "small_image": "players/small/5.png",
@@ -1773,8 +1773,8 @@
                 "health": 100
             },
             {
-                "player_number": 6,
-                "name": "player_6",
+                "character_number": 6,
+                "name": "character_6",
                 "x_coord": 913,
                 "y_coord": 72,
                 "small_image": "players/small/6.png",

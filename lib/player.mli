@@ -4,6 +4,10 @@ type fac =
   | Unassigned
       (**[fac] are the different factions that a player can belong to.*)
 
+type status =
+  | Active
+  | Inactive
+
 type t
 (** The abstract type of values representing players. *)
 
@@ -65,6 +69,19 @@ val obtain_weapon : t -> Weapon.t option -> t
 
 val faction : t -> fac
 (**[faction player] is the faction the player is in.*)
+
+val update_player_number : t -> int -> t
+(**[update_player_number p num] is the player with player number given
+   by [num].*)
+
+val character : t -> string
+(**[character player] is the character icon that this player holds.*)
+
+val deactivate : t -> t
+(**[deactivate player] is the player deactivated.*)
+
+val active : t -> bool
+(**[active p] is whether the player is active.*)
 
 val get_player_from_json : Yojson.Basic.t -> int * t
 (**[get_player_from_json js] is the player that [js] represents along

@@ -5,19 +5,26 @@ type fac =
   | Solids
   | Unassigned
 
+type status =
+  | Active
+  | Inactive
+
 type t = {
+  player_number : int;
   x_coord : int;
   y_coord : int;
   small_image : string;
   medium_image : string;
   large_image : string;
-  player_number : int;
+  character_number : int;
   weapon : Weapon.t option;
   money : int;
   health : int;
   board_location : int;
   properties : Property.t list;
   faction : fac;
+  character : string;
+  status : status;
 }
 
 let x_coord player = player.x_coord
@@ -63,9 +70,18 @@ let obtain_weapon player wpn = { player with weapon = wpn }
 
 let faction player = player.faction
 
+let character player = player.character
+
+let deactivate player = { player with status = Inactive }
+
+let active player = player.status = Active
+
+let update_player_number player num =
+  { player with player_number = num }
+
 let get_player_from_json json =
-  let player_number = json |> member "player_number" |> to_int in
-  ( player_number,
+  let character_number = json |> member "character_number" |> to_int in
+  ( character_number,
     {
       x_coord = json |> member "x_coord" |> to_int;
       y_coord = json |> member "y_coord" |> to_int;
@@ -78,7 +94,10 @@ let get_player_from_json json =
       board_location = 0;
       properties = [];
       faction = Unassigned;
-      player_number;
+      character_number;
+      player_number = 0;
+      character = json |> member "name" |> to_string;
+      status = Active;
     } )
 
 let get_players_from_json json =

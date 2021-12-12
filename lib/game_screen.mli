@@ -50,3 +50,11 @@ val gameboard_ycoord : t -> int
 val dice : t -> Die.t list
 
 val get_game_screen_from_json : Yojson.Basic.t -> t
+
+val initialize : t -> (int * string) list -> t
+
+type response =
+  | EndGame
+  | NewGs of t
+
+(* val respond_to_click : t -> int * int -> response *)
