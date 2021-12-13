@@ -57,10 +57,10 @@ val initialize : t -> int list -> t
 
 type response =
   | EndGame
-  | NewGS of t*bool
+  | NewGS of t
 
 val respond_to_click : t -> int * int -> response
 
 val new_respond_to_click : t -> int * int -> response
 
-val next_turn_popup: t -> response
+val next_turn_popup : t -> response

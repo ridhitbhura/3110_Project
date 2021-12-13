@@ -18,9 +18,9 @@ let redraw_hs_and_sleep () =
   Gui.draw_home_screen base_hs;
   Unix.sleepf 0.5
 
-let redraw_gs_and_sleep () =
-  Gui.draw_game_screen base_gs;
-  Unix.sleepf 0.5
+let draw_gs_with_turn gs =
+  Gui.draw_game_screen gs;
+  Unix.sleepf 1.0
 
 (**[update_home_screen _] checks for a mouse click and updates home
    screen based upon that mouse click. If the mouse click caused a
@@ -33,21 +33,24 @@ let rec update_home_screen hs =
       let _ = if sleep then redraw_hs_and_sleep () else () in
       Gui.draw_home_screen new_hs;
       update_home_screen new_hs
-  | ProceedToGS chars ->
-      let new_gs = Game_screen.initialize gs chars |> Game_screen.next_turn_popup in
-      match new_gs with 
-      | NewGS (n_gs, sleep) -> 
-        let _ = if sleep then redraw_gs_and_sleep () else () in
-        Gui.draw_game_screen n_gs; 
-        update_game_screen n_gs
-      | _ -> failwith "no initial popup"
+  | ProceedToGS chars -> (
+      let gs = Game_screen.initialize gs chars in
+      let gs_with_turn =
+        Game_screen.initialize gs chars |> Game_screen.next_turn_popup
+      in
+      match gs_with_turn with
+      | EndGame -> failwith "not possible"
+      | NewGS turn_gs ->
+          draw_gs_with_turn turn_gs;
+          Gui.draw_game_screen gs;
+          update_game_screen gs)
+(* | _ -> failwith "no initial popup" *)
 
 and update_game_screen gs =
   let coords = Gui.mouse_click () in
   match Game_screen.new_respond_to_click gs coords with
   | EndGame -> ()
-  | NewGS (new_gs, sleep) ->
-      let _ = if sleep then redraw_gs_and_sleep () else () in
+  | NewGS new_gs ->
       Gui.draw_game_screen new_gs;
       update_game_screen new_gs
 

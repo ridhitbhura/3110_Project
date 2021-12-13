@@ -1,10 +1,10 @@
-# dune exec bin/main.exe
+# dune build
 # OCAMLPARAM: unset
 # Workspace root: /home/kennyliang2302/cs3110/3110_Project
-$ /usr/bin/nproc > /tmp/dune4f59ca.output 2> /dev/null
+$ /usr/bin/nproc > /tmp/dune3bac1f.output 2> /dev/null
 # Auto-detected concurrency: 12
 # disable binary cache
-$ /home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dunec53ddf.output
+$ /home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dune74c09d.output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -120,4 +120,3 @@ $ /home/kennyliang2302/.opam/cs3110-2021fa/bin/ocamlc.opt -config > /tmp/dunec53
 #      ; windows_unicode = false
 #      }
 #  }
-# Workspace root: /home/kennyliang2302/cs3110/3110_Project

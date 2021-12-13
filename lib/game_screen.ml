@@ -187,7 +187,7 @@ let initialize gs chars =
 
 type response =
   | EndGame
-  | NewGS of t * bool
+  | NewGS of t
 
 (*BaseGS with the regular game screen buttons, the dice buttons, and the
   property buttons. ActiveSubscreenGS with the buttons inside the
@@ -247,7 +247,7 @@ let next_turn_popup gs =
   let new_screens =
     SM.add Constants.new_turn activated_s gs.subscreens
   in
-  NewGS ({ gs with subscreens = new_screens }, true)
+  NewGS { gs with subscreens = new_screens }
 
 let respond_to_dice_click gs =
   let pl_num = List.nth gs.active_players gs.curr_player_index in
@@ -271,12 +271,11 @@ let respond_to_dice_click gs =
           in
           let pl_map = IM.add pl_num v_new gs.players in
           NewGS
-            ( {
-                gs with
-                dice = [ new_first_die; new_second_die ];
-                players = pl_map;
-              },
-              true )
+            {
+              gs with
+              dice = [ new_first_die; new_second_die ];
+              players = pl_map;
+            }
       (* NewGS { gs with dice = [ new_first_die; new_second_die ]} *))
   | _ -> failwith "precondition violation"
 
@@ -301,7 +300,7 @@ let respond_to_property_button gs property_num =
         SM.add Constants.property_action_screen
           activated_property_action gs.subscreens
       in
-      NewGS ({ gs with subscreens = new_subscreens }, false)
+      NewGS { gs with subscreens = new_subscreens }
 
 (* respond_to_dice_click gs 1 is moving player 1 for now. Yet to
    implement multi player movement *)
@@ -309,7 +308,7 @@ let respond_to_click gs (x, y) =
   let buttons = get_dice_buttons gs in
   let clicked_button = check_dice_button_clicked buttons (x, y) in
   match clicked_button with
-  | None -> NewGS (gs, false) (*check if this is false*)
+  | None -> NewGS gs (*check if this is false*)
   | Some _ -> respond_to_dice_click gs
 
 let new_respond_to_click gs (x, y) =
@@ -326,7 +325,7 @@ let new_respond_to_click gs (x, y) =
         check_imap_button_clicked property_buttons (x, y)
       in
       match (dice_clicked, base_clicked, property_clicked) with
-      | false, None, None -> NewGS (gs, false) (*no button was clicked*)
+      | false, None, None -> NewGS gs (*no button was clicked*)
       | true, None, None ->
           respond_to_dice_click gs
           (*dice button was clicked, currently just moving player 1*)
@@ -343,7 +342,7 @@ let new_respond_to_click gs (x, y) =
         check_smap_button_clicked button_map (x, y)
       in
       match button_clicked with
-      | None -> NewGS (gs, false)
+      | None -> NewGS gs
       | Some btn_name -> (
           match btn_name with
           | _ -> failwith "TODO "))
