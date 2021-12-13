@@ -39,3 +39,7 @@ val new_turn : string
 val player_offset : int
 
 val property_action_screen : string
+
+val property_action_dynamic_image : string
+
+val property_action_cancel_button : string

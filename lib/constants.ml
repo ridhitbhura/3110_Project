@@ -35,3 +35,7 @@ let new_turn = "new_turn"
 let player_offset = 10
 
 let property_action_screen = "property_action"
+
+let property_action_dynamic_image = "property_action_display"
+
+let property_action_cancel_button = "cancel_button"

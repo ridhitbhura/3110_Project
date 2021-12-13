@@ -288,19 +288,43 @@ let respond_to_property_button gs property_num =
   in
   match property with
   | None -> failwith "impossible"
-  | Some p ->
-      print_int (Property.board_order p);
+  | Some _ ->
       let property_action_screen =
         SM.find Constants.property_action_screen gs.subscreens
       in
       let activated_property_action =
         Subscreen.activate property_action_screen
       in
+      let d_image_map = Subscreen.images property_action_screen in
+      let info_card_image =
+        SM.find Constants.property_action_dynamic_image d_image_map
+      in
+      let wiped = Dynamic_image.clear_images info_card_image in
+      let new_info_image = Dynamic_image.add_image wiped property_num in
+      let new_d_image_map =
+        SM.add Constants.property_action_dynamic_image new_info_image
+          d_image_map
+      in
+      let new_subscreen =
+        Subscreen.replace_images activated_property_action
+          new_d_image_map
+      in
       let new_subscreens =
-        SM.add Constants.property_action_screen
-          activated_property_action gs.subscreens
+        SM.add Constants.property_action_screen new_subscreen
+          gs.subscreens
       in
       NewGS { gs with subscreens = new_subscreens }
+
+let response_to_cancel_button gs =
+  let subscreen =
+    SM.find Constants.property_action_screen gs.subscreens
+  in
+  let deactivated_subscreen = Subscreen.deactivate subscreen in
+  let new_screens =
+    SM.add Constants.property_action_screen deactivated_subscreen
+      gs.subscreens
+  in
+  NewGS { gs with subscreens = new_screens }
 
 (* respond_to_dice_click gs 1 is moving player 1 for now. Yet to
    implement multi player movement *)
@@ -345,6 +369,8 @@ let new_respond_to_click gs (x, y) =
       | None -> NewGS gs
       | Some btn_name -> (
           match btn_name with
+          | s when s = Constants.property_action_cancel_button ->
+              response_to_cancel_button gs
           | _ -> failwith "TODO "))
 (*these pattern matches here will be identical to the ones in home
   screen, a bunch of different button names*)
