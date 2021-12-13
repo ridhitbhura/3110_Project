@@ -155,10 +155,53 @@
                         "height": 40
                     }
                 ]
+            }
+        ]
+    },
+    "game_screen": {
+        "gameboard": {
+            "x_coord": 365,
+            "y_coord": 50,
+            "image_name": "game_screen/game_board.png"
+        },
+        "game_screen_background": {
+            "x_coord": 0,
+            "y_coord": 0,
+            "image_name": "game_screen/background.png"
+        },
+        "buttons": [
+            {
+                "name": "trade_button",
+                "image_name": "game_screen/buttons/trade.png",
+                "dimmed_image_name": "",
+                "x_coord": 30,
+                "y_coord": 585,
+                "width": 300,
+                "height": 65
             },
             {
+                "name": "end_turn_button",
+                "image_name": "game_screen/buttons/end_turn.png",
+                "dimmed_image_name": "",
+                "x_coord": 30,
+                "y_coord": 510,
+                "width": 300,
+                "height": 65
+            },
+            {
+                "name": "exit_game_button",
+                "image_name": "game_screen/buttons/exit_game.png",
+                "dimmed_image_name": "",
+                "x_coord": 30,
+                "y_coord": 435,
+                "width": 300,
+                "height": 65
+            }
+        ],
+        "subscreens": [
+            {
                 "name": "team_selection",
-                "image_name": "home_screen/subscreens/team_selection.png",
+                "image_name": "game_screen/subscreens/team_selection.png",
                 "x_coord": 390,
                 "y_coord": 225,
                 "dynamic_images": [
@@ -218,50 +261,7 @@
                     }
                 ],
                 "buttons": []
-            }
-        ]
-    },
-    "game_screen": {
-        "gameboard": {
-            "x_coord": 365,
-            "y_coord": 50,
-            "image_name": "game_screen/game_board.png"
-        },
-        "game_screen_background": {
-            "x_coord": 0,
-            "y_coord": 0,
-            "image_name": "game_screen/background.png"
-        },
-        "buttons": [
-            {
-                "name": "trade_button",
-                "image_name": "game_screen/buttons/trade.png",
-                "dimmed_image_name": "",
-                "x_coord": 30,
-                "y_coord": 585,
-                "width": 300,
-                "height": 65
             },
-            {
-                "name": "end_turn_button",
-                "image_name": "game_screen/buttons/end_turn.png",
-                "dimmed_image_name": "",
-                "x_coord": 30,
-                "y_coord": 510,
-                "width": 300,
-                "height": 65
-            },
-            {
-                "name": "exit_game_button",
-                "image_name": "game_screen/buttons/exit_game.png",
-                "dimmed_image_name": "",
-                "x_coord": 30,
-                "y_coord": 435,
-                "width": 300,
-                "height": 65
-            }
-        ],
-        "subscreens": [
             {
                 "name": "attack",
                 "image_name": "game_screen/subscreens/attack.png",

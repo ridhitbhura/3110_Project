@@ -23,7 +23,7 @@ type t = {
   food_stacks : food_stack_map;
   weapon_stacks : weapon_stack_map;
   action_spaces : action_space_map;
-  pop_ups : subscreen_map;
+  subscreens : subscreen_map;
   team_info : subscreen_map;
   info_cards : Subscreen.t;
   background_image : string;
@@ -117,7 +117,7 @@ let get_game_screen_from_json (json : Yojson.Basic.t) : t =
     buttons = SM.of_lst btns SM.empty;
     players = IM.of_lst plyrs IM.empty;
     properties = IM.of_lst props IM.empty;
-    pop_ups = SM.of_lst pops SM.empty;
+    subscreens = SM.of_lst pops SM.empty;
     team_info = Subscreen.activates (SM.of_lst ti SM.empty);
     background_image = bi;
     background_xcoord = bi_x_coord;
@@ -146,7 +146,7 @@ let weapon_stacks gs = gs.weapon_stacks
 
 let action_spaces gs = gs.action_spaces
 
-let pop_ups gs = gs.pop_ups
+let pop_ups gs = gs.subscreens
 
 let team_info gs = gs.team_info
 
@@ -183,11 +183,48 @@ type response =
   | EndGame
   | NewGS of t
 
-(*currently only gets dice buttons*)
+(*BaseGS with the regular game screen buttons, the dice buttons, and the
+  property buttons. ActiveSubscreenGS with the buttons inside the
+  subscreen*)
+type screen_buttons =
+  | BaseGS of Button.t SM.t * Button.t list * Button.t IM.t
+  | ActiveSubscreenGS of Button.t SM.t
+
 let get_dice_buttons gs = List.map (fun d -> Die.button d) gs.dice
+
+let get_property_buttons gs =
+  IM.mapi (fun _ p -> Property.button p) gs.properties
+
+let get_buttons gs =
+  let active_subscreen =
+    SM.fold
+      (fun _ s init -> if Subscreen.active s then Some s else init)
+      gs.subscreens None
+  in
+  let dice_buttons = get_dice_buttons gs in
+  let property_buttons = get_property_buttons gs in
+  match active_subscreen with
+  | None -> BaseGS (gs.buttons, dice_buttons, property_buttons)
+  | Some s -> ActiveSubscreenGS (Subscreen.buttons s)
+
+(*currently only gets dice buttons*)
+let check_dice_button_clicked_new buttons (x, y) =
+  List.exists (fun b -> Button.is_clicked b (x, y)) buttons
 
 let check_dice_button_clicked buttons (x, y) =
   List.find_opt (fun b -> Button.is_clicked b (x, y)) buttons
+
+let check_imap_button_clicked properties (x, y) =
+  IM.fold
+    (fun n b init ->
+      if Button.is_clicked b (x, y) then Some n else init)
+    properties None
+
+let check_smap_button_clicked map (x, y) =
+  SM.fold
+    (fun n b init ->
+      if Button.is_clicked b (x, y) then Some n else init)
+    map None
 
 let update_board_loc pl dice_val =
   let loc_old = Player.location pl in
@@ -234,4 +271,44 @@ let respond_to_click gs (x, y) =
   let clicked_button = check_dice_button_clicked buttons (x, y) in
   match clicked_button with
   | None -> NewGS gs
-  | Some _ -> respond_to_dice_click gs 1
+  | Some _ -> respond_to_dice_click gs 6
+
+let new_respond_to_click gs (x, y) =
+  let button_response = get_buttons gs in
+  match button_response with
+  | BaseGS (base_buttons, dice_buttons, property_buttons) -> (
+      let dice_clicked =
+        check_dice_button_clicked_new dice_buttons (x, y)
+      in
+      let base_clicked =
+        check_smap_button_clicked base_buttons (x, y)
+      in
+      let property_clicked =
+        check_imap_button_clicked property_buttons (x, y)
+      in
+      match (dice_clicked, base_clicked, property_clicked) with
+      | false, None, None -> NewGS gs (*no button was clicked*)
+      | true, None, None ->
+          respond_to_dice_click gs 1
+          (*dice button was clicked, currently just moving player 1*)
+      | false, Some b_name, None ->
+          failwith ("TODO, currently have button name: " ^ b_name)
+      | false, None, Some board_loc ->
+          failwith
+            ("TODO, currently have board location of property that was \
+              clicked: " ^ string_of_int board_loc)
+      | _, _, _ ->
+          failwith
+            "Impossible, either one button was clicked or no buttons \
+             were clicked.")
+  | ActiveSubscreenGS button_map -> (
+      let button_clicked =
+        check_smap_button_clicked button_map (x, y)
+      in
+      match button_clicked with
+      | None -> NewGS gs
+      | Some btn_name -> (
+          match btn_name with
+          | _ -> failwith "TODO "))
+(*these pattern matches here will be identical to the ones in home
+  screen, a bunch of different button names*)

@@ -60,3 +60,5 @@ type response =
   | NewGS of t
 
 val respond_to_click : t -> int * int -> response
+
+val new_respond_to_click : t -> int * int -> response
