@@ -49,6 +49,8 @@ val gameboard_ycoord : t -> int
 
 val dice : t -> Die.t list
 
+val curr_player: t -> int
+
 val get_game_screen_from_json : Yojson.Basic.t -> t
 
 val get_order_list_from_json : Yojson.Basic.t -> int * (int * int)

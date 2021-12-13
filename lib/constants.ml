@@ -41,3 +41,7 @@ let property_action_dynamic_image = "property_action_display"
 let property_action_cancel_button = "cancel_button"
 
 let exit_game_button = "exit_game_button"
+
+let end_turn_button = "end_turn_button"
+
+let new_turn_dynamic = "new_turn_player"

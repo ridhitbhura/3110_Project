@@ -50,9 +50,15 @@ and update_game_screen gs =
   let coords = Gui.mouse_click () in
   match Game_screen.new_respond_to_click gs coords with
   | EndGame -> redraw_hs_and_sleep ()
-  | NewGS new_gs ->
-      Gui.draw_game_screen new_gs;
-      update_game_screen new_gs
+  | NewGS new_gs -> match (Game_screen.curr_player gs = Game_screen.curr_player new_gs) with
+        | true -> Gui.draw_game_screen new_gs; update_game_screen new_gs
+        | false -> let gs_with_turn = Game_screen.next_turn_popup new_gs in 
+          match gs_with_turn with 
+          | EndGame -> failwith "not possible"
+          | NewGS turn_gs -> 
+            draw_gs_with_turn turn_gs;
+            Gui.draw_game_screen new_gs;
+            update_game_screen new_gs
 
 (**[run_game _] initializes a new empty Gui window, draws the home
    screen, and continually updates the home screen.*)

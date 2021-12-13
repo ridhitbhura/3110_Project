@@ -168,6 +168,8 @@ let gameboard_ycoord gs = gs.gameboard_ycoord
 
 let dice gs = gs.dice
 
+let curr_player gs = gs.curr_player_index
+
 (*there's some complicated stuff going on here. to put it simply, all
   players module are either given a player number or they were not
   selected, meaning they are deactivated.*)
@@ -244,8 +246,16 @@ let get_xy_for_board_loc loc gs =
 let next_turn_popup gs =
   let s = SM.find Constants.new_turn gs.subscreens in
   let activated_s = Subscreen.activate s in
+  let d_image_map = Subscreen.images s in
+  let char_player_image = SM.find Constants.new_turn_dynamic d_image_map
+  in
+  let wiped = Dynamic_image.clear_images char_player_image in 
+  let new_char_player_image = Dynamic_image.add_image wiped (List.nth gs.active_players gs.curr_player_index)
+  in
+  let new_d_image_map = SM.add Constants.new_turn_dynamic new_char_player_image d_image_map in 
+  let new_subscreen = Subscreen.replace_images activated_s new_d_image_map in
   let new_screens =
-    SM.add Constants.new_turn activated_s gs.subscreens
+    SM.add Constants.new_turn new_subscreen gs.subscreens
   in
   NewGS { gs with subscreens = new_screens }
 
@@ -335,9 +345,12 @@ let respond_to_click gs (x, y) =
   | None -> NewGS gs (*check if this is false*)
   | Some _ -> respond_to_dice_click gs
 
-let base_click_response b_name =
+let base_click_response gs b_name =
   match b_name with
   | s when s = Constants.exit_game_button -> EndGame
+  | s when s = Constants.end_turn_button -> 
+    let next_pl_ind = (gs.curr_player_index + 1) mod (List.length gs.active_players) in 
+    NewGS {gs with curr_player_index = next_pl_ind} 
   | _ -> failwith "not yet implemented"
 
 let new_respond_to_click gs (x, y) =
@@ -358,7 +371,7 @@ let new_respond_to_click gs (x, y) =
       | true, None, None ->
           respond_to_dice_click gs
           (*dice button was clicked, currently just moving player 1*)
-      | false, Some b_name, None -> base_click_response b_name
+      | false, Some b_name, None -> base_click_response gs b_name
       | false, None, Some board_loc ->
           respond_to_property_button gs board_loc
       | _, _, _ ->
