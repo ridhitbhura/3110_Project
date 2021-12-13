@@ -335,6 +335,11 @@ let respond_to_click gs (x, y) =
   | None -> NewGS gs (*check if this is false*)
   | Some _ -> respond_to_dice_click gs
 
+let base_click_response b_name =
+  match b_name with
+  | s when s = Constants.exit_game_button -> EndGame
+  | _ -> failwith "not yet implemented"
+
 let new_respond_to_click gs (x, y) =
   let button_response = get_buttons gs in
   match button_response with
@@ -353,8 +358,7 @@ let new_respond_to_click gs (x, y) =
       | true, None, None ->
           respond_to_dice_click gs
           (*dice button was clicked, currently just moving player 1*)
-      | false, Some b_name, None ->
-          failwith ("TODO, currently have button name: " ^ b_name)
+      | false, Some b_name, None -> base_click_response b_name
       | false, None, Some board_loc ->
           respond_to_property_button gs board_loc
       | _, _, _ ->

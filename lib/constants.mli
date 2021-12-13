@@ -43,3 +43,5 @@ val property_action_screen : string
 val property_action_dynamic_image : string
 
 val property_action_cancel_button : string
+
+val exit_game_button : string

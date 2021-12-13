@@ -49,7 +49,7 @@ let rec update_home_screen hs =
 and update_game_screen gs =
   let coords = Gui.mouse_click () in
   match Game_screen.new_respond_to_click gs coords with
-  | EndGame -> ()
+  | EndGame -> redraw_hs_and_sleep ()
   | NewGS new_gs ->
       Gui.draw_game_screen new_gs;
       update_game_screen new_gs
