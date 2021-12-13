@@ -34,7 +34,7 @@ type t = {
   gameboard_ycoord : int;
   dice : Die.t list;
   order_list : (int * (int * int)) list;
-  curr_player_index: int;
+  curr_player_index : int;
 }
 
 (* Returns the order list or the board_location to (x, y) coords. *)
@@ -179,11 +179,15 @@ let initialize gs chars =
         else p)
       gs.players
   in
-  { gs with players = initialized_players; active_players = List.rev chars }
+  {
+    gs with
+    players = initialized_players;
+    active_players = List.rev chars;
+  }
 
 type response =
   | EndGame
-  | NewGS of t*bool
+  | NewGS of t * bool
 
 (*BaseGS with the regular game screen buttons, the dice buttons, and the
   property buttons. ActiveSubscreenGS with the buttons inside the
@@ -237,8 +241,7 @@ let get_xy_for_board_loc loc gs =
   | None -> failwith "board order and respective coords dont exist"
   | Some v -> v
 
-
-let next_turn_popup gs = 
+let next_turn_popup gs =
   let s = SM.find Constants.new_turn gs.subscreens in
   let activated_s = Subscreen.activate s in
   let new_screens =
@@ -268,13 +271,37 @@ let respond_to_dice_click gs =
           in
           let pl_map = IM.add pl_num v_new gs.players in
           NewGS
-            ({
-              gs with
-              dice = [ new_first_die; new_second_die ];
-              players = pl_map;
-            }, true)
+            ( {
+                gs with
+                dice = [ new_first_die; new_second_die ];
+                players = pl_map;
+              },
+              true )
       (* NewGS { gs with dice = [ new_first_die; new_second_die ]} *))
   | _ -> failwith "precondition violation"
+
+let respond_to_property_button gs property_num =
+  let property =
+    IM.fold
+      (fun _ p init ->
+        if property_num = Property.board_order p then Some p else init)
+      gs.properties None
+  in
+  match property with
+  | None -> failwith "impossible"
+  | Some p ->
+      print_int (Property.board_order p);
+      let property_action_screen =
+        SM.find Constants.property_action_screen gs.subscreens
+      in
+      let activated_property_action =
+        Subscreen.activate property_action_screen
+      in
+      let new_subscreens =
+        SM.add Constants.property_action_screen
+          activated_property_action gs.subscreens
+      in
+      NewGS ({ gs with subscreens = new_subscreens }, false)
 
 (* respond_to_dice_click gs 1 is moving player 1 for now. Yet to
    implement multi player movement *)
@@ -306,9 +333,7 @@ let new_respond_to_click gs (x, y) =
       | false, Some b_name, None ->
           failwith ("TODO, currently have button name: " ^ b_name)
       | false, None, Some board_loc ->
-          failwith
-            ("TODO, currently have board location of property that was \
-              clicked: " ^ string_of_int board_loc)
+          respond_to_property_button gs board_loc
       | _, _, _ ->
           failwith
             "Impossible, either one button was clicked or no buttons \

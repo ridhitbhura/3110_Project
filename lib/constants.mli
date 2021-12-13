@@ -34,6 +34,8 @@ val select_char_dynamic_image : string
 
 val num_players_okay_button : string
 
-val new_turn:string
+val new_turn : string
 
-val player_offset : int 
+val player_offset : int
+
+val property_action_screen : string

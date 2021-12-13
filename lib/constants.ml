@@ -31,4 +31,7 @@ let select_char_dynamic_image = "select_character_number"
 let num_players_okay_button = "number_players_okay_button"
 
 let new_turn = "new_turn"
+
 let player_offset = 10
+
+let property_action_screen = "property_action"
