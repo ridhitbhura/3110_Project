@@ -18,6 +18,7 @@ type action_space_map = Action_space.t IM.t
 type t = {
   buttons : button_map;
   players : player_map;
+  active_players : int list;
   properties : property_map;
   food_stacks : food_stack_map;
   weapon_stacks : weapon_stack_map;
@@ -32,14 +33,13 @@ type t = {
   gameboard_xcoord : int;
   gameboard_ycoord : int;
   dice : Die.t list;
-  order_list: (int * (int*int)) list
+  order_list : (int * (int * int)) list;
 }
 
 (* Returns the order list or the board_location to (x, y) coords. *)
-let get_order_list_from_json el = 
-  (el |> member "order" |> to_int, 
-    (el |> member "x_coord" |> to_int, 
-    el |> member "y_coord" |> to_int)
+let get_order_list_from_json el =
+  ( el |> member "order" |> to_int,
+    (el |> member "x_coord" |> to_int, el |> member "y_coord" |> to_int)
   )
 
 let get_game_screen_from_json (json : Yojson.Basic.t) : t =
@@ -107,8 +107,12 @@ let get_game_screen_from_json (json : Yojson.Basic.t) : t =
     gs_json |> member "action_spaces"
     |> Action_space.get_action_spaces_from_json
   in
-  let or_lst = gs_json |> member "board_order_coords" |> to_list 
-      |> List.map get_order_list_from_json in 
+  let or_lst =
+    gs_json
+    |> member "board_order_coords"
+    |> to_list
+    |> List.map get_order_list_from_json
+  in
   {
     buttons = SM.of_lst btns SM.empty;
     players = IM.of_lst plyrs IM.empty;
@@ -127,6 +131,7 @@ let get_game_screen_from_json (json : Yojson.Basic.t) : t =
     dice;
     action_spaces = IM.of_lst actions IM.empty;
     order_list = or_lst;
+    active_players = [];
   }
 
 let buttons gs = gs.buttons
@@ -161,26 +166,18 @@ let gameboard_ycoord gs = gs.gameboard_ycoord
 
 let dice gs = gs.dice
 
-let rec find_player_number plyrs_to_chars plyr =
-  match plyrs_to_chars with
-  | [] -> None
-  | (p, c) :: t ->
-      if Player.character plyr = c then Some p
-      else find_player_number t plyr
-
 (*there's some complicated stuff going on here. to put it simply, all
   players module are either given a player number or they were not
   selected, meaning they are deactivated.*)
-let initialize gs plyrs_to_chars =
+let initialize gs chars =
   let initialized_players =
     IM.mapi
-      (fun _ p ->
-        match find_player_number plyrs_to_chars p with
-        | None -> Player.deactivate p
-        | Some num -> Player.update_player_number p num)
+      (fun k p ->
+        if List.exists (fun c -> k = c) chars then Player.activate p
+        else p)
       gs.players
   in
-  { gs with players = initialized_players }
+  { gs with players = initialized_players; active_players = chars }
 
 type response =
   | EndGame
@@ -192,35 +189,46 @@ let get_dice_buttons gs = List.map (fun d -> Die.button d) gs.dice
 let check_dice_button_clicked buttons (x, y) =
   List.find_opt (fun b -> Button.is_clicked b (x, y)) buttons
 
-
-let update_board_loc pl dice_val = 
-  let loc_old = Player.location pl in 
+let update_board_loc pl dice_val =
+  let loc_old = Player.location pl in
   (loc_old + dice_val) mod 40
 
-let get_xy_for_board_loc loc gs = match List.assoc_opt loc gs.order_list with 
+let get_xy_for_board_loc loc gs =
+  match List.assoc_opt loc gs.order_list with
   | None -> failwith "board order and respective coords dont exist"
   | Some v -> v
 
 let respond_to_dice_click gs pl_num =
-  begin match gs.dice with
-  | [ h; t ] ->
+  match gs.dice with
+  | [ h; t ] -> (
       let first_roll = Die.roll_die h in
       let new_first_die = Die.new_image h first_roll in
       let second_roll = Die.roll_die t in
       let new_second_die = Die.new_image t second_roll in
-      let dice_val = first_roll + second_roll in 
-      begin match IM.find_opt pl_num gs.players with 
+      let dice_val = first_roll + second_roll in
+      match IM.find_opt pl_num gs.players with
       | None -> failwith "doesnt have current player"
-      | Some v -> 
-        let new_board_loc = update_board_loc v dice_val in 
-        let (new_x, new_y) = get_xy_for_board_loc new_board_loc gs in
-        let v_new = Player.move_board new_board_loc v |> Player.move_coord (new_x + Constants.player_offset) (new_y + Constants.player_offset) in 
-        let pl_map = IM.add pl_num v_new gs.players in
-      NewGS { gs with dice = [ new_first_die; new_second_die ]; players=pl_map} end
-      (* NewGS { gs with dice = [ new_first_die; new_second_die ]} *)
-  | _ -> failwith "precondition violation" end
+      | Some v ->
+          let new_board_loc = update_board_loc v dice_val in
+          let new_x, new_y = get_xy_for_board_loc new_board_loc gs in
+          let v_new =
+            Player.move_board new_board_loc v
+            |> Player.move_coord
+                 (new_x + Constants.player_offset)
+                 (new_y + Constants.player_offset)
+          in
+          let pl_map = IM.add pl_num v_new gs.players in
+          NewGS
+            {
+              gs with
+              dice = [ new_first_die; new_second_die ];
+              players = pl_map;
+            }
+      (* NewGS { gs with dice = [ new_first_die; new_second_die ]} *))
+  | _ -> failwith "precondition violation"
 
-(* respond_to_dice_click gs 1 is moving player 1 for now. Yet to implement multi player movement  *)
+(* respond_to_dice_click gs 1 is moving player 1 for now. Yet to
+   implement multi player movement *)
 let respond_to_click gs (x, y) =
   let buttons = get_dice_buttons gs in
   let clicked_button = check_dice_button_clicked buttons (x, y) in

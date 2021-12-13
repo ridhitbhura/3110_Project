@@ -74,6 +74,8 @@ let character player = player.character
 
 let deactivate player = { player with status = Inactive }
 
+let activate player = { player with status = Active }
+
 let active player = player.status = Active
 
 let update_player_number player num =
@@ -97,7 +99,7 @@ let get_player_from_json json =
       character_number;
       player_number = 0;
       character = json |> member "name" |> to_string;
-      status = Active;
+      status = Inactive;
     } )
 
 let get_players_from_json json =

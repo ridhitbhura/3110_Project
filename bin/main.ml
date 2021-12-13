@@ -27,10 +27,10 @@ let rec update_home_screen hs =
       let _ = if sleep then redraw_hs_and_sleep () else () in
       Gui.draw_home_screen new_hs;
       update_home_screen new_hs
-  | ProceedToGS plyrs_to_chars ->
-      let new_gs = Game_screen.initialize gs plyrs_to_chars in
+  | ProceedToGS chars ->
+      let new_gs = Game_screen.initialize gs chars in
       Gui.draw_game_screen new_gs;
-      update_game_screen gs
+      update_game_screen new_gs
 
 and update_game_screen gs =
   let coords = Gui.mouse_click () in

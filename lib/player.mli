@@ -80,6 +80,9 @@ val character : t -> string
 val deactivate : t -> t
 (**[deactivate player] is the player deactivated.*)
 
+val activate : t -> t
+(**[activate player] is the player activated.*)
+
 val active : t -> bool
 (**[active p] is whether the player is active.*)
 

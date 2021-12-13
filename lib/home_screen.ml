@@ -21,7 +21,7 @@ type t = {
 
 type hs_response = t * bool
 
-type gs_response = (int * string) list
+type gs_response = int list
 
 type response =
   | NoButtonClicked
@@ -170,12 +170,10 @@ let response_to_character_button hs btn_key =
       },
       false )
 
-(**[match_players_to_characters] takes [character_list] and creates an
-   association list, matching each character icon with a player number. *)
-let rec match_players_to_characters character_list accum =
-  match character_list with
-  | [] -> []
-  | h :: t -> (accum, h) :: match_players_to_characters t (accum - 1)
+(**[match_players_to_characters] takes [character_list] and creates an a
+   list, turning each character button name into a character number. *)
+let get_character_numbers character_list =
+  List.map (fun x -> int_of_string x) character_list
 
 (**[response_to_char_okay_button hs] is the home screen updated in
    response to a player selecting okay on the character selection
@@ -199,10 +197,7 @@ let response_to_char_okay_button hs =
             selected_char :: hs.selected_characters
           in
           match List.length selected_chars = hs.number_players with
-          | true ->
-              ProceedToGS
-                (match_players_to_characters selected_chars
-                   hs.number_players)
+          | true -> ProceedToGS (get_character_numbers selected_chars)
           | false ->
               let subscreen =
                 SM.find Constants.select_character_screen hs.subscreens

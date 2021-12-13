@@ -51,9 +51,9 @@ val dice : t -> Die.t list
 
 val get_game_screen_from_json : Yojson.Basic.t -> t
 
-val get_order_list_from_json :  Yojson.Basic.t -> int*(int*int)
+val get_order_list_from_json : Yojson.Basic.t -> int * (int * int)
 
-val initialize : t -> (int * string) list -> t
+val initialize : t -> int list -> t
 
 type response =
   | EndGame
