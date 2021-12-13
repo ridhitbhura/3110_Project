@@ -29,7 +29,7 @@ val weapon_stacks : t -> weapon_stack_map
 
 val action_spaces : t -> action_space_map
 
-val pop_ups : t -> subscreen_map
+val subscreens : t -> subscreen_map
 
 val team_info : t -> subscreen_map
 
@@ -57,8 +57,10 @@ val initialize : t -> int list -> t
 
 type response =
   | EndGame
-  | NewGS of t
+  | NewGS of t*bool
 
 val respond_to_click : t -> int * int -> response
 
 val new_respond_to_click : t -> int * int -> response
+
+val next_turn_popup: t -> response

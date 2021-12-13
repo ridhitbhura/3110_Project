@@ -8,12 +8,18 @@ let base_hs = Home_screen.get_home_screen_from_json file
 
 let hs = Home_screen.get_home_screen_from_json file
 
+let base_gs = Game_screen.get_game_screen_from_json file
+
 let gs = Game_screen.get_game_screen_from_json file
 
 (**[redraw_hs_and_sleep _] draws the base home screen and then sleeps
    the system for [0.5] seconds. *)
 let redraw_hs_and_sleep () =
   Gui.draw_home_screen base_hs;
+  Unix.sleepf 0.5
+
+let redraw_gs_and_sleep () =
+  Gui.draw_game_screen base_gs;
   Unix.sleepf 0.5
 
 (**[update_home_screen _] checks for a mouse click and updates home
@@ -28,15 +34,20 @@ let rec update_home_screen hs =
       Gui.draw_home_screen new_hs;
       update_home_screen new_hs
   | ProceedToGS chars ->
-      let new_gs = Game_screen.initialize gs chars in
-      Gui.draw_game_screen new_gs;
-      update_game_screen new_gs
+      let new_gs = Game_screen.initialize gs chars |> Game_screen.next_turn_popup in
+      match new_gs with 
+      | NewGS (n_gs, sleep) -> 
+        let _ = if sleep then redraw_gs_and_sleep () else () in
+        Gui.draw_game_screen n_gs; 
+        update_game_screen n_gs
+      | _ -> failwith "no initial popup"
 
 and update_game_screen gs =
   let coords = Gui.mouse_click () in
   match Game_screen.new_respond_to_click gs coords with
   | EndGame -> ()
-  | NewGS new_gs ->
+  | NewGS (new_gs, sleep) ->
+      let _ = if sleep then redraw_gs_and_sleep () else () in
       Gui.draw_game_screen new_gs;
       update_game_screen new_gs
 

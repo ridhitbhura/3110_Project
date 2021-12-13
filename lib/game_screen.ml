@@ -34,6 +34,7 @@ type t = {
   gameboard_ycoord : int;
   dice : Die.t list;
   order_list : (int * (int * int)) list;
+  curr_player_index: int;
 }
 
 (* Returns the order list or the board_location to (x, y) coords. *)
@@ -132,6 +133,7 @@ let get_game_screen_from_json (json : Yojson.Basic.t) : t =
     action_spaces = IM.of_lst actions IM.empty;
     order_list = or_lst;
     active_players = [];
+    curr_player_index = 0;
   }
 
 let buttons gs = gs.buttons
@@ -146,7 +148,7 @@ let weapon_stacks gs = gs.weapon_stacks
 
 let action_spaces gs = gs.action_spaces
 
-let pop_ups gs = gs.subscreens
+let subscreens gs = gs.subscreens
 
 let team_info gs = gs.team_info
 
@@ -177,11 +179,11 @@ let initialize gs chars =
         else p)
       gs.players
   in
-  { gs with players = initialized_players; active_players = chars }
+  { gs with players = initialized_players; active_players = List.rev chars }
 
 type response =
   | EndGame
-  | NewGS of t
+  | NewGS of t*bool
 
 (*BaseGS with the regular game screen buttons, the dice buttons, and the
   property buttons. ActiveSubscreenGS with the buttons inside the
@@ -235,7 +237,17 @@ let get_xy_for_board_loc loc gs =
   | None -> failwith "board order and respective coords dont exist"
   | Some v -> v
 
-let respond_to_dice_click gs pl_num =
+
+let next_turn_popup gs = 
+  let s = SM.find Constants.new_turn gs.subscreens in
+  let activated_s = Subscreen.activate s in
+  let new_screens =
+    SM.add Constants.new_turn activated_s gs.subscreens
+  in
+  NewGS ({ gs with subscreens = new_screens }, true)
+
+let respond_to_dice_click gs =
+  let pl_num = List.nth gs.active_players gs.curr_player_index in
   match gs.dice with
   | [ h; t ] -> (
       let first_roll = Die.roll_die h in
@@ -256,11 +268,11 @@ let respond_to_dice_click gs pl_num =
           in
           let pl_map = IM.add pl_num v_new gs.players in
           NewGS
-            {
+            ({
               gs with
               dice = [ new_first_die; new_second_die ];
               players = pl_map;
-            }
+            }, true)
       (* NewGS { gs with dice = [ new_first_die; new_second_die ]} *))
   | _ -> failwith "precondition violation"
 
@@ -270,8 +282,8 @@ let respond_to_click gs (x, y) =
   let buttons = get_dice_buttons gs in
   let clicked_button = check_dice_button_clicked buttons (x, y) in
   match clicked_button with
-  | None -> NewGS gs
-  | Some _ -> respond_to_dice_click gs 6
+  | None -> NewGS (gs, false) (*check if this is false*)
+  | Some _ -> respond_to_dice_click gs
 
 let new_respond_to_click gs (x, y) =
   let button_response = get_buttons gs in
@@ -287,9 +299,9 @@ let new_respond_to_click gs (x, y) =
         check_imap_button_clicked property_buttons (x, y)
       in
       match (dice_clicked, base_clicked, property_clicked) with
-      | false, None, None -> NewGS gs (*no button was clicked*)
+      | false, None, None -> NewGS (gs, false) (*no button was clicked*)
       | true, None, None ->
-          respond_to_dice_click gs 1
+          respond_to_dice_click gs
           (*dice button was clicked, currently just moving player 1*)
       | false, Some b_name, None ->
           failwith ("TODO, currently have button name: " ^ b_name)
@@ -306,7 +318,7 @@ let new_respond_to_click gs (x, y) =
         check_smap_button_clicked button_map (x, y)
       in
       match button_clicked with
-      | None -> NewGS gs
+      | None -> NewGS (gs, false)
       | Some btn_name -> (
           match btn_name with
           | _ -> failwith "TODO "))

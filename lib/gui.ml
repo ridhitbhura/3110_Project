@@ -110,6 +110,8 @@ let draw_game_screen gs =
   draw_buttons buttons;
   let players = Game_screen.players gs in
   draw_players_on_board players;
+  let smap = Game_screen.subscreens gs in 
+  draw_subscreens smap;
   Graphics.auto_synchronize true
 
 let rec press_button key =
