@@ -335,7 +335,8 @@ let respond_to_buy_button gs =
     | x when x >= 0 -> Player.update_money curr_player x
     | _ ->
         failwith
-          "Player can't buy if they don't have enough money to do so."
+          "Player can't buy if they don't have enough money to do so. \
+           Maybe need some way of dimming a button? or a screen?"
   in
   let acquired_prop = Property.acquire curr_property in
   let new_props = IM.add curr_location acquired_prop gs.properties in
@@ -359,7 +360,16 @@ let respond_to_buy_button gs =
       properties = new_props;
     }
 
-let respond_to_forfeit_button _ = failwith "Unimplemented"
+let respond_to_forfeit_button gs =
+  let curr_subscreen =
+    SM.find Constants.buy_property_screen gs.subscreens
+  in
+  let deactivated_screen = Subscreen.deactivate curr_subscreen in
+  let new_screens =
+    SM.add Constants.buy_property_screen deactivated_screen
+      gs.subscreens
+  in
+  NewGS { gs with subscreens = new_screens }
 
 let respond_to_dice_click gs =
   if gs.curr_player_roll then NewGS gs
