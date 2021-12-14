@@ -48,6 +48,8 @@ let get_control p = p.control
 
 let acquire p = { p with status = Owned }
 
+let initial_purchase p = p.cost.initial_purchase
+
 let is_acquirable p =
   match p.status with
   | Owned -> false

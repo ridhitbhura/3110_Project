@@ -35,6 +35,7 @@ type t = {
   dice : Die.t list;
   order_list : (int * (int * int)) list;
   curr_player_index : int;
+  curr_player_roll : bool;
 }
 
 (* Returns the order list or the board_location to (x, y) coords. *)
@@ -134,6 +135,7 @@ let get_game_screen_from_json (json : Yojson.Basic.t) : t =
     order_list = or_lst;
     active_players = [];
     curr_player_index = 0;
+    curr_player_roll = false;
   }
 
 let buttons gs = gs.buttons
@@ -288,41 +290,121 @@ let update_info_property_card gs loc =
   in
   Subscreen.replace_images info_card_subscreen new_d_image_map
 
+let respond_to_property_roll gs board_loc =
+  let property = IM.find board_loc gs.properties in
+  match Property.is_acquirable property with
+  | true ->
+      let buy_property_screen =
+        SM.find Constants.buy_property_screen gs.subscreens
+      in
+      let activated_buy_property_screen =
+        Subscreen.activate buy_property_screen
+      in
+      let d_image_map =
+        Subscreen.images activated_buy_property_screen
+      in
+      let property_image =
+        SM.find Constants.buy_property_dynamic d_image_map
+      in
+      let wiped = Dynamic_image.clear_images property_image in
+      let new_property_image =
+        Dynamic_image.add_image wiped board_loc
+      in
+      let new_d_image_map =
+        SM.add Constants.buy_property_dynamic new_property_image
+          d_image_map
+      in
+      let new_subscreen =
+        Subscreen.replace_images activated_buy_property_screen
+          new_d_image_map
+      in
+      let new_subscreens =
+        SM.add Constants.buy_property_screen new_subscreen gs.subscreens
+      in
+      new_subscreens
+  | false -> gs.subscreens
+
+let respond_to_buy_button gs =
+  let plyr_id = List.nth gs.active_players gs.curr_player_index in
+  let curr_player = IM.find plyr_id gs.players in
+  let curr_location = Player.location curr_player in
+  let curr_property = IM.find curr_location gs.properties in
+  let purchase_cost = Property.initial_purchase curr_property in
+  let updated_money_plyr =
+    match Player.money curr_player - purchase_cost with
+    | x when x >= 0 -> Player.update_money curr_player x
+    | _ ->
+        failwith
+          "Player can't buy if they don't have enough money to do so."
+  in
+  let acquired_prop = Property.acquire curr_property in
+  let new_props = IM.add curr_location acquired_prop gs.properties in
+  let new_plyr =
+    Player.obtain_property updated_money_plyr acquired_prop
+  in
+  let new_plyrs = IM.add plyr_id new_plyr gs.players in
+  let curr_subscreen =
+    SM.find Constants.buy_property_screen gs.subscreens
+  in
+  let deactivated_screen = Subscreen.deactivate curr_subscreen in
+  let new_screens =
+    SM.add Constants.buy_property_screen deactivated_screen
+      gs.subscreens
+  in
+  NewGS
+    {
+      gs with
+      subscreens = new_screens;
+      players = new_plyrs;
+      properties = new_props;
+    }
+
+let respond_to_forfeit_button _ = failwith "Unimplemented"
+
 let respond_to_dice_click gs =
-  let pl_num = List.nth gs.active_players gs.curr_player_index in
-  match gs.dice with
-  | [ h; t ] -> (
-      let first_roll = Die.roll_die h in
-      let new_first_die = Die.new_image h first_roll in
-      let second_roll = Die.roll_die t in
-      let new_second_die = Die.new_image t second_roll in
-      let dice_val = first_roll + second_roll in
-      match IM.find_opt pl_num gs.players with
-      | None -> failwith "doesnt have current player"
-      | Some v ->
-          let new_board_loc = update_board_loc v dice_val in
-          let new_x, new_y = get_xy_for_board_loc new_board_loc gs in
-          let v_new =
-            Player.move_board new_board_loc v
-            |> Player.move_coord
-                 (new_x + Constants.player_offset)
-                 (new_y + Constants.player_offset)
-          in
-          let pl_map = IM.add pl_num v_new gs.players in
-          let submap =
-            match IM.find_opt new_board_loc gs.properties with
-            | None -> update_info_property_card gs 1
-            | Some _ -> update_info_property_card gs new_board_loc
-          in
-          NewGS
-            {
-              gs with
-              dice = [ new_first_die; new_second_die ];
-              players = pl_map;
-              info_cards = submap;
-            }
-      (* NewGS { gs with dice = [ new_first_die; new_second_die ]} *))
-  | _ -> failwith "precondition violation"
+  if gs.curr_player_roll then NewGS gs
+  else
+    let pl_num = List.nth gs.active_players gs.curr_player_index in
+    match gs.dice with
+    | [ h; t ] -> (
+        let first_roll = Die.roll_die h in
+        let new_first_die = Die.new_image h first_roll in
+        let second_roll = Die.roll_die t in
+        let new_second_die = Die.new_image t second_roll in
+        let dice_val = first_roll + second_roll in
+        match IM.find_opt pl_num gs.players with
+        | None -> failwith "doesnt have current player"
+        | Some v ->
+            let new_board_loc = update_board_loc v dice_val in
+            let new_x, new_y = get_xy_for_board_loc new_board_loc gs in
+            let v_new =
+              Player.move_board new_board_loc v
+              |> Player.move_coord
+                   (new_x + Constants.player_offset)
+                   (new_y + Constants.player_offset)
+            in
+            let pl_map = IM.add pl_num v_new gs.players in
+            let info_map =
+              match IM.find_opt new_board_loc gs.properties with
+              | None -> update_info_property_card gs 1
+              | Some _ -> update_info_property_card gs new_board_loc
+            in
+            let subscreens =
+              match IM.find_opt new_board_loc gs.properties with
+              | None -> gs.subscreens
+              | Some _ -> respond_to_property_roll gs new_board_loc
+            in
+            NewGS
+              {
+                gs with
+                dice = [ new_first_die; new_second_die ];
+                players = pl_map;
+                info_cards = info_map;
+                curr_player_roll = true;
+                subscreens;
+              }
+        (* NewGS { gs with dice = [ new_first_die; new_second_die ]} *))
+    | _ -> failwith "precondition violation"
 
 let rec determine_factions gs active_plyrs index accum =
   match active_plyrs with
@@ -458,7 +540,12 @@ let base_click_response gs b_name =
       let next_pl_ind =
         (gs.curr_player_index + 1) mod List.length gs.active_players
       in
-      NewGS { gs with curr_player_index = next_pl_ind }
+      NewGS
+        {
+          gs with
+          curr_player_index = next_pl_ind;
+          curr_player_roll = false;
+        }
   | _ -> failwith "not yet implemented"
 
 let new_respond_to_click gs (x, y) =
@@ -496,6 +583,9 @@ let new_respond_to_click gs (x, y) =
           match btn_name with
           | s when s = Constants.property_action_cancel_button ->
               response_to_cancel_button gs
+          | s when s = Constants.buy_button -> respond_to_buy_button gs
+          | s when s = Constants.forfeit_button ->
+              respond_to_forfeit_button gs
           | _ -> failwith "TODO "))
 (*these pattern matches here will be identical to the ones in home
   screen, a bunch of different button names*)

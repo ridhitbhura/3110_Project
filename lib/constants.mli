@@ -59,3 +59,11 @@ val team_selection_screen : string
 val solids_selection_slot : string
 
 val stripes_selection_slot : string
+
+val buy_property_screen : string
+
+val buy_property_dynamic : string
+
+val buy_button : string
+
+val forfeit_button : string

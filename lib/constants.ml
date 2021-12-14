@@ -55,3 +55,11 @@ let team_selection_screen = "team_selection"
 let solids_selection_slot = "solid_slot_"
 
 let stripes_selection_slot = "stripe_slot_"
+
+let buy_property_screen = "buy_property"
+
+let buy_property_dynamic = "buy_property_display"
+
+let buy_button = "buy_button"
+
+let forfeit_button = "forfeit_button"

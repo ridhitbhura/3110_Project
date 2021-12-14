@@ -19,6 +19,8 @@ val get_control : t -> control
 val acquire : t -> t
 (**[acquire property] gives the [property] an owner. *)
 
+val initial_purchase : t -> int
+
 val is_acquirable : t -> bool
 (**[is_acquirable property] is [true] if the [property] has an owner and
    [false] otherwise.*)
