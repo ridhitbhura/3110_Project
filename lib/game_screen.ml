@@ -247,17 +247,46 @@ let next_turn_popup gs =
   let s = SM.find Constants.new_turn gs.subscreens in
   let activated_s = Subscreen.activate s in
   let d_image_map = Subscreen.images s in
-  let char_player_image = SM.find Constants.new_turn_dynamic d_image_map
+  let char_player_image =
+    SM.find Constants.new_turn_dynamic d_image_map
   in
-  let wiped = Dynamic_image.clear_images char_player_image in 
-  let new_char_player_image = Dynamic_image.add_image wiped (List.nth gs.active_players gs.curr_player_index)
+  let wiped = Dynamic_image.clear_images char_player_image in
+  let new_char_player_image =
+    Dynamic_image.add_image wiped
+      (List.nth gs.active_players gs.curr_player_index)
   in
-  let new_d_image_map = SM.add Constants.new_turn_dynamic new_char_player_image d_image_map in 
-  let new_subscreen = Subscreen.replace_images activated_s new_d_image_map in
+  let new_d_image_map =
+    SM.add Constants.new_turn_dynamic new_char_player_image d_image_map
+  in
+  let new_subscreen =
+    Subscreen.replace_images activated_s new_d_image_map
+  in
   let new_screens =
     SM.add Constants.new_turn new_subscreen gs.subscreens
   in
   NewGS { gs with subscreens = new_screens }
+
+(* let update_info_property_card gs loc = let card_info_screen = SM.find
+   Constants.info_cards gs.subscreens in let image_map =
+   Subscreen.images card_info_screen in let info_card_image = SM.find
+   Constants.info_card_cornerimg image_map in let wiped =
+   Dynamic_image.clear_images info_card_image in let new_info_image =
+   Dynamic_image.add_image wiped loc in let new_d_image_map = SM.add
+   Constants.info_card_cornerimg new_info_image image_map in let
+   new_subscreen = Subscreen.replace_images card_info_screen
+   new_d_image_map in SM.add Constants.info_cards new_subscreen
+   gs.subscreens *)
+
+let update_info_property_card gs loc =
+  let info_card_subscreen = gs.info_cards in
+  let d_imgs = Subscreen.images info_card_subscreen in
+  let curr_img = SM.find Constants.info_cards d_imgs in
+  let wiped = Dynamic_image.clear_images curr_img in
+  let new_img_todraw = Dynamic_image.add_image wiped loc in
+  let new_d_image_map =
+    SM.add Constants.info_cards_screen new_img_todraw d_imgs
+  in
+  Subscreen.replace_images info_card_subscreen new_d_image_map
 
 let respond_to_dice_click gs =
   let pl_num = List.nth gs.active_players gs.curr_player_index in
@@ -280,11 +309,13 @@ let respond_to_dice_click gs =
                  (new_y + Constants.player_offset)
           in
           let pl_map = IM.add pl_num v_new gs.players in
+          let submap = update_info_property_card gs new_board_loc in
           NewGS
             {
               gs with
               dice = [ new_first_die; new_second_die ];
               players = pl_map;
+              info_cards = submap;
             }
       (* NewGS { gs with dice = [ new_first_die; new_second_die ]} *))
   | _ -> failwith "precondition violation"
@@ -348,9 +379,11 @@ let respond_to_click gs (x, y) =
 let base_click_response gs b_name =
   match b_name with
   | s when s = Constants.exit_game_button -> EndGame
-  | s when s = Constants.end_turn_button -> 
-    let next_pl_ind = (gs.curr_player_index + 1) mod (List.length gs.active_players) in 
-    NewGS {gs with curr_player_index = next_pl_ind} 
+  | s when s = Constants.end_turn_button ->
+      let next_pl_ind =
+        (gs.curr_player_index + 1) mod List.length gs.active_players
+      in
+      NewGS { gs with curr_player_index = next_pl_ind }
   | _ -> failwith "not yet implemented"
 
 let new_respond_to_click gs (x, y) =

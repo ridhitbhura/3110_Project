@@ -40,6 +40,10 @@ let property_action_dynamic_image = "property_action_display"
 
 let property_action_cancel_button = "cancel_button"
 
+let info_cards = "info_card_property"
+
+let info_cards_screen = "info_cards"
+
 let exit_game_button = "exit_game_button"
 
 let end_turn_button = "end_turn_button"

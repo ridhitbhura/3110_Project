@@ -49,3 +49,7 @@ val exit_game_button : string
 val end_turn_button : string
 
 val new_turn_dynamic : string
+
+val info_cards : string
+
+val info_cards_screen : string
