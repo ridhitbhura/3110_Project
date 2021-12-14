@@ -66,3 +66,5 @@ val respond_to_click : t -> int * int -> response
 val new_respond_to_click : t -> int * int -> response
 
 val next_turn_popup : t -> response
+
+val team_selection_popup : t -> response

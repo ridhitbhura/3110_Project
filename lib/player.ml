@@ -70,6 +70,8 @@ let obtain_weapon player wpn = { player with weapon = wpn }
 
 let faction player = player.faction
 
+let assign_faction player fac = { player with faction = fac }
+
 let character player = player.character
 
 let deactivate player = { player with status = Inactive }

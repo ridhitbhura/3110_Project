@@ -53,3 +53,9 @@ val new_turn_dynamic : string
 val info_cards : string
 
 val info_cards_screen : string
+
+val team_selection_screen : string
+
+val solids_selection_slot : string
+
+val stripes_selection_slot : string

@@ -22,6 +22,18 @@ let draw_gs_with_turn gs =
   Gui.draw_game_screen gs;
   Unix.sleepf 1.0
 
+let draw_gs_with_team gs =
+  Gui.draw_game_screen gs;
+  Unix.sleepf 2.0
+
+let inital_game_screen gs chars =
+  let gs_with_teams_select =
+    Game_screen.initialize gs chars |> Game_screen.team_selection_popup
+  in
+  match gs_with_teams_select with
+  | EndGame -> failwith "not possible"
+  | NewGS gs -> draw_gs_with_team gs
+
 (**[update_home_screen _] checks for a mouse click and updates home
    screen based upon that mouse click. If the mouse click caused a
    change on the home screen, the home screen is redrawn.*)
@@ -35,13 +47,14 @@ let rec update_home_screen hs =
       update_home_screen new_hs
   | ProceedToGS chars -> (
       let gs = Game_screen.initialize gs chars in
+      inital_game_screen gs chars;
       let gs_with_turn =
         Game_screen.initialize gs chars |> Game_screen.next_turn_popup
       in
       match gs_with_turn with
-      | EndGame -> failwith "not possible"
-      | NewGS turn_gs ->
-          draw_gs_with_turn turn_gs;
+      | EndGame -> failwith "impossible"
+      | NewGS gs_turn ->
+          draw_gs_with_turn gs_turn;
           Gui.draw_game_screen gs;
           update_game_screen gs)
 (* | _ -> failwith "no initial popup" *)
@@ -50,15 +63,21 @@ and update_game_screen gs =
   let coords = Gui.mouse_click () in
   match Game_screen.new_respond_to_click gs coords with
   | EndGame -> redraw_hs_and_sleep ()
-  | NewGS new_gs -> match (Game_screen.curr_player gs = Game_screen.curr_player new_gs) with
-        | true -> Gui.draw_game_screen new_gs; update_game_screen new_gs
-        | false -> let gs_with_turn = Game_screen.next_turn_popup new_gs in 
-          match gs_with_turn with 
+  | NewGS new_gs -> (
+      match
+        Game_screen.curr_player gs = Game_screen.curr_player new_gs
+      with
+      | true ->
+          Gui.draw_game_screen new_gs;
+          update_game_screen new_gs
+      | false -> (
+          let gs_with_turn = Game_screen.next_turn_popup new_gs in
+          match gs_with_turn with
           | EndGame -> failwith "not possible"
-          | NewGS turn_gs -> 
-            draw_gs_with_turn turn_gs;
-            Gui.draw_game_screen new_gs;
-            update_game_screen new_gs
+          | NewGS turn_gs ->
+              draw_gs_with_turn turn_gs;
+              Gui.draw_game_screen new_gs;
+              update_game_screen new_gs))
 
 (**[run_game _] initializes a new empty Gui window, draws the home
    screen, and continually updates the home screen.*)

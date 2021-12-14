@@ -309,7 +309,11 @@ let respond_to_dice_click gs =
                  (new_y + Constants.player_offset)
           in
           let pl_map = IM.add pl_num v_new gs.players in
-          let submap = update_info_property_card gs new_board_loc in
+          let submap =
+            match IM.find_opt new_board_loc gs.properties with
+            | None -> update_info_property_card gs 1
+            | Some _ -> update_info_property_card gs new_board_loc
+          in
           NewGS
             {
               gs with
@@ -319,6 +323,77 @@ let respond_to_dice_click gs =
             }
       (* NewGS { gs with dice = [ new_first_die; new_second_die ]} *))
   | _ -> failwith "precondition violation"
+
+let rec determine_factions gs active_plyrs index accum =
+  match active_plyrs with
+  | [] -> accum
+  | h :: t ->
+      let plyr = IM.find h gs.players in
+      let assigned_plyr =
+        Player.assign_faction plyr
+          (if index mod 2 = 0 then Stripes else Solids)
+      in
+      determine_factions gs t (index + 1) (IM.add h assigned_plyr accum)
+
+let rec add_image_team_selection
+    gs
+    active_plyrs
+    solid_index
+    stripes_index
+    accum
+    player_map =
+  match active_plyrs with
+  | [] -> accum
+  | h :: t -> (
+      let player = IM.find h player_map in
+      let new_index, constant =
+        match Player.faction player with
+        | Solids -> (solid_index, Constants.solids_selection_slot)
+        | Stripes -> (stripes_index, Constants.stripes_selection_slot)
+        | _ -> failwith "impossible"
+      in
+      let slot_img =
+        SM.find (constant ^ string_of_int new_index) accum
+      in
+      let new_slot_img = Dynamic_image.add_image slot_img h in
+      match Player.faction player with
+      | Solids ->
+          add_image_team_selection gs t (solid_index + 1) stripes_index
+            (SM.add
+               (constant ^ string_of_int new_index)
+               new_slot_img accum)
+            player_map
+      | Stripes ->
+          add_image_team_selection gs t solid_index (stripes_index + 1)
+            (SM.add
+               (constant ^ string_of_int new_index)
+               new_slot_img accum)
+            player_map
+      | _ -> failwith "impossible")
+
+let team_selection_popup gs =
+  let new_player_map =
+    determine_factions gs gs.active_players 0 IM.empty
+  in
+  let team_selection_screen =
+    SM.find Constants.team_selection_screen gs.subscreens
+  in
+  let activated_team_selection =
+    Subscreen.activate team_selection_screen
+  in
+  let d_image_map = Subscreen.images team_selection_screen in
+  let new_d_map =
+    add_image_team_selection gs gs.active_players 1 1 d_image_map
+      new_player_map
+  in
+  let new_subscreen =
+    Subscreen.replace_images activated_team_selection new_d_map
+  in
+  let new_subscreens =
+    SM.add Constants.team_selection_screen new_subscreen gs.subscreens
+  in
+  NewGS
+    { gs with subscreens = new_subscreens; players = new_player_map }
 
 let respond_to_property_button gs property_num =
   let property =

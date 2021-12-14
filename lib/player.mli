@@ -70,6 +70,8 @@ val obtain_weapon : t -> Weapon.t option -> t
 val faction : t -> fac
 (**[faction player] is the faction the player is in.*)
 
+val assign_faction : t -> fac -> t
+
 val update_player_number : t -> int -> t
 (**[update_player_number p num] is the player with player number given
    by [num].*)

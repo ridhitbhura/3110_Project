@@ -49,3 +49,9 @@ let exit_game_button = "exit_game_button"
 let end_turn_button = "end_turn_button"
 
 let new_turn_dynamic = "new_turn_player"
+
+let team_selection_screen = "team_selection"
+
+let solids_selection_slot = "solid_slot_"
+
+let stripes_selection_slot = "stripe_slot_"

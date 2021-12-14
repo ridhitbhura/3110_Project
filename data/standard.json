@@ -206,7 +206,7 @@
                 "y_coord": 225,
                 "dynamic_images": [
                     {
-                        "name": "first_player_slot",
+                        "name": "solid_slot_1",
                         "images": [],
                         "image_path": "players/medium/",
                         "x_coord": 410,
@@ -215,7 +215,7 @@
                         "height": 60
                     },
                     {
-                        "name": "second_player_slot",
+                        "name": "solid_slot_2",
                         "images": [],
                         "image_path": "players/medium/",
                         "width": 60,
@@ -224,7 +224,7 @@
                         "y_coord": 290
                     },
                     {
-                        "name": "third_player_slot",
+                        "name": "solid_slot_3",
                         "images": [],
                         "image_path": "players/medium/",
                         "width": 60,
@@ -233,7 +233,7 @@
                         "y_coord": 290
                     },
                     {
-                        "name": "fourth_player_slot",
+                        "name": "stripe_slot_1",
                         "images": [],
                         "image_path": "players/medium/",
                         "width": 60,
@@ -242,7 +242,7 @@
                         "y_coord": 290
                     },
                     {
-                        "name": "fifth_player_slot",
+                        "name": "stripe_slot_2",
                         "images": [],
                         "image_path": "players/medium/",
                         "width": 60,
@@ -251,7 +251,7 @@
                         "y_coord": 290
                     },
                     {
-                        "name": "sixth_player_slot",
+                        "name": "stripe_slot_3",
                         "images": [],
                         "image_path": "players/medium/",
                         "width": 60,
