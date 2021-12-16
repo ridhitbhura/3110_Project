@@ -66,6 +66,8 @@ val weapon_damage : t -> int
 
 val food : t -> Food.t option
 
+val weapon : t -> Weapon.t option
+
 val obtain_weapon : t -> Weapon.t option -> t
 (**[obtain_weapon player wpn] gives [player] a weapon [wpn].*)
 

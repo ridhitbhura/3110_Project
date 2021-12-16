@@ -85,3 +85,31 @@ val pizza : string
 val no_food : string
 
 val steak : string
+
+val weapon_pick_up_screen : string
+
+val weapon_pick_up_dynamic : string
+
+val fork : string
+
+val shaving_razor : string
+
+val baseball_bat : string
+
+val pistol : string
+
+val prison_fight : string
+
+val warden's_favor : string
+
+val bribe_money : string
+
+val go_to_wardens : string
+
+val prison_fight_screen : string
+
+val wardens_favor_screen : string
+
+val bribe_money_screen : string
+
+val go_to_warden_screen : string

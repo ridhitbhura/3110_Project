@@ -5,6 +5,8 @@ type t
    this corresponds to the luxury tax location, go to jail location, and
    more.*)
 
+val name : t -> string
+
 val take_money : t -> int
 (**[take_money a] is the amount of money this action space takes from a
    player who lands on it.*)

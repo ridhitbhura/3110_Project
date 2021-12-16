@@ -72,6 +72,8 @@ let weapon_damage player =
 
 let food player = player.food
 
+let weapon player = player.weapon
+
 let obtain_weapon player wpn = { player with weapon = wpn }
 
 let obtain_food player food = { player with food }

@@ -13,6 +13,8 @@ type t = {
   new_board_location : int;
 }
 
+let name a = a.name
+
 let take_money a = a.take_money
 
 let give_money a = a.give_money

@@ -81,3 +81,31 @@ let instant_ramen = "instant_ramen"
 let steak = "steak"
 
 let no_food = "none"
+
+let weapon_pick_up_screen = "weapon_pick_up"
+
+let weapon_pick_up_dynamic = "picked_up_weapon"
+
+let fork = "fork"
+
+let shaving_razor = "shaving_razor"
+
+let baseball_bat = "baseball_bat"
+
+let pistol = "pistol"
+
+let prison_fight = "prison_fight"
+
+let warden's_favor = "warden's_favor"
+
+let bribe_money = "bribe_money"
+
+let go_to_wardens = "go_to_warden"
+
+let prison_fight_screen = "prison_fight"
+
+let wardens_favor_screen = "wardens_favor"
+
+let bribe_money_screen = "bribe_money"
+
+let go_to_warden_screen = "go_to_wardens"

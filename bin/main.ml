@@ -18,9 +18,9 @@ let redraw_hs_and_sleep () =
   Gui.draw_home_screen base_hs;
   Unix.sleepf 0.5
 
-let draw_gs_with_turn gs =
+let draw_gs_with_time gs time =
   Gui.draw_game_screen gs;
-  Unix.sleepf 1.0
+  Unix.sleepf time
 
 let draw_gs_with_team gs =
   Gui.draw_game_screen gs;
@@ -56,7 +56,7 @@ let rec update_home_screen hs =
       | EndGame -> failwith "impossible"
       | ClosingGS (_, _) -> failwith "not possible"
       | NewGS gs_turn ->
-          draw_gs_with_turn gs_turn;
+          draw_gs_with_time gs_turn 1.0;
           Gui.draw_game_screen gs;
           update_game_screen gs)
 (* | _ -> failwith "no initial popup" *)
@@ -78,11 +78,11 @@ and update_game_screen gs =
           | EndGame -> failwith "not possible"
           | ClosingGS (_, _) -> failwith "not possible"
           | NewGS turn_gs ->
-              draw_gs_with_turn turn_gs;
+              draw_gs_with_time turn_gs 1.0;
               Gui.draw_game_screen new_gs;
               update_game_screen new_gs))
   | ClosingGS (opened, close) ->
-      draw_gs_with_turn opened;
+      draw_gs_with_time opened 1.5;
       Gui.draw_game_screen close;
       update_game_screen close
 
