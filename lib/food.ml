@@ -6,6 +6,8 @@ type t = {
   image_name : string;
 }
 
+let name food = food.name
+
 let health food = food.health
 
 let image food = food.image_name

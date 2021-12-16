@@ -32,6 +32,7 @@ let inital_game_screen gs chars =
   in
   match gs_with_teams_select with
   | EndGame -> failwith "not possible"
+  | ClosingGS (_, _) -> failwith "not possible"
   | NewGS gs -> draw_gs_with_team gs
 
 (**[update_home_screen _] checks for a mouse click and updates home
@@ -53,6 +54,7 @@ let rec update_home_screen hs =
       in
       match gs_with_turn with
       | EndGame -> failwith "impossible"
+      | ClosingGS (_, _) -> failwith "not possible"
       | NewGS gs_turn ->
           draw_gs_with_turn gs_turn;
           Gui.draw_game_screen gs;
@@ -74,10 +76,15 @@ and update_game_screen gs =
           let gs_with_turn = Game_screen.next_turn_popup new_gs in
           match gs_with_turn with
           | EndGame -> failwith "not possible"
+          | ClosingGS (_, _) -> failwith "not possible"
           | NewGS turn_gs ->
               draw_gs_with_turn turn_gs;
               Gui.draw_game_screen new_gs;
               update_game_screen new_gs))
+  | ClosingGS (opened, close) ->
+      draw_gs_with_turn opened;
+      Gui.draw_game_screen close;
+      update_game_screen close
 
 (**[run_game _] initializes a new empty Gui window, draws the home
    screen, and continually updates the home screen.*)

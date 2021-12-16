@@ -64,8 +64,13 @@ val weapon_damage : t -> int
 (**[weapon_damage player] is the amount of damage that the player's
    weapon inflicts.*)
 
+val food : t -> Food.t option
+
 val obtain_weapon : t -> Weapon.t option -> t
 (**[obtain_weapon player wpn] gives [player] a weapon [wpn].*)
+
+val obtain_food : t -> Food.t option -> t
+(**[obtain_weapon player food] gives [player] a food [food].*)
 
 val faction : t -> fac
 (**[faction player] is the faction the player is in.*)

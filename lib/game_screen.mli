@@ -49,7 +49,7 @@ val gameboard_ycoord : t -> int
 
 val dice : t -> Die.t list
 
-val curr_player: t -> int
+val curr_player : t -> int
 
 val get_game_screen_from_json : Yojson.Basic.t -> t
 
@@ -60,6 +60,7 @@ val initialize : t -> int list -> t
 type response =
   | EndGame
   | NewGS of t
+  | ClosingGS of t * t
 
 val respond_to_click : t -> int * int -> response
 

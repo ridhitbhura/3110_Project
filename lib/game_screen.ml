@@ -192,6 +192,7 @@ let initialize gs chars =
 type response =
   | EndGame
   | NewGS of t
+  | ClosingGS of t * t
 
 (*BaseGS with the regular game screen buttons, the dice buttons, and the
   property buttons. ActiveSubscreenGS with the buttons inside the
@@ -279,16 +280,35 @@ let next_turn_popup gs =
    new_d_image_map in SM.add Constants.info_cards new_subscreen
    gs.subscreens *)
 
-let update_info_property_card gs loc =
-  let info_card_subscreen = gs.info_cards in
-  let d_imgs = Subscreen.images info_card_subscreen in
-  let curr_img = SM.find Constants.info_cards d_imgs in
-  let wiped = Dynamic_image.clear_images curr_img in
-  let new_img_todraw = Dynamic_image.add_image wiped loc in
-  let new_d_image_map =
-    SM.add Constants.info_cards_screen new_img_todraw d_imgs
+let update_info_cards gs loc =
+  let info_card_screen = gs.info_cards in
+  let d_imgs = Subscreen.images info_card_screen in
+  let property_image = SM.find Constants.property_info_card d_imgs in
+  let wiped_property = Dynamic_image.clear_images property_image in
+  let new_loc =
+    match IM.find_opt loc gs.properties with
+    | None -> 0
+    | Some _ -> loc
   in
-  Subscreen.replace_images info_card_subscreen new_d_image_map
+  let new_property_image =
+    Dynamic_image.add_image wiped_property new_loc
+  in
+  let new_d_image_map =
+    SM.add Constants.info_cards_screen new_property_image d_imgs
+  in
+
+  (* let weapon_image = SM.find Constants.weapon_info_card d_imgs in let
+     wiped_weapon = Dynamic_image.clear_images weapon_image in let
+     new_weapon_image = Dynamic_image.add_image wiped_weapon weapon in
+     let new_d_image_map2 = SM.add Constants.info_cards_screen
+     new_weapon_image new_d_image_map in
+
+     let food_image = SM.find Constants.food_info_card d_imgs in let
+     wiped_food = Dynamic_image.clear_images food_image in let
+     new_food_image = Dynamic_image.add_image wiped_food food in let
+     new_d_image_map2 = SM.add Constants.info_cards_screen
+     new_food_image new_d_image_map2 in *)
+  Subscreen.replace_images info_card_screen new_d_image_map
 
 let respond_to_property_roll gs board_loc =
   let property = IM.find board_loc gs.properties in
@@ -321,8 +341,8 @@ let respond_to_property_roll gs board_loc =
       let new_subscreens =
         SM.add Constants.buy_property_screen new_subscreen gs.subscreens
       in
-      new_subscreens
-  | false -> gs.subscreens
+      (new_subscreens, new_subscreens)
+  | false -> (gs.subscreens, gs.subscreens)
 
 let respond_to_buy_button gs =
   let plyr_id = List.nth gs.active_players gs.curr_player_index in
@@ -371,6 +391,55 @@ let respond_to_forfeit_button gs =
   in
   NewGS { gs with subscreens = new_screens }
 
+let respond_to_food_roll gs fs =
+  (* let plyr_id = List.nth gs.active_players gs.curr_player_index in
+     let curr_player = IM.find plyr_id gs.players in *)
+  (* let food = Food_stack.generate_food fs in let player_health =
+     Player.health player in let new_player = if player_health < 100
+     then Player.update_health player (Food.health food) else
+     Player.obtain_food player (Some food) in let new_pmap = IM.add
+     p_num new_player gs.players in *)
+  let food = Food_stack.generate_food fs in
+  let food_subscreen =
+    SM.find Constants.food_pick_up_screen gs.subscreens
+  in
+  let activated_food_pu = Subscreen.activate food_subscreen in
+  let d_image_map = Subscreen.images activated_food_pu in
+  let food_image = SM.find Constants.food_pick_up_dynamic d_image_map in
+  let wiped = Dynamic_image.clear_images food_image in
+  let new_food_image =
+    match Food.name food with
+    | s when s = Constants.burger -> Dynamic_image.add_image wiped 15
+    | s when s = Constants.pizza -> Dynamic_image.add_image wiped 10
+    | s when s = Constants.instant_ramen ->
+        Dynamic_image.add_image wiped 5
+    | s when s = Constants.steak -> Dynamic_image.add_image wiped 20
+    | _ -> failwith "food impossible"
+  in
+  let new_d_image_map =
+    SM.add Constants.food_pick_up_dynamic new_food_image d_image_map
+  in
+  let subscreen_open =
+    Subscreen.replace_images activated_food_pu new_d_image_map
+  in
+  let subscreen_closed =
+    Subscreen.replace_images food_subscreen new_d_image_map
+  in
+  ( SM.add Constants.food_pick_up_screen subscreen_open gs.subscreens,
+    SM.add Constants.food_pick_up_screen subscreen_closed gs.subscreens
+  )
+
+let respond_to_roll gs board_loc =
+  let food = IM.find_opt board_loc gs.food_stacks in
+  let weapon = IM.find_opt board_loc gs.weapon_stacks in
+  let action_space = IM.find_opt board_loc gs.action_spaces in
+  match (food, weapon, action_space) with
+  | None, None, None -> respond_to_property_roll gs board_loc
+  | Some fs, None, None -> respond_to_food_roll gs fs
+  | None, Some _, None -> (gs.subscreens, gs.subscreens)
+  | None, None, Some _ -> (gs.subscreens, gs.subscreens)
+  | _, _, _ -> failwith "not possible"
+
 let respond_to_dice_click gs =
   if gs.curr_player_roll then NewGS gs
   else
@@ -396,23 +465,29 @@ let respond_to_dice_click gs =
             let pl_map = IM.add pl_num v_new gs.players in
             let info_map =
               match IM.find_opt new_board_loc gs.properties with
-              | None -> update_info_property_card gs 1
-              | Some _ -> update_info_property_card gs new_board_loc
+              | None -> update_info_cards gs 0
+              | Some _ -> update_info_cards gs new_board_loc
             in
-            let subscreens =
-              match IM.find_opt new_board_loc gs.properties with
-              | None -> gs.subscreens
-              | Some _ -> respond_to_property_roll gs new_board_loc
+            let subscreens_open, subscreens_closed =
+              respond_to_roll gs new_board_loc
             in
-            NewGS
-              {
-                gs with
-                dice = [ new_first_die; new_second_die ];
-                players = pl_map;
-                info_cards = info_map;
-                curr_player_roll = true;
-                subscreens;
-              }
+            ClosingGS
+              ( {
+                  gs with
+                  dice = [ new_first_die; new_second_die ];
+                  players = pl_map;
+                  info_cards = info_map;
+                  curr_player_roll = true;
+                  subscreens = subscreens_open;
+                },
+                {
+                  gs with
+                  dice = [ new_first_die; new_second_die ];
+                  players = pl_map;
+                  info_cards = info_map;
+                  curr_player_roll = true;
+                  subscreens = subscreens_closed;
+                } )
         (* NewGS { gs with dice = [ new_first_die; new_second_die ]} *))
     | _ -> failwith "precondition violation"
 
@@ -550,11 +625,16 @@ let base_click_response gs b_name =
       let next_pl_ind =
         (gs.curr_player_index + 1) mod List.length gs.active_players
       in
+      let plyr_id = List.nth gs.active_players next_pl_ind in
+      let player = IM.find plyr_id gs.players in
+      let player_loc = Player.location player in
+      let subscreen = update_info_cards gs player_loc in
       NewGS
         {
           gs with
           curr_player_index = next_pl_ind;
           curr_player_roll = false;
+          info_cards = subscreen;
         }
   | _ -> failwith "not yet implemented"
 

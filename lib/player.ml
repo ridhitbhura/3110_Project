@@ -18,6 +18,7 @@ type t = {
   large_image : string;
   character_number : int;
   weapon : Weapon.t option;
+  food : Food.t option;
   money : int;
   health : int;
   board_location : int;
@@ -39,7 +40,10 @@ let medium_image player = player.medium_image
 
 let health player = player.health
 
-let update_health player amt = { player with health = amt }
+let update_health player amt =
+  let current_health = health player in
+  if current_health + amt > 100 then { player with health = 100 }
+  else { player with health = current_health + amt }
 
 let money player = player.money
 
@@ -63,10 +67,14 @@ let has_weapon player =
 
 let weapon_damage player =
   match player.weapon with
-  | None -> failwith "Player has no weapon"
+  | None -> 0
   | Some wpn -> Weapon.damage wpn
 
+let food player = player.food
+
 let obtain_weapon player wpn = { player with weapon = wpn }
+
+let obtain_food player food = { player with food }
 
 let faction player = player.faction
 
@@ -95,6 +103,7 @@ let get_player_from_json json =
       money = json |> member "money" |> to_int;
       health = json |> member "health" |> to_int;
       weapon = None;
+      food = None;
       board_location = 0;
       properties = [];
       faction = Unassigned;

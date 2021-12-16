@@ -14,7 +14,7 @@ let generate_food fs =
   let food = List.nth_opt fs.foods i in
   match food with
   | None -> failwith "Impossible"
-  | Some wpn -> wpn
+  | Some fd -> fd
 
 let x_coord fs = fs.x_coord
 

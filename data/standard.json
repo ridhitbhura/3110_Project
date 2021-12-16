@@ -1235,27 +1235,22 @@
                 {
                     "name": "fork",
                     "damage": 5,
-                    "image_name": "weapon_cards/fork.png"
+                    "image_name": "weapon_cards/5.png"
                 },
                 {
                     "name": "shaving_razor",
                     "damage": 10,
-                    "image_name": "weapon_cards/shaving_razor.png"
+                    "image_name": "weapon_cards/10.png"
                 },
                 {
                     "name": "baseball_bat",
                     "damage": 15,
-                    "image_name": "weapon_cards/baseball_bat.png"
+                    "image_name": "weapon_cards/15.png"
                 },
                 {
                     "name": "pistol",
                     "damage": 40,
-                    "image_name": "weapon_cards/pistol.png"
-                },
-                {
-                    "name": "none",
-                    "damage": 0,
-                    "image_name": "weapon_cards/no_weapon.png"
+                    "image_name": "weapon_cards/40.png"
                 }
             ],
             "weapon_stacks": [
@@ -1324,27 +1319,22 @@
                 {
                     "name": "instant_ramen",
                     "hp": 5,
-                    "image_name": "food_cards/instant_ramen.png"
+                    "image_name": "food_cards/5.png"
                 },
                 {
                     "name": "pizza",
                     "hp": 10,
-                    "image_name": "food_cards/pizza.png"
+                    "image_name": "food_cards/10.png"
                 },
                 {
                     "name": "burger",
                     "hp": 15,
-                    "image_name": "food_cards/burger.png"
+                    "image_name": "food_cards/15.png"
                 },
                 {
                     "name": "steak",
                     "hp": 20,
-                    "image_name": "food_cards/steak.png"
-                },
-                {
-                    "name": "none",
-                    "hp": 0,
-                    "image_name": "food_cards/no_food.png"
+                    "image_name": "food_cards/20.png"
                 }
             ]
         },
@@ -1649,7 +1639,7 @@
                 {
                     "name": "info_card_property",
                     "images": [
-                        "properties/1.png"
+                        "properties/0.png"
                     ],
                     "image_path": "properties/",
                     "x_coord": 1000,
@@ -1660,7 +1650,7 @@
                 {
                     "name": "info_card_weapon",
                     "images": [
-                        "weapon_cards/no_weapon.png"
+                        "weapon_cards/0.png"
                     ],
                     "image_path": "weapon_cards/",
                     "x_coord": 1180,
@@ -1671,7 +1661,7 @@
                 {
                     "name": "info_card_food",
                     "images": [
-                        "food_cards/no_food.png"
+                        "food_cards/0.png"
                     ],
                     "image_path": "food_cards/",
                     "x_coord": 1180,

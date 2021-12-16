@@ -50,7 +50,11 @@ val end_turn_button : string
 
 val new_turn_dynamic : string
 
-val info_cards : string
+val property_info_card : string
+
+val weapon_info_card : string
+
+val food_info_card : string
 
 val info_cards_screen : string
 
@@ -67,3 +71,17 @@ val buy_property_dynamic : string
 val buy_button : string
 
 val forfeit_button : string
+
+val food_pick_up_screen : string
+
+val food_pick_up_dynamic : string
+
+val burger : string
+
+val instant_ramen : string
+
+val pizza : string
+
+val no_food : string
+
+val steak : string

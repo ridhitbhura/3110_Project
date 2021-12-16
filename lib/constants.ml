@@ -40,7 +40,11 @@ let property_action_dynamic_image = "property_action_display"
 
 let property_action_cancel_button = "cancel_button"
 
-let info_cards = "info_card_property"
+let property_info_card = "info_card_property"
+
+let weapon_info_card = "info_card_weapon"
+
+let food_info_card = "info_card_food"
 
 let info_cards_screen = "info_cards"
 
@@ -63,3 +67,17 @@ let buy_property_dynamic = "buy_property_display"
 let buy_button = "buy_button"
 
 let forfeit_button = "forfeit_button"
+
+let food_pick_up_screen = "food_pick_up"
+
+let food_pick_up_dynamic = "picked_up_food"
+
+let burger = "burger"
+
+let pizza = "pizza"
+
+let instant_ramen = "instant_ramen"
+
+let steak = "steak"
+
+let no_food = "none"
