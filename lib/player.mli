@@ -95,6 +95,8 @@ val activate : t -> t
 val active : t -> bool
 (**[active p] is whether the player is active.*)
 
+val character_number : t -> int
+
 val get_player_from_json : Yojson.Basic.t -> int * t
 (**[get_player_from_json js] is the player that [js] represents along
    with its identifier, the player number.*)

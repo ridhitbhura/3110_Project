@@ -90,6 +90,8 @@ let activate player = { player with status = Active }
 
 let active player = player.status = Active
 
+let character_number player = player.character_number
+
 let update_player_number player num =
   { player with player_number = num }
 

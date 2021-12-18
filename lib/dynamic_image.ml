@@ -27,6 +27,15 @@ let add_image d x =
     images = (d.image_path ^ string_of_int x ^ ".png") :: d.images;
   }
 
+let rec add_images d x =
+  match x with
+  | x when x >= 10 ->
+      let remainder = x mod 10 in
+      let divided = x / 10 in
+      add_images (add_image d remainder) divided
+  | x when x < 10 -> add_image d x
+  | _ -> d
+
 let get_image_from_json json =
   let name = json |> member "name" |> to_string in
   ( name,

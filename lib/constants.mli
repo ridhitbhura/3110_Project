@@ -113,3 +113,7 @@ val wardens_favor_screen : string
 val bribe_money_screen : string
 
 val go_to_warden_screen : string
+
+val solids_info_screen : string
+
+val stripes_info_screen : string

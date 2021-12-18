@@ -267,18 +267,7 @@ let next_turn_popup gs =
   let new_screens =
     SM.add Constants.new_turn new_subscreen gs.subscreens
   in
-  NewGS { gs with subscreens = new_screens }
-
-(* let update_info_property_card gs loc = let card_info_screen = SM.find
-   Constants.info_cards gs.subscreens in let image_map =
-   Subscreen.images card_info_screen in let info_card_image = SM.find
-   Constants.info_card_cornerimg image_map in let wiped =
-   Dynamic_image.clear_images info_card_image in let new_info_image =
-   Dynamic_image.add_image wiped loc in let new_d_image_map = SM.add
-   Constants.info_card_cornerimg new_info_image image_map in let
-   new_subscreen = Subscreen.replace_images card_info_screen
-   new_d_image_map in SM.add Constants.info_cards new_subscreen
-   gs.subscreens *)
+  { gs with subscreens = new_screens }
 
 let update_info_cards gs loc player =
   let info_card_screen = gs.info_cards in
@@ -637,10 +626,11 @@ let rec add_image_team_selection
             player_map
       | _ -> failwith "impossible")
 
-let team_selection_popup gs =
-  let new_player_map =
-    determine_factions gs gs.active_players 0 IM.empty
-  in
+let assign_players_faction gs =
+  let new_p_map = determine_factions gs gs.active_players 0 IM.empty in
+  { gs with players = new_p_map }
+
+let activate_team_selection gs =
   let team_selection_screen =
     SM.find Constants.team_selection_screen gs.subscreens
   in
@@ -650,7 +640,7 @@ let team_selection_popup gs =
   let d_image_map = Subscreen.images team_selection_screen in
   let new_d_map =
     add_image_team_selection gs gs.active_players 1 1 d_image_map
-      new_player_map
+      gs.players
   in
   let new_subscreen =
     Subscreen.replace_images activated_team_selection new_d_map
@@ -658,8 +648,7 @@ let team_selection_popup gs =
   let new_subscreens =
     SM.add Constants.team_selection_screen new_subscreen gs.subscreens
   in
-  NewGS
-    { gs with subscreens = new_subscreens; players = new_player_map }
+  { gs with subscreens = new_subscreens }
 
 let respond_to_property_button gs property_num =
   let property =
@@ -736,6 +725,91 @@ let base_click_response gs b_name =
           info_cards = subscreen;
         }
   | _ -> failwith "not yet implemented"
+
+type img =
+  | HP
+  | Money
+  | Background
+
+let image_constructor slot_number img =
+  match img with
+  | HP -> "slot_hp_" ^ slot_number
+  | Money -> "slot_money_" ^ slot_number
+  | Background -> "slot_" ^ slot_number
+
+let rec update_info_for_team players faction accum index gs =
+  match players with
+  | [] ->
+      print_string "empty";
+      accum
+  | h :: t -> (
+      let player = IM.find h gs.players in
+      match Player.faction player = faction with
+      | true ->
+          let d_images = Subscreen.images accum in
+          let hp_img_name =
+            image_constructor (string_of_int index) HP
+          in
+          let money_img_name =
+            image_constructor (string_of_int index) Money
+          in
+          let background_img_name =
+            image_constructor (string_of_int index) Background
+          in
+          let plyr_health = Player.health player in
+          let plyr_money = Player.money player in
+          let hp_img =
+            Dynamic_image.clear_images (SM.find hp_img_name d_images)
+          in
+          let money_img =
+            Dynamic_image.clear_images (SM.find money_img_name d_images)
+          in
+          let background_img =
+            Dynamic_image.clear_images
+              (SM.find background_img_name d_images)
+          in
+          let new_hp_image =
+            Dynamic_image.add_images hp_img plyr_health
+          in
+          let new_money_image =
+            Dynamic_image.add_images money_img plyr_money
+          in
+          let new_background_image =
+            Dynamic_image.add_image background_img h
+          in
+          let d_images' = SM.add hp_img_name new_hp_image d_images in
+          let d_images'' =
+            SM.add money_img_name new_money_image d_images'
+          in
+          let d_images''' =
+            SM.add background_img_name new_background_image d_images''
+          in
+          update_info_for_team t faction
+            (Subscreen.replace_images accum d_images''')
+            (index + 1) gs
+      | false ->
+          print_string "false";
+          update_info_for_team t faction accum index gs)
+
+let initialize_team_info gs =
+  let solids_info = SM.find Constants.solids_info_screen gs.team_info in
+  let stripes_info =
+    SM.find Constants.stripes_info_screen gs.team_info
+  in
+  let solid_subscreen =
+    update_info_for_team gs.active_players Solids solids_info 1 gs
+  in
+  let stripes_subscreen =
+    update_info_for_team gs.active_players Stripes stripes_info 1 gs
+  in
+  let team_info_subscreen' =
+    SM.add Constants.solids_info_screen solid_subscreen gs.team_info
+  in
+  let team_info_subscreen'' =
+    SM.add Constants.stripes_info_screen stripes_subscreen
+      team_info_subscreen'
+  in
+  { gs with team_info = team_info_subscreen'' }
 
 let new_respond_to_click gs (x, y) =
   let button_response = get_buttons gs in

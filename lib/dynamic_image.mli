@@ -25,6 +25,8 @@ val add_image : t -> int -> t
 (**[add_image dynamic_image x] adds the image associated with integer
    [x] to the collection of images stored in the dynamic image.*)
 
+val add_images : t -> int -> t
+
 val get_image_from_json : Yojson.Basic.t -> string * t
 (**[get_image_from_json j] is the dynamic image that [j] represents
    along with its identifier, its name.*)

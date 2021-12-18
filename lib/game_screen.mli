@@ -66,6 +66,10 @@ val respond_to_click : t -> int * int -> response
 
 val new_respond_to_click : t -> int * int -> response
 
-val next_turn_popup : t -> response
+val next_turn_popup : t -> t
 
-val team_selection_popup : t -> response
+val activate_team_selection : t -> t
+
+val assign_players_faction : t -> t
+
+val initialize_team_info : t -> t

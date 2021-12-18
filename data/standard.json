@@ -1456,7 +1456,7 @@
                 "y_coord": 505,
                 "dynamic_images": [
                     {
-                        "name": "stripes_1",
+                        "name": "slot_1",
                         "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1011,
@@ -1465,7 +1465,7 @@
                         "height": 100
                     },
                     {
-                        "name": "stripes_2",
+                        "name": "slot_2",
                         "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1110,
@@ -1474,7 +1474,7 @@
                         "height": 100
                     },
                     {
-                        "name": "stripes_3",
+                        "name": "slot_3",
                         "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1209,
@@ -1483,56 +1483,56 @@
                         "height": 100
                     },
                     {
-                        "name": "stripes_1_health",
+                        "name": "slot_hp_1",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1038,
-                        "y_coord": 571,
+                        "x_coord": 1037,
+                        "y_coord": 556,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "stripes_1_money",
+                        "name": "slot_money_1",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1024,
-                        "y_coord": 545,
+                        "x_coord": 1025,
+                        "y_coord": 531,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "stripes_2_health",
+                        "name": "slot_hp_2",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1137,
-                        "y_coord": 571,
+                        "x_coord": 1136,
+                        "y_coord": 556,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "stripes_2_money",
+                        "name": "slot_money_2",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1123,
-                        "y_coord": 545,
+                        "x_coord": 1124,
+                        "y_coord": 531,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "stripes_3_health",
+                        "name": "slot_hp_3",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1236,
-                        "y_coord": 571,
+                        "x_coord": 1235,
+                        "y_coord": 555,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "stripes_3_money",
+                        "name": "slot_money_3",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1222,
-                        "y_coord": 545,
+                        "x_coord": 1223,
+                        "y_coord": 530,
                         "width": 10,
                         "height": 10
                     }
@@ -1546,7 +1546,7 @@
                 "y_coord": 355,
                 "dynamic_images": [
                     {
-                        "name": "solids_1",
+                        "name": "slot_1",
                         "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1011,
@@ -1555,7 +1555,7 @@
                         "height": 100
                     },
                     {
-                        "name": "solids_2",
+                        "name": "slot_2",
                         "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1110,
@@ -1564,7 +1564,7 @@
                         "height": 100
                     },
                     {
-                        "name": "solids_3",
+                        "name": "slot_3",
                         "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1209,
@@ -1573,56 +1573,56 @@
                         "height": 100
                     },
                     {
-                        "name": "solids_1_health",
+                        "name": "slot_hp_1",
                         "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1037,
-                        "y_coord": 421,
+                        "y_coord": 406,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "solids_1_money",
+                        "name": "slot_money_1",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1023,
-                        "y_coord": 395,
+                        "x_coord": 1025,
+                        "y_coord": 381,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "solids_2_health",
+                        "name": "slot_hp_2",
                         "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1136,
-                        "y_coord": 421,
+                        "y_coord": 405,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "solids_2_money",
+                        "name": "slot_money_2",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1122,
-                        "y_coord": 395,
+                        "x_coord": 1124,
+                        "y_coord": 380,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "solids_3_health",
+                        "name": "slot_hp_3",
                         "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1235,
-                        "y_coord": 421,
+                        "y_coord": 406,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "solids_3_money",
+                        "name": "slot_money_3",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1221,
-                        "y_coord": 395,
+                        "x_coord": 1223,
+                        "y_coord": 381,
                         "width": 10,
                         "height": 10
                     }

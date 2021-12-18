@@ -26,14 +26,11 @@ let draw_gs_with_team gs =
   Gui.draw_game_screen gs;
   Unix.sleepf 2.0
 
-let inital_game_screen gs chars =
-  let gs_with_teams_select =
-    Game_screen.initialize gs chars |> Game_screen.team_selection_popup
-  in
-  match gs_with_teams_select with
-  | EndGame -> failwith "not possible"
-  | ClosingGS (_, _) -> failwith "not possible"
-  | NewGS gs -> draw_gs_with_team gs
+(* let inital_game_screen gs chars = let gs_with_teams_select =
+   Game_screen.initialize gs chars |> Game_screen.team_selection_popup
+   in match gs_with_teams_select with | EndGame -> failwith "not
+   possible" | ClosingGS (_, _) -> failwith "not possible" | NewGS gs ->
+   draw_gs_with_team gs *)
 
 (**[update_home_screen _] checks for a mouse click and updates home
    screen based upon that mouse click. If the mouse click caused a
@@ -46,43 +43,37 @@ let rec update_home_screen hs =
       let _ = if sleep then redraw_hs_and_sleep () else () in
       Gui.draw_home_screen new_hs;
       update_home_screen new_hs
-  | ProceedToGS chars -> (
-      let gs = Game_screen.initialize gs chars in
-      inital_game_screen gs chars;
-      let gs_with_turn =
-        Game_screen.initialize gs chars |> Game_screen.next_turn_popup
-      in
-      match gs_with_turn with
-      | EndGame -> failwith "impossible"
-      | ClosingGS (_, _) -> failwith "not possible"
-      | NewGS gs_turn ->
-          draw_gs_with_time gs_turn 1.0;
-          Gui.draw_game_screen gs;
-          update_game_screen gs)
-(* | _ -> failwith "no initial popup" *)
+  | ProceedToGS chars ->
+      let gs' = Game_screen.initialize gs chars in
+      let gs'' = Game_screen.assign_players_faction gs' in
+      let gs''' = Game_screen.activate_team_selection gs'' in
+      draw_gs_with_time gs''' 2.0;
+      let gs'''' = Game_screen.next_turn_popup gs'' in
+      draw_gs_with_time gs'''' 1.0;
+      Gui.draw_game_screen gs'';
+      let update_team_info_gs = Game_screen.initialize_team_info gs'' in
+      Gui.draw_game_screen update_team_info_gs;
+      update_game_screen update_team_info_gs
 
 and update_game_screen gs =
+  let gs' = Game_screen.initialize_team_info gs in
   let coords = Gui.mouse_click () in
-  match Game_screen.new_respond_to_click gs coords with
+  match Game_screen.new_respond_to_click gs' coords with
   | EndGame -> redraw_hs_and_sleep ()
   | NewGS new_gs -> (
       match
-        Game_screen.curr_player gs = Game_screen.curr_player new_gs
+        Game_screen.curr_player gs' = Game_screen.curr_player new_gs
       with
       | true ->
           Gui.draw_game_screen new_gs;
           update_game_screen new_gs
-      | false -> (
-          let gs_with_turn = Game_screen.next_turn_popup new_gs in
-          match gs_with_turn with
-          | EndGame -> failwith "not possible"
-          | ClosingGS (_, _) -> failwith "not possible"
-          | NewGS turn_gs ->
-              draw_gs_with_time turn_gs 1.0;
-              Gui.draw_game_screen new_gs;
-              update_game_screen new_gs))
+      | false ->
+          let gs' = Game_screen.next_turn_popup new_gs in
+          draw_gs_with_time gs' 1.0;
+          Gui.draw_game_screen new_gs;
+          update_game_screen new_gs)
   | ClosingGS (opened, close) ->
-      draw_gs_with_time opened 1.5;
+      draw_gs_with_time opened 2.5;
       Gui.draw_game_screen close;
       update_game_screen close
 

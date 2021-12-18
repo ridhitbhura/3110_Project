@@ -109,3 +109,7 @@ let wardens_favor_screen = "wardens_favor"
 let bribe_money_screen = "bribe_money"
 
 let go_to_warden_screen = "go_to_wardens"
+
+let solids_info_screen = "solids_info"
+
+let stripes_info_screen = "stripes_info"

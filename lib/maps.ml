@@ -7,13 +7,15 @@ module Make (Ord : Map.OrderedType) = struct
     | [] -> map
     | (k, v) :: t ->
         M.union
-          (fun _ _ _ -> failwith "precondition violation")
+          (fun _ _ _ -> failwith "of list precondition violation")
           (M.add k v map) (of_lst t map)
 
   let filter_key key map = M.filter (fun k _ -> k <> key) map
 
   let combine map1 map2 =
-    M.union (fun _ _ _ -> failwith "precondition violation") map1 map2
+    M.union
+      (fun _ _ _ -> failwith "combine precondition violation")
+      map1 map2
 end
 
 module SM = Make (String)
