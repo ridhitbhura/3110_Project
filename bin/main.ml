@@ -76,6 +76,17 @@ and update_game_screen gs =
       draw_gs_with_time opened 2.5;
       Gui.draw_game_screen close;
       update_game_screen close
+  | AnimatePlayerGS (gs, pl_num, target_board_loc) ->
+      animate_player gs pl_num target_board_loc
+
+and animate_player gs pl_num board_loc =
+  match Game_screen.move_player gs pl_num board_loc with
+  | InProgress new_gs ->
+      Gui.draw_game_screen new_gs;
+      animate_player new_gs pl_num board_loc
+  | Finished new_gs ->
+      Gui.draw_game_screen new_gs;
+      update_game_screen new_gs
 
 (**[run_game _] initializes a new empty Gui window, draws the home
    screen, and continually updates the home screen.*)

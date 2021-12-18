@@ -193,6 +193,7 @@ type response =
   | EndGame
   | NewGS of t
   | ClosingGS of t * t
+  | AnimatePlayerGS of t * int * int
 
 (*BaseGS with the regular game screen buttons, the dice buttons, and the
   property buttons. ActiveSubscreenGS with the buttons inside the
@@ -530,6 +531,95 @@ let respond_to_roll gs board_loc =
   | None, None, Some ac -> respond_to_action_space_roll gs ac
   | _, _, _ -> failwith "not possible"
 
+type direction =
+  | Left of int * int
+  | Right of int * int
+  | Up of int * int
+  | Down of int * int
+
+type animation_response =
+  | InProgress of t
+  | Finished of t
+
+let move_player gs pl_num target_loc =
+  let plyr = IM.find pl_num gs.players in
+  let curr_board_order = Player.location plyr in
+  let next_board_order = (curr_board_order + 1) mod 40 in
+  let next_x, next_y = List.assoc next_board_order gs.order_list in
+  let curr_x, curr_y = (Player.x_coord plyr, Player.y_coord plyr) in
+  print_endline ("Target loc:" ^ string_of_int target_loc);
+  print_endline ("Player board order:" ^ string_of_int curr_board_order);
+  print_endline ("Next board order:" ^ string_of_int next_board_order);
+
+  let next_step =
+    if curr_board_order >= Constants.corner_4 then
+      Down (0, -Constants.animation_speed)
+    else if curr_board_order >= Constants.corner_3 then
+      Right (Constants.animation_speed, 0)
+    else if curr_board_order >= Constants.corner_2 then
+      Up (0, Constants.animation_speed)
+    else Left (-Constants.animation_speed, 0)
+  in
+  let stepped_x, stepped_y =
+    match next_step with
+    | Left (x_step, y_step) ->
+        let step_x = x_step + curr_x in
+        let step_y = y_step + curr_y in
+        if step_x < next_x then (next_x, step_y) else (step_x, step_y)
+    | Right (x_step, y_step) ->
+        let step_x = x_step + curr_x in
+        let step_y = y_step + curr_y in
+        if step_x > next_x then (next_x, step_y) else (step_x, step_y)
+    | Up (x_step, y_step) ->
+        let step_x = x_step + curr_x in
+        let step_y = y_step + curr_y in
+        if step_y > next_y then (step_x, next_y) else (step_x, step_y)
+    | Down (x_step, y_step) ->
+        let step_x = x_step + curr_x in
+        let step_y = y_step + curr_y in
+        if step_y < next_y then (step_x, next_y) else (step_x, step_y)
+  in
+  print_endline ("Stepped_x:" ^ string_of_int stepped_x);
+  print_endline ("Stepped_y:" ^ string_of_int stepped_y);
+
+  let moved_player = Player.move_coord stepped_x stepped_y plyr in
+  match stepped_x = next_x && stepped_y = next_y with
+  | true ->
+      let new_player =
+        Player.move_board next_board_order moved_player
+      in
+      let new_players = IM.add pl_num new_player gs.players in
+      let new_gs = { gs with players = new_players } in
+      if next_board_order = target_loc then (
+        print_string "finished";
+        Finished new_gs)
+      else InProgress new_gs
+  | false ->
+      let new_players = IM.add pl_num moved_player gs.players in
+      let new_gs = { gs with players = new_players } in
+      InProgress new_gs
+
+let new_respond_to_dice_click gs =
+  if gs.curr_player_roll then NewGS gs
+  else
+    let pl_num = List.nth gs.active_players gs.curr_player_index in
+    match gs.dice with
+    | [ h; t ] -> (
+        let first_roll = Die.roll_die h in
+        let new_first_die = Die.new_image h first_roll in
+        let second_roll = Die.roll_die t in
+        let new_second_die = Die.new_image t second_roll in
+        let dice_val = first_roll + second_roll in
+        let new_gs =
+          { gs with dice = [ new_first_die; new_second_die ] }
+        in
+        match IM.find_opt pl_num gs.players with
+        | None -> failwith "doesnt have current player"
+        | Some v ->
+            let new_board_loc = update_board_loc v dice_val in
+            AnimatePlayerGS (new_gs, pl_num, new_board_loc))
+    | _ -> failwith "precondition violation"
+
 let respond_to_dice_click gs =
   if gs.curr_player_roll then NewGS gs
   else
@@ -827,7 +917,7 @@ let new_respond_to_click gs (x, y) =
       match (dice_clicked, base_clicked, property_clicked) with
       | false, None, None -> NewGS gs (*no button was clicked*)
       | true, None, None ->
-          respond_to_dice_click gs
+          new_respond_to_dice_click gs
           (*dice button was clicked, currently just moving player 1*)
       | false, Some b_name, None -> base_click_response gs b_name
       | false, None, Some board_loc ->

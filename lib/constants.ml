@@ -113,3 +113,13 @@ let go_to_warden_screen = "go_to_wardens"
 let solids_info_screen = "solids_info"
 
 let stripes_info_screen = "stripes_info"
+
+let animation_speed = 10
+
+let corner_1 = 0
+
+let corner_2 = 10
+
+let corner_3 = 20
+
+let corner_4 = 30

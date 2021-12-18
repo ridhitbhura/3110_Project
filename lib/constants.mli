@@ -117,3 +117,13 @@ val go_to_warden_screen : string
 val solids_info_screen : string
 
 val stripes_info_screen : string
+
+val animation_speed : int
+
+val corner_1 : int
+
+val corner_2 : int
+
+val corner_3 : int
+
+val corner_4 : int

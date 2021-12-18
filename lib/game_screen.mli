@@ -61,6 +61,13 @@ type response =
   | EndGame
   | NewGS of t
   | ClosingGS of t * t
+  | AnimatePlayerGS of t * int * int
+
+type animation_response =
+  | InProgress of t
+  | Finished of t
+
+val move_player : t -> int -> int -> animation_response
 
 val respond_to_click : t -> int * int -> response
 
