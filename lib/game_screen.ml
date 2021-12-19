@@ -509,8 +509,22 @@ let respond_to_action_space_roll gs ac =
         | _ -> SM.add constant activated_subscreen gs.subscreens)
   in
 
-  (*STILL NEED TO IMPLEMENT UPDATING PLAYER THROUGH ACTION SPACES*)
-  ({ gs with subscreens = subscreens_new }, gs)
+  let plyr_id = List.nth gs.active_players gs.curr_player_index in
+  let curr_player = IM.find plyr_id gs.players in
+  let money_change = Action_space.money ac in
+  let health_change = Action_space.take_health ac in
+  let new_player = Player.update_health curr_player health_change in
+  let new_player' =
+    Player.update_money new_player
+      (Player.money new_player + money_change)
+  in
+  let new_loc = Action_space.new_board_location ac in
+  let player_new = Player.move_board new_loc new_player' in
+  let next_x, next_y = List.assoc new_loc gs.order_list in
+  let player_new' = Player.move_coord next_x next_y player_new in
+  let new_plyrs = IM.add plyr_id player_new' gs.players in
+  ( { gs with subscreens = subscreens_new; players = new_plyrs },
+    { gs with players = new_plyrs } )
 
 let respond_to_roll gs board_loc =
   let food = IM.find_opt board_loc gs.food_stacks in

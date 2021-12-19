@@ -1346,8 +1346,7 @@
                 "y_coord": 50,
                 "width": 50,
                 "height": 75,
-                "take_money": 50,
-                "give_money": 0,
+                "money": -50,
                 "take_hp": 0,
                 "new_board_order": 5
             },
@@ -1358,8 +1357,7 @@
                 "y_coord": 175,
                 "width": 75,
                 "height": 50,
-                "take_money": 0,
-                "give_money": 75,
+                "money": 75,
                 "take_hp": 0,
                 "new_board_order": 12
             },
@@ -1370,8 +1368,7 @@
                 "y_coord": 325,
                 "width": 75,
                 "height": 50,
-                "take_money": 50,
-                "give_money": 0,
+                "money": -50,
                 "take_hp": 0,
                 "new_board_order": 15
             },
@@ -1382,9 +1379,8 @@
                 "y_coord": 575,
                 "width": 50,
                 "height": 75,
-                "take_money": 0,
-                "give_money": 0,
-                "take_hp": 10,
+                "money": 0,
+                "take_hp": -10,
                 "new_board_order": 27
             },
             {
@@ -1394,8 +1390,7 @@
                 "y_coord": 325,
                 "width": 75,
                 "height": 50,
-                "take_money": 0,
-                "give_money": 75,
+                "money": 75,
                 "take_hp": 0,
                 "new_board_order": 35
             },
@@ -1406,8 +1401,7 @@
                 "y_coord": 50,
                 "width": 75,
                 "height": 75,
-                "take_money": 0,
-                "give_money": 100,
+                "money": 100,
                 "take_hp": 0,
                 "new_board_order": 0
             },
@@ -1418,8 +1412,7 @@
                 "y_coord": 50,
                 "width": 75,
                 "height": 75,
-                "take_money": 0,
-                "give_money": 0,
+                "money": 0,
                 "take_hp": 0,
                 "new_board_order": 10
             },
@@ -1430,8 +1423,7 @@
                 "y_coord": 575,
                 "width": 75,
                 "height": 75,
-                "take_money": 0,
-                "give_money": 0,
+                "money": 0,
                 "take_hp": 0,
                 "new_board_order": 20
             },
@@ -1442,8 +1434,7 @@
                 "y_coord": 575,
                 "width": 75,
                 "height": 75,
-                "take_money": 0,
-                "give_money": 0,
+                "money": 0,
                 "take_hp": 0,
                 "new_board_order": 10
             }

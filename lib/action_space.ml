@@ -7,17 +7,14 @@ type t = {
   y_coord : int;
   width : int;
   height : int;
-  take_money : int;
-  give_money : int;
+  money : int;
   take_hp : int;
   new_board_location : int;
 }
 
 let name a = a.name
 
-let take_money a = a.take_money
-
-let give_money a = a.give_money
+let money a = a.money
 
 let take_health a = a.take_hp
 
@@ -35,8 +32,7 @@ let get_action_space_from_json json =
       y_coord = json |> member "y_coord" |> to_int;
       width = json |> member "width" |> to_int;
       height = json |> member "height" |> to_int;
-      take_money = json |> member "take_money" |> to_int;
-      give_money = json |> member "give_money" |> to_int;
+      money = json |> member "money" |> to_int;
       take_hp = json |> member "take_hp" |> to_int;
       new_board_location = json |> member "new_board_order" |> to_int;
     } )

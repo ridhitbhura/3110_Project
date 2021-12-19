@@ -7,13 +7,7 @@ type t
 
 val name : t -> string
 
-val take_money : t -> int
-(**[take_money a] is the amount of money this action space takes from a
-   player who lands on it.*)
-
-val give_money : t -> int
-(**[give_money a] is the amount of money this action space gives to a
-   player who lands on it.*)
+val money : t -> int
 
 val take_health : t -> int
 (**[take_health a] is the amount of health this action space takes from
