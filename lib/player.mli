@@ -2,6 +2,11 @@ type fac =
   | Stripes
   | Solids
   | Unassigned
+      (**[fac] are the different factions that a player can belong to.*)
+
+type status =
+  | Active
+  | Inactive
 
 type t
 (** The abstract type of values representing players. *)
@@ -37,11 +42,11 @@ val location : t -> int
 (**[location player] gives the board location the player is at
    currently.*)
 
-val move_board : t -> int -> t
-(**[move player loc] moves the player to a new board location [loc].
+val move_board : int -> t -> t
+(**[move loc player] moves the player to a new board location [loc].
    Requires: [0 <= loc < 40]*)
 
-val move_coord : t -> int -> int -> t
+val move_coord : int -> int -> t -> t
 (**[move_coord x y] moves the player on the screen to x coordinate [x]
    and y coordinate [y].*)
 
@@ -59,12 +64,43 @@ val weapon_damage : t -> int
 (**[weapon_damage player] is the amount of damage that the player's
    weapon inflicts.*)
 
+val food : t -> Food.t option
+
+val weapon : t -> Weapon.t option
+
 val obtain_weapon : t -> Weapon.t option -> t
 (**[obtain_weapon player wpn] gives [player] a weapon [wpn].*)
+
+val obtain_food : t -> Food.t option -> t
+(**[obtain_weapon player food] gives [player] a food [food].*)
 
 val faction : t -> fac
 (**[faction player] is the faction the player is in.*)
 
-val get_player_from_json : Yojson.Basic.t -> t
+val assign_faction : t -> fac -> t
 
-val get_players_from_json : Yojson.Basic.t -> t list
+val update_player_number : t -> int -> t
+(**[update_player_number p num] is the player with player number given
+   by [num].*)
+
+val character : t -> string
+(**[character player] is the character icon that this player holds.*)
+
+val deactivate : t -> t
+(**[deactivate player] is the player deactivated.*)
+
+val activate : t -> t
+(**[activate player] is the player activated.*)
+
+val active : t -> bool
+(**[active p] is whether the player is active.*)
+
+val character_number : t -> int
+
+val get_player_from_json : Yojson.Basic.t -> int * t
+(**[get_player_from_json js] is the player that [js] represents along
+   with its identifier, the player number.*)
+
+val get_players_from_json : Yojson.Basic.t -> (int * t) list
+(**[get_players_from_json js] is the player that [js] represents along
+   with their identifier, the player number.*)

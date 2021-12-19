@@ -20,6 +20,11 @@ val height : t -> int
 val board_order : t -> int
 (**[board_order fs] is the location of food stack on the game board.*)
 
-val get_food_stack_from_json : Food.t list -> Yojson.Basic.t -> t
+val get_food_stack_from_json : Food.t list -> Yojson.Basic.t -> int * t
+(**[get_food_stack_from_json j] is the food stack that [j] rerepsents
+   along with its identifier, a board location.*)
 
-val get_food_stacks_from_json : Food.t list -> Yojson.Basic.t -> t list
+val get_food_stacks_from_json :
+  Food.t list -> Yojson.Basic.t -> (int * t) list
+(**[get_food_stacks_from_json j] are the food stacks that [j] rerepsents
+   along with their identifier, their board locations.*)

@@ -23,11 +23,15 @@ let x_coord d = d.x_coord
 let y_coord d = d.y_coord
 
 let get_die_from_json json =
+  let name = json |> member "name" |> to_string in
+  let _, button =
+    json |> member "button" |> Button.get_button_from_json
+  in
   {
-    name = json |> member "name" |> to_string;
+    name;
     image = json |> member "image" |> to_string;
     image_path = json |> member "image_path" |> to_string;
-    button = json |> member "button" |> Button.get_button_from_json;
+    button;
     x_coord = json |> member "x_coord" |> to_int;
     y_coord = json |> member "y_coord" |> to_int;
   }

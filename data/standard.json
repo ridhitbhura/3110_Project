@@ -35,30 +35,12 @@
                 "dynamic_images": [],
                 "buttons": [
                     {
-                        "name": "one_player_button",
-                        "image_name": "home_screen/buttons/1.png",
-                        "dimmed_image_name": "home_screen/buttons/dim_1.png",
-                        "width": 50,
-                        "height": 50,
-                        "x_coord": 440,
-                        "y_coord": 330
-                    },
-                    {
                         "name": "two_players_button",
                         "image_name": "home_screen/buttons/2.png",
                         "dimmed_image_name": "home_screen/buttons/dim_2.png",
                         "width": 50,
                         "height": 50,
-                        "x_coord": 520,
-                        "y_coord": 330
-                    },
-                    {
-                        "name": "three_players_button",
-                        "image_name": "home_screen/buttons/3.png",
-                        "dimmed_image_name": "home_screen/buttons/dim_3.png",
-                        "width": 50,
-                        "height": 50,
-                        "x_coord": 600,
+                        "x_coord": 500,
                         "y_coord": 330
                     },
                     {
@@ -67,16 +49,7 @@
                         "dimmed_image_name": "home_screen/buttons/dim_4.png",
                         "width": 50,
                         "height": 50,
-                        "x_coord": 680,
-                        "y_coord": 330
-                    },
-                    {
-                        "name": "five_players_button",
-                        "image_name": "home_screen/buttons/5.png",
-                        "dimmed_image_name": "home_screen/buttons/dim_5.png",
-                        "width": 50,
-                        "height": 50,
-                        "x_coord": 760,
+                        "x_coord": 640,
                         "y_coord": 330
                     },
                     {
@@ -85,7 +58,7 @@
                         "dimmed_image_name": "home_screen/buttons/dim_6.png",
                         "width": 50,
                         "height": 50,
-                        "x_coord": 840,
+                        "x_coord": 780,
                         "y_coord": 330
                     },
                     {
@@ -106,7 +79,7 @@
                 "y_coord": 225,
                 "dynamic_images": [
                     {
-                        "name": "number",
+                        "name": "select_character_number",
                         "images": [
                             "numbers/big/1.png"
                         ],
@@ -119,7 +92,7 @@
                 ],
                 "buttons": [
                     {
-                        "name": "character_1_button",
+                        "name": "1",
                         "image_name": "players/medium/1.png",
                         "dimmed_image_name": "players/medium/dim_1.png",
                         "width": 60,
@@ -128,7 +101,7 @@
                         "y_coord": 320
                     },
                     {
-                        "name": "character_2_button",
+                        "name": "2",
                         "image_name": "players/medium/2.png",
                         "dimmed_image_name": "players/medium/dim_2.png",
                         "width": 60,
@@ -137,7 +110,7 @@
                         "y_coord": 320
                     },
                     {
-                        "name": "character_3_button",
+                        "name": "3",
                         "image_name": "players/medium/3.png",
                         "dimmed_image_name": "players/medium/dim_3.png",
                         "width": 60,
@@ -146,7 +119,7 @@
                         "y_coord": 320
                     },
                     {
-                        "name": "character_4_button",
+                        "name": "4",
                         "image_name": "players/medium/4.png",
                         "dimmed_image_name": "players/medium/dim_4.png",
                         "width": 60,
@@ -155,7 +128,7 @@
                         "y_coord": 320
                     },
                     {
-                        "name": "character_5_button",
+                        "name": "5",
                         "image_name": "players/medium/5.png",
                         "dimmed_image_name": "players/medium/dim_5.png",
                         "width": 60,
@@ -164,7 +137,7 @@
                         "y_coord": 320
                     },
                     {
-                        "name": "character_6_button",
+                        "name": "6",
                         "image_name": "players/medium/6.png",
                         "dimmed_image_name": "players/medium/dim_6.png",
                         "width": 60,
@@ -182,69 +155,6 @@
                         "height": 40
                     }
                 ]
-            },
-            {
-                "name": "team_selection",
-                "image_name": "home_screen/subscreens/team_selection.png",
-                "x_coord": 390,
-                "y_coord": 225,
-                "dynamic_images": [
-                    {
-                        "name": "player",
-                        "images": [],
-                        "image_path": "players/medium/",
-                        "x_coord": 410,
-                        "y_coord": 290,
-                        "width": 60,
-                        "height": 60
-                    },
-                    {
-                        "name": "player",
-                        "images": [],
-                        "image_path": "players/medium/",
-                        "width": 60,
-                        "height": 60,
-                        "x_coord": 490,
-                        "y_coord": 290
-                    },
-                    {
-                        "name": "player",
-                        "images": [],
-                        "image_path": "players/medium/",
-                        "width": 60,
-                        "height": 60,
-                        "x_coord": 570,
-                        "y_coord": 290
-                    },
-                    {
-                        "name": "player",
-                        "images": [],
-                        "image_path": "players/medium/",
-                        "width": 60,
-                        "height": 60,
-                        "x_coord": 700,
-                        "y_coord": 290
-                    },
-                    {
-                        "name": "player",
-                        "images": [],
-                        "image_path": "players/medium/",
-                        "width": 60,
-                        "height": 60,
-                        "x_coord": 780,
-                        "y_coord": 290
-                    },
-                    {
-                        "name": "player",
-                        "images": [],
-                        "image_path": "players/medium/",
-                        "width": 60,
-                        "height": 60,
-                        "x_coord": 860,
-                        "y_coord": 290
-                    }
-                ],
-                "buttons": []
             }
         ]
     },
@@ -290,6 +200,69 @@
         ],
         "subscreens": [
             {
+                "name": "team_selection",
+                "image_name": "game_screen/subscreens/team_selection.png",
+                "x_coord": 390,
+                "y_coord": 225,
+                "dynamic_images": [
+                    {
+                        "name": "solid_slot_1",
+                        "images": [],
+                        "image_path": "players/medium/",
+                        "x_coord": 410,
+                        "y_coord": 290,
+                        "width": 60,
+                        "height": 60
+                    },
+                    {
+                        "name": "solid_slot_2",
+                        "images": [],
+                        "image_path": "players/medium/",
+                        "width": 60,
+                        "height": 60,
+                        "x_coord": 490,
+                        "y_coord": 290
+                    },
+                    {
+                        "name": "solid_slot_3",
+                        "images": [],
+                        "image_path": "players/medium/",
+                        "width": 60,
+                        "height": 60,
+                        "x_coord": 570,
+                        "y_coord": 290
+                    },
+                    {
+                        "name": "stripe_slot_1",
+                        "images": [],
+                        "image_path": "players/medium/",
+                        "width": 60,
+                        "height": 60,
+                        "x_coord": 700,
+                        "y_coord": 290
+                    },
+                    {
+                        "name": "stripe_slot_2",
+                        "images": [],
+                        "image_path": "players/medium/",
+                        "width": 60,
+                        "height": 60,
+                        "x_coord": 780,
+                        "y_coord": 290
+                    },
+                    {
+                        "name": "stripe_slot_3",
+                        "images": [],
+                        "image_path": "players/medium/",
+                        "width": 60,
+                        "height": 60,
+                        "x_coord": 860,
+                        "y_coord": 290
+                    }
+                ],
+                "buttons": []
+            },
+            {
                 "name": "attack",
                 "image_name": "game_screen/subscreens/attack.png",
                 "x_coord": 490,
@@ -323,7 +296,7 @@
                 "y_coord": 175,
                 "dynamic_images": [
                     {
-                        "name": "property",
+                        "name": "property_action_display",
                         "images": [],
                         "image_path": "properties/",
                         "x_coord": 495,
@@ -369,7 +342,7 @@
                 "y_coord": 175,
                 "dynamic_images": [
                     {
-                        "name": "property",
+                        "name": "buy_property_display",
                         "images": [],
                         "image_path": "properties/",
                         "x_coord": 495,
@@ -465,7 +438,7 @@
                 "y_coord": 225,
                 "dynamic_images": [
                     {
-                        "name": "player",
+                        "name": "bankrupt_player",
                         "images": [],
                         "image_path": "players/large/",
                         "x_coord": 445,
@@ -483,7 +456,7 @@
                 "y_coord": 225,
                 "dynamic_images": [
                     {
-                        "name": "player",
+                        "name": "death_player",
                         "images": [],
                         "image_path": "players/large/",
                         "x_coord": 445,
@@ -501,7 +474,7 @@
                 "y_coord": 225,
                 "dynamic_images": [
                     {
-                        "name": "player",
+                        "name": "new_turn_player",
                         "images": [],
                         "image_path": "players/large/",
                         "x_coord": 445,
@@ -519,7 +492,7 @@
                 "y_coord": 220,
                 "dynamic_images": [
                     {
-                        "name": "weapon",
+                        "name": "picked_up_weapon",
                         "images": [],
                         "image_path": "weapon_cards/",
                         "x_coord": 605,
@@ -537,7 +510,7 @@
                 "y_coord": 220,
                 "dynamic_images": [
                     {
-                        "name": "food",
+                        "name": "picked_up_food",
                         "images": [],
                         "image_path": "food_cards/",
                         "x_coord": 605,
@@ -1262,27 +1235,22 @@
                 {
                     "name": "fork",
                     "damage": 5,
-                    "image_name": "weapon_cards/fork.png"
+                    "image_name": "weapon_cards/5.png"
                 },
                 {
                     "name": "shaving_razor",
                     "damage": 10,
-                    "image_name": "weapon_cards/shaving_razor.png"
+                    "image_name": "weapon_cards/10.png"
                 },
                 {
                     "name": "baseball_bat",
                     "damage": 15,
-                    "image_name": "weapon_cards/baseball_bat.png"
+                    "image_name": "weapon_cards/15.png"
                 },
                 {
                     "name": "pistol",
                     "damage": 40,
-                    "image_name": "weapon_cards/pistol.png"
-                },
-                {
-                    "name": "none",
-                    "damage": 0,
-                    "image_name": "weapon_cards/no_weapon.png"
+                    "image_name": "weapon_cards/40.png"
                 }
             ],
             "weapon_stacks": [
@@ -1351,27 +1319,22 @@
                 {
                     "name": "instant_ramen",
                     "hp": 5,
-                    "image_name": "food_cards/instant_ramen.png"
+                    "image_name": "food_cards/5.png"
                 },
                 {
                     "name": "pizza",
                     "hp": 10,
-                    "image_name": "food_cards/pizza.png"
+                    "image_name": "food_cards/10.png"
                 },
                 {
                     "name": "burger",
                     "hp": 15,
-                    "image_name": "food_cards/burger.png"
+                    "image_name": "food_cards/15.png"
                 },
                 {
                     "name": "steak",
                     "hp": 20,
-                    "image_name": "food_cards/steak.png"
-                },
-                {
-                    "name": "none",
-                    "hp": 0,
-                    "image_name": "food_cards/no_food.png"
+                    "image_name": "food_cards/20.png"
                 }
             ]
         },
@@ -1383,8 +1346,7 @@
                 "y_coord": 50,
                 "width": 50,
                 "height": 75,
-                "take_money": 50,
-                "give_money": 0,
+                "money": -50,
                 "take_hp": 0,
                 "new_board_order": 5
             },
@@ -1395,8 +1357,7 @@
                 "y_coord": 175,
                 "width": 75,
                 "height": 50,
-                "take_money": 0,
-                "give_money": 75,
+                "money": 75,
                 "take_hp": 0,
                 "new_board_order": 12
             },
@@ -1407,8 +1368,7 @@
                 "y_coord": 325,
                 "width": 75,
                 "height": 50,
-                "take_money": 50,
-                "give_money": 0,
+                "money": -50,
                 "take_hp": 0,
                 "new_board_order": 15
             },
@@ -1419,9 +1379,8 @@
                 "y_coord": 575,
                 "width": 50,
                 "height": 75,
-                "take_money": 0,
-                "give_money": 0,
-                "take_hp": 10,
+                "money": 0,
+                "take_hp": -10,
                 "new_board_order": 27
             },
             {
@@ -1431,8 +1390,7 @@
                 "y_coord": 325,
                 "width": 75,
                 "height": 50,
-                "take_money": 0,
-                "give_money": 75,
+                "money": 75,
                 "take_hp": 0,
                 "new_board_order": 35
             },
@@ -1443,8 +1401,7 @@
                 "y_coord": 50,
                 "width": 75,
                 "height": 75,
-                "take_money": 0,
-                "give_money": 100,
+                "money": 100,
                 "take_hp": 0,
                 "new_board_order": 0
             },
@@ -1455,8 +1412,7 @@
                 "y_coord": 50,
                 "width": 75,
                 "height": 75,
-                "take_money": 0,
-                "give_money": 0,
+                "money": 0,
                 "take_hp": 0,
                 "new_board_order": 10
             },
@@ -1467,8 +1423,7 @@
                 "y_coord": 575,
                 "width": 75,
                 "height": 75,
-                "take_money": 0,
-                "give_money": 0,
+                "money": 0,
                 "take_hp": 0,
                 "new_board_order": 20
             },
@@ -1479,8 +1434,7 @@
                 "y_coord": 575,
                 "width": 75,
                 "height": 75,
-                "take_money": 0,
-                "give_money": 0,
+                "money": 0,
                 "take_hp": 0,
                 "new_board_order": 10
             }
@@ -1493,7 +1447,7 @@
                 "y_coord": 505,
                 "dynamic_images": [
                     {
-                        "name": "stripes_1",
+                        "name": "slot_1",
                         "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1011,
@@ -1502,7 +1456,7 @@
                         "height": 100
                     },
                     {
-                        "name": "stripes_2",
+                        "name": "slot_2",
                         "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1110,
@@ -1511,7 +1465,7 @@
                         "height": 100
                     },
                     {
-                        "name": "stripes_3",
+                        "name": "slot_3",
                         "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1209,
@@ -1520,56 +1474,56 @@
                         "height": 100
                     },
                     {
-                        "name": "stripes_1_health",
+                        "name": "slot_hp_1",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1038,
-                        "y_coord": 571,
+                        "x_coord": 1037,
+                        "y_coord": 556,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "stripes_1_money",
+                        "name": "slot_money_1",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1024,
-                        "y_coord": 545,
+                        "x_coord": 1025,
+                        "y_coord": 531,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "stripes_2_health",
+                        "name": "slot_hp_2",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1137,
-                        "y_coord": 571,
+                        "x_coord": 1136,
+                        "y_coord": 556,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "stripes_2_money",
+                        "name": "slot_money_2",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1123,
-                        "y_coord": 545,
+                        "x_coord": 1124,
+                        "y_coord": 531,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "stripes_3_health",
+                        "name": "slot_hp_3",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1236,
-                        "y_coord": 571,
+                        "x_coord": 1235,
+                        "y_coord": 555,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "stripes_3_money",
+                        "name": "slot_money_3",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1222,
-                        "y_coord": 545,
+                        "x_coord": 1223,
+                        "y_coord": 530,
                         "width": 10,
                         "height": 10
                     }
@@ -1583,7 +1537,7 @@
                 "y_coord": 355,
                 "dynamic_images": [
                     {
-                        "name": "solids_1",
+                        "name": "slot_1",
                         "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1011,
@@ -1592,7 +1546,7 @@
                         "height": 100
                     },
                     {
-                        "name": "solids_2",
+                        "name": "slot_2",
                         "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1110,
@@ -1601,7 +1555,7 @@
                         "height": 100
                     },
                     {
-                        "name": "solids_3",
+                        "name": "slot_3",
                         "images": [],
                         "image_path": "game_screen/faction_info/",
                         "x_coord": 1209,
@@ -1610,56 +1564,56 @@
                         "height": 100
                     },
                     {
-                        "name": "solids_1_health",
+                        "name": "slot_hp_1",
                         "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1037,
-                        "y_coord": 421,
+                        "y_coord": 406,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "solids_1_money",
+                        "name": "slot_money_1",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1023,
-                        "y_coord": 395,
+                        "x_coord": 1025,
+                        "y_coord": 381,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "solids_2_health",
+                        "name": "slot_hp_2",
                         "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1136,
-                        "y_coord": 421,
+                        "y_coord": 405,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "solids_2_money",
+                        "name": "slot_money_2",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1122,
-                        "y_coord": 395,
+                        "x_coord": 1124,
+                        "y_coord": 380,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "solids_3_health",
+                        "name": "slot_hp_3",
                         "images": [],
                         "image_path": "numbers/small/",
                         "x_coord": 1235,
-                        "y_coord": 421,
+                        "y_coord": 406,
                         "width": 10,
                         "height": 10
                     },
                     {
-                        "name": "solids_3_money",
+                        "name": "slot_money_3",
                         "images": [],
                         "image_path": "numbers/small/",
-                        "x_coord": 1221,
-                        "y_coord": 395,
+                        "x_coord": 1223,
+                        "y_coord": 381,
                         "width": 10,
                         "height": 10
                     }
@@ -1674,9 +1628,9 @@
             "y_coord": 50,
             "dynamic_images": [
                 {
-                    "name": "property",
+                    "name": "info_card_property",
                     "images": [
-                        "properties/1.png"
+                        "properties/0.png"
                     ],
                     "image_path": "properties/",
                     "x_coord": 1000,
@@ -1685,9 +1639,9 @@
                     "height": 295
                 },
                 {
-                    "name": "weapon",
+                    "name": "info_card_weapon",
                     "images": [
-                        "weapon_cards/no_weapon.png"
+                        "weapon_cards/0.png"
                     ],
                     "image_path": "weapon_cards/",
                     "x_coord": 1180,
@@ -1696,9 +1650,9 @@
                     "height": 148
                 },
                 {
-                    "name": "food",
+                    "name": "info_card_food",
                     "images": [
-                        "food_cards/no_food.png"
+                        "food_cards/0.png"
                     ],
                     "image_path": "food_cards/",
                     "x_coord": 1180,
@@ -1745,9 +1699,10 @@
         ],
         "players": [
             {
-                "name": "player_1",
-                "x_coord": 913,
-                "y_coord": 72,
+                "character_number": 1,
+                "name": "character_1",
+                "x_coord": 890,
+                "y_coord": 50,
                 "small_image": "players/small/1.png",
                 "medium_image": "players/medium/1.png",
                 "large_image": "players/large/1.png",
@@ -1755,9 +1710,10 @@
                 "health": 100
             },
             {
-                "name": "player_2",
-                "x_coord": 913,
-                "y_coord": 72,
+                "character_number": 2,
+                "name": "character_2",
+                "x_coord": 890,
+                "y_coord": 50,
                 "small_image": "players/small/2.png",
                 "medium_image": "players/medium/2.png",
                 "large_image": "players/large/2.png",
@@ -1765,9 +1721,10 @@
                 "health": 100
             },
             {
-                "name": "player_3",
-                "x_coord": 913,
-                "y_coord": 72,
+                "character_number": 3,
+                "name": "character_3",
+                "x_coord": 890,
+                "y_coord": 50,
                 "small_image": "players/small/3.png",
                 "medium_image": "players/medium/3.png",
                 "large_image": "players/large/3.png",
@@ -1775,9 +1732,10 @@
                 "health": 100
             },
             {
-                "name": "player_4",
-                "x_coord": 913,
-                "y_coord": 72,
+                "character_number": 4,
+                "name": "character_4",
+                "x_coord": 890,
+                "y_coord": 50,
                 "small_image": "players/small/4.png",
                 "medium_image": "players/medium/4.png",
                 "large_image": "players/large/4.png",
@@ -1785,9 +1743,10 @@
                 "health": 100
             },
             {
-                "name": "player_5",
-                "x_coord": 913,
-                "y_coord": 72,
+                "character_number": 5,
+                "name": "character_5",
+                "x_coord": 890,
+                "y_coord": 50,
                 "small_image": "players/small/5.png",
                 "medium_image": "players/medium/5.png",
                 "large_image": "players/large/5.png",
@@ -1795,14 +1754,217 @@
                 "health": 100
             },
             {
-                "name": "player_6",
-                "x_coord": 913,
-                "y_coord": 72,
+                "character_number": 6,
+                "name": "character_6",
+                "x_coord": 890,
+                "y_coord": 50,
                 "small_image": "players/small/6.png",
                 "medium_image": "players/medium/6.png",
                 "large_image": "players/large/6.png",
                 "money": 750,
                 "health": 100
+            }
+        ],
+        "board_order_coords": [
+            {
+                "order": 0,
+                "x_coord": 890,
+                "y_coord": 50
+            },
+            {
+                "order": 1,
+                "x_coord": 840,
+                "y_coord": 50
+            },
+            {
+                "order": 2,
+                "x_coord": 790,
+                "y_coord": 50
+            },
+            {
+                "order": 3,
+                "x_coord": 740,
+                "y_coord": 50
+            },
+            {
+                "order": 4,
+                "x_coord": 690,
+                "y_coord": 50
+            },
+            {
+                "order": 5,
+                "x_coord": 640,
+                "y_coord": 50
+            },
+            {
+                "order": 6,
+                "x_coord": 590,
+                "y_coord": 50
+            },
+            {
+                "order": 7,
+                "x_coord": 540,
+                "y_coord": 50
+            },
+            {
+                "order": 8,
+                "x_coord": 490,
+                "y_coord": 50
+            },
+            {
+                "order": 9,
+                "x_coord": 440,
+                "y_coord": 50
+            },
+            {
+                "order": 10,
+                "x_coord": 365,
+                "y_coord": 50
+            },
+            {
+                "order": 11,
+                "x_coord": 365,
+                "y_coord": 125
+            },
+            {
+                "order": 12,
+                "x_coord": 365,
+                "y_coord": 175
+            },
+            {
+                "order": 13,
+                "x_coord": 365,
+                "y_coord": 225
+            },
+            {
+                "order": 14,
+                "x_coord": 365,
+                "y_coord": 275
+            },
+            {
+                "order": 15,
+                "x_coord": 365,
+                "y_coord": 325
+            },
+            {
+                "order": 16,
+                "x_coord": 365,
+                "y_coord": 375
+            },
+            {
+                "order": 17,
+                "x_coord": 365,
+                "y_coord": 425
+            },
+            {
+                "order": 18,
+                "x_coord": 365,
+                "y_coord": 475
+            },
+            {
+                "order": 19,
+                "x_coord": 365,
+                "y_coord": 525
+            },
+            {
+                "order": 20,
+                "x_coord": 365,
+                "y_coord": 575
+            },
+            {
+                "order": 21,
+                "x_coord": 440,
+                "y_coord": 575
+            },
+            {
+                "order": 22,
+                "x_coord": 490,
+                "y_coord": 575
+            },
+            {
+                "order": 23,
+                "x_coord": 540,
+                "y_coord": 575
+            },
+            {
+                "order": 24,
+                "x_coord": 590,
+                "y_coord": 575
+            },
+            {
+                "order": 25,
+                "x_coord": 640,
+                "y_coord": 575
+            },
+            {
+                "order": 26,
+                "x_coord": 690,
+                "y_coord": 575
+            },
+            {
+                "order": 27,
+                "x_coord": 740,
+                "y_coord": 575
+            },
+            {
+                "order": 28,
+                "x_coord": 790,
+                "y_coord": 575
+            },
+            {
+                "order": 29,
+                "x_coord": 840,
+                "y_coord": 575
+            },
+            {
+                "order": 30,
+                "x_coord": 890,
+                "y_coord": 575
+            },
+            {
+                "order": 31,
+                "x_coord": 890,
+                "y_coord": 525
+            },
+            {
+                "order": 32,
+                "x_coord": 890,
+                "y_coord": 475
+            },
+            {
+                "order": 33,
+                "x_coord": 890,
+                "y_coord": 425
+            },
+            {
+                "order": 34,
+                "x_coord": 890,
+                "y_coord": 375
+            },
+            {
+                "order": 35,
+                "x_coord": 890,
+                "y_coord": 325
+            },
+            {
+                "order": 36,
+                "x_coord": 890,
+                "y_coord": 275
+            },
+            {
+                "order": 37,
+                "x_coord": 890,
+                "y_coord": 225
+            },
+            {
+                "order": 38,
+                "x_coord": 890,
+                "y_coord": 175
+            },
+            {
+                "order": 39,
+                "x_coord": 890,
+                "y_coord": 125
             }
         ]
     }

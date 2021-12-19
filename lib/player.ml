@@ -5,18 +5,27 @@ type fac =
   | Solids
   | Unassigned
 
+type status =
+  | Active
+  | Inactive
+
 type t = {
+  player_number : int;
   x_coord : int;
   y_coord : int;
   small_image : string;
   medium_image : string;
   large_image : string;
+  character_number : int;
   weapon : Weapon.t option;
+  food : Food.t option;
   money : int;
   health : int;
   board_location : int;
   properties : Property.t list;
   faction : fac;
+  character : string;
+  status : status;
 }
 
 let x_coord player = player.x_coord
@@ -31,7 +40,10 @@ let medium_image player = player.medium_image
 
 let health player = player.health
 
-let update_health player amt = { player with health = amt }
+let update_health player amt =
+  let current_health = health player in
+  if current_health + amt > 100 then { player with health = 100 }
+  else { player with health = current_health + amt }
 
 let money player = player.money
 
@@ -39,9 +51,9 @@ let update_money player amt = { player with money = amt }
 
 let location player = player.board_location
 
-let move_board player loc = { player with board_location = loc }
+let move_board loc player = { player with board_location = loc }
 
-let move_coord player x y = { player with x_coord = x; y_coord = y }
+let move_coord x y player = { player with x_coord = x; y_coord = y }
 
 let properties player = player.properties
 
@@ -55,27 +67,55 @@ let has_weapon player =
 
 let weapon_damage player =
   match player.weapon with
-  | None -> failwith "Player has no weapon"
+  | None -> 0
   | Some wpn -> Weapon.damage wpn
+
+let food player = player.food
+
+let weapon player = player.weapon
 
 let obtain_weapon player wpn = { player with weapon = wpn }
 
+let obtain_food player food = { player with food }
+
 let faction player = player.faction
 
+let assign_faction player fac = { player with faction = fac }
+
+let character player = player.character
+
+let deactivate player = { player with status = Inactive }
+
+let activate player = { player with status = Active }
+
+let active player = player.status = Active
+
+let character_number player = player.character_number
+
+let update_player_number player num =
+  { player with player_number = num }
+
 let get_player_from_json json =
-  {
-    x_coord = json |> member "x_coord" |> to_int;
-    y_coord = json |> member "y_coord" |> to_int;
-    small_image = json |> member "small_image" |> to_string;
-    medium_image = json |> member "medium_image" |> to_string;
-    large_image = json |> member "large_image" |> to_string;
-    money = json |> member "money" |> to_int;
-    health = json |> member "health" |> to_int;
-    weapon = None;
-    board_location = 0;
-    properties = [];
-    faction = Unassigned;
-  }
+  let character_number = json |> member "character_number" |> to_int in
+  ( character_number,
+    {
+      x_coord = json |> member "x_coord" |> to_int;
+      y_coord = json |> member "y_coord" |> to_int;
+      small_image = json |> member "small_image" |> to_string;
+      medium_image = json |> member "medium_image" |> to_string;
+      large_image = json |> member "large_image" |> to_string;
+      money = json |> member "money" |> to_int;
+      health = json |> member "health" |> to_int;
+      weapon = None;
+      food = None;
+      board_location = 0;
+      properties = [];
+      faction = Unassigned;
+      character_number;
+      player_number = 0;
+      character = json |> member "name" |> to_string;
+      status = Inactive;
+    } )
 
 let get_players_from_json json =
   json |> to_list |> List.map get_player_from_json

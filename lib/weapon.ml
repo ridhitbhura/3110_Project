@@ -6,6 +6,8 @@ type t = {
   image_name : string;
 }
 
+let name wpn = wpn.name
+
 let damage wpn = wpn.damage
 
 let image wpn = wpn.image_name

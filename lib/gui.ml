@@ -1,4 +1,5 @@
 open Graphics
+open Maps
 
 let img_path img_name = "images/" ^ img_name
 
@@ -8,39 +9,22 @@ let draw_img img_name x_coord y_coord =
   let g = Graphic_image.of_image img in
   Graphics.draw_image g x_coord y_coord
 
-(* let dimension_check mouse img_dim x y = if fst mouse > x - (fst
-   img_dim / 2) && fst mouse < x + (fst img_dim / 2) && snd mouse > y -
-   (snd img_dim / 2) && snd mouse > y - (snd img_dim / 2) then true else
-   false
-
-   let rec is_dice_clicked img_dim game = let dice1_x =
-   game.game_screen.dice.dice1.x_coord in let dice1_y =
-   game.game_screen.dice.dice1.y_coord in let dice2_x =
-   game.game_screen.dice.dice2.x_coord in let dice2_y =
-   game.game_screen.dice.dice2.y_coord in if button_down () then if
-   dimension_check (mouse_pos ()) img_dim dice1_x dice1_y ||
-   dimension_check (mouse_pos ()) img_dim dice2_x dice2_y then handle2 0
-   else is_dice_clicked img_dim game else is_dice_clicked img_dim game
-
-   let draw_dice_roll img_dim game = (* let x =
-   game.game_screen.dice.x_coord + 50 in let y =
-   game.game_screen.dice.y_coord + 50 in *) let z = is_dice_clicked
-   img_dim game in let img = string_of_int z in draw_string img *)
-
-let draw_button b =
-  match Button.image b with
-  | None -> ()
-  | Some img ->
-      let x = Button.x_coord b in
-      let y = Button.y_coord b in
-      draw_img img x y
-
-let rec draw_buttons lst =
+let rec map_draw draw lst =
   match lst with
   | [] -> ()
   | h :: t ->
-      draw_button h;
-      draw_buttons t
+      draw h;
+      map_draw draw t
+
+let draw_button _ b =
+  match Button.image b with
+  | None -> ()
+  | Some img ->
+      let x_coord = Button.x_coord b in
+      let y_corrd = Button.y_coord b in
+      draw_img img x_coord y_corrd
+
+let draw_buttons bmap = SM.iter draw_button bmap
 
 let rec draw_dynamic_image_aux x_coord y_coord width = function
   | [] -> ()
@@ -48,39 +32,29 @@ let rec draw_dynamic_image_aux x_coord y_coord width = function
       draw_img h x_coord y_coord;
       draw_dynamic_image_aux (x_coord + width) y_coord width t
 
-let draw_dynamic_image d =
+let draw_dynamic_image _ d =
   let width = Dynamic_image.width d in
   let x_coord = Dynamic_image.x_coord d in
   let y_coord = Dynamic_image.y_coord d in
   let images = Dynamic_image.images d in
   draw_dynamic_image_aux x_coord y_coord width images
 
-let rec draw_dynamic_images lst =
-  match lst with
-  | [] -> ()
-  | h :: t ->
-      draw_dynamic_image h;
-      draw_dynamic_images t
+let draw_dynamic_images dmap = SM.iter draw_dynamic_image dmap
 
-let draw_subscreen p =
+let draw_subscreen _ p =
   let img = Subscreen.image p in
   let x = Subscreen.x_coord p in
   let y = Subscreen.y_coord p in
   let active = Subscreen.active p in
   if active then (
-    let buttons = Subscreen.buttons p in
-    let dynamic_images = Subscreen.images p in
+    let bmap = Subscreen.buttons p in
+    let dmap = Subscreen.images p in
     draw_img img x y;
-    draw_buttons buttons;
-    draw_dynamic_images dynamic_images)
+    draw_buttons bmap;
+    draw_dynamic_images dmap)
   else ()
 
-let rec draw_subscreens lst =
-  match lst with
-  | [] -> ()
-  | h :: t ->
-      draw_subscreen h;
-      draw_subscreens t
+let draw_subscreens smap = SM.iter draw_subscreen smap
 
 let initialize_window hs =
   open_graph "";
@@ -93,9 +67,10 @@ let draw_home_screen hs =
   let y = Home_screen.y_coord hs in
   Graphics.auto_synchronize false;
   draw_img img x y;
-  let buttons = Home_screen.buttons hs in
-  draw_buttons buttons;
-  draw_subscreens (Home_screen.popups hs);
+  let bmap = Home_screen.buttons hs in
+  let smap = Home_screen.subscreens hs in
+  draw_buttons bmap;
+  draw_subscreens smap;
   Graphics.auto_synchronize true
 
 let draw_die die =
@@ -104,12 +79,16 @@ let draw_die die =
   let y = Die.y_coord die in
   draw_img img x y
 
-let rec draw_dice dice =
-  match dice with
-  | [] -> ()
-  | h :: t ->
-      draw_die h;
-      draw_dice t
+let draw_player_on_board plyr =
+  let small_img = Player.small_image plyr in
+  let x_coord = Player.x_coord plyr in
+  let y_coord = Player.y_coord plyr in
+  if Player.active plyr then draw_img small_img x_coord y_coord else ()
+
+let draw_players_on_board plyrs =
+  IM.iter (fun _ p -> draw_player_on_board p) plyrs
+
+let draw_dice dice = map_draw draw_die dice
 
 let draw_game_screen gs =
   Graphics.auto_synchronize false;
@@ -124,9 +103,21 @@ let draw_game_screen gs =
   let dice = Game_screen.dice gs in
   draw_dice dice;
   let info_cards = Game_screen.info_cards gs in
-  draw_subscreen info_cards;
+  draw_subscreen () info_cards;
   let team_info = Game_screen.team_info gs in
   draw_subscreens team_info;
   let buttons = Game_screen.buttons gs in
   draw_buttons buttons;
+  let players = Game_screen.players gs in
+  draw_players_on_board players;
+  let smap = Game_screen.subscreens gs in
+  draw_subscreens smap;
   Graphics.auto_synchronize true
+
+let rec press_button key =
+  let status_key = (wait_next_event [ Key_pressed ]).key in
+  if status_key = key then () else press_button key
+
+let mouse_click () =
+  let status_mouse = wait_next_event [ Button_down ] in
+  (status_mouse.mouse_x, status_mouse.mouse_y)

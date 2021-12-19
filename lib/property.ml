@@ -9,9 +9,6 @@ type control =
   | ControlFour
   | TakeOver
 
-(* type set = | Gym | SportActivities | Library | Kitchen | Bathroom |
-   AlcoholCell | DrugCell | Mail *)
-
 type rent = {
   base : int;
   set : int;
@@ -50,6 +47,8 @@ let image_name p = p.image_name
 let get_control p = p.control
 
 let acquire p = { p with status = Owned }
+
+let initial_purchase p = p.cost.initial_purchase
 
 let is_acquirable p =
   match p.status with
@@ -158,17 +157,22 @@ let get_rent_from_json json =
   }
 
 let get_property_from_json json =
-  {
-    name = json |> member "property_name" |> to_string;
-    button = json |> member "button" |> Button.get_button_from_json;
-    board_order = json |> member "board_order" |> to_int;
-    set = json |> member "set" |> to_string;
-    rent = json |> member "fee" |> get_rent_from_json;
-    control = Base;
-    cost = json |> member "cost" |> get_cost_from_json;
-    status = Unowned;
-    image_name = json |> member "image_name" |> to_string;
-  }
+  let _, button =
+    json |> member "button" |> Button.get_button_from_json
+  in
+  let board_order = json |> member "board_order" |> to_int in
+  ( board_order,
+    {
+      name = json |> member "property_name" |> to_string;
+      button;
+      board_order;
+      set = json |> member "set" |> to_string;
+      rent = json |> member "fee" |> get_rent_from_json;
+      control = Base;
+      cost = json |> member "cost" |> get_cost_from_json;
+      status = Unowned;
+      image_name = json |> member "image_name" |> to_string;
+    } )
 
 let get_properties_from_json json =
   json |> to_list |> List.map get_property_from_json
