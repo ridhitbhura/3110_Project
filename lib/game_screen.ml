@@ -223,9 +223,6 @@ let get_buttons gs =
 let check_dice_button_clicked_new buttons (x, y) =
   List.exists (fun b -> Button.is_clicked b (x, y)) buttons
 
-let check_dice_button_clicked buttons (x, y) =
-  List.find_opt (fun b -> Button.is_clicked b (x, y)) buttons
-
 let check_imap_button_clicked properties (x, y) =
   IM.fold
     (fun n b init ->
@@ -241,11 +238,6 @@ let check_smap_button_clicked map (x, y) =
 let update_board_loc pl dice_val =
   let loc_old = Player.location pl in
   (loc_old + dice_val) mod 40
-
-let get_xy_for_board_loc loc gs =
-  match List.assoc_opt loc gs.order_list with
-  | None -> failwith "board order and respective coords dont exist"
-  | Some v -> v
 
 let next_turn_popup gs =
   let s = SM.find Constants.new_turn gs.subscreens in
@@ -620,54 +612,18 @@ let new_respond_to_dice_click gs =
             AnimatePlayerGS (new_gs, pl_num, new_board_loc))
     | _ -> failwith "precondition violation"
 
-let respond_to_dice_click gs =
-  if gs.curr_player_roll then NewGS gs
-  else
-    let pl_num = List.nth gs.active_players gs.curr_player_index in
-    match gs.dice with
-    | [ h; t ] -> (
-        let first_roll = Die.roll_die h in
-        let new_first_die = Die.new_image h first_roll in
-        let second_roll = Die.roll_die t in
-        let new_second_die = Die.new_image t second_roll in
-        let dice_val = first_roll + second_roll in
-        match IM.find_opt pl_num gs.players with
-        | None -> failwith "doesnt have current player"
-        | Some v ->
-            let new_board_loc = update_board_loc v dice_val in
-            let new_x, new_y = get_xy_for_board_loc new_board_loc gs in
-            let v_new =
-              Player.move_board new_board_loc v
-              |> Player.move_coord
-                   (new_x + Constants.player_offset)
-                   (new_y + Constants.player_offset)
-            in
-            let pl_map = IM.add pl_num v_new gs.players in
-            let new_gs = { gs with players = pl_map } in
-            let gs_open, gs_closed =
-              respond_to_roll new_gs new_board_loc
-            in
-            let info_map =
-              match IM.find_opt new_board_loc gs.properties with
-              | None -> update_info_cards gs_closed 0 v_new
-              | Some _ ->
-                  update_info_cards gs_closed new_board_loc v_new
-            in
-            ClosingGS
-              ( {
-                  gs_open with
-                  dice = [ new_first_die; new_second_die ];
-                  info_cards = info_map;
-                  curr_player_roll = true;
-                },
-                {
-                  gs_closed with
-                  dice = [ new_first_die; new_second_die ];
-                  info_cards = info_map;
-                  curr_player_roll = true;
-                } )
-        (* NewGS { gs with dice = [ new_first_die; new_second_die ]} *))
-    | _ -> failwith "precondition violation"
+let update_on_roll gs pl_num board_loc =
+  let plyr = IM.find pl_num gs.players in
+  let gs_open, gs_closed = respond_to_roll gs board_loc in
+  let info_map =
+    match IM.find_opt board_loc gs.properties with
+    | None -> update_info_cards gs_closed 0 plyr
+    | Some _ -> update_info_cards gs_closed board_loc plyr
+  in
+  ClosingGS
+    ( { gs_open with info_cards = info_map; curr_player_roll = true },
+      { gs_closed with info_cards = info_map; curr_player_roll = true }
+    )
 
 let rec determine_factions gs active_plyrs index accum =
   match active_plyrs with
@@ -789,12 +745,6 @@ let response_to_cancel_button gs =
 
 (* respond_to_dice_click gs 1 is moving player 1 for now. Yet to
    implement multi player movement *)
-let respond_to_click gs (x, y) =
-  let buttons = get_dice_buttons gs in
-  let clicked_button = check_dice_button_clicked buttons (x, y) in
-  match clicked_button with
-  | None -> NewGS gs (*check if this is false*)
-  | Some _ -> respond_to_dice_click gs
 
 let base_click_response gs b_name =
   match b_name with
@@ -900,6 +850,15 @@ let initialize_team_info gs =
       team_info_subscreen'
   in
   { gs with team_info = team_info_subscreen'' }
+
+let update_card_info gs pl_num board_loc =
+  let plyr = IM.find pl_num gs.players in
+  let info_map =
+    match IM.find_opt board_loc gs.properties with
+    | None -> update_info_cards gs 0 plyr
+    | Some _ -> update_info_cards gs board_loc plyr
+  in
+  { gs with info_cards = info_map }
 
 let new_respond_to_click gs (x, y) =
   let button_response = get_buttons gs in

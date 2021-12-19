@@ -56,17 +56,18 @@ let rec update_home_screen hs =
       update_game_screen update_team_info_gs
 
 and update_game_screen gs =
-  let gs' = Game_screen.initialize_team_info gs in
+  (* let gs' = Game_screen.initialize_team_info gs in *)
   let coords = Gui.mouse_click () in
-  match Game_screen.new_respond_to_click gs' coords with
+  match Game_screen.new_respond_to_click gs coords with
   | EndGame -> redraw_hs_and_sleep ()
   | NewGS new_gs -> (
       match
-        Game_screen.curr_player gs' = Game_screen.curr_player new_gs
+        Game_screen.curr_player gs = Game_screen.curr_player new_gs
       with
       | true ->
-          Gui.draw_game_screen new_gs;
-          update_game_screen new_gs
+          let gs' = Game_screen.initialize_team_info new_gs in
+          Gui.draw_game_screen gs';
+          update_game_screen gs'
       | false ->
           let gs' = Game_screen.next_turn_popup new_gs in
           draw_gs_with_time gs' 1.0;
@@ -84,9 +85,18 @@ and animate_player gs pl_num board_loc =
   | InProgress new_gs ->
       Gui.draw_game_screen new_gs;
       animate_player new_gs pl_num board_loc
-  | Finished new_gs ->
-      Gui.draw_game_screen new_gs;
-      update_game_screen new_gs
+  | Finished new_gs -> (
+      match Game_screen.update_on_roll new_gs pl_num board_loc with
+      | ClosingGS (opened, close) ->
+          draw_gs_with_time opened 2.5;
+          let gs' =
+            Game_screen.update_card_info close pl_num board_loc
+          in
+          let gs'' = Game_screen.initialize_team_info gs' in
+          Gui.draw_game_screen gs'';
+          update_game_screen gs''
+      | _ -> failwith "not possible main")
+(* Gui.draw_game_screen new_gs; update_game_screen new_gs *)
 
 (**[run_game _] initializes a new empty Gui window, draws the home
    screen, and continually updates the home screen.*)

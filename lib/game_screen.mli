@@ -69,9 +69,9 @@ type animation_response =
 
 val move_player : t -> int -> int -> animation_response
 
-val respond_to_click : t -> int * int -> response
-
 val new_respond_to_click : t -> int * int -> response
+
+val update_on_roll : t -> int -> int -> response
 
 val next_turn_popup : t -> t
 
@@ -80,3 +80,5 @@ val activate_team_selection : t -> t
 val assign_players_faction : t -> t
 
 val initialize_team_info : t -> t
+
+val update_card_info : t -> int -> int -> t
