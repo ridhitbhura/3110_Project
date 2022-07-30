@@ -16,8 +16,11 @@ Final project - CS 3110 @ Cornell University (Fall 2021)
 
 
 
+<video src="https://user-images.githubusercontent.com/47744566/181953256-e29fac8d-2ab2-4868-a21a-2dd44bbdd25c.mov" controls="controls" style="max-width: 730px;">
+</video>
 
-[Game Demo](https://user-images.githubusercontent.com/47744566/181953256-e29fac8d-2ab2-4868-a21a-2dd44bbdd25c.mov)
+
+<!-- [Game Demo](https://user-images.githubusercontent.com/47744566/181953256-e29fac8d-2ab2-4868-a21a-2dd44bbdd25c.mov) -->
 
 
 
