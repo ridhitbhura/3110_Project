@@ -3,7 +3,9 @@
 
 Prison-themed multiplayer Monopoly game!
 
-Final project - CS 3110 @ Cornell University (Fall 2021)
+Developed using OCaml
+
+Final project - [CS 3110](https://www.cs.cornell.edu/courses/cs3110/2021fa/) @ Cornell University (Fall 2021)
 
 ## Installation
 @[Instructions](https://github.com/ridhitbhura/3110_Project/blob/main/INSTALL.md)
