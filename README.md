@@ -10,6 +10,10 @@ Final project - [CS 3110](https://www.cs.cornell.edu/courses/cs3110/2021fa/) @ C
 ## Installation
 @[Instructions](https://github.com/ridhitbhura/3110_Project/blob/main/INSTALL.md)
 
+## Demo
+<video src="https://user-images.githubusercontent.com/47744566/181953256-e29fac8d-2ab2-4868-a21a-2dd44bbdd25c.mov" controls="controls" style="max-width: 500px;">
+</video>
+
 ## Screenshots
 
 ![Screenshot 2022-07-30 at 2 45 10 PM](https://user-images.githubusercontent.com/47744566/181949567-39ed3e61-79a3-4f10-bffa-cb95d841a8d5.png)
@@ -18,8 +22,6 @@ Final project - [CS 3110](https://www.cs.cornell.edu/courses/cs3110/2021fa/) @ C
 
 
 
-<video src="https://user-images.githubusercontent.com/47744566/181953256-e29fac8d-2ab2-4868-a21a-2dd44bbdd25c.mov" controls="controls" style="max-width: 500px;">
-</video>
 
 
 
